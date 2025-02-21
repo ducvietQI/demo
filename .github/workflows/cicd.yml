@@ -1,0 +1,32 @@
+name: Deploy Next.js to AWS EC2
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+      - name: Build docker image
+        run: docker build -t ducviett/demo .
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Publish image to docker hub
+        run: docker push ducviett/demo:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Pull image from docker hub
+        run: docker pull ducviett/demo:latest
+      - name: Delete old container if exists
+        run: docker ps -q --filter "name=nextjs-app-container" | grep -q . && docker rm -f nextjs-app-container || echo "No container to remove"
+      - name: Run docker container
+        run: docker run -d --restart unless-stopped -p 3000:3000 --name nextjs-app-container ducviett/demo:latest
