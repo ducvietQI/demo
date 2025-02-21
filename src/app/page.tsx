@@ -18,7 +18,7 @@ export default function Home() {
       <section className="page-scroller__section">
         <BannerSection />
       </section>
-      <section className="page-scroller__section">leuleu</section>
+      {/* <section className="page-scroller__section">leuleu</section> */}
     </div>
   );
 }
