@@ -1,4 +1,4 @@
-name: Deploy Next.js to AWS EC2
+name: store
 
 on:
   push:

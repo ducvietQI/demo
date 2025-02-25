@@ -1,7 +1,7 @@
-@import "swiper/css";
-@import "swiper/css/effect-fade";
-@import "swiper/css/navigation";
-@import "swiper/css/pagination";
+@forward "swiper/css";
+@forward "swiper/css/effect-fade";
+@forward "swiper/css/navigation";
+@forward "swiper/css/pagination";
 
 .swiper {
   width: 100%;
