@@ -34,7 +34,7 @@ const BannerSection = () => {
 
           <div className="absolute inset-0 flex items-center justify-center bg-black/40">
             <h1
-              className={`text-white text-4xl font-bold text-center transition-opacity uppercase duration-2000 ${
+              className={`text-white leading-[66px] max-w-7xl text-6xl font-bold text-center transition-opacity uppercase duration-2000 ${
                 activeIndex === index ? "opacity-100" : "opacity-0"
               }`}
             >

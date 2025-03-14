@@ -1,5 +1,6 @@
 "use client";
 import { Logo } from "@/components";
+import AppHeader from "@/components/AppHeader";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -21,13 +22,13 @@ export default function ClientLayout({
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      <motion.div
+    <div className="relative w-full">
+      {/* <motion.div
         initial={{ y: "0%" }}
         animate={step === 1 ? { y: "-100%" } : {}}
         transition={{ duration: 1, ease: "easeInOut" }}
         onAnimationComplete={() => setStep(2)}
-        className={`absolute top-0 left-0 w-full h-full bg-[#231F20] flex items-center justify-center z-50 ${
+        className={`absolute top-0 left-0 w-full h-screen bg-[#231F20] flex items-center justify-center z-50 ${
           step === 2 ? "hidden" : ""
         }`}
       >
@@ -38,9 +39,9 @@ export default function ClientLayout({
         initial={{ y: "0" }}
         animate={step === 2 ? { y: "100%" } : {}}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="absolute top-0 left-0 w-full h-full bg-white z-40"
-      />
-
+        className="absolute top-0 left-0 w-full h-screen bg-white z-40"
+      /> */}
+      <AppHeader />
       <div className="relative z-10">{children}</div>
     </div>
   );

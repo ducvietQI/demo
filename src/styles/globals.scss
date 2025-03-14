@@ -12,7 +12,7 @@ html body {
   background-color: rgba(245, 245, 245, 1);
   overflow-x: hidden;
   color: #404040;
-  font-size: 16px;
+  font-size: 10px;
   line-height: 1.55;
   font-weight: 300;
 }
@@ -103,5 +103,159 @@ body {
   100% {
     transform: translateY(15px);
     opacity: 0;
+  }
+}
+
+.custom-logo {
+  filter: brightness(0) invert(1);
+}
+
+.spiner-decor {
+  animation: Spinner 80s linear infinite;
+  -webkit-animation: Spinner 80s linear infinite;
+}
+
+@keyframes Spiner {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.txt-split-item p {
+  display: inline-flex;
+}
+.txt-split-item p > span {
+  overflow: hidden;
+}
+.txt-split-item p > span > span {
+  display: inline-block;
+}
+
+@keyframes btnTextAni {
+  0% {
+    transform: translateX(-1rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.txt-animated.no-delay .word .char {
+  animation-delay: calc(0 * var(--char-index)) !important;
+}
+
+.btn::before,
+.btn::after {
+  content: "";
+  position: absolute;
+  width: 100%; /* Hoặc một giá trị hợp lý */
+  left: 0;
+  height: 0;
+  background-color: #231f20;
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -ms-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -ms-transition-delay: 0s;
+  -o-transition-delay: 0s;
+}
+.btn::before {
+  top: 0;
+}
+.btn::after {
+  bottom: 0;
+}
+.btn .text {
+  font-weight: 700;
+  color: #404040;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+}
+
+.btn:hover .text .letter {
+  animation: btnTextAniSecond 1.2s ease forwards;
+  -webkit-animation: btnTextAniSecond 1.2s ease forwards;
+  color: white;
+}
+
+@keyframes btnTextAniSecond {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.btn .line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.btn .line .shape {
+  stroke-dasharray: 760;
+  stroke-dashoffset: 0;
+  stroke-width: 0.1rem;
+  fill: transparent;
+  stroke: rgba(0, 0, 0, 0.6);
+  -webkit-transition: stroke-dasharray 1.8s linear 0.6s;
+  -o-transition: stroke-dasharray 1.8s linear 0.6s;
+  transition: stroke-dasharray 1.8s linear 0.6s;
+}
+
+@media screen and (max-width: 1200px) {
+  .btn .line .shape {
+    stroke-dasharray: 760;
+  }
+}
+.btn.load-btn .line .shape {
+  stroke-dasharray: 0 620;
+}
+.btn.load-btn.is-inview .line .shape {
+  stroke-dasharray: 760;
+}
+.btn.load-btn.is-inview .text {
+  animation: btnTextAni 1s ease 1s forwards;
+  -webkit-animation: btnTextAni 1s ease 1s forwards;
+}
+@media screen and (min-width: 1201px) {
+  .btn.load-btn .text {
+    opacity: 0;
+  }
+}
+@media screen and (min-width: 1201px) {
+  .btn:hover::before,
+  .btn:hover::after {
+    height: 51%;
+    opacity: 1;
+  }
+  .btn:hover .text .letter {
+    animation: btnTextAniSecond 1.2s ease forwards;
+    -webkit-animation: btnTextAniSecond 1.2s ease forwards;
+    color: white;
   }
 }
