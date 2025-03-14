@@ -17,7 +17,7 @@ const NewsSection = () => {
         <div className="grid grid-cols-3 grid-rows-4 gap-y-8 gap-x-8 h-full">
           <div className="relative row-span-4 col-span-2 w-full h-full overflow-hidden">
             <Image
-              src="https://bohodecor.vn/wp-content/uploads/2025/02/a-84-1024x683.jpg"
+              src="/images/news1.jpg"
               alt="image-1"
               fill
               className="object-cover"
@@ -32,7 +32,7 @@ const NewsSection = () => {
           </div>
           <div className="text-4xl relative bg-white row-span-2 font-semibold flex items-center justify-center">
             <Image
-              src="https://bohodecor.vn/wp-content/uploads/2024/09/DSC08702-768x512.jpg"
+              src="/images/news2.jpg"
               alt="image-2"
               fill
               className="object-cover"
@@ -47,7 +47,7 @@ const NewsSection = () => {
           </div>
           <div className="text-4xl relative bg-white row-span-2 font-semibold flex items-center justify-center">
             <Image
-              src="https://bohodecor.vn/wp-content/uploads/2024/07/2024AADA-297-768x512.jpg"
+              src="/images/news3.jpg"
               alt="image-3"
               fill
               className="object-cover"

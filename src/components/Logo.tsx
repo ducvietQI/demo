@@ -34,7 +34,7 @@ const Logo = () => {
           </div>
         </div>
 
-        <div className="load-logo-inner h-[79px] w-20">
+        <div className="load-logo-inner h-[79px] w-[80px]">
           <Image src="/assets/letter-logo-2.svg" alt="logo-2" fill />
         </div>
 

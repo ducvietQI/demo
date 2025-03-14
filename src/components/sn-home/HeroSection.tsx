@@ -1,18 +1,7 @@
 "use client";
 import Image from "next/image";
-import AOS from "aos";
-import { useEffect } from "react";
 
 const HeroSection = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-    });
-    console.log(AOS);
-  }, []);
-
   return (
     <div className="relative  w-full h-full overflow-hidden bg-white">
       <div className="absolute w-[86.8%] pt-[86.8%] bottom-[-95%] left-[-48%] spiner-decor">
@@ -32,7 +21,7 @@ const HeroSection = () => {
                 Chúng tôi là <br />
                 BOHO Décor{" "}
               </h3>
-              <p className="text-[1.4rem] font-normal" data-aos="fade-right">
+              <p className="text-[1.4rem] font-normal">
                 Với tầm nhìn trở thành thương hiệu nội thất uy tín, định vị xu
                 hướng và tạo ra trải nghiệm sống tốt hơn. Chúng tôi không ngừng
                 đổi mới giải pháp thiết kế, sản xuất, thi công nhằm mang tới sự
@@ -41,7 +30,7 @@ const HeroSection = () => {
             </div>
             <div className=" h-fit w-1/2 flex flex-col gap-10 since-wrap">
               <h3 className="text-6xl font-bold ">Create Better</h3>
-              <p className="text-[1.4rem] font-normal" data-aos="fade-right">
+              <p className="text-[1.4rem] font-normal">
                 Hệ thống nhà máy hiện đại, đội ngũ Chuyên gia quốc tế và kỹ sư,
                 kiến trúc sư giàu kinh nghiệm là nền tảng làm nên những sản phẩm
                 nội thất hoàn mỹ và trải nghiệm tinh tế phù hợp với nhu cầu
