@@ -23,7 +23,7 @@ export default function ClientLayout({
 
   return (
     <div className="relative w-full">
-      {/* <motion.div
+      <motion.div
         initial={{ y: "0%" }}
         animate={step === 1 ? { y: "-100%" } : {}}
         transition={{ duration: 1, ease: "easeInOut" }}
@@ -40,7 +40,7 @@ export default function ClientLayout({
         animate={step === 2 ? { y: "100%" } : {}}
         transition={{ duration: 1, ease: "easeInOut" }}
         className="absolute top-0 left-0 w-full h-screen bg-white z-40"
-      /> */}
+      />
       <AppHeader />
       <div className="relative z-10">{children}</div>
     </div>
