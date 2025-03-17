@@ -1,26 +1,48 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { getActiveSection } from "@furman1331/page-scroller";
 import Image from "next/image";
 import clsx from "clsx";
+import Cookies from "js-cookie";
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
+
+const navItems = [
+  { key: "services", link: "#services" },
+  { key: "about", link: "#about" },
+  { key: "people", link: "#people" },
+  { key: "blog", link: "#blog" },
+  { key: "careers", link: "#careers" },
+  { key: "contact", link: "#contact" },
+];
 
 const AppHeader = () => {
-  const [activeSection, setActiveSection] = useState(getActiveSection());
+  const appLayout = useTranslations("AppLayout");
+  const router = useRouter();
+  const locale = useLocale();
+
+  const [activeSection, setActiveSection] = useState<number | null>(null);
 
   useEffect(() => {
     const checkActiveSection = () => {
-      const currentSection = getActiveSection();
-      if (currentSection !== activeSection) {
-        setActiveSection(currentSection);
-      }
+      setActiveSection(getActiveSection());
     };
     const interval = setInterval(checkActiveSection, 300);
 
     return () => clearInterval(interval);
-  }, [activeSection]);
+  }, []);
 
-  const isHeader = activeSection > 0;
+  const isHeader = useMemo(
+    () => activeSection !== null && activeSection > 0,
+    [activeSection]
+  );
+
+  const changeLocale = (newLocale: string) => {
+    Cookies.set("NEXT_LOCALE", newLocale, { path: "/", expires: 365 });
+    router.refresh();
+  };
 
   return (
     <header
@@ -48,36 +70,40 @@ const AppHeader = () => {
           isHeader ? "text-[#404040] font-normal" : "text-white font-medium"
         )}
       >
-        {midHeader.map((item, index) => (
-          <a
-            key={index}
-            href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-            className="nav-link"
-          >
-            {item}
+        {navItems.map((item) => (
+          <a key={item.key} href={item.link}>
+            {appLayout(`nav.${item.key}`)}
           </a>
         ))}
       </nav>
 
       <div
         className={clsx(
-          "text-[1.4rem]",
+          "text-[1.4rem] flex flex-row gap-4",
           isHeader ? "text-[#404040] font-normal" : "text-white font-medium"
         )}
       >
-        VI EN
+        <a
+          onClick={() => changeLocale("vi")}
+          className={clsx(
+            "w-fit p-0 cursor-pointer",
+            locale === "vi" && "border-b-2 border-yellow-500"
+          )}
+        >
+          VI
+        </a>
+        <a
+          onClick={() => changeLocale("en")}
+          className={clsx(
+            "w-fit p-0 cursor-pointer",
+            locale === "en" && "border-b-2 border-yellow-500"
+          )}
+        >
+          EN
+        </a>
       </div>
     </header>
   );
 };
 
 export default AppHeader;
-
-const midHeader = [
-  "Dịch vụ",
-  "Về chúng tôi",
-  "Con người",
-  "Blog",
-  "Tuyển dụng",
-  "Liên hệ",
-];

@@ -4,9 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Navigation } from "swiper/modules";
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const BannerSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const t = useTranslations("BannerSection");
+
+  const textSlides = t.raw("textSlides");
 
   return (
     <Swiper
@@ -54,15 +58,6 @@ const BannerSection = () => {
 };
 
 export default BannerSection;
-
-const textSlides = [
-  "Chú trọng vào thiết kế mang tính ứng dụng cao",
-  "Sáng tạo và đổi mới trong từng chi tiết",
-  "Hiệu suất và tối ưu hóa trải nghiệm người dùng",
-  "Phong cách thiết kế tối giản nhưng đầy ấn tượng",
-  "Chất lượng luôn là ưu tiên hàng đầu",
-  "Chú trọng đến tính bền vững và môi trường",
-];
 
 const slideImages = [
   "/images/slide-1.jpg",

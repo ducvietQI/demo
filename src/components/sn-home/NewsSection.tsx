@@ -1,66 +1,49 @@
 "use client";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 const NewsSection = () => {
+  const newsSect = useTranslations("NewsSection");
+
+  const newsList = Object.values(newsSect.raw("news")) as {
+    image: string;
+    title: string;
+    date: string;
+  }[];
+
   return (
     <div className="container pt-24 pb-4">
-      <div className="flex flex-col  w-full max-w-[1230px] h-full  gap-10">
-        {/* Header */}
+      <div className="flex flex-col w-full max-w-[1230px] h-full gap-10">
         <div className="flex justify-between items-center">
-          <h2 className="text-7xl font-bold">Tin Tức</h2>
+          <h2 className="text-7xl font-bold">{newsSect("title")}</h2>
           <h3 className="text-4xl font-medium cursor-pointer hover:underline">
-            Xem thêm &gt;&gt;
+            {newsSect("btn")} &gt;&gt;
           </h3>
         </div>
 
         {/* Content */}
         <div className="grid grid-cols-3 grid-rows-4 gap-y-8 gap-x-8 h-full">
-          <div className="relative row-span-4 col-span-2 w-full h-full overflow-hidden">
-            <Image
-              src="/images/news1.jpg"
-              alt="image-1"
-              fill
-              className="object-cover"
-            />
-            <p className="absolute z-4 text-white bottom-20 left-5 hover:underline hover:cursor-pointer text-2xl font-bold">
-              DỰ ÁN SSIS GIAI ĐOẠN 2 CỦA BOHO DÉCOR XUẤT HIỆN TRÊN EDUCATION
-              SNAPSHOTS
-            </p>
-            <p className="absolute z-4 text-white bottom-8 left-5 text-2xl ">
-              05/02/2025
-            </p>
-          </div>
-          <div className="text-4xl relative bg-white row-span-2 font-semibold flex items-center justify-center">
-            <Image
-              src="/images/news2.jpg"
-              alt="image-2"
-              fill
-              className="object-cover"
-            />
-            <p className="absolute z-4 text-white bottom-20 left-5 hover:underline hover:cursor-pointer text-2xl font-bold leading-9">
-              LỄ KHỞI CÔNG DỰ ÁN CẢI TẠO TRƯỜNG QUỐC TẾ NAM SÀI GÒN – GIAI ĐOẠN
-              III
-            </p>
-            <p className="absolute z-4 text-white bottom-8 left-5 text-2xl font-extralight">
-              26/09/2024
-            </p>
-          </div>
-          <div className="text-4xl relative bg-white row-span-2 font-semibold flex items-center justify-center">
-            <Image
-              src="/images/news3.jpg"
-              alt="image-3"
-              fill
-              className="object-cover"
-            />
-
-            <p className="absolute z-4 text-white bottom-20 left-5 hover:underline hover:cursor-pointer text-2xl font-bold leading-9">
-              BOHO DÉCOR TOẢ SÁNG TẠI ĐÊM TRAO GIẢI ASIA ARCHITECTURE DESIGN
-              AWARD 2024
-            </p>
-            <p className="absolute z-4 text-white bottom-8 left-5 text-2xl font-extralight">
-              31/07/2024
-            </p>
-          </div>
+          {newsList.map((news, index) => (
+            <div
+              key={index}
+              className={`relative w-full h-full overflow-hidden ${
+                index === 0 ? "row-span-4 col-span-2" : "row-span-2"
+              }`}
+            >
+              <Image
+                src={news.image}
+                alt={`image-${index + 1}`}
+                fill
+                className="object-cover"
+              />
+              <p className="absolute text-ellipsis-2-row  z-4 text-white bottom-20 left-5 hover:underline hover:cursor-pointer text-2xl font-bold">
+                {news.title}
+              </p>
+              <p className="absolute z-4 text-white bottom-8 left-5 text-2xl">
+                {news.date}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
