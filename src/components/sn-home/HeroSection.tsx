@@ -1,10 +1,7 @@
 "use client";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 const HeroSection = () => {
-  const t = useTranslations("HeroSection");
-
   return (
     <div className="relative w-full h-full overflow-hidden bg-white">
       {/* Background Decoration */}
@@ -23,17 +20,11 @@ const HeroSection = () => {
           <div className="w-9/12 h-full flex flex-row items-center gap-20">
             {/* Left Section */}
             <div className="h-fit w-1/2 flex flex-col gap-10">
-              <h3 className="text-6xl font-bold">
-                {t("title1")} <br /> {t("title2")}
-              </h3>
-              <p className="text-[1.4rem] font-normal">{t("desc1")}</p>
+              <h3 className="text-6xl font-bold"></h3>
             </div>
 
             {/* Right Section */}
             <div className="h-fit w-1/2 flex flex-col gap-10 since-wrap">
-              <h3 className="text-6xl font-bold">{t("title3")}</h3>
-              <p className="text-[1.4rem] font-normal">{t("desc2")}</p>
-
               {/* Button */}
               <div className="relative py-4 px-6 w-fit">
                 <a
@@ -41,7 +32,6 @@ const HeroSection = () => {
                   target="_blank"
                   className="btn m-top"
                 >
-                  <span className="text txt-split no-delay">{t("btn")}</span>
                   <svg
                     className="line"
                     height="100%"

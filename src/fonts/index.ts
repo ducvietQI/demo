@@ -1,79 +1,69 @@
 import localFont from "next/font/local";
 
-const Gotham = localFont({
+const BaiJamjuree = localFont({
   src: [
     {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Black.otf",
-      weight: "900",
-      style: "normal",
-    },
-    {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Black Italic.otf",
-      weight: "900",
-      style: "italic",
-    },
-    {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Bold.otf",
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-Bold.ttf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Bold Italic.otf",
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-BoldItalic.ttf",
       weight: "700",
       style: "italic",
     },
     {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Italic.otf",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Light.otf",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Light Italic.otf",
-      weight: "300",
-      style: "italic",
-    },
-    {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Thin.otf",
-      weight: "100",
-      style: "normal",
-    },
-    {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Thin Italic.otf",
-      weight: "100",
-      style: "italic",
-    },
-    {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Ultra.otf",
-      weight: "800",
-      style: "normal",
-    },
-    {
-      path: "../fonts/SVN-Gotham/SVN-Gotham Ultra Italic.otf",
-      weight: "800",
-      style: "italic",
-    },
-    {
-      path: "../fonts/SVN-Gotham/SVN-Gotham XLight.otf",
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-ExtraLight.ttf",
       weight: "200",
       style: "normal",
     },
     {
-      path: "../fonts/SVN-Gotham/SVN-Gotham XLight Italic.otf",
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-ExtraLightItalic.ttf",
       weight: "200",
+      style: "italic",
+    },
+    {
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-LightItalic.ttf",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-MediumItalic.ttf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Bai_Jamjuree/BaiJamjuree-SemiBoldItalic.ttf",
+      weight: "600",
       style: "italic",
     },
   ],
-  variable: "--font-gotham",
+  variable: "--font-bai-jamjuree",
 });
 
-export { Gotham };
+export { BaiJamjuree };

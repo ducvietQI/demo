@@ -4,13 +4,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Navigation } from "swiper/modules";
 import Image from "next/image";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 
 const BannerSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const t = useTranslations("BannerSection");
-
-  const textSlides = t.raw("textSlides");
 
   return (
     <Swiper
@@ -41,9 +37,7 @@ const BannerSection = () => {
               className={`text-white leading-[66px] max-w-7xl text-6xl font-bold text-center transition-opacity uppercase duration-2000 ${
                 activeIndex === index ? "opacity-100" : "opacity-0"
               }`}
-            >
-              {textSlides[index]}
-            </h1>
+            ></h1>
           </div>
 
           <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">

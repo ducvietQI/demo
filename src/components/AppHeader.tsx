@@ -1,108 +1,94 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { getActiveSection } from "@furman1331/page-scroller";
+import {
+  AppBar,
+  Box,
+  Container,
+  Stack,
+  Toolbar,
+  Typography,
+  IconButton,
+} from "@mui/material";
 import Image from "next/image";
-import clsx from "clsx";
-import Cookies from "js-cookie";
-import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
-import { useLocale } from "next-intl";
+import { SearchIcon } from "./Icons";
 
-const navItems = [
-  { key: "services", link: "#services" },
-  { key: "about", link: "#about" },
-  { key: "people", link: "#people" },
-  { key: "blog", link: "#blog" },
-  { key: "careers", link: "#careers" },
-  { key: "contact", link: "#contact" },
+const menuItems = [
+  "TRANG CHỦ",
+  "GIỚI THIỆU",
+  "DỊCH VỤ",
+  "DỰ ÁN",
+  "BÁO GIÁ",
+  "KIẾN THỨC",
+  "PHẢN HỒI",
+  "NỘI THẤT",
+  "TUYỂN DỤNG",
 ];
 
 const AppHeader = () => {
-  const appLayout = useTranslations("AppLayout");
-  const router = useRouter();
-  const locale = useLocale();
-
-  const [activeSection, setActiveSection] = useState<number | null>(null);
-
-  useEffect(() => {
-    const checkActiveSection = () => {
-      setActiveSection(getActiveSection());
-    };
-    const interval = setInterval(checkActiveSection, 300);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const isHeader = useMemo(
-    () => activeSection !== null && activeSection > 0,
-    [activeSection]
-  );
-
-  const changeLocale = (newLocale: string) => {
-    Cookies.set("NEXT_LOCALE", newLocale, { path: "/", expires: 365 });
-    router.refresh();
-  };
-
   return (
-    <header
-      className={clsx(
-        "fixed w-screen z-20 px-[7.2rem] transition-all duration-500 delay-100 flex flex-row justify-between items-center overflow-hidden",
-        "before:absolute before:inset-0 before:bg-white before:transition-transform before:duration-500 before:ease-in-out before:z-[-1]",
-        isHeader
-          ? "before:translate-y-0 h-[60px] shadow-[10px_10px_40px_rgba(0,0,0,0.1)]"
-          : "before:-translate-y-full h-[120px]"
-      )}
+    <AppBar
+      color="default"
+      sx={{ backgroundColor: "#111", color: "text.primary" }}
     >
-      <h1 className={clsx({ "custom-logo": !isHeader })}>
-        <Image
-          src="/images/BOHO.png"
-          width={150}
-          height={147}
-          alt="BOHO Logo"
-          priority
-        />
-      </h1>
+      <Container>
+        <Toolbar sx={{ height: 90, justifyContent: "space-between" }}>
+          {/* Logo */}
+          <Box className="relative size-[70px]">
+            <Image src="/images/logo.svg" fill alt="logo" />
+          </Box>
 
-      <nav
-        className={clsx(
-          "h-full flex flex-row gap-[5.6rem] text-2xl items-center",
-          isHeader ? "text-[#404040] font-normal" : "text-white font-medium"
-        )}
-      >
-        {navItems.map((item) => (
-          <a key={item.key} href={item.link}>
-            {appLayout(`nav.${item.key}`)}
-          </a>
-        ))}
-      </nav>
+          {/* Navigation Menu */}
+          <Stack
+            direction="row"
+            spacing={4}
+            sx={{ flexGrow: 1, justifyContent: "center" }}
+          >
+            {menuItems.map((item) => (
+              <Typography
+                key={item}
+                variant="h6"
+                sx={{
+                  fontWeight: 500,
+                  cursor: "pointer",
 
-      <div
-        className={clsx(
-          "text-[1.4rem] flex flex-row gap-4",
-          isHeader ? "text-[#404040] font-normal" : "text-white font-medium"
-        )}
-      >
-        <a
-          onClick={() => changeLocale("vi")}
-          className={clsx(
-            "w-fit p-0 cursor-pointer",
-            locale === "vi" && "border-b-2 border-yellow-500"
-          )}
-        >
-          VI
-        </a>
-        <a
-          onClick={() => changeLocale("en")}
-          className={clsx(
-            "w-fit p-0 cursor-pointer",
-            locale === "en" && "border-b-2 border-yellow-500"
-          )}
-        >
-          EN
-        </a>
-      </div>
-    </header>
+                  ":hover": {
+                    color: "primary.main",
+                  },
+                }}
+              >
+                {item}
+              </Typography>
+            ))}
+          </Stack>
+
+          {/* Contact + Icons */}
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Typography
+              variant="h6"
+              sx={{ fontWeight: 500, cursor: "pointer" }}
+            >
+              0999 888 999
+            </Typography>
+            <SearchIcon
+              sx={{
+                fontSize: 16,
+                cursor: "pointer",
+              }}
+            />
+            <Box
+              sx={{
+                position: "relative",
+                cursor: "pointer",
+                height: 25,
+                width: 25,
+              }}
+            >
+              <Image src="/images/icon_bar.png" fill alt="logo" />
+            </Box>
+          </Stack>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 };
 
