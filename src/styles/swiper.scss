@@ -17,3 +17,50 @@
   display: block;
   width: 100%;
 }
+
+.swiper-button-prev::after {
+  content: "";
+  background: url("/images/left-arrow.svg") no-repeat center;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  left: 20px;
+  filter: brightness(0) saturate(100%) invert(73%) sepia(85%) saturate(408%)
+    hue-rotate(1deg) brightness(101%) contrast(105%);
+}
+
+.swiper-button-next::after {
+  content: "";
+  background: url("/images/right-arrow.svg") no-repeat center;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  right: 20px;
+  filter: brightness(0) saturate(100%) invert(73%) sepia(85%) saturate(408%)
+    hue-rotate(1deg) brightness(101%) contrast(105%);
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.swiper:hover .swiper-button-prev {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.swiper:hover .swiper-button-next {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.swiper-button-prev {
+  transform: translateX(-20px);
+}
+
+.swiper-button-next {
+  transform: translateX(20px);
+}

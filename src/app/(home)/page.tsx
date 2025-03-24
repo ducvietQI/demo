@@ -1,9 +1,15 @@
 "use client";
 
-import { VideoSection } from "@/components";
+import { BannerSection, VideoSection } from "@/components";
+import { Stack } from "@mui/material";
 
 const Home = () => {
-  return <VideoSection />;
+  return (
+    <Stack>
+      <VideoSection />
+      <BannerSection />
+    </Stack>
+  );
 };
 
 export default Home;
