@@ -2,7 +2,7 @@
 
 import { Stack, Box, Typography, Grid2 } from "@mui/material";
 import Image from "next/image";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const BannerSection = () => {
@@ -11,7 +11,8 @@ const BannerSection = () => {
       <Swiper
         loop={true}
         navigation={true}
-        modules={[Navigation, Autoplay]}
+        effect="fade"
+        modules={[Navigation, Autoplay, EffectFade]}
         speed={1000}
         autoplay={{
           delay: 5000,
@@ -42,10 +43,7 @@ const BannerSection = () => {
                 color: "black",
                 textAlign: "center",
                 width: "850px",
-                // padding: "16px",
-                py: "10px",
                 borderTop: "2px solid black",
-                px: "15px",
               }}
             >
               <Typography
@@ -53,14 +51,14 @@ const BannerSection = () => {
                 fontWeight="bold"
                 borderBottom="2px solid black"
                 width="100%"
-                paddingBottom="8px"
+                py="10px"
               >
                 CHÚNG TÔI SINH RA VÌ HẠNH PHÚC CỦA CHÍNH BẠN
               </Typography>
-              <Grid2 container spacing={2} mt={"15px"}>
+              <Grid2 container spacing={2}>
                 <Grid2
                   size={6}
-                  sx={{ borderRight: "1px solid black", paddingRight: "8px" }}
+                  sx={{ borderRight: "1px solid black", p: "15px" }}
                 >
                   <Typography variant="h6">
                     SBS HOUSE là công ty hoạt động toàn diện trong lĩnh vực
@@ -70,7 +68,7 @@ const BannerSection = () => {
                     mang giá trị bền vững.
                   </Typography>
                 </Grid2>
-                <Grid2 size={6} sx={{ px: "15px" }}>
+                <Grid2 size={6} sx={{ p: "15px" }}>
                   <Typography variant="h6">
                     Chúng tôi may mắn sở hữu một đội ngũ kiến trúc sư, kỹ sư
                     vững chuyên môn, giàu kinh nghiệm; hứa hẹn sẽ mang đến những

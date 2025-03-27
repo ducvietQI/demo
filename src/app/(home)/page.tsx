@@ -1,6 +1,11 @@
 "use client";
 
-import { BannerSection, CountSection, VideoSection } from "@/components";
+import {
+  AboutSection,
+  BannerSection,
+  CountSection,
+  VideoSection,
+} from "@/components";
 import { Stack } from "@mui/material";
 
 const Home = () => {
@@ -9,6 +14,7 @@ const Home = () => {
       <VideoSection />
       <BannerSection />
       <CountSection />
+      <AboutSection />
     </Stack>
   );
 };
