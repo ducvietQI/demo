@@ -1,7 +1,6 @@
 import Logo from "./Logo";
 import BannerSection from "./sn-home/BannerSection";
-import HeroSection from "./sn-home/HeroSection";
-import NewsSection from "./sn-home/NewsSection";
+import CountSection from "./sn-home/CountSection";
 import VideoSection from "./sn-home/VideoSection";
 
-export { BannerSection, Logo, NewsSection, HeroSection, VideoSection };
+export { BannerSection, Logo, VideoSection, CountSection };
