@@ -11,12 +11,12 @@ const BannerSection = () => {
       <Swiper
         loop={true}
         navigation={true}
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         speed={1000}
-        // autoplay={{
-        // delay: 5000,
-        // disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         style={{
           userSelect: "none",
         }}

@@ -2,11 +2,11 @@ import { BaiJamjuree } from "@/fonts";
 import AppProvider from "@/provider/AppProvider";
 import type { Metadata } from "next";
 import "@/styles/index.scss";
+import { CommonUtils } from "@/utils";
 
-export const metadata: Metadata = {
-  title: "Demo App",
-  description: "created by DucViett",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return CommonUtils.generateBasicMetadata();
+}
 
 export default async function RootLayout({
   children,
