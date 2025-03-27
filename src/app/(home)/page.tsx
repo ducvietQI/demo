@@ -4,6 +4,7 @@ import {
   AboutSection,
   BannerSection,
   CountSection,
+  TabSection,
   VideoSection,
 } from "@/components";
 import { Stack } from "@mui/material";
@@ -15,6 +16,7 @@ const Home = () => {
       <BannerSection />
       <CountSection />
       <AboutSection />
+      <TabSection />
     </Stack>
   );
 };
