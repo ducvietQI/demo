@@ -36,15 +36,13 @@ function TabPanel(props: TabPanelProps) {
                   position="relative"
                 >
                   <Stack alignItems="center">
-                    <Box
-                      sx={{
-                        position: "relative",
-                        width: "128px",
-                        height: "129px",
-                      }}
-                    >
-                      <Image src={step.icon} alt={step.title} fill />
-                    </Box>
+                    <Image
+                      src={step.icon}
+                      alt={step.title}
+                      width={128}
+                      height={129}
+                      loading="lazy"
+                    />
                     <Box
                       sx={{
                         color: "primary.main",

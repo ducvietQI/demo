@@ -30,12 +30,18 @@ const Logo = () => {
               width={50}
               height={79}
               alt="logo-1"
+              sizes="100vw"
             />
           </div>
         </div>
 
         <div className="load-logo-inner h-[79px] w-[80px]">
-          <Image src="/assets/letter-logo-2.svg" alt="logo-2" fill />
+          <Image
+            src="/assets/letter-logo-2.svg"
+            alt="logo-2"
+            fill
+            sizes="100vw"
+          />
         </div>
 
         <div className="load-logo-wrapper" style={{ width: 57 }}>
@@ -45,6 +51,7 @@ const Logo = () => {
               height={79}
               src="/assets/letter-logo-3.svg"
               alt="logo-3"
+              sizes="100vw"
             />
           </div>
         </div>
@@ -56,6 +63,7 @@ const Logo = () => {
               height={79}
               src="/assets/letter-logo-4.svg"
               alt="logo-4"
+              sizes="100vw"
             />
           </div>
         </div>

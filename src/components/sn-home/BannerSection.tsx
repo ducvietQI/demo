@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const BannerSection = () => {
   return (
-    <Stack height="90vh" position="relative">
+    <Stack height="90vh" position="relative" className="banner-section">
       <Swiper
         loop={true}
         navigation={true}
@@ -31,6 +31,7 @@ const BannerSection = () => {
               fill
               className="object-cover"
               priority={index === 0}
+              sizes="100vw"
             />
             {/* Khung màu vàng với nội dung chia cột */}
             <Box

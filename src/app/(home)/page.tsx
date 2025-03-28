@@ -4,6 +4,7 @@ import {
   AboutSection,
   BannerSection,
   CountSection,
+  DesignProjectSection,
   TabSection,
   VideoSection,
 } from "@/components";
@@ -17,6 +18,7 @@ const Home = () => {
       <CountSection />
       <AboutSection />
       <TabSection />
+      <DesignProjectSection />
     </Stack>
   );
 };

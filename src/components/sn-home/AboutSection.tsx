@@ -22,7 +22,13 @@ const AboutSection = () => {
                   position: "relative",
                 }}
               >
-                <Image src="/images/about-1.jpg" fill alt="about-1" />
+                <Image
+                  src="/images/about-1.jpg"
+                  fill
+                  alt="about-1"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                />
               </Box>
               <Box
                 sx={{
@@ -78,7 +84,12 @@ const AboutSection = () => {
                   position: "relative",
                 }}
               >
-                <Image src="/images/about-2.png" fill alt="about-2" />
+                <Image
+                  src="/images/about-2.png"
+                  fill
+                  alt="about-2"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </Box>
               <Box
                 sx={{

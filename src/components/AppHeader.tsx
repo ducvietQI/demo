@@ -7,7 +7,6 @@ import {
   Stack,
   Toolbar,
   Typography,
-  IconButton,
 } from "@mui/material";
 import Image from "next/image";
 import { SearchIcon } from "./Icons";
@@ -28,7 +27,7 @@ const AppHeader = () => {
   return (
     <AppBar
       color="default"
-      sx={{ backgroundColor: "#111", color: "text.primary" }}
+      sx={{ backgroundColor: "bg.main", color: "text.primary" }}
     >
       <Container>
         <Toolbar sx={{ height: 90, justifyContent: "space-between" }}>
@@ -75,16 +74,13 @@ const AppHeader = () => {
                 cursor: "pointer",
               }}
             />
-            <Box
-              sx={{
-                position: "relative",
-                cursor: "pointer",
-                height: 25,
-                width: 25,
-              }}
-            >
-              <Image src="/images/icon_bar.png" fill alt="logo" />
-            </Box>
+            <Image
+              src="/images/icon_bar.png"
+              alt="icon_bar"
+              width={25}
+              height={25}
+              priority={true}
+            />
           </Stack>
         </Toolbar>
       </Container>
