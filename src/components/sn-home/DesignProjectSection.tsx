@@ -7,7 +7,7 @@ import { ArrowRightIcon } from "../Icons";
 
 const imagesGroup1 = [
   {
-    src: "https://i.imgur.com/SiznRDh.jpeg",
+    src: "/images/1.webp",
     title: "V’s Villa 2 mặt tiền, 4 mùa trọn vẹn cùng thiên nhiên",
     description:
       "Trong nhịp sống hiện đại hối hả, con người càng trân quý hơn những phút giây bình yên...",
