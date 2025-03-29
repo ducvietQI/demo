@@ -7,22 +7,24 @@ import { ArrowRightIcon } from "../Icons";
 
 const imagesGroup1 = [
   {
-    src: "/images/1.webp",
-    title: "V’s Villa 2 mặt tiền, 4 mùa trọn vẹn cùng thiên nhiên",
+    src: "/images/19.webp",
+    title: "T’s House – Công trình thi công trọn gói giống bản vẽ hơn 95%",
     description:
-      "Trong nhịp sống hiện đại hối hả, con người càng trân quý hơn những phút giây bình yên...",
+      "Xây dựng một ngôi nhà không chỉ là việc hiện thực hóa một bản thiết kế đẹp mà còn là quá trình biến từng đường nét, từng chi tiết trở...",
   },
   {
-    src: "/images/2.webp",
-    title: "Kiến trúc xanh giữa lòng đô thị",
+    src: "/images/20.webp",
+    title:
+      "Chìa khóa trao tay Hubic’s House – 4 công trình, 2 thế hệ, 1 niềm tin trọn vẹn",
     description:
-      "Một không gian sống hài hòa với thiên nhiên, nơi con người tìm lại sự cân bằng và thư thái.",
+      "Xây nhà không chỉ là tạo dựng không gian sống, mà còn là hành trình đặt nền móng cho những giá trị bền vững. Với gia đình anh H, tổ...",
   },
   {
-    src: "/images/3.webp",
-    title: "Thiết kế mở, đón trọn ánh sáng tự nhiên",
+    src: "/images/21.webp",
+    title:
+      "Công trình thi công trọn gói 5×14,9m sở hữu không gian Sáng – Xanh – Thoáng",
     description:
-      "Mọi góc nhỏ trong căn nhà đều trở thành nơi thư giãn, tận hưởng ánh nắng ban mai.",
+      "Công trình thực tế với không Trong nhịp sống đô thị hiện đại, một ngôi nhà không chỉ đơn thuần là nơi trú ngụ mà còn là không gian để...",
   },
   {
     src: "/images/4.webp",
@@ -64,19 +66,19 @@ const imagesGroup1 = [
 
 const imagesGroup2 = [
   {
-    src: "/images/18.webp",
-    title: "Hơi thở Địa Trung Hải trong từng đường nét",
+    src: "/images/22.webp",
+    title: "Hình ảnh thực tế ngôi nhà 2 tầng 1 tum sáng thoáng tối đa",
     description:
-      "Một không gian sống mang đến sự tươi mát, phóng khoáng với gam màu biển cả.",
+      "Giữa nhịp sống hiện đại, một không gian vừa thoáng đãng, gần gũi thiên nhiên vừa mang phong cách tối giản đang trở thành lựa chọn lý tưởng của nhiều...",
   },
   {
-    src: "/images/11.webp",
+    src: "/images/23.webp",
     title: "Nhà vườn giữa lòng thành phố",
     description:
       "Không gian xanh mát giúp cân bằng cuộc sống và mang lại nguồn năng lượng tích cực.",
   },
   {
-    src: "/images/12.webp",
+    src: "/images/24.webp",
     title: "Nét đẹp tối giản, tinh tế",
     description:
       "Kiến trúc tối giản nhưng không kém phần sang trọng, tạo nên không gian sống đầy cảm hứng.",
@@ -111,9 +113,15 @@ const imagesGroup2 = [
     description:
       "Một không gian sống đơn giản, thanh lịch nhưng đầy đủ công năng và sự tiện nghi.",
   },
+  {
+    src: "/images/18.webp",
+    title: "Hài hòa giữa hiện đại và truyền thống",
+    description:
+      "Thiết kế lấy cảm hứng từ kiến trúc truyền thống nhưng vẫn đáp ứng các tiêu chuẩn sống hiện đại.",
+  },
 ];
 
-const DesignProjectSection = () => {
+const ConstructionWorkSection = () => {
   const [hoveredSlides, setHoveredSlides] = useState<{
     [key: string]: boolean;
   }>({});
@@ -224,11 +232,16 @@ const DesignProjectSection = () => {
   return (
     <Stack direction="row" bgcolor="bg.main" pb={10}>
       <Grid2 container spacing={3}>
+        <Grid2 size={8}>
+          {renderSwiper(imagesGroup1, "group1")}
+          <Box sx={{ mt: 3 }}>{renderSwiper(imagesGroup2, "group2")}</Box>
+        </Grid2>
+
         <Grid2
           size={4}
           sx={{
             borderTop: "1px solid",
-            pl: "calc((100vw - 1250px) / 2)",
+            pr: "calc((100vw - 1250px) / 2)",
             borderColor: "primary.main",
           }}
         >
@@ -238,14 +251,15 @@ const DesignProjectSection = () => {
             color="primary.main"
             pt={2}
           >
-            Công trình thiết kế
+            Công trình thi công
           </Typography>
           <Typography pt={2} color="#fff" fontSize="16px">
-            Mỗi năm, SBS HOUSE thực hiện hàng trăm công trình thiết kế ở mọi
-            miền đất nước. Phong cách thiết kế chính của SBS HOUSE là hiện đại -
-            tối giản - tiện nghi - thông thoáng. Ngoài ra, những ý tưởng và sở
-            thích của gia chủ cũng được ưu tiên hàng đầu, để tạo nên một công
-            trình nhà ở độc bản, mang đậm dấu ấn cá nhân.
+            Tất cả công trình thi công do SBS HOUSE thực hiện đều đảm bảo những
+            giải pháp mới và tối ưu nhất nhằm mang đến một sản phẩm kiên cố, bền
+            vững. Mặc dù thi công nhà phố nhưng từ hạng mục lớn nhỏ đều được áp
+            dụng kỹ thuật thi công nhà cao tầng Coteccons. Hơn thế nữa, các công
+            trình được thiết kế - thi công trọn gói sẽ giống với bản vẽ thiết kế
+            ít nhất 95%.
           </Typography>
           <Button
             sx={{
@@ -262,13 +276,9 @@ const DesignProjectSection = () => {
             Xem tất cả
           </Button>
         </Grid2>
-        <Grid2 size={8}>
-          {renderSwiper(imagesGroup1, "group1")}
-          <Box sx={{ mt: 3 }}>{renderSwiper(imagesGroup2, "group2")}</Box>
-        </Grid2>
       </Grid2>
     </Stack>
   );
 };
 
-export default DesignProjectSection;
+export default ConstructionWorkSection;

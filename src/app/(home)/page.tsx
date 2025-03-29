@@ -3,8 +3,10 @@
 import {
   AboutSection,
   BannerSection,
+  ConstructionWorkSection,
   CountSection,
   DesignProjectSection,
+  SignificantSection,
   TabSection,
   VideoSection,
 } from "@/components";
@@ -19,6 +21,8 @@ const Home = () => {
       <AboutSection />
       <TabSection />
       <DesignProjectSection />
+      <ConstructionWorkSection />
+      <SignificantSection />
     </Stack>
   );
 };
