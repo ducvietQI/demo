@@ -71,15 +71,16 @@ const ProductCard = ({
             variant="h3"
             fontWeight={600}
             component="div"
+            color="primary"
           >
             {title}
           </Typography>
-          <Typography variant="h5" color="text.grey">
+          <Typography variant="h5" color="text.black">
             {description}
           </Typography>
 
           <Stack direction="row" alignItems="center" spacing={2}>
-            <Typography fontSize={20} fontWeight={600}>
+            <Typography fontSize={20} fontWeight={600} color="text.black">
               {formatNumber(discountedPrice)} $
             </Typography>
             {sale && (
@@ -106,6 +107,7 @@ const ProductCard = ({
             bgcolor: "common.white",
             borderRadius: "unset",
             color: "primary.main",
+            fontSize: 18,
           }}
         >
           Add to cart
@@ -136,6 +138,7 @@ const ProductCard = ({
             alignItems: "center",
             justifyContent: "center",
             color: "white",
+            fontSize: 16,
           }}
         >
           {productLabel.label}
