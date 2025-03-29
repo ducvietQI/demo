@@ -6,6 +6,7 @@ import {
   ConstructionWorkSection,
   CountSection,
   DesignProjectSection,
+  ProductSection,
   SignificantSection,
   TabSection,
   VideoSection,
@@ -22,6 +23,7 @@ const Home = () => {
       <TabSection />
       <DesignProjectSection />
       <ConstructionWorkSection />
+      <ProductSection />
       <SignificantSection />
     </Stack>
   );
