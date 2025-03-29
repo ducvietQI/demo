@@ -11,14 +11,14 @@ import { ArrowRightIcon } from "../Icons";
 
 const AboutSection = () => {
   return (
-    <Stack bgcolor="#f3f3f3" py="50px">
+    <Stack bgcolor="#f3f3f3" py={{ xs: "15px", md: "50px" }}>
       <Container>
-        <Grid2 container columnSpacing={2}>
-          <Grid2 size={{ xs: 6 }}>
+        <Grid2 container columnSpacing={2} rowSpacing={2}>
+          <Grid2 size={{ xs: 12, md: 6 }}>
             <Stack>
               <Box
                 sx={{
-                  height: 400,
+                  height: { xs: 267, md: 400 },
                   position: "relative",
                 }}
               >
@@ -76,11 +76,11 @@ const AboutSection = () => {
               </Stack>
             </Stack>
           </Grid2>
-          <Grid2 size={{ xs: 6 }}>
+          <Grid2 size={{ xs: 12, md: 6 }}>
             <Stack>
               <Box
                 sx={{
-                  height: 400,
+                  height: { xs: 267, md: 400 },
                   position: "relative",
                 }}
               >

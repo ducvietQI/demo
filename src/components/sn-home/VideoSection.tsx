@@ -2,7 +2,7 @@ import { Stack } from "@mui/material";
 
 const VideoSection = () => {
   return (
-    <Stack height="100vh" sx={{ overflow: "hidden" }}>
+    <Stack height={{ xs: "30vh", lg: "100vh" }} sx={{ overflow: "hidden" }}>
       <video
         id="sc_video"
         playsInline

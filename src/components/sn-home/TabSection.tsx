@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Stack, Container, AppBar, Box, Tab, Tabs, Grid2 } from "@mui/material";
+import { useTabletDown } from "@/hooks";
+import { AppBar, Box, Container, Grid2, Stack, Tab, Tabs } from "@mui/material";
 import Image from "next/image";
-import { ArrowRightIcon, RightArrow } from "../Icons";
+import { useState } from "react";
+import { RightArrow } from "../Icons";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -11,7 +12,7 @@ interface TabPanelProps {
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-
+  const isTabletDown = useTabletDown();
   const convertArr = index === 0 ? steps : steps2;
 
   return (
@@ -31,7 +32,7 @@ function TabPanel(props: TabPanelProps) {
               {convertArr.map((step, idx) => (
                 <Grid2
                   key={idx}
-                  size={3}
+                  size={{ xs: 12, md: 3 }}
                   textAlign="center"
                   position="relative"
                 >
@@ -39,8 +40,8 @@ function TabPanel(props: TabPanelProps) {
                     <Image
                       src={step.icon}
                       alt={step.title}
-                      width={128}
-                      height={129}
+                      width={isTabletDown ? 79 : 128}
+                      height={isTabletDown ? 80 : 129}
                       loading="lazy"
                     />
                     <Box
@@ -63,17 +64,19 @@ function TabPanel(props: TabPanelProps) {
                       {step.description}
                     </Box>
                   </Stack>
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: 40,
-                      right: -30,
-                      color: "text.primary",
-                      fontSize: "40px",
-                    }}
-                  >
-                    {idx < steps.length - 1 && <RightArrow />}
-                  </Box>
+                  {!isTabletDown && (
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: 40,
+                        right: -30,
+                        color: "text.primary",
+                        fontSize: "40px",
+                      }}
+                    >
+                      {idx < steps.length - 1 && <RightArrow />}
+                    </Box>
+                  )}
                 </Grid2>
               ))}
             </Grid2>
@@ -100,7 +103,7 @@ export default function TabSection() {
 
   return (
     <Stack bgcolor="#f3f3f3" alignItems="center" width="100%">
-      <AppBar sx={{ width: 600 }} position="static">
+      <AppBar sx={{ width: { xs: "100%", md: 600 } }} position="static">
         <Tabs
           value={value}
           onChange={handleChange}
@@ -112,9 +115,9 @@ export default function TabSection() {
             label="Thiết kế"
             {...a11yProps(0)}
             sx={{
-              width: 300,
+              width: { xs: "50%", md: 300 },
               color: "white",
-              fontSize: "20px",
+              fontSize: { xs: "14px", md: "20px" },
               bgcolor: value === 0 ? "bg.main" : "transparent",
               "&:hover": {
                 color: "primary.main",
@@ -126,9 +129,9 @@ export default function TabSection() {
             label="Thi công trọn gói"
             {...a11yProps(1)}
             sx={{
-              width: 300,
+              width: { xs: "50%", md: 300 },
               color: "white",
-              fontSize: "20px",
+              fontSize: { xs: "14px", md: "20px" },
               bgcolor: value === 1 ? "bg.main" : "transparent",
               "&:hover": {
                 color: "primary.main",

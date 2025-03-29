@@ -2,29 +2,35 @@
 
 import {
   Box,
+  Container,
+  Divider,
   Grid2,
-  Typography,
+  IconButton,
   Link,
   Stack,
-  IconButton,
-  Divider,
-  Container,
+  Typography,
 } from "@mui/material";
 import Image from "next/image";
 
 const AppFooter = () => {
   return (
-    <Box bgcolor="bg.main" color="white" py={6} px={{ xs: 2, md: 10 }}>
+    <Box
+      bgcolor="bg.main"
+      color="white"
+      py={{ xs: 1, md: 6 }}
+      px={{ xs: 2, md: 10 }}
+    >
       <Container>
         <Grid2 container spacing={4}>
-          <Grid2 size={2}>
-            <Box className="relative size-[100px]">
-              <Image src="/images/logo.svg" fill alt="logo" />
-            </Box>
+          <Grid2 size={{ xs: 12, md: 2 }}>
+            <Stack alignItems={{ xs: "center", md: "flex-start" }}>
+              <Box className="relative size-[100px]">
+                <Image src="/images/logo.svg" fill alt="logo" />
+              </Box>
+            </Stack>
           </Grid2>
 
-          {/* Cột 1: Logo và Dịch vụ */}
-          <Grid2 size={3.3}>
+          <Grid2 size={{ xs: 12, md: 3.3 }}>
             <Stack spacing={2}>
               <Typography
                 fontWeight={600}
@@ -98,28 +104,7 @@ const AppFooter = () => {
             </Stack>
           </Grid2>
 
-          {/* Cột 2: Mẫu nhà đẹp */}
-          {/* <Grid2 size={3}>
-                  <Stack spacing={2}>
-                    <Typography fontWeight={600} color="warning.main">
-                      MẪU NHÀ ĐẸP
-                    </Typography>
-                    {[
-                      "Nhà phố 2 tầng",
-                      "Nhà phố 3 tầng",
-                      "Nhà phố 4 tầng",
-                      "Biệt thự đẹp",
-                      "Nhà cấp 4",
-                    ].map((item) => (
-                      <Link key={item} href="#" color="inherit" fontSize="14px">
-                        {item}
-                      </Link>
-                    ))}
-                  </Stack>
-                </Grid2> */}
-
-          {/* Cột 3: Thông tin liên hệ */}
-          <Grid2 size={3.3}>
+          <Grid2 size={{ xs: 12, md: 3.3 }}>
             <Stack spacing={2}>
               <Typography
                 fontWeight={600}
@@ -151,8 +136,7 @@ const AppFooter = () => {
             </Stack>
           </Grid2>
 
-          {/* Cột 4: Social Media và Đối tác */}
-          <Grid2 size={3}>
+          <Grid2 size={{ xs: 12, md: 3.3 }}>
             <Stack spacing={2}>
               <Typography
                 fontWeight={600}

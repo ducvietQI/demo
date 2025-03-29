@@ -9,12 +9,10 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative w-full">
+    <Stack position="relative" pt={{ xs: "55px", md: "90px" }}>
       <AppHeader />
-      <Stack>
-        <div className="relative z-10">{children}</div>
-        <AppFooter />
-      </Stack>
-    </div>
+      <div className="relative z-10">{children}</div>
+      <AppFooter />
+    </Stack>
   );
 }

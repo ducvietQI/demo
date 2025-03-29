@@ -28,27 +28,33 @@ const CountSection = () => {
   }, []);
 
   return (
-    <Stack bgcolor="bg.main" py="50px" ref={ref}>
+    <Stack bgcolor="bg.main" py={{ xs: "10px", md: "50px" }} ref={ref}>
       <Stack
-        borderTop="2px solid"
-        borderBottom="2px solid"
-        borderColor="primary.main"
+        sx={{
+          borderTop: { xs: "none", md: "2px solid #ffba00" },
+          borderBottom: { xs: "none", md: "2px solid #ffba00" },
+        }}
       >
         <Container>
-          <Stack direction="row" justifyContent="space-between" spacing={4}>
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            justifyContent="space-between"
+            spacing={{ xs: 0, md: 4 }}
+          >
             {stats.map((stat, index) => (
               <Stack
                 key={index}
                 alignItems="center"
                 direction="row"
                 spacing={2}
+                pl={{ xs: 3, md: 0 }}
               >
                 <Typography
-                  fontSize="50px"
+                  fontSize={{ xs: "25px", md: "50px" }}
                   fontWeight="bold"
                   color="primary.main"
                 >
-                  {isVisible ? <CountUp end={stat.value} duration={2} /> : 0}
+                  {isVisible ? <CountUp end={stat.value} duration={2} /> : 0}{" "}
                   {stat.suffix}
                 </Typography>
                 <Typography variant="h5" color="text.primary">

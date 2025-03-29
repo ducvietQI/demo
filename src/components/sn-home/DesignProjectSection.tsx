@@ -4,6 +4,170 @@ import Image from "next/image";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ArrowRightIcon } from "../Icons";
+import { useTabletDown } from "@/hooks";
+
+const DesignProjectSection = () => {
+  const isTabletDown = useTabletDown();
+  const [hoveredSlides, setHoveredSlides] = useState<{
+    [key: string]: boolean;
+  }>({});
+
+  const handleMouseEnter = (group: string, index: number) => {
+    setHoveredSlides((prev) => ({ ...prev, [`${group}-${index}`]: true }));
+  };
+
+  const handleMouseLeave = (group: string, index: number) => {
+    setHoveredSlides((prev) => ({ ...prev, [`${group}-${index}`]: false }));
+  };
+
+  const renderSwiper = (
+    images: { src: string; title: string; description: string }[],
+    group: string
+  ) => (
+    <Swiper
+      slidesPerView={isTabletDown ? 1 : 3}
+      spaceBetween={30}
+      modules={[Navigation]}
+      navigation
+      pagination={{ clickable: true }}
+      style={{ width: "100%", height: "280px" }}
+    >
+      {images.map((item, index) => {
+        const isHovered = hoveredSlides[`${group}-${index}`];
+
+        return (
+          <SwiperSlide
+            key={index}
+            onMouseEnter={() => handleMouseEnter(group, index)}
+            onMouseLeave={() => handleMouseLeave(group, index)}
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              cursor: "pointer",
+            }}
+          >
+            <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
+              <Image
+                src={item.src}
+                alt={`Slide ${index + 1}`}
+                layout="fill"
+                objectFit="cover"
+                loading="lazy"
+              />
+            </Box>
+
+            {/* Background vàng xuất hiện từ giữa */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: 0,
+                width: "100%",
+                height: 0,
+                bgcolor: "rgba(255, 193, 7, 0.85)", // Vàng
+                transition: "height .2s ease-in-out, top .2s ease-in-out",
+                ...(isHovered && { height: "100%", top: 0 }),
+              }}
+            />
+
+            {/* Nội dung chỉ xuất hiện khi hover */}
+            {isHovered && (
+              <Stack
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  color: "white",
+                  p: "15px",
+                  width: "100%",
+                  height: "100%",
+                  transition: "opacity 0.3s ease-in-out",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Stack spacing={2}>
+                  <Typography fontSize="18px" fontWeight={600}>
+                    {item.title}
+                  </Typography>
+                  <Typography fontSize="14px" mt={1}>
+                    {item.description}
+                  </Typography>
+                </Stack>
+                <Button
+                  sx={{
+                    mt: 2,
+                    color: "white",
+                    minWidth: "fit-content",
+                    width: "fit-content",
+                    fontSize: 14,
+                  }}
+                  variant="text"
+                  endIcon={<ArrowRightIcon />}
+                >
+                  Xem thêm
+                </Button>
+              </Stack>
+            )}
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
+  );
+
+  return (
+    <Stack direction="row" bgcolor="bg.main" pb={{ xs: "15px", md: 10 }}>
+      <Grid2 container spacing={3} px={{ xs: "15px", md: 0 }}>
+        <Grid2
+          size={{ xs: 12, md: 4 }}
+          sx={{
+            borderTop: "1px solid",
+            pl: "calc((100vw - 1250px) / 2)",
+            borderColor: "primary.main",
+          }}
+        >
+          <Typography
+            fontSize="27px"
+            fontWeight={700}
+            color="primary.main"
+            pt={2}
+          >
+            Công trình thiết kế
+          </Typography>
+          <Typography pt={2} color="#fff" fontSize="16px">
+            Mỗi năm, SBS HOUSE thực hiện hàng trăm công trình thiết kế ở mọi
+            miền đất nước. Phong cách thiết kế chính của SBS HOUSE là hiện đại -
+            tối giản - tiện nghi - thông thoáng. Ngoài ra, những ý tưởng và sở
+            thích của gia chủ cũng được ưu tiên hàng đầu, để tạo nên một công
+            trình nhà ở độc bản, mang đậm dấu ấn cá nhân.
+          </Typography>
+          <Button
+            sx={{
+              minWidth: "fit-content",
+              borderRadius: 0,
+              fontSize: "14px",
+              color: "white",
+              mt: 2.5,
+              ":hover": { color: "text.black", bgcolor: "primary.main" },
+            }}
+            variant="contained"
+            endIcon={<ArrowRightIcon />}
+          >
+            Xem tất cả
+          </Button>
+        </Grid2>
+        <Grid2 size={{ xs: 12, md: 8 }}>
+          {renderSwiper(imagesGroup1, "group1")}
+          {!isTabletDown && (
+            <Box sx={{ mt: 3 }}>{renderSwiper(imagesGroup2, "group2")}</Box>
+          )}
+        </Grid2>
+      </Grid2>
+    </Stack>
+  );
+};
+
+export default DesignProjectSection;
 
 const imagesGroup1 = [
   {
@@ -112,163 +276,3 @@ const imagesGroup2 = [
       "Một không gian sống đơn giản, thanh lịch nhưng đầy đủ công năng và sự tiện nghi.",
   },
 ];
-
-const DesignProjectSection = () => {
-  const [hoveredSlides, setHoveredSlides] = useState<{
-    [key: string]: boolean;
-  }>({});
-
-  const handleMouseEnter = (group: string, index: number) => {
-    setHoveredSlides((prev) => ({ ...prev, [`${group}-${index}`]: true }));
-  };
-
-  const handleMouseLeave = (group: string, index: number) => {
-    setHoveredSlides((prev) => ({ ...prev, [`${group}-${index}`]: false }));
-  };
-
-  const renderSwiper = (
-    images: { src: string; title: string; description: string }[],
-    group: string
-  ) => (
-    <Swiper
-      slidesPerView={3}
-      spaceBetween={30}
-      modules={[Navigation]}
-      navigation
-      pagination={{ clickable: true }}
-      style={{ width: "100%", height: "280px" }}
-    >
-      {images.map((item, index) => {
-        const isHovered = hoveredSlides[`${group}-${index}`];
-
-        return (
-          <SwiperSlide
-            key={index}
-            onMouseEnter={() => handleMouseEnter(group, index)}
-            onMouseLeave={() => handleMouseLeave(group, index)}
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              cursor: "pointer",
-            }}
-          >
-            <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
-              <Image
-                src={item.src}
-                alt={`Slide ${index + 1}`}
-                layout="fill"
-                objectFit="cover"
-                loading="lazy"
-              />
-            </Box>
-
-            {/* Background vàng xuất hiện từ giữa */}
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                left: 0,
-                width: "100%",
-                height: 0,
-                bgcolor: "rgba(255, 193, 7, 0.85)", // Vàng
-                transition: "height .2s ease-in-out, top .2s ease-in-out",
-                ...(isHovered && { height: "100%", top: 0 }),
-              }}
-            />
-
-            {/* Nội dung chỉ xuất hiện khi hover */}
-            {isHovered && (
-              <Stack
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  color: "white",
-                  p: "15px",
-                  width: "100%",
-                  height: "100%",
-                  transition: "opacity 0.3s ease-in-out",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Stack spacing={2}>
-                  <Typography fontSize="18px" fontWeight={600}>
-                    {item.title}
-                  </Typography>
-                  <Typography fontSize="14px" mt={1}>
-                    {item.description}
-                  </Typography>
-                </Stack>
-                <Button
-                  sx={{
-                    mt: 2,
-                    color: "white",
-                    minWidth: "fit-content",
-                    width: "fit-content",
-                    fontSize: 14,
-                  }}
-                  variant="text"
-                  endIcon={<ArrowRightIcon />}
-                >
-                  Xem thêm
-                </Button>
-              </Stack>
-            )}
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
-  );
-
-  return (
-    <Stack direction="row" bgcolor="bg.main" pb={10}>
-      <Grid2 container spacing={3}>
-        <Grid2
-          size={4}
-          sx={{
-            borderTop: "1px solid",
-            pl: "calc((100vw - 1250px) / 2)",
-            borderColor: "primary.main",
-          }}
-        >
-          <Typography
-            fontSize="27px"
-            fontWeight={700}
-            color="primary.main"
-            pt={2}
-          >
-            Công trình thiết kế
-          </Typography>
-          <Typography pt={2} color="#fff" fontSize="16px">
-            Mỗi năm, SBS HOUSE thực hiện hàng trăm công trình thiết kế ở mọi
-            miền đất nước. Phong cách thiết kế chính của SBS HOUSE là hiện đại -
-            tối giản - tiện nghi - thông thoáng. Ngoài ra, những ý tưởng và sở
-            thích của gia chủ cũng được ưu tiên hàng đầu, để tạo nên một công
-            trình nhà ở độc bản, mang đậm dấu ấn cá nhân.
-          </Typography>
-          <Button
-            sx={{
-              minWidth: "fit-content",
-              borderRadius: 0,
-              fontSize: "14px",
-              color: "white",
-              mt: 2.5,
-              ":hover": { color: "text.black", bgcolor: "primary.main" },
-            }}
-            variant="contained"
-            endIcon={<ArrowRightIcon />}
-          >
-            Xem tất cả
-          </Button>
-        </Grid2>
-        <Grid2 size={8}>
-          {renderSwiper(imagesGroup1, "group1")}
-          <Box sx={{ mt: 3 }}>{renderSwiper(imagesGroup2, "group2")}</Box>
-        </Grid2>
-      </Grid2>
-    </Stack>
-  );
-};
-
-export default DesignProjectSection;
