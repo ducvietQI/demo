@@ -31,7 +31,7 @@ const ProductSection = () => {
 
           <Grid2 container mt={4} columnSpacing={2} rowSpacing={4}>
             {products.slice(0, visibleProducts).map((product, index) => (
-              <Grid2 size={3} key={index} data-aos="fade-up">
+              <Grid2 size={{ xs: 6, md: 3 }} key={index} data-aos="fade-up">
                 <ProductCard {...product} />
               </Grid2>
             ))}

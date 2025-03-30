@@ -49,7 +49,9 @@ const ProductCard = ({
     <Card
       sx={{
         maxWidth: 345,
+        height: "100%",
         position: "relative",
+        borderRadius: "unset",
         "&:hover .MuiCardActionArea-root": {
           filter: "brightness(0.5)",
           transition: "filter 0.3s ease-in-out",
