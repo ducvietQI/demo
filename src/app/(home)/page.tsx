@@ -16,10 +16,10 @@ import { Stack } from "@mui/material";
 const Home = () => {
   return (
     <Stack>
-      <VideoSection />
+      {/* <VideoSection /> */}
       <BannerSection />
-      <CountSection />
-      <AboutSection />
+      {/* <CountSection /> */}
+      {/* <AboutSection /> */}
       <TabSection />
       <DesignProjectSection />
       <ConstructionWorkSection />

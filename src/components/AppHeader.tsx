@@ -16,14 +16,12 @@ import SideBarDrawer from "./SideBarDrawer";
 
 const menuItems = [
   "TRANG CHỦ",
-  "GIỚI THIỆU",
   "DỊCH VỤ",
   "DỰ ÁN",
-  "BÁO GIÁ",
-  "KIẾN THỨC",
-  "PHẢN HỒI",
-  "NỘI THẤT",
-  "TUYỂN DỤNG",
+  "SẢN PHẨM",
+  "BÀI VIẾT",
+  "GIỚI THIỆU",
+  "LIÊN HỆ",
 ];
 
 const AppHeader = () => {
@@ -33,7 +31,10 @@ const AppHeader = () => {
   return (
     <AppBar
       color="default"
-      sx={{ backgroundColor: "bg.main", color: "text.primary" }}
+      sx={{
+        bgcolor: "#ffffff", color: "text.black",
+        boxShadow: '0 1px 0 0 #e1e5ea'
+      }}
     >
       <Container>
         <Toolbar
@@ -49,11 +50,11 @@ const AppHeader = () => {
           <Box
             sx={{
               position: "relative",
-              height: { xs: 35, md: 70 },
-              width: { xs: 35, md: 70 },
+              height: { xs: 35, md: 80 },
+              width: { xs: 35, md: 140 },
             }}
           >
-            <Image src="/images/logo.svg" fill alt="logo" />
+            <Image src="/images/logo.jpg" fill alt="logo" />
           </Box>
 
           {!isTabletDown && (
@@ -67,11 +68,12 @@ const AppHeader = () => {
                   key={item}
                   variant="h6"
                   sx={{
-                    fontWeight: 500,
+                    fontWeight: 700,
                     cursor: "pointer",
 
                     ":hover": {
                       color: "primary.main",
+                      fontWeight: 700,
                     },
                   }}
                 >
@@ -83,12 +85,12 @@ const AppHeader = () => {
 
           {/* Contact + Icons */}
           <Stack direction="row" spacing={2} alignItems="center">
-            <Typography
+            {/* <Typography
               variant="h6"
               sx={{ fontWeight: 500, cursor: "pointer" }}
             >
               0999 888 999
-            </Typography>
+            </Typography> */}
             <SearchIcon
               sx={{
                 fontSize: 16,
@@ -106,13 +108,14 @@ const AppHeader = () => {
                 onClick={() => setIsOpen(true)}
               />
             ) : (
-              <Image
-                src="/images/icon_bar.png"
-                alt="icon_bar"
-                width={25}
-                height={25}
-                priority={true}
-              />
+              <></>
+              // <Image
+              //   src="/images/icon_bar.png"
+              //   alt="icon_bar"
+              //   width={25}
+              //   height={25}
+              //   priority={true}
+              // />
             )}
 
             {isTabletDown && (

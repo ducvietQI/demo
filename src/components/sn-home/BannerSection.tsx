@@ -10,14 +10,10 @@ const BannerSection = () => {
   const isTabletDown = useTabletDown();
 
   return (
-    <Stack
-      height={{ xs: "fit-conent", lg: "100vh" }}
-      position="relative"
-      className="banner-section"
-    >
+    <Stack height="60vh" position="relative" >
       <Swiper
         loop={true}
-        navigation={true}
+        // navigation={true}
         effect="fade"
         modules={[Navigation, Autoplay, EffectFade]}
         speed={1000}
@@ -82,7 +78,7 @@ const BannerSection = () => {
               />
             )}
             {/* Khung màu vàng với nội dung chia cột */}
-            {!isTabletDown && (
+            {/* {!isTabletDown && (
               <Box
                 position="absolute"
                 left="50%"
@@ -129,7 +125,7 @@ const BannerSection = () => {
                   </Grid2>
                 </Grid2>
               </Box>
-            )}
+            )} */}
           </SwiperSlide>
         ))}
       </Swiper>

@@ -14,7 +14,7 @@ const palette: TPalette = {
   },
   text: {
     primary: "#dddddd",
-    black: '#161616'
+    black: "#161616",
   },
   bg: {
     main: "#161616",

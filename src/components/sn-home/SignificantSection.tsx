@@ -10,7 +10,7 @@ const SignificantSection = () => {
 
   return (
     <Stack
-      bgcolor="bg.main"
+      bgcolor="#fff"
       pb={{ xs: "15px", md: "100px" }}
       pl="calc((100vw - 1250px) / 2)"
     >
@@ -32,7 +32,7 @@ const SignificantSection = () => {
       <Grid2 container>
         <Grid2 size={{ xs: 12, md: 6 }}>
           {isTabletDown && (
-            <Grid2 size={12} p="30px" bgcolor="#212121">
+            <Grid2 size={12} p="30px" bgcolor="#f3f3f3">
               <Typography
                 variant="h4"
                 fontSize={"30px"}
@@ -45,7 +45,7 @@ const SignificantSection = () => {
               </Typography>
               <Typography
                 variant="body1"
-                color="#aeaeae"
+                color="black"
                 borderTop="1px solid"
                 borderBottom="1px solid"
                 borderColor="primary.main"
@@ -101,7 +101,7 @@ const SignificantSection = () => {
           </Swiper>
         </Grid2>
         {!isTabletDown && (
-          <Grid2 size={6} p="30px" bgcolor="#212121">
+          <Grid2 size={6} p="30px" bgcolor="#f3f3f3">
             <Typography
               variant="h4"
               fontSize={"30px"}
@@ -114,7 +114,7 @@ const SignificantSection = () => {
             </Typography>
             <Typography
               variant="body1"
-              color="#aeaeae"
+              color="text.black"
               borderTop="1px solid"
               borderBottom="1px solid"
               borderColor="primary.main"
@@ -146,7 +146,7 @@ const SignificantSection = () => {
             </Button>
           </Grid2>
         )}
-        <Grid2 size={{ xs: 12, md: 6 }} p="30px" bgcolor="#212121">
+        <Grid2 size={{ xs: 12, md: 6 }} p="30px" bgcolor="#f3f3f3">
           <Typography
             variant="h4"
             fontSize={"30px"}
@@ -159,7 +159,7 @@ const SignificantSection = () => {
           </Typography>
           <Typography
             variant="body1"
-            color="#aeaeae"
+            color="bkacj"
             borderTop="1px solid"
             borderBottom="1px solid"
             borderColor="primary.main"

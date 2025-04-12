@@ -116,7 +116,7 @@ const DesignProjectSection = () => {
   );
 
   return (
-    <Stack direction="row" bgcolor="bg.main" pb={{ xs: "15px", md: 10 }}>
+    <Stack direction="row" bgcolor="#fff" pb={{ xs: "15px", md: 10 }}>
       <Grid2 container spacing={3} px={{ xs: "15px", md: 0 }}>
         <Grid2
           size={{ xs: 12, md: 4 }}
@@ -134,7 +134,7 @@ const DesignProjectSection = () => {
           >
             Công trình thiết kế
           </Typography>
-          <Typography pt={2} color="#fff" fontSize="16px">
+          <Typography pt={2} color="text.black" fontSize="16px">
             Mỗi năm, SBS HOUSE thực hiện hàng trăm công trình thiết kế ở mọi
             miền đất nước. Phong cách thiết kế chính của SBS HOUSE là hiện đại -
             tối giản - tiện nghi - thông thoáng. Ngoài ra, những ý tưởng và sở

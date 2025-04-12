@@ -118,7 +118,7 @@ const ConstructionWorkSection = () => {
   return (
     <Stack
       direction="row"
-      bgcolor="bg.main"
+      bgcolor="#fff"
       pb={{ xs: "15px", md: 10 }}
       pt={{ xs: "15px", md: "unset" }}
     >
@@ -146,7 +146,8 @@ const ConstructionWorkSection = () => {
           >
             Công trình thi công
           </Typography>
-          <Typography pt={2} color="#fff" fontSize="16px">
+          <Typography pt={2} color="primary.black"
+            fontSize="16px">
             Tất cả công trình thi công do SBS HOUSE thực hiện đều đảm bảo những
             giải pháp mới và tối ưu nhất nhằm mang đến một sản phẩm kiên cố, bền
             vững. Mặc dù thi công nhà phố nhưng từ hạng mục lớn nhỏ đều được áp

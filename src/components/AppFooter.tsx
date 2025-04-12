@@ -15,7 +15,7 @@ import Image from "next/image";
 const AppFooter = () => {
   return (
     <Box
-      bgcolor="bg.main"
+      bgcolor="#fff"
       color="white"
       py={{ xs: 1, md: 6 }}
       px={{ xs: 2, md: 10 }}
@@ -24,8 +24,14 @@ const AppFooter = () => {
         <Grid2 container spacing={4}>
           <Grid2 size={{ xs: 12, md: 2 }}>
             <Stack alignItems={{ xs: "center", md: "flex-start" }}>
-              <Box className="relative size-[100px]">
-                <Image src="/images/logo.svg" fill alt="logo" />
+              <Box
+                sx={{
+                  position: "relative",
+                  height: { xs: 35, md: 80 },
+                  width: { xs: 35, md: 140 },
+                }}
+              >
+                <Image src="/images/logo.jpg" fill alt="logo" />
               </Box>
             </Stack>
           </Grid2>
@@ -44,7 +50,7 @@ const AppFooter = () => {
               >
                 CÔNG TY TNHH THIẾT KẾ VÀ XÂY DỰNG SBS
               </Typography>
-              <Typography fontSize="14px">
+              <Typography color="black" fontSize="14px">
                 SBS HOUSE đơn vị thiết kế thi công trọn gói miền Trung và miền
                 Nam
               </Typography>
@@ -67,7 +73,7 @@ const AppFooter = () => {
                 <Link
                   key={item}
                   href="#"
-                  color="inherit"
+                  color="black"
                   fontSize="14px"
                   underline="none"
                 >
@@ -95,7 +101,7 @@ const AppFooter = () => {
                   key={item}
                   href="#"
                   underline="none"
-                  color="inherit"
+                  color="black"
                   fontSize="14px"
                 >
                   {item}
@@ -129,7 +135,7 @@ const AppFooter = () => {
                 "Showroom 2: 184 Phạm Văn Đồng, Huế",
                 "Showroom 3: 51 Lê Duẩn, Quảng Trị",
               ].map((item) => (
-                <Typography key={item} fontSize="14px">
+                <Typography color="black" key={item} fontSize="14px">
                   ⭐ {item}
                 </Typography>
               ))}
@@ -156,7 +162,7 @@ const AppFooter = () => {
                   <Link
                     key={item}
                     href="#"
-                    color="inherit"
+                    color="black"
                     fontSize="14px"
                     underline="none"
                   >

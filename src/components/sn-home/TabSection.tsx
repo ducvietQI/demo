@@ -25,7 +25,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box
-          sx={{ pt: "50px", pb: "100px", width: "100%", bgcolor: "#161616" }}
+          sx={{ pt: "50px", pb: "100px", width: "100%", bgcolor: "#fff" }}
         >
           <Container>
             <Grid2 container spacing={3}>
@@ -37,13 +37,19 @@ function TabPanel(props: TabPanelProps) {
                   position="relative"
                 >
                   <Stack alignItems="center">
-                    <Image
-                      src={step.icon}
-                      alt={step.title}
-                      width={isTabletDown ? 79 : 128}
-                      height={isTabletDown ? 80 : 129}
-                      loading="lazy"
-                    />
+                    <Box
+                      sx={{
+                        filter: "brightness(0) saturate(100%) invert(8%) sepia(1%) saturate(7500%) hue-rotate(180deg) brightness(100%) contrast(95%)",
+                      }}
+                    >
+                      <Image
+                        src={step.icon}
+                        alt={step.title}
+                        width={isTabletDown ? 79 : 128}
+                        height={isTabletDown ? 80 : 129}
+                        loading="lazy"
+                      />
+                    </Box>
                     <Box
                       sx={{
                         color: "primary.main",
@@ -56,9 +62,10 @@ function TabPanel(props: TabPanelProps) {
                     </Box>
                     <Box
                       sx={{
-                        color: "text.primary",
+                        color: "text.black",
                         mt: 1,
                         fontSize: "14px",
+                        fontWeight: 500,
                       }}
                     >
                       {step.description}
@@ -70,7 +77,7 @@ function TabPanel(props: TabPanelProps) {
                         position: "absolute",
                         top: 40,
                         right: -30,
-                        color: "text.primary",
+                        color: "text.black",
                         fontSize: "40px",
                       }}
                     >
@@ -102,12 +109,12 @@ export default function TabSection() {
   };
 
   return (
-    <Stack bgcolor="#f3f3f3" alignItems="center" width="100%">
+    <Stack bgcolor="#f3f3f3" alignItems="center" width="100%" mt={5}>
       <AppBar sx={{ width: { xs: "100%", md: 600 } }} position="static">
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="secondary"
+          indicatorColor="primary"
           textColor="inherit"
           aria-label="full width tabs example"
         >
@@ -116,12 +123,12 @@ export default function TabSection() {
             {...a11yProps(0)}
             sx={{
               width: { xs: "50%", md: 300 },
-              color: "white",
+              color: 'text.black',
               fontSize: { xs: "14px", md: "20px" },
-              bgcolor: value === 0 ? "bg.main" : "transparent",
+              bgcolor: value === 0 ? "#fff" : "transparent",
               "&:hover": {
-                color: "primary.main",
-                bgcolor: "bg.main",
+                color: "#fff",
+                bgcolor: "primary.main",
               },
             }}
           />
@@ -130,12 +137,12 @@ export default function TabSection() {
             {...a11yProps(1)}
             sx={{
               width: { xs: "50%", md: 300 },
-              color: "white",
+              color: 'text.black',
               fontSize: { xs: "14px", md: "20px" },
-              bgcolor: value === 1 ? "bg.main" : "transparent",
+              bgcolor: value === 1 ? "#fff" : "transparent",
               "&:hover": {
-                color: "primary.main",
-                bgcolor: "bg.main",
+                color: "#fff",
+                bgcolor: "primary.main",
               },
             }}
           />
