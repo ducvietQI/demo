@@ -28,7 +28,7 @@ const ProductCard = ({
 
   const productLabel = useMemo(() => {
     if (sale) {
-      return { label: `${sale} %`, bgColor: "#E97171" };
+      return { label: `${sale} %`, bgColor: "rgb(244, 25, 25)" };
     } else if (isNew) {
       return { label: "New", bgColor: "#2EC1AC" };
     } else {
@@ -52,10 +52,10 @@ const ProductCard = ({
         height: "100%",
         position: "relative",
         borderRadius: "unset",
-        "&:hover .MuiCardActionArea-root": {
-          filter: "brightness(0.5)",
-          transition: "filter 0.3s ease-in-out",
+        "&:hover .product-image": {
+          transform: "scale(1.05)",
         },
+        boxShadow: 'none',
 
         "&:hover .hoverButton": {
           opacity: 1,
@@ -66,14 +66,25 @@ const ProductCard = ({
       }}
     >
       <CardActionArea onClick={handleClick}>
-        <CardMedia component="img" image={imgSrc} alt={imgAlt} />
-        <CardContent sx={{ bgcolor: "bg.gray" }}>
+        <CardMedia
+          className="product-image"
+          component="img"
+          image={imgSrc}
+          alt={imgAlt}
+          sx={{
+            height: 265, width: "100%", objectFit: "cover",
+            overflow: "hidden",
+            transition: "transform 0.4s ease-in-out",
+
+          }}
+        />
+        <CardContent sx={{ bgcolor: "#fff", p: 0, pt: 1 }}>
           <Typography
             gutterBottom
             variant="h3"
             fontWeight={600}
             component="div"
-            color="primary"
+            color="text.black"
           >
             {title}
           </Typography>
@@ -82,7 +93,7 @@ const ProductCard = ({
           </Typography>
 
           <Stack direction="row" alignItems="center" spacing={2}>
-            <Typography fontSize={20} fontWeight={600} color="text.black">
+            <Typography fontSize={20} fontWeight={600} color="primary">
               {formatNumber(discountedPrice)} $
             </Typography>
             {sale && (
@@ -94,53 +105,24 @@ const ProductCard = ({
               </Typography>
             )}
           </Stack>
+
         </CardContent>
       </CardActionArea>
-      <Stack
-        className="hoverButton"
-        sx={{ ...hoverStyles, width: "100%", alignItems: "center" }}
-      >
-        <Button
-          onClick={() => console.log("add to cart")}
-          variant="contained"
-          sx={{
-            width: 202,
-            height: 48,
-            bgcolor: "common.white",
-            borderRadius: "unset",
-            color: "primary.main",
-            fontSize: 18,
-          }}
-        >
-          Add to cart
-        </Button>
-      </Stack>
-      <Stack
-        className="hoverIcons"
-        sx={{
-          ...hoverStyles,
-          top: "65%",
-        }}
-        direction="row"
-        spacing={2}
-      >
-        {icons.map(renderIconWithLabel)}
-      </Stack>
+
       {productLabel.label && (
         <Box
           sx={{
             width: 48,
-            height: 48,
+            height: 22,
             bgcolor: productLabel.bgColor,
-            borderRadius: "50%",
             position: "absolute",
-            right: 24,
-            top: 24,
+            left: 10,
+            top: 10,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             color: "white",
-            fontSize: 16,
+            fontSize: 11,
           }}
         >
           {productLabel.label}

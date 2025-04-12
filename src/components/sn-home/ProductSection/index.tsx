@@ -8,12 +8,12 @@ import AOS from "aos";
 const ProductSection = () => {
   const [visibleProducts, setVisibleProducts] = useState(8);
 
-  useEffect(() => {
-    AOS.init({
-      duration: 500,
-      easing: "ease-in-out",
-    });
-  }, []);
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 500,
+  //     easing: "ease-in-out",
+  //   });
+  // }, []);
 
   const handleShowMore = () => {
     setVisibleProducts((prevVisible) => prevVisible + 4);
@@ -22,9 +22,9 @@ const ProductSection = () => {
   };
 
   return (
-    <Stack bgcolor="#f3f3f3" py={{ xs: "15px", md: "50px" }}>
+    <Stack bgcolor="#fff" py={{ xs: "15px", md: "50px" }}>
       <Container>
-        <Stack alignItems="center">
+        <Stack alignItems="left">
           <Typography variant="h1" color="primary" fontWeight={700}>
             Our Products
           </Typography>
