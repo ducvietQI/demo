@@ -15,7 +15,7 @@ import Image from "next/image";
 const AppFooter = () => {
   return (
     <Box
-      bgcolor="#fff"
+      bgcolor="#f8f8f8"
       color="white"
       py={{ xs: 1, md: 6 }}
       px={{ xs: 2, md: 10 }}
@@ -31,7 +31,7 @@ const AppFooter = () => {
                   width: { xs: 35, md: 140 },
                 }}
               >
-                <Image src="/images/logo.jpg" fill alt="logo" />
+                <Image src="/images/logo.png" fill alt="logo" />
               </Box>
             </Stack>
           </Grid2>

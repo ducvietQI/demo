@@ -54,7 +54,7 @@ const AppHeader = () => {
               width: { xs: 35, md: 140 },
             }}
           >
-            <Image src="/images/logo.jpg" fill alt="logo" />
+            <Image src="/images/logo.png" fill alt="logo" />
           </Box>
 
           {!isTabletDown && (
