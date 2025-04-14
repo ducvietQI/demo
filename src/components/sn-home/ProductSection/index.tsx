@@ -1,19 +1,12 @@
 "use client";
 
 import { Button, Container, Grid2, Stack, Typography } from "@mui/material";
-import ProductCard, { ProductCardProps } from "./ProductCard";
-import { useEffect, useState } from "react";
 import AOS from "aos";
+import { useState } from "react";
+import ProductCard, { ProductCardProps } from "./ProductCard";
 
 const ProductSection = () => {
   const [visibleProducts, setVisibleProducts] = useState(8);
-
-  // useEffect(() => {
-  //   AOS.init({
-  //     duration: 500,
-  //     easing: "ease-in-out",
-  //   });
-  // }, []);
 
   const handleShowMore = () => {
     setVisibleProducts((prevVisible) => prevVisible + 4);
@@ -25,8 +18,8 @@ const ProductSection = () => {
     <Stack bgcolor="#fff" py={{ xs: "15px", md: "50px" }}>
       <Container>
         <Stack alignItems="left">
-          <Typography variant="h1" color="primary" fontWeight={700}>
-            Our Products
+          <Typography variant="h2" color="primary" fontWeight={700}>
+            Sản phẩm
           </Typography>
 
           <Grid2 container mt={4} columnSpacing={2} rowSpacing={4}>
@@ -119,34 +112,4 @@ export const products: ProductCardProps[] = [
     price: 500,
     isNew: true,
   },
-  // {
-  //   imgSrc:
-  //     "https://cdn.media.amplience.net/i/shadesoflight/XU21048.0.XU21048LW?fmt=auto&w=675",
-  //   title: "Zion Console",
-  //   description: "Light Gray Washed Wood",
-  //   price: 980,
-  // },
-  // {
-  //   imgSrc:
-  //     "https://cdn.media.amplience.net/i/shadesoflight/XU22135.0.XU22135BR?fmt=auto&w=675",
-  //   title: "Arielle Nesting",
-  //   description: "Coffee Tables",
-  //   price: 150,
-  // },
-  // {
-  //   imgSrc:
-  //     "https://cdn.media.amplience.net/i/shadesoflight/XU20234.0.XU20234LW?fmt=auto&w=500",
-  //   title: "Heirloom",
-  //   description: "Farm Table",
-  //   price: 7000,
-  //   sale: 50,
-  // },
-  // {
-  //   imgSrc:
-  //     "https://cdn.media.amplience.net/i/shadesoflight/XU15023.0.XU15023BG?fmt=auto&w=675",
-  //   title: "Rattan",
-  //   description: "Wingback Chair",
-  //   price: 979,
-  //   isNew: true,
-  // },
 ];

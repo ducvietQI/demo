@@ -55,7 +55,7 @@ const ProductCard = ({
         "&:hover .product-image": {
           transform: "scale(1.05)",
         },
-        boxShadow: 'none',
+        boxShadow: "none",
 
         "&:hover .hoverButton": {
           opacity: 1,
@@ -72,10 +72,11 @@ const ProductCard = ({
           image={imgSrc}
           alt={imgAlt}
           sx={{
-            height: 265, width: "100%", objectFit: "cover",
+            height: 265,
+            width: "100%",
+            objectFit: "cover",
             overflow: "hidden",
             transition: "transform 0.4s ease-in-out",
-
           }}
         />
         <CardContent sx={{ bgcolor: "#fff", p: 0, pt: 1 }}>
@@ -105,7 +106,6 @@ const ProductCard = ({
               </Typography>
             )}
           </Stack>
-
         </CardContent>
       </CardActionArea>
 
@@ -143,37 +143,3 @@ export type ProductCardProps = {
   sale?: number;
   isNew?: boolean;
 };
-
-const hoverStyles = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  opacity: 0,
-  transition: "opacity 0.3s ease",
-};
-
-const icons = [
-  { icon: <ShareIcon />, label: "Share" },
-  { icon: <CompareIcon />, label: "Compare" },
-  { icon: <LikeIcon />, label: "Like" },
-];
-
-const renderIconWithLabel = ({
-  icon,
-  label,
-}: {
-  icon: ReactNode;
-  label: string;
-}) => (
-  <Stack
-    key={label}
-    direction="row"
-    alignItems="center"
-    spacing={1}
-    color="common.white"
-  >
-    {icon}
-    <Typography color="common.white">{label}</Typography>
-  </Stack>
-);

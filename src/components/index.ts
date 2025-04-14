@@ -6,6 +6,7 @@ import BannerSection from "./sn-home/BannerSection";
 import ConstructionWorkSection from "./sn-home/ConstructionWorkSection";
 import CountSection from "./sn-home/CountSection";
 import DesignProjectSection from "./sn-home/DesignProjectSection";
+import NewsSection from "./sn-home/NewsSection";
 import ProductSection from "./sn-home/ProductSection";
 import SignificantSection from "./sn-home/SignificantSection";
 import TabSection from "./sn-home/TabSection";
@@ -23,5 +24,6 @@ export {
   TabSection,
   DesignProjectSection,
   ConstructionWorkSection,
-  ProductSection
+  ProductSection,
+  NewsSection,
 };

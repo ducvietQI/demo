@@ -6,6 +6,7 @@ import {
   ConstructionWorkSection,
   CountSection,
   DesignProjectSection,
+  NewsSection,
   ProductSection,
   SignificantSection,
   TabSection,
@@ -24,7 +25,8 @@ const Home = () => {
       <DesignProjectSection />
       <ConstructionWorkSection />
       <ProductSection />
-      <SignificantSection />
+      <NewsSection />
+      {/* <SignificantSection /> */}
     </Stack>
   );
 };
