@@ -66,19 +66,26 @@ const ProductCard = ({
       }}
     >
       <CardActionArea onClick={handleClick}>
-        <CardMedia
-          className="product-image"
-          component="img"
-          image={imgSrc}
-          alt={imgAlt}
+        <Box
           sx={{
             height: 265,
             width: "100%",
-            objectFit: "cover",
             overflow: "hidden",
-            transition: "transform 0.4s ease-in-out",
           }}
-        />
+        >
+          <CardMedia
+            className="product-image"
+            component="img"
+            image={imgSrc}
+            alt={imgAlt}
+            sx={{
+              height: "100%",
+              width: "100%",
+              objectFit: "cover",
+              transition: "transform 0.4s ease-in-out",
+            }}
+          />
+        </Box>
         <CardContent sx={{ bgcolor: "#fff", p: 0, pt: 1 }}>
           <Typography
             gutterBottom

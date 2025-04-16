@@ -1,4 +1,5 @@
 const NOT_HAVE_VALUE_LABEL = "--";
+import slugify from "slugify";
 
 /**
  * Format number
@@ -30,4 +31,21 @@ export const formatNumber = (
   } catch (error) {
     return number;
   }
+};
+
+export const formatNameSpace = (
+  pathname?: string,
+  id?: number | string
+): string => {
+  let formattedPathname = slugify(pathname || "", {
+    locale: "vi",
+    lower: true,
+    remove: /[!@#$%^&*(),.?":{}|<>_+\-=\[\]\\;'`~\/]/g,
+  });
+
+  if (id) {
+    formattedPathname += `-${id}`;
+  }
+
+  return formattedPathname;
 };

@@ -20,6 +20,8 @@ const NewsCard = ({
   // const router = useRouter();
 
   const handleClick = () => {
+    console.log(title);
+
     // const path = PRODUCT_DETAIL_PAGE.replace("[id]", title);
     // router.push(path);
   };
