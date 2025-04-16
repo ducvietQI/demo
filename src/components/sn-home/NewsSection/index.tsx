@@ -22,7 +22,6 @@ const NewsSection = () => {
             navigation
             pagination={{ clickable: true }}
             style={{ width: "100%", height: "365px" }}
-            className="banner-section"
           >
             {imagesGroup2.map((item, index) => {
               return (

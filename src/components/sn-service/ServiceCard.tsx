@@ -1,5 +1,7 @@
 "use client";
 
+import { RouteConstant } from "@/constant";
+import { formatNameSpace } from "@/utils/format.utils";
 import {
   Box,
   Card,
@@ -10,18 +12,20 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { memo } from "react";
+import stringFormat from "string-format";
 
 const ServiceCard = ({
   imgSrc,
   imgAlt = "img-alt",
   title,
   description,
+  id,
 }: ServiceCardProps) => {
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleClick = () => {
-    // const path = PRODUCT_DETAIL_PAGE.replace("[id]", title);
-    // router.push(path);
+    const pathName = formatNameSpace(title, id);
+    router.push(stringFormat(RouteConstant.SERVICE_DETAIL, { pathName }));
   };
 
   return (
@@ -121,6 +125,7 @@ const ServiceCard = ({
 export default memo(ServiceCard);
 
 export type ServiceCardProps = {
+  id: number;
   imgSrc: string;
   imgAlt?: string;
   title: string;

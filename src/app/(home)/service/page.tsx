@@ -1,4 +1,4 @@
-import NewsCard from "@/components/sn-home/NewsSection/NewsCard";
+import { ServiceCard } from "@/components/sn-service";
 import { Box, Container, Grid2, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 
@@ -59,7 +59,7 @@ const ServicePage = () => {
                     height: 400,
                   }}
                 >
-                  <NewsCard {...item} />
+                  <ServiceCard {...item} />
                 </Grid2>
               );
             })}

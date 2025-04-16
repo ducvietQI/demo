@@ -1,3 +1,4 @@
+import BasicBreadcrumbs from "./ServiceBreadcrumb";
 import ServiceCard from "./ServiceCard";
 
-export { ServiceCard };
+export { ServiceCard, BasicBreadcrumbs };
