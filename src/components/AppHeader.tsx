@@ -13,18 +13,22 @@ import Image from "next/image";
 import { useState } from "react";
 import { SearchIcon, ToggleMenu } from "./Icons";
 import SideBarDrawer from "./SideBarDrawer";
+import { usePathname, useRouter } from "next/navigation";
+import { RouteConstant } from "@/constant";
 
-const menuItems = [
-  "TRANG CHỦ",
-  "DỊCH VỤ",
-  "DỰ ÁN",
-  "SẢN PHẨM",
-  "BÀI VIẾT",
-  "GIỚI THIỆU",
-  "LIÊN HỆ",
-];
+const menuItems: Record<string, string> = {
+  "TRANG CHỦ": RouteConstant.HOME,
+  "DỊCH VỤ": RouteConstant.SERVICE,
+  "DỰ ÁN": RouteConstant.PROJECT,
+  "SẢN PHẨM": RouteConstant.PRODUCT,
+  "BÀI VIẾT": RouteConstant.NEWS,
+  "GIỚI THIỆU": RouteConstant.INTRODUCE,
+  "LIÊN HỆ": RouteConstant.BLOG,
+};
 
 const AppHeader = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const isTabletDown = useTabletDown();
 
@@ -32,15 +36,15 @@ const AppHeader = () => {
     <AppBar
       color="default"
       sx={{
-        bgcolor: "#ffffff", color: "text.black",
-        boxShadow: '0 1px 0 0 #e1e5ea'
+        bgcolor: "#ffffff",
+        color: "text.black",
+        boxShadow: "0 1px 0 0 #e1e5ea",
       }}
     >
       <Container>
         <Toolbar
           sx={{
             height: { xs: 55, md: 90 },
-            justifyContent: "space-between",
             "&.MuiToolbar-root": {
               px: 0,
             },
@@ -59,27 +63,36 @@ const AppHeader = () => {
 
           {!isTabletDown && (
             <Stack
+              pl={8.5}
               direction="row"
               spacing={4}
-              sx={{ flexGrow: 1, justifyContent: "center" }}
+              sx={{ justifyContent: "center" }}
             >
-              {menuItems.map((item) => (
-                <Typography
-                  key={item}
-                  variant="h6"
-                  sx={{
-                    fontWeight: 700,
-                    cursor: "pointer",
+              {Object.entries(menuItems).map(([label, path]) => {
+                const isActive = pathname === path;
 
-                    ":hover": {
-                      color: "primary.main",
-                      fontWeight: 700,
-                    },
-                  }}
-                >
-                  {item}
-                </Typography>
-              ))}
+                return (
+                  <Typography
+                    key={label}
+                    variant="h6"
+                    onClick={() => router.push(path)}
+                    sx={{
+                      fontWeight: isActive ? 700 : 500,
+                      cursor: "pointer",
+                      color: isActive ? "primary.main" : "text.black",
+                      borderBottom: isActive ? "2px solid" : "none",
+                      borderColor: isActive ? "primary.main" : "transparent",
+                      pb: 0.5,
+
+                      ":hover": {
+                        color: "primary.main",
+                      },
+                    }}
+                  >
+                    {label}
+                  </Typography>
+                );
+              })}
             </Stack>
           )}
 

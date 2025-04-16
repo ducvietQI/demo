@@ -19,6 +19,7 @@ const palette: TPalette = {
   bg: {
     main: "#161616",
     lightPrimary: "#FCF8F3",
+    grey: "#f8f8f8",
   },
 };
 

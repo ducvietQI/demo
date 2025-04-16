@@ -182,7 +182,7 @@ const AppFooter = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Typography fontSize="12px" color="text.primary">
+          <Typography fontSize="12px" color="text.black">
             © Copyright 2014-2025. Bản quyền nội dung thuộc SBS HOUSE
           </Typography>
           <Stack direction="row" spacing={1}>

@@ -24,9 +24,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box
-          sx={{ pt: "50px", pb: "100px", width: "100%", bgcolor: "#fff" }}
-        >
+        <Box sx={{ pt: "50px", pb: "100px", width: "100%", bgcolor: "#fff" }}>
           <Container>
             <Grid2 container spacing={3}>
               {convertArr.map((step, idx) => (
@@ -39,7 +37,8 @@ function TabPanel(props: TabPanelProps) {
                   <Stack alignItems="center">
                     <Box
                       sx={{
-                        filter: "brightness(0) saturate(100%) invert(8%) sepia(1%) saturate(7500%) hue-rotate(180deg) brightness(100%) contrast(95%)",
+                        filter:
+                          "brightness(0) saturate(100%) invert(8%) sepia(1%) saturate(7500%) hue-rotate(180deg) brightness(100%) contrast(95%)",
                       }}
                     >
                       <Image
@@ -109,7 +108,7 @@ export default function TabSection() {
   };
 
   return (
-    <Stack bgcolor="#f3f3f3" alignItems="center" width="100%" mt={5}>
+    <Stack alignItems="center" width="100%" mt={5}>
       <AppBar sx={{ width: { xs: "100%", md: 600 } }} position="static">
         <Tabs
           value={value}
@@ -123,7 +122,7 @@ export default function TabSection() {
             {...a11yProps(0)}
             sx={{
               width: { xs: "50%", md: 300 },
-              color: 'text.black',
+              color: "text.black",
               fontSize: { xs: "14px", md: "20px" },
               bgcolor: value === 0 ? "#fff" : "transparent",
               "&:hover": {
@@ -137,7 +136,7 @@ export default function TabSection() {
             {...a11yProps(1)}
             sx={{
               width: { xs: "50%", md: 300 },
-              color: 'text.black',
+              color: "text.black",
               fontSize: { xs: "14px", md: "20px" },
               bgcolor: value === 1 ? "#fff" : "transparent",
               "&:hover": {

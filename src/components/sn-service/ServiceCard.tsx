@@ -11,12 +11,12 @@ import {
 import { useRouter } from "next/navigation";
 import { memo } from "react";
 
-const NewsCard = ({
+const ServiceCard = ({
   imgSrc,
   imgAlt = "img-alt",
   title,
   description,
-}: NewsCardProps) => {
+}: ServiceCardProps) => {
   // const router = useRouter();
 
   const handleClick = () => {
@@ -118,9 +118,9 @@ const NewsCard = ({
   );
 };
 
-export default memo(NewsCard);
+export default memo(ServiceCard);
 
-export type NewsCardProps = {
+export type ServiceCardProps = {
   imgSrc: string;
   imgAlt?: string;
   title: string;

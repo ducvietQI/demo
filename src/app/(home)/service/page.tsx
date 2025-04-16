@@ -1,52 +1,76 @@
-import { useTabletDown } from "@/hooks";
-import { Container, Stack, Typography } from "@mui/material";
-import { Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import NewsCard from "./NewsCard";
+import NewsCard from "@/components/sn-home/NewsSection/NewsCard";
+import { Box, Container, Grid2, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 
-const NewsSection = () => {
-  const isTabletDown = useTabletDown();
-
+const ServicePage = () => {
   return (
-    <Stack bgcolor="#fff" pb={{ xs: "15px", md: "50px" }}>
-      <Container>
-        <Stack spacing={2}>
-          <Typography variant="h2" color="primary" fontWeight={700}>
-            Bài viết
-          </Typography>
+    <Stack>
+      <Box
+        sx={{
+          position: "relative",
+          height: "60vh",
+        }}
+      >
+        <Image
+          src="/images/service-banner.jpg"
+          alt={"banner-service"}
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+      </Box>
 
-          <Swiper
-            slidesPerView={isTabletDown ? 1 : 3}
-            spaceBetween={30}
-            modules={[Navigation]}
-            navigation
-            pagination={{ clickable: true }}
-            style={{ width: "100%", height: "365px" }}
-            className="banner-section"
+      <Container>
+        <Stack alignItems="center" position="relative">
+          <Box
+            p="10px"
+            position="absolute"
+            bgcolor="primary.main"
+            fontSize="20px"
+            width="70%"
+            textAlign="center"
+            top={-51}
+            fontWeight={700}
           >
+            Dịch vụ
+          </Box>
+          <Box
+            p={3}
+            bgcolor="bg.grey"
+            fontSize="14px"
+            width="70%"
+            textAlign="center"
+          >
+            Để đáp ứng nhu cầu của khách hàng, SBS cung cấp những dịch vụ như:
+            thiết kế kiến trúc, thi công nhà phố, thiết kế và thi công trọn
+            gói,… tại Đà Nẵng, TP.HCM và nhiều tỉnh thành khác.
+          </Box>
+
+          <Grid2 my={5} container columnSpacing={2} rowSpacing={2}>
             {imagesGroup2.map((item, index) => {
               return (
-                <SwiperSlide
+                <Grid2
+                  size={4}
                   key={index}
                   style={{
                     position: "relative",
-                    overflow: "hidden",
                     cursor: "pointer",
-                    height: "100%",
+                    height: 400,
                   }}
                 >
                   <NewsCard {...item} />
-                </SwiperSlide>
+                </Grid2>
               );
             })}
-          </Swiper>
+          </Grid2>
         </Stack>
       </Container>
     </Stack>
   );
 };
 
-export default NewsSection;
+export default ServicePage;
 
 const imagesGroup2 = [
   {
