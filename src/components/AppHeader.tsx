@@ -23,7 +23,7 @@ const menuItems: Record<string, string> = {
   "SẢN PHẨM": RouteConstant.PRODUCT,
   "BÀI VIẾT": RouteConstant.NEWS,
   "GIỚI THIỆU": RouteConstant.INTRODUCE,
-  "LIÊN HỆ": RouteConstant.BLOG,
+  "LIÊN HỆ": RouteConstant.CONTACT,
 };
 
 const AppHeader = () => {

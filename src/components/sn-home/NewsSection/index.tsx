@@ -22,6 +22,7 @@ const NewsSection = () => {
             navigation
             pagination={{ clickable: true }}
             style={{ width: "100%", height: "365px" }}
+            className="news-section"
           >
             {imagesGroup2.map((item, index) => {
               return (
