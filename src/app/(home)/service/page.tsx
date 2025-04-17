@@ -1,5 +1,5 @@
 import { ServiceCard } from "@/components/sn-service";
-import { Box, Container, Grid2, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid2, Stack } from "@mui/material";
 import Image from "next/image";
 
 const ServicePage = () => {

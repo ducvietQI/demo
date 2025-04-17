@@ -27,7 +27,7 @@ const NewsCard = ({
   return (
     <Card
       sx={{
-        height: "100%", // Đảm bảo card chiếm full chiều cao SwiperSlide
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -49,21 +49,29 @@ const NewsCard = ({
         onClick={handleClick}
         sx={{ display: "flex", flexDirection: "column", height: "100%" }}
       >
-        <CardMedia
-          className="product-image"
-          component="img"
-          image={imgSrc}
-          alt={imgAlt}
-          loading="lazy"
+        <Box
           sx={{
             height: 196,
             width: "100%",
-            objectFit: "cover",
             overflow: "hidden",
-            transition: "transform 0.4s ease-in-out",
-            position: "relative",
           }}
-        />
+        >
+          <CardMedia
+            className="product-image"
+            component="img"
+            image={imgSrc}
+            alt={imgAlt}
+            loading="lazy"
+            sx={{
+              height: "100%",
+              width: "100%",
+              objectFit: "cover",
+              overflow: "hidden",
+              transition: "transform 0.4s ease-in-out",
+              position: "relative",
+            }}
+          />
+        </Box>
 
         <CardContent
           sx={{

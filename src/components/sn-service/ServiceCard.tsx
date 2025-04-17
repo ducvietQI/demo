@@ -53,22 +53,29 @@ const ServiceCard = ({
         onClick={handleClick}
         sx={{ display: "flex", flexDirection: "column", height: "100%" }}
       >
-        <CardMedia
-          className="product-image"
-          component="img"
-          image={imgSrc}
-          alt={imgAlt}
-          loading="lazy"
+        <Box
           sx={{
             height: 196,
             width: "100%",
-            objectFit: "cover",
             overflow: "hidden",
-            transition: "transform 0.4s ease-in-out",
-            position: "relative",
           }}
-        />
-
+        >
+          <CardMedia
+            className="product-image"
+            component="img"
+            image={imgSrc}
+            alt={imgAlt}
+            loading="lazy"
+            sx={{
+              height: "100%",
+              width: "100%",
+              objectFit: "cover",
+              overflow: "hidden",
+              transition: "transform 0.4s ease-in-out",
+              position: "relative",
+            }}
+          />
+        </Box>
         <CardContent
           sx={{
             bgcolor: "#fff",

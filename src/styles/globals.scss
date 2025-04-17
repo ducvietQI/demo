@@ -253,3 +253,16 @@ body {
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
 }
+
+.custom-list {
+  list-style-type: disc; /* Dấu chấm tròn */
+  padding-left: 1.5rem; /* Căn trái dấu chấm và văn bản */
+  margin: 0;
+}
+
+.custom-list li {
+  color: #161616;
+  margin-bottom: 0.5rem; /* Khoảng cách giữa các dòng */
+  font-size: 16px;
+  line-height: 1.5;
+}

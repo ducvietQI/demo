@@ -101,7 +101,7 @@ const ProductCard = ({
           </Typography>
 
           <Stack direction="row" alignItems="center" spacing={2}>
-            <Typography fontSize={20} fontWeight={600} color="primary">
+            <Typography fontSize={14} fontWeight={600} color="primary">
               {formatNumber(discountedPrice)} $
             </Typography>
             {sale && (
