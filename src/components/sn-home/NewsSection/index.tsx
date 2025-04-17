@@ -11,7 +11,12 @@ const NewsSection = () => {
     <Stack bgcolor="#fff" pb={{ xs: "15px", md: "50px" }}>
       <Container>
         <Stack spacing={2}>
-          <Typography variant="h2" color="primary" fontWeight={700}>
+          <Typography
+            variant="h2"
+            color="primary"
+            borderBottom="1px solid #ffba00"
+            fontWeight={700}
+          >
             Bài viết
           </Typography>
 

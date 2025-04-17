@@ -1,3 +1,4 @@
+import ProjectCard from "@/components/sn-project/ProjectCard";
 import { ServiceCard } from "@/components/sn-service";
 import { Box, Container, Grid2, Stack } from "@mui/material";
 import Image from "next/image";
@@ -59,7 +60,7 @@ const ProjectPage = () => {
                     height: 400,
                   }}
                 >
-                  <ServiceCard {...item} />
+                  <ProjectCard {...item} />
                 </Grid2>
               );
             })}

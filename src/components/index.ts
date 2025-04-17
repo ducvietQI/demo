@@ -1,4 +1,5 @@
 import AppFooter from "./AppFooter";
+import { Gallery } from "./ImageGallary";
 import Logo from "./Logo";
 import SideBarDrawer from "./SideBarDrawer";
 import AboutSection from "./sn-home/AboutSection";
@@ -26,4 +27,5 @@ export {
   ConstructionWorkSection,
   ProductSection,
   NewsSection,
+  Gallery,
 };
