@@ -73,7 +73,7 @@ const ProductPage = () => {
 
 export default ProductPage;
 
-export const products: ProductCardProps[] = [
+const products: ProductCardProps[] = [
   {
     id: 1,
     imgSrc: "/images/syltherine.webp",
