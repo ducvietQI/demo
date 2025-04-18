@@ -7,6 +7,8 @@ export const PROJECT = "/project";
 export const PROJECT_DETAIL = `${PROJECT}/{pathName}`;
 
 export const PRODUCT = "/product";
+export const PRODUCT_DETAIL = `${PRODUCT}/{pathName}`;
+
 export const NEWS = "/news";
 export const NEWS_DETAIL = `${NEWS}/{pathName}`;
 

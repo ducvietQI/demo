@@ -1,19 +1,20 @@
 "use client";
 
-import { CompareIcon, LikeIcon, ShareIcon } from "@/components/Icons";
-import { formatNumber } from "@/utils/format.utils";
+import { RouteConstant } from "@/constant";
+import { formatNameSpace, formatNumber } from "@/utils/format.utils";
 import {
+  Box,
   Card,
   CardActionArea,
-  CardMedia,
   CardContent,
-  Typography,
+  CardMedia,
+  Rating,
   Stack,
-  Button,
-  Box,
+  Typography,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { memo, ReactNode, useMemo } from "react";
+import { memo, useMemo, useState } from "react";
+import stringFormat from "string-format";
 
 const ProductCard = ({
   imgSrc,
@@ -23,8 +24,11 @@ const ProductCard = ({
   price,
   sale,
   isNew,
+  id,
 }: ProductCardProps) => {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState<number | null>(5);
 
   const productLabel = useMemo(() => {
     if (sale) {
@@ -41,8 +45,8 @@ const ProductCard = ({
   }, [price, sale]);
 
   const handleClick = () => {
-    // const path = PRODUCT_DETAIL_PAGE.replace("[id]", title);
-    // router.push(path);
+    const pathName = formatNameSpace(title, id);
+    router.push(stringFormat(RouteConstant.PRODUCT_DETAIL, { pathName }));
   };
 
   return (
@@ -89,29 +93,53 @@ const ProductCard = ({
         <CardContent sx={{ bgcolor: "#fff", p: 0, pt: 1 }}>
           <Typography
             gutterBottom
-            variant="h3"
-            fontWeight={600}
+            fontSize={14}
+            fontWeight={500}
             component="div"
             color="text.black"
           >
             {title}
           </Typography>
-          <Typography variant="h5" color="text.black">
+          {/* <Typography variant="h5" color="text.black">
             {description}
-          </Typography>
+          </Typography> */}
 
           <Stack direction="row" alignItems="center" spacing={2}>
-            <Typography fontSize={14} fontWeight={600} color="primary">
-              {formatNumber(discountedPrice)} $
+            <Typography fontSize={14} fontWeight={600} color="#f94c43">
+              {formatNumber(discountedPrice)}₫
             </Typography>
             {sale && (
               <Typography
                 sx={{ textDecoration: "line-through" }}
                 color="text.disable"
+                fontSize={13}
               >
-                {formatNumber(price)} $
+                {formatNumber(price)}₫
               </Typography>
             )}
+          </Stack>
+
+          <Stack
+            mt={1}
+            direction="row"
+            justifyContent="space-between"
+            spacing={2}
+          >
+            <Rating
+              sx={{
+                "& .MuiSvgIcon-root": {
+                  fontSize: 16,
+                  color: "#f94c43",
+                },
+              }}
+              size="large"
+              name="simple-controlled"
+              value={value}
+              readOnly
+            />
+            <Typography color="text.black" variant="h6">
+              Đã bán: 1
+            </Typography>
           </Stack>
         </CardContent>
       </CardActionArea>
@@ -142,6 +170,7 @@ const ProductCard = ({
 export default memo(ProductCard);
 
 export type ProductCardProps = {
+  id: number;
   imgSrc: string;
   imgAlt?: string;
   title: string;

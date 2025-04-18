@@ -5,7 +5,7 @@ import AOS from "aos";
 import { useState } from "react";
 import ProductCard, { ProductCardProps } from "./ProductCard";
 
-const ProductSection = () => {
+const ProductSection = ({ title }: { title?: string }) => {
   const [visibleProducts, setVisibleProducts] = useState(8);
 
   const handleShowMore = () => {
@@ -18,8 +18,13 @@ const ProductSection = () => {
     <Stack bgcolor="#fff" py={{ xs: "15px", md: "50px" }}>
       <Container>
         <Stack alignItems="left">
-          <Typography variant="h2" color="primary" fontWeight={700}>
-            Sản phẩm
+          <Typography
+            variant="h2"
+            color="primary"
+            borderBottom="1px solid #ffba00"
+            fontWeight={700}
+          >
+            {title || "Sản phẩm"}
           </Typography>
 
           <Grid2 container mt={4} columnSpacing={2} rowSpacing={4}>
@@ -59,57 +64,66 @@ export default ProductSection;
 
 export const products: ProductCardProps[] = [
   {
-    imgSrc: "/images/syltherine.png",
-    title: "Syltherine",
+    id: 1,
+    imgSrc: "/images/syltherine.webp",
+    title: "Giường Ngủ Gỗ MOHO VLINE 601 Nhiều Kích Thước",
     description: "Stylish cafe chair",
-    price: 2500,
+    price: 6290000,
     sale: 30,
   },
   {
-    imgSrc: "/images/leviosa.png",
-    title: "Leviosa",
+    id: 2,
+    imgSrc: "/images/leviosa.webp",
+    title: "Giường Ngủ Gỗ Tràm MOHO HOBRO 301",
     description: "Stylish cafe chair",
-    price: 2500,
+    price: 6290000,
   },
   {
-    imgSrc: "/images/lolito.png",
-    title: "Lolito",
+    id: 3,
+    imgSrc: "/images/lolito.webp",
+    title: "Set Tủ Quần Áo Gỗ MOHO VIENNA 201 4 Cánh 4 Màu",
     description: "Luxury big sofa",
-    price: 7000,
+    price: 6290000,
     sale: 50,
   },
   {
-    imgSrc: "/images/respira.png",
-    title: "Respira",
+    id: 4,
+    imgSrc: "/images/respira.webp",
+    title: "Ghế Sofa MOHO LYNGBY Góc L",
     description: "Outdoor bar table and stool",
-    price: 500,
+    price: 6290000,
     isNew: true,
+    sale: 25,
   },
   {
-    imgSrc: "/images/grifo.png",
-    title: "Grifo",
+    id: 5,
+    imgSrc: "/images/muggo.webp",
+    title: "Tủ Giày - Tủ Trang Trí Gỗ MOHO VLINE 601",
     description: "Night lamp",
-    price: 1500,
+    price: 6290000,
   },
   {
-    imgSrc: "/images/muggo.png",
-    title: "Muggo",
+    id: 6,
+    imgSrc: "/images/grifo.webp",
+    title: "Tủ Giày – Tủ Trang Trí Gỗ MOHO VIENNA 204",
     description: "Small mug",
-    price: 150,
+    price: 6290000,
     isNew: true,
   },
   {
-    imgSrc: "/images/pingky.png",
-    title: "Pingky",
+    id: 7,
+    imgSrc: "/images/pingky.webp",
+    title: "Tủ Kệ Tivi Gỗ MOHO UBEDA 201",
     description: "Cute bed set",
-    price: 7000,
+    price: 6290000,
     sale: 50,
   },
   {
-    imgSrc: "/images/potty.png",
+    id: 8,
+    imgSrc: "/images/potty.webp",
     title: "Potty",
     description: "Minimalist flower pot",
-    price: 500,
+    price: 6290000,
     isNew: true,
   },
 ];

@@ -112,3 +112,31 @@
     margin-top: 24px;
   }
 }
+
+.custome-gallery .image-gallery-thumbnails-container {
+  flex-direction: column;
+
+  .image-gallery-thumbnail {
+    width: fit-content !important;
+  }
+
+  .image-gallery-thumbnail-inner {
+    width: fit-content !important;
+  }
+
+  .image-gallery-thumbnail-image {
+    width: 80px !important;
+  }
+}
+
+.custome-gallery {
+  .image-gallery-content {
+    height: 600px !important;
+  }
+
+  .image-gallery-slide-wrapper,
+  .image-gallery-swipe,
+  .image-gallery-slides {
+    height: 100% !important;
+  }
+}
