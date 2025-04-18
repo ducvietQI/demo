@@ -1,5 +1,7 @@
 "use client";
 
+import { RouteConstant } from "@/constant";
+import { formatNameSpace } from "@/utils/format.utils";
 import {
   Box,
   Card,
@@ -10,18 +12,20 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { memo } from "react";
+import stringFormat from "string-format";
 
 const NewsCard = ({
   imgSrc,
   imgAlt = "img-alt",
   title,
   description,
+  id,
 }: NewsCardProps) => {
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleClick = () => {
-    // const path = PRODUCT_DETAIL_PAGE.replace("[id]", title);
-    // router.push(path);
+    const pathName = formatNameSpace(title, id);
+    router.push(stringFormat(RouteConstant.NEWS_DETAIL, { pathName }));
   };
 
   return (
@@ -51,7 +55,7 @@ const NewsCard = ({
       >
         <Box
           sx={{
-            height: 196,
+            height: 300,
             width: "100%",
             overflow: "hidden",
           }}
@@ -129,6 +133,7 @@ const NewsCard = ({
 export default memo(NewsCard);
 
 export type NewsCardProps = {
+  id: number;
   imgSrc: string;
   imgAlt?: string;
   title: string;

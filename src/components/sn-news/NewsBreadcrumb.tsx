@@ -1,7 +1,7 @@
 import { RouteConstant } from "@/constant";
 import { Breadcrumbs, Link, Typography } from "@mui/material";
 
-const ProjectBreadcrumb = () => {
+const NewsBreadcrumb = () => {
   return (
     <Breadcrumbs
       sx={{
@@ -21,15 +21,15 @@ const ProjectBreadcrumb = () => {
         sx={{ "&:hover": { color: "primary.main" } }}
         underline="none"
         color="inherit"
-        href={RouteConstant.PROJECT}
+        href={RouteConstant.NEWS}
       >
-        Dự án
+        Bài viết
       </Link>
       <Typography color="text.black" fontSize={18}>
-        Dự án chi tiết
+        Bài viết chi tiết
       </Typography>
     </Breadcrumbs>
   );
 };
 
-export default ProjectBreadcrumb;
+export default NewsBreadcrumb;

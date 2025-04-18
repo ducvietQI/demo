@@ -15,6 +15,7 @@ import { SearchIcon, ToggleMenu } from "./Icons";
 import SideBarDrawer from "./SideBarDrawer";
 import { usePathname, useRouter } from "next/navigation";
 import { RouteConstant } from "@/constant";
+import Link from "next/link";
 
 const menuItems: Record<string, string> = {
   "TRANG CHỦ": RouteConstant.HOME,
@@ -56,7 +57,10 @@ const AppHeader = () => {
               position: "relative",
               height: { xs: 35, md: 80 },
               width: { xs: 35, md: 140 },
+              cursor: "pointer",
             }}
+            component={Link}
+            href={RouteConstant.HOME}
           >
             <Image src="/images/logo.png" fill alt="logo" />
           </Box>

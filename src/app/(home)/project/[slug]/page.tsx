@@ -1,8 +1,7 @@
 "use client";
 
-import { Gallery } from "@/components";
 import { EyeIcon } from "@/components/Icons";
-import ProjectBreadcrumb from "@/components/sn-project/ProjectBreadcrumb";
+import { ProjectBreadcrumb } from "@/components/sn-project";
 import {
   Box,
   Collapse,

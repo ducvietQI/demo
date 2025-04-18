@@ -26,7 +26,7 @@ const ServiceBreadcrumb = () => {
         Dịch vụ
       </Link>
       <Typography color="text.black" fontSize={18}>
-        Bài viết chi tiết
+        Dịch vụ chi tiết
       </Typography>
     </Breadcrumbs>
   );
