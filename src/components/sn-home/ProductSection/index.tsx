@@ -1,11 +1,26 @@
 "use client";
 
-import { Button, Container, Grid2, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid2,
+  Stack,
+  Typography,
+} from "@mui/material";
 import AOS from "aos";
 import { useState } from "react";
 import ProductCard, { ProductCardProps } from "./ProductCard";
+import Link from "next/link";
+import { RouteConstant } from "@/constant";
 
-const ProductSection = ({ title }: { title?: string }) => {
+const ProductSection = ({
+  array,
+  title,
+}: {
+  array?: ProductCardProps[];
+  title?: string;
+}) => {
   const [visibleProducts, setVisibleProducts] = useState(8);
 
   const handleShowMore = () => {
@@ -14,21 +29,36 @@ const ProductSection = ({ title }: { title?: string }) => {
     window.scrollBy({ top: 100, behavior: "smooth" });
   };
 
+  const converArray = array || products;
+
   return (
     <Stack bgcolor="#fff" py={{ xs: "15px", md: "50px" }}>
       <Container>
         <Stack alignItems="left">
-          <Typography
-            variant="h2"
-            color="primary"
+          <Stack
+            direction="row"
             borderBottom="1px solid #ffba00"
-            fontWeight={700}
+            justifyContent="space-between"
           >
-            {title || "Sản phẩm"}
-          </Typography>
+            <Typography variant="h2" color="primary" fontWeight={700}>
+              {title || "Sản phẩm"}
+            </Typography>
+
+            <Box
+              component={Link}
+              href={RouteConstant.PRODUCT}
+              sx={{
+                fontSize: 20,
+                color: "primary.main",
+                fontWeight: 700,
+              }}
+            >
+              Xem thêm {">>"}
+            </Box>
+          </Stack>
 
           <Grid2 container mt={4} columnSpacing={2} rowSpacing={4}>
-            {products.slice(0, visibleProducts).map((product, index) => (
+            {converArray.slice(0, visibleProducts).map((product, index) => (
               <Grid2 size={{ xs: 6, md: 3 }} key={index} data-aos="fade-up">
                 <ProductCard {...product} />
               </Grid2>
@@ -120,8 +150,8 @@ export const products: ProductCardProps[] = [
   },
   {
     id: 8,
-    imgSrc: "/images/potty.webp",
-    title: "Potty",
+    imgSrc: "/images/Potty.webp",
+    title: "Kệ TV MOHO HOBRO 301 ",
     description: "Minimalist flower pot",
     price: 6290000,
     isNew: true,
