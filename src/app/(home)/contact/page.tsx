@@ -4,8 +4,8 @@ import Image from "next/image";
 const CONTACTPage = () => {
   return (
     <Container>
-      <Stack direction="row" spacing={2} py={6}>
-        <Stack width="50%" spacing={2}>
+      <Stack direction={{ xs: "column", md: "row" }} spacing={2} py={6}>
+        <Stack width={{ xs: "100%", md: "50%" }} spacing={2}>
           <TextField
             sx={{
               ".MuiFormLabel-root": {
@@ -79,7 +79,11 @@ const CONTACTPage = () => {
           </Stack>
         </Stack>
 
-        <Stack position="relative" width="50%" height="500px">
+        <Stack
+          position="relative"
+          width={{ xs: "100%", md: "50%" }}
+          height="500px"
+        >
           <Image
             src="/images/chi-ha-footer.png"
             layout="fill"

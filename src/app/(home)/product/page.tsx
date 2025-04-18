@@ -14,7 +14,7 @@ const ProductPage = () => {
       <Box
         sx={{
           position: "relative",
-          height: "60vh",
+          height: { xs: 126, md: "60vh" },
         }}
       >
         <Image
@@ -28,7 +28,7 @@ const ProductPage = () => {
       </Box>
 
       <Container>
-        <Stack py={10} position="relative">
+        <Stack py={{ xs: 2, md: 10 }} position="relative">
           <Typography variant="h1" fontWeight={600} color="primary">
             Tất cả sản phẩm
           </Typography>
@@ -36,24 +36,24 @@ const ProductPage = () => {
           <Grid2
             mt={4}
             container
-            direction="row"
-            alignItems="center"
+            direction={"row"}
+            alignItems={{ xs: "flex-start", md: "center" }}
             spacing={2}
           >
-            <Grid2 size={2.4}>
+            <Grid2 size={{ xs: 5.5, md: 2.4 }}>
               <Typography fontWeight={500} variant="h2">
                 <FilterIcon /> Bộ lọc
               </Typography>
             </Grid2>
-            <Grid2 size={2.4}>
+            <Grid2 size={{ xs: 5.5, md: 2.4 }}>
               <CategoryFilter />
             </Grid2>
 
-            <Grid2 size={2.4}>
+            <Grid2 size={{ xs: 5.5, md: 2.4 }}>
               <ColorFilter />
             </Grid2>
 
-            <Grid2 size={2.4}>
+            <Grid2 size={{ xs: 5.5, md: 2.4 }}>
               <PriceFilter />
             </Grid2>
           </Grid2>

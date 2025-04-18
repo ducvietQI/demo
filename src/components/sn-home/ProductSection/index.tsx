@@ -40,7 +40,11 @@ const ProductSection = ({
             borderBottom="1px solid #ffba00"
             justifyContent="space-between"
           >
-            <Typography variant="h2" color="primary" fontWeight={700}>
+            <Typography
+              color="primary"
+              fontWeight={700}
+              fontSize={{ xs: 16, md: 20 }}
+            >
               {title || "Sản phẩm"}
             </Typography>
 
@@ -48,7 +52,7 @@ const ProductSection = ({
               component={Link}
               href={RouteConstant.PRODUCT}
               sx={{
-                fontSize: 20,
+                fontSize: { xs: 16, md: 20 },
                 color: "primary.main",
                 fontWeight: 700,
               }}

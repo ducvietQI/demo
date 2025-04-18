@@ -139,4 +139,10 @@
   .image-gallery-slides {
     height: 100% !important;
   }
+
+  @media (max-width: 768px) {
+    .image-gallery-content {
+      height: 300px !important;
+    }
+  }
 }

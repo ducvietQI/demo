@@ -10,7 +10,7 @@ const BannerSection = () => {
   const isTabletDown = useTabletDown();
 
   return (
-    <Stack height="60vh" position="relative" >
+    <Stack height={{ xs: "fit-content", md: "60vh" }} position="relative">
       <Swiper
         loop={true}
         // navigation={true}
@@ -43,7 +43,7 @@ const BannerSection = () => {
                     sizes="100vw"
                   />
                 </Box>
-                <Stack
+                {/* <Stack
                   sx={{
                     bgcolor: "#F4B400",
                     color: "black",
@@ -65,7 +65,7 @@ const BannerSection = () => {
                     hành cùng hàng ngàn khách hàng để tạo nên những tổ ấm đẹp và
                     mang giá trị bền vững.
                   </Typography>
-                </Stack>
+                </Stack> */}
               </Stack>
             ) : (
               <Image

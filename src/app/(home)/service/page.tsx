@@ -1,14 +1,19 @@
+"use client";
+
 import { ServiceCard } from "@/components/sn-service";
+import { useTabletDown } from "@/hooks";
 import { Box, Container, Grid2, Stack } from "@mui/material";
 import Image from "next/image";
 
 const ServicePage = () => {
+  const isTabletDown = useTabletDown();
+
   return (
     <Stack>
       <Box
         sx={{
           position: "relative",
-          height: "60vh",
+          height: { xs: 126, md: "60vh" },
         }}
       >
         <Image
@@ -21,42 +26,65 @@ const ServicePage = () => {
         />
       </Box>
 
-      <Container>
-        <Stack alignItems="center" position="relative">
+      {isTabletDown && (
+        <>
           <Box
             p="10px"
-            position="absolute"
             bgcolor="primary.main"
             fontSize="20px"
-            width="70%"
             textAlign="center"
-            top={-51}
             fontWeight={700}
           >
             Dịch vụ
           </Box>
-          <Box
-            p={3}
-            bgcolor="bg.grey"
-            fontSize="14px"
-            width="70%"
-            textAlign="center"
-          >
+          <Box p={1.5} bgcolor="bg.grey" fontSize="14px" textAlign="center">
             Để đáp ứng nhu cầu của khách hàng, SBS cung cấp những dịch vụ như:
             thiết kế kiến trúc, thi công nhà phố, thiết kế và thi công trọn
             gói,… tại Đà Nẵng, TP.HCM và nhiều tỉnh thành khác.
           </Box>
+        </>
+      )}
+
+      <Container>
+        <Stack alignItems="center" position="relative">
+          {!isTabletDown && (
+            <>
+              <Box
+                p="10px"
+                position="absolute"
+                bgcolor="primary.main"
+                fontSize="20px"
+                width="70%"
+                textAlign="center"
+                top={-51}
+                fontWeight={700}
+              >
+                Dịch vụ
+              </Box>
+              <Box
+                p={3}
+                bgcolor="bg.grey"
+                fontSize="14px"
+                width="70%"
+                textAlign="center"
+              >
+                Để đáp ứng nhu cầu của khách hàng, SBS cung cấp những dịch vụ
+                như: thiết kế kiến trúc, thi công nhà phố, thiết kế và thi công
+                trọn gói,… tại Đà Nẵng, TP.HCM và nhiều tỉnh thành khác.
+              </Box>
+            </>
+          )}
 
           <Grid2 my={5} container columnSpacing={2} rowSpacing={2}>
             {imagesGroup2.map((item, index) => {
               return (
                 <Grid2
-                  size={4}
+                  size={{ xs: 12, md: 4 }}
                   key={index}
-                  style={{
+                  sx={{
                     position: "relative",
                     cursor: "pointer",
-                    height: 400,
+                    height: { xs: 340, md: 400 },
                   }}
                 >
                   <ServiceCard {...item} />

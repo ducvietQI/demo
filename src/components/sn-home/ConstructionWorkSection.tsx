@@ -122,7 +122,7 @@ const ConstructionWorkSection = () => {
       pb={{ xs: "15px", md: 10 }}
       pt={{ xs: "15px", md: "unset" }}
     >
-      <Grid2 container spacing={3}>
+      <Grid2 container spacing={3} px={{ xs: "15px", md: 0 }}>
         {!isTabletDown && (
           <Grid2 size={8}>
             {renderSwiper(imagesGroup1, "group1")}
@@ -146,8 +146,7 @@ const ConstructionWorkSection = () => {
           >
             Công trình thi công
           </Typography>
-          <Typography pt={2} color="primary.black"
-            fontSize="16px">
+          <Typography pt={2} color="primary.black" fontSize="16px">
             Tất cả công trình thi công do SBS HOUSE thực hiện đều đảm bảo những
             giải pháp mới và tối ưu nhất nhằm mang đến một sản phẩm kiên cố, bền
             vững. Mặc dù thi công nhà phố nhưng từ hạng mục lớn nhỏ đều được áp

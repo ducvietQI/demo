@@ -72,7 +72,7 @@ const ProductCard = ({
       <CardActionArea onClick={handleClick}>
         <Box
           sx={{
-            height: 265,
+            height: { xs: 180, md: 265 },
             width: "100%",
             overflow: "hidden",
           }}

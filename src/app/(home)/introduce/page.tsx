@@ -24,7 +24,7 @@ const IntroducePage = () => {
           giải pháp kiến trúc hiện đại và bền vững cho ngôi nhà Việt trên toàn
           đất nước.
         </Typography>
-        <Stack position="relative" height={900}>
+        <Stack position="relative" height={{ xs: 250, md: 900 }}>
           <Image
             src="/images/gioi-thieu-1.jpg"
             layout="fill"
@@ -36,7 +36,7 @@ const IntroducePage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Đội ngũ SBS HOUSE những năm đầu thành lập
@@ -54,7 +54,7 @@ const IntroducePage = () => {
           phù hợp, một môi trường phát triển ngay tại quê hương mình, từ đó có
           một cuộc sống đủ đầy và hạnh phúc.{" "}
         </Typography>
-        <Stack position="relative" height={686}>
+        <Stack position="relative" height={{ xs: 250, md: 686 }}>
           <Image
             src="/images/gioi-thieu-2.jpg"
             layout="fill"
@@ -66,13 +66,13 @@ const IntroducePage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Toàn thể cán bộ nhân viên tại SBS HOUSE năm 2022
           </Box>
         </Stack>
-        <Stack position="relative" height={700}>
+        <Stack position="relative" height={{ xs: 250, md: 700 }}>
           <Image
             src="/images/gioi-thieu-3.webp"
             layout="fill"
@@ -84,7 +84,7 @@ const IntroducePage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={-10}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Toàn thể cán bộ nhân viên tại SBS HOUSE năm 2022
@@ -106,7 +106,7 @@ const IntroducePage = () => {
           nhiều khách hàng, đối tác biết và làm việc với chúng tôi, thì giá trị
           tốt đẹp của SBS sẽ càng được lan tỏa nhiều hơn.
         </Typography>
-        <Stack position="relative" height={686}>
+        <Stack position="relative" height={{ xs: 250, md: 686 }}>
           <Image
             src="/images/gioi-thieu-4.jpg"
             layout="fill"
@@ -118,7 +118,7 @@ const IntroducePage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Đội ngũ giám sát thi công SBS HOUSE
@@ -177,7 +177,7 @@ const IntroducePage = () => {
           thương và coi công trình của khách hàng như của chính mình. Và kỷ luật
           để kịp tiến độ dù trong bất cứ hoàn cảnh nào.
         </Typography>
-        <Stack position="relative" height={915}>
+        <Stack position="relative" height={{ xs: 250, md: 915 }}>
           <Image
             src="/images/gioi-thieu-6.webp"
             layout="fill"
@@ -223,7 +223,7 @@ const IntroducePage = () => {
             phần nội thất)
           </li>
         </ul>
-        <Stack position="relative" height={976}>
+        <Stack position="relative" height={{ xs: 400, md: 976 }}>
           <Image
             src="/images/gioi-thieu-7.jpg"
             layout="fill"
@@ -235,13 +235,13 @@ const IntroducePage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Hình ảnh động thổ công trình xây dựng của SBS HOUSE
           </Box>
         </Stack>
-        <Stack position="relative" height={976}>
+        <Stack position="relative" height={{ xs: 400, md: 976 }}>
           <Image
             src="/images/gioi-thieu-8.jpg"
             layout="fill"
@@ -289,7 +289,7 @@ const IntroducePage = () => {
             có nhằm đảm bảo ngôi nhà hoàn thành giống bản vẽ nhất có thể.
           </li>
         </ul>
-        <Stack position="relative" height={817}>
+        <Stack position="relative" height={{ xs: 400, md: 817 }}>
           <Image
             src="/images/gioi-thieu-9.jpg"
             layout="fill"
@@ -301,7 +301,7 @@ const IntroducePage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Chủ đầu tư đến kí hợp đồng tại văn phòng SBS HOUSE
@@ -310,7 +310,7 @@ const IntroducePage = () => {
         <Typography variant="h4" fontWeight={700}>
           6. Một số hình ảnh về SBS HOUSE:
         </Typography>
-        <Stack position="relative" height={732}>
+        <Stack position="relative" height={{ xs: 300, md: 732 }}>
           <Image
             src="/images/gioi-thieu-10.jpg"
             layout="fill"
@@ -322,14 +322,14 @@ const IntroducePage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Kiến trúc sư, kỹ sư SBS HOUSE tham quan học hỏi các showroom nội
             thất tại Singapore.
           </Box>
         </Stack>
-        <Stack position="relative" height={732}>
+        <Stack position="relative" height={{ xs: 300, md: 732 }}>
           <Image
             src="/images/gioi-thieu-11.jpg"
             layout="fill"
@@ -341,7 +341,7 @@ const IntroducePage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Hoạt động teambuilding mừng sinh nhật SBS HOUSE 4 tuổi
@@ -349,7 +349,7 @@ const IntroducePage = () => {
         </Stack>
 
         <Stack spacing={2}>
-          <Typography fontSize="16px">
+          <Typography fontSize={{ xs: "14px", md: "16px" }}>
             Xem thêm các{" "}
             <Box component="span" sx={{ color: "#f7b944", fontWeight: 500 }}>
               mẫu nhà đẹp
@@ -366,7 +366,7 @@ const IntroducePage = () => {
               gap: 1,
             }}
           >
-            <Typography fontSize="16px">
+            <Typography fontSize={{ xs: "14px", md: "16px" }}>
               Choáng ngợp trước 55{" "}
               <Box component="span" sx={{ color: "#f7b944", fontWeight: 500 }}>
                 mẫu nhà đẹp 2 tầng
@@ -374,7 +374,7 @@ const IntroducePage = () => {
               phong cách hiện đại kết hợp tối giản
             </Typography>
 
-            <Typography fontSize="16px">
+            <Typography fontSize={{ xs: "14px", md: "16px" }}>
               Dành cho những ai có nhu cầu xây{" "}
               <Box component="span" sx={{ color: "#f7b944", fontWeight: 500 }}>
                 nhà 3 tầng hiện đại
@@ -382,7 +382,7 @@ const IntroducePage = () => {
               thông thoáng
             </Typography>
 
-            <Typography fontSize="16px">
+            <Typography fontSize={{ xs: "14px", md: "16px" }}>
               10{" "}
               <Box component="span" sx={{ color: "#f7b944", fontWeight: 500 }}>
                 mẫu biệt thự đẹp

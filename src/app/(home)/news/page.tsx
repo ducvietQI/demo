@@ -1,14 +1,19 @@
+"use client";
+
 import NewsCard from "@/components/sn-home/NewsSection/NewsCard";
 import { Stack, Box, Grid2, Container } from "@mui/material";
 import Image from "next/image";
+import { useTabletDown } from "@/hooks";
 
 const NewsPage = () => {
+  const isTabletDown = useTabletDown();
+
   return (
     <Stack>
       <Box
         sx={{
           position: "relative",
-          height: "60vh",
+          height: { xs: 126, md: "60vh" },
         }}
       >
         <Image
@@ -21,42 +26,66 @@ const NewsPage = () => {
         />
       </Box>
 
-      <Container>
-        <Stack alignItems="center" position="relative">
+      {isTabletDown && (
+        <>
           <Box
             p="10px"
-            position="absolute"
             bgcolor="primary.main"
             fontSize="20px"
-            width="70%"
             textAlign="center"
-            top={-51}
             fontWeight={700}
           >
             Phản hồi của khách hàng
           </Box>
-          <Box
-            p={3}
-            bgcolor="bg.grey"
-            fontSize="14px"
-            width="70%"
-            textAlign="center"
-          >
+          <Box p={1.5} bgcolor="bg.grey" fontSize="14px" textAlign="center">
             Đối với khách hàng, chúng tôi luôn tận tâm tạo ra những giá trị cho
             Quý khách hàng thân yêu. SBS HOUSE gồm đội ngũ kiến trúc sư, kỹ sư,
             chuyên gia trang trí nội thất có trên 5 năm kinh nghiệm hoạt động
           </Box>
+        </>
+      )}
+
+      <Container>
+        <Stack alignItems="center" position="relative">
+          {!isTabletDown && (
+            <>
+              <Box
+                p="10px"
+                position="absolute"
+                bgcolor="primary.main"
+                fontSize="20px"
+                width="70%"
+                textAlign="center"
+                top={-51}
+                fontWeight={700}
+              >
+                Phản hồi của khách hàng
+              </Box>
+              <Box
+                p={3}
+                bgcolor="bg.grey"
+                fontSize="14px"
+                width="70%"
+                textAlign="center"
+              >
+                Đối với khách hàng, chúng tôi luôn tận tâm tạo ra những giá trị
+                cho Quý khách hàng thân yêu. SBS HOUSE gồm đội ngũ kiến trúc sư,
+                kỹ sư, chuyên gia trang trí nội thất có trên 5 năm kinh nghiệm
+                hoạt động
+              </Box>
+            </>
+          )}
 
           <Grid2 my={5} container columnSpacing={2} rowSpacing={2}>
             {imagesGroup2.map((item, index) => {
               return (
                 <Grid2
-                  size={4}
+                  size={{ xs: 12, md: 4 }}
                   key={index}
-                  style={{
+                  sx={{
                     position: "relative",
                     cursor: "pointer",
-                    height: 500,
+                    height: { xs: 340, md: 500 },
                   }}
                 >
                   <NewsCard {...item} />

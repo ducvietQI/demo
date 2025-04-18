@@ -1,5 +1,6 @@
 "use client";
 
+import { RouteConstant } from "@/constant";
 import { useTabletDown } from "@/hooks";
 import {
   AppBar,
@@ -10,12 +11,11 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
-import { useState } from "react";
-import { SearchIcon, ToggleMenu } from "./Icons";
-import SideBarDrawer from "./SideBarDrawer";
-import { usePathname, useRouter } from "next/navigation";
-import { RouteConstant } from "@/constant";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import { ToggleMenu } from "./Icons";
+import SideBarDrawer from "./SideBarDrawer";
 
 const menuItems: Record<string, string> = {
   "TRANG CHỦ": RouteConstant.HOME,
@@ -45,6 +45,8 @@ const AppHeader = () => {
       <Container>
         <Toolbar
           sx={{
+            display: "flex",
+            justifyContent: "space-between",
             height: { xs: 55, md: 90 },
             "&.MuiToolbar-root": {
               px: 0,
@@ -56,7 +58,7 @@ const AppHeader = () => {
             sx={{
               position: "relative",
               height: { xs: 35, md: 80 },
-              width: { xs: 35, md: 140 },
+              width: { xs: 55, md: 140 },
               cursor: "pointer",
             }}
             component={Link}
@@ -102,25 +104,25 @@ const AppHeader = () => {
 
           {/* Contact + Icons */}
           <Stack direction="row" spacing={2} alignItems="center">
-            {/* <Typography
+            <Typography
               variant="h6"
               sx={{ fontWeight: 500, cursor: "pointer" }}
             >
               0999 888 999
-            </Typography> */}
-            <SearchIcon
+            </Typography>
+            {/* <SearchIcon
               sx={{
                 fontSize: 16,
                 cursor: "pointer",
                 color: "white",
               }}
-            />
+            /> */}
             {isTabletDown ? (
               <ToggleMenu
                 sx={{
                   fontSize: 16,
                   cursor: "pointer",
-                  color: "white",
+                  color: "text.black",
                 }}
                 onClick={() => setIsOpen(true)}
               />

@@ -116,7 +116,7 @@ const ServiceDetailPage = () => {
           quận 5, giúp khách hàng hiện thực hóa ý tưởng một cách đồng bộ và kiểm
           soát tốt tiến độ, chi phí.
         </Typography>
-        <Stack position="relative" height={900}>
+        <Stack position="relative" height={{ xs: 350, md: 900 }}>
           <Image
             src="/images/service-1.webp"
             layout="fill"
@@ -129,7 +129,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             SBS HOUSE cung cấp dịch vụ thiết kế nội thất quận 5 và thi công trọn
@@ -162,7 +162,7 @@ const ServiceDetailPage = () => {
             giám sát chặt chẽ.
           </li>
         </ul>
-        <Stack position="relative" height={900}>
+        <Stack position="relative" height={{ xs: 350, md: 900 }}>
           <Image
             src="/images/service-2.webp"
             layout="fill"
@@ -175,7 +175,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Thiết kế thi công nội thất quận 5 của SBS HOUSE đa dạng phong cách
@@ -222,7 +222,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Phòng khách với bộ sofa tối giản và tinh tế với những góc bo cong
@@ -243,7 +243,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Phòng bếp – ăn gọn gàng và hiện đại với 3 tông màu chính là trắng –
@@ -263,7 +263,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Phòng ngủ sáng thoáng với ánh sáng tự nhiên dồi dào làm nổi bật lên
@@ -283,7 +283,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Khu vực WC cũng được chú trọng thiết kế theo phong cách hiện đại.
@@ -317,7 +317,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Phòng khách tạo điểm nhấn với kiểu thiết kế thông tầng, tạo cảm giác
@@ -338,7 +338,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Phòng ngủ master với trắng, xám nhạt tạo cảm giác sang trọng, thanh
@@ -360,7 +360,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Phòng thay đồ trong phòng master cũng là một không gian tạo điểm
@@ -400,7 +400,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Phòng khách thông tầng, cùng các hệ vách kính giúp căn phòng luôn
@@ -421,7 +421,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Phòng ngủ được kết hợp khéo léo giữa màu xám, nâu của vật liệu và
@@ -456,7 +456,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Báo giá gói thiết kế nội thất quận 5, TPHCM trọn gói 200.000 VMĐ/m2
@@ -494,7 +494,7 @@ const ServiceDetailPage = () => {
             width="100%"
             position="absolute"
             bottom={-10}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
             fontStyle="italic"
           >
@@ -514,7 +514,7 @@ const ServiceDetailPage = () => {
             width="100%"
             position="absolute"
             bottom={-10}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
             fontStyle="italic"
           >
@@ -561,7 +561,7 @@ const ServiceDetailPage = () => {
             bgcolor="primary.main"
             position="absolute"
             bottom={0}
-            fontSize="16px"
+            fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
             Thiết kế nội thất quận 5 cần từ 20 – 30 ngày để hoàn thành. Quá

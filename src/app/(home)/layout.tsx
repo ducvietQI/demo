@@ -18,8 +18,8 @@ export default function ClientLayout({
       <IconButton
         sx={{
           position: "fixed",
-          right: 40,
-          bottom: 40,
+          right: { xs: 10, md: 40 },
+          bottom: { xs: 10, md: 40 },
           zIndex: 2000,
           width: 70,
           height: 70,
@@ -38,8 +38,8 @@ export default function ClientLayout({
       <IconButton
         sx={{
           position: "fixed",
-          right: 40,
-          bottom: 130,
+          right: { xs: 10, md: 40 },
+          bottom: { xs: 95, md: 130 },
           zIndex: 2000,
           width: 70,
           height: 70,

@@ -31,7 +31,7 @@ const ProductDetailPage = () => {
       <Stack py={5}>
         <Grid2 container spacing={4}>
           {/* Image Gallery */}
-          <Grid2 className="custome-gallery" size={6}>
+          <Grid2 className="custome-gallery" size={{ xs: 12, md: 6 }}>
             <ImageGallery
               items={images}
               showPlayButton={false}
@@ -42,7 +42,7 @@ const ProductDetailPage = () => {
           </Grid2>
 
           {/* Product Info */}
-          <Grid2 size={6}>
+          <Grid2 size={{ xs: 12, md: 6 }}>
             <Stack spacing={1}>
               <Stack direction="row" alignItems="center" spacing={1}>
                 <Typography variant="h2" fontWeight={700}>
@@ -236,7 +236,7 @@ const ProductDetailPage = () => {
             sống hiện đại.
           </Typography>
 
-          <Stack position="relative" height={1050}>
+          <Stack position="relative" height={{ xs: 350, md: 1050 }}>
             <Image
               src="/images/product-9.webp"
               layout="fill"
@@ -245,7 +245,7 @@ const ProductDetailPage = () => {
               objectFit="contain"
             />
           </Stack>
-          <Stack position="relative" height={1922}>
+          <Stack position="relative" height={{ xs: 500, md: 1922 }}>
             <Image
               src="/images/product-10.webp"
               layout="fill"
@@ -258,7 +258,7 @@ const ProductDetailPage = () => {
           <Typography variant="h4" fontWeight={700}>
             1. THÔNG SỐ KỸ THUẬT
           </Typography>
-          <Stack position="relative" height={640}>
+          <Stack position="relative" height={{ xs: 180, md: 640 }}>
             <Image
               src="/images/product-11.webp"
               layout="fill"
@@ -314,7 +314,7 @@ const ProductDetailPage = () => {
             phẩm.
           </Typography>
 
-          <Stack position="relative" height={762}>
+          <Stack position="relative" height={{ xs: 220, md: 762 }}>
             <Image
               src="/images/product-12.webp"
               layout="fill"
@@ -362,7 +362,7 @@ const ProductDetailPage = () => {
             trang phục rõ ràng.
           </Typography>
 
-          <Stack position="relative" height={762}>
+          <Stack position="relative" height={{ xs: 330, md: 762 }}>
             <Image
               src="/images/product-5.webp"
               layout="fill"
@@ -371,7 +371,7 @@ const ProductDetailPage = () => {
               objectFit="contain"
             />
           </Stack>
-          <Stack position="relative" height={540}>
+          <Stack position="relative" height={{ xs: 180, md: 540 }}>
             <Image
               src="/images/product-14.webp"
               layout="fill"
@@ -380,7 +380,7 @@ const ProductDetailPage = () => {
               objectFit="contain"
             />
           </Stack>
-          <Stack position="relative" height={380}>
+          <Stack position="relative" height={{ xs: 110, md: 380 }}>
             <Image
               src="/images/product-15.webp"
               layout="fill"

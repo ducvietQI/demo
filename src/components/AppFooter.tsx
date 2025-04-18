@@ -27,8 +27,8 @@ const AppFooter = () => {
               <Box
                 sx={{
                   position: "relative",
-                  height: { xs: 35, md: 80 },
-                  width: { xs: 35, md: 140 },
+                  height: { xs: 45, md: 80 },
+                  width: { xs: 65, md: 140 },
                 }}
               >
                 <Image src="/images/logo.png" fill alt="logo" />
