@@ -24,9 +24,9 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ pt: "50px", pb: "100px", width: "100%", bgcolor: "#fff" }}>
+        <Box sx={{ pt: "50px", pb: "100px", width: "100%" }}>
           <Container>
-            <Grid2 container spacing={3}>
+            <Grid2 container>
               {convertArr.map((step, idx) => (
                 <Grid2
                   key={idx}
@@ -34,7 +34,23 @@ function TabPanel(props: TabPanelProps) {
                   textAlign="center"
                   position="relative"
                 >
-                  <Stack alignItems="center">
+                  <Stack
+                    alignItems="center"
+                    justifyContent="center"
+                    sx={{
+                      width: "100%",
+                      aspectRatio: "1", // Đảm bảo chiều cao và chiều rộng bằng nhau
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      textAlign: "center",
+                      boxShadow: "0 0 0 1px #E5E5E5", // Tạo viền bằng box-shadow
+                      backgroundColor: "#fff", // Đảm bảo màu nền
+                      p: 2,
+                      pt: 5,
+                    }}
+                  >
                     <Box
                       sx={{
                         filter:
@@ -70,19 +86,6 @@ function TabPanel(props: TabPanelProps) {
                       {step.description}
                     </Box>
                   </Stack>
-                  {!isTabletDown && (
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: 40,
-                        right: -30,
-                        color: "text.black",
-                        fontSize: "40px",
-                      }}
-                    >
-                      {idx < steps.length - 1 && <RightArrow />}
-                    </Box>
-                  )}
                 </Grid2>
               ))}
             </Grid2>
