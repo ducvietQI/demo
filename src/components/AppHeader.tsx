@@ -64,7 +64,13 @@ const AppHeader = () => {
             component={Link}
             href={RouteConstant.HOME}
           >
-            <Image src="/images/logo.png" fill alt="logo" />
+            <Image
+              src="/images/logo.png"
+              sizes="(max-width: 600px) 55px, (max-width: 960px) 80px, 140px"
+              fill
+              alt="logo"
+              priority
+            />
           </Box>
 
           {!isTabletDown && (

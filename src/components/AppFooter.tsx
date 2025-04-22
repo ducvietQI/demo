@@ -31,7 +31,12 @@ const AppFooter = () => {
                   width: { xs: 65, md: 140 },
                 }}
               >
-                <Image src="/images/logo.png" fill alt="logo" />
+                <Image
+                  src="/images/logo.png"
+                  sizes="(max-width: 600px) 55px, (max-width: 960px) 80px, 140px"
+                  fill
+                  alt="logo"
+                />
               </Box>
             </Stack>
           </Grid2>

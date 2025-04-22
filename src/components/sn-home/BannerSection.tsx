@@ -1,7 +1,7 @@
 "use client";
 
 import { useTabletDown } from "@/hooks";
-import { Stack, Box, Typography, Grid2 } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import Image from "next/image";
 import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -33,14 +33,14 @@ const BannerSection = () => {
           >
             {isTabletDown ? (
               <Stack>
-                <Box position="relative" height={242}>
+                <Box position="relative" height={242} width="100%">
                   <Image
                     src={slide.image}
                     alt={`slide-${index + 1}`}
                     fill
                     className="object-cover"
-                    priority={index === 0}
-                    sizes="100vw"
+                    priority={index === 0} // Ưu tiên tải slide đầu tiên
+                    sizes="(max-width: 600px) 100vw, (max-width: 960px) 80vw, 60vw" // Tối ưu kích thước theo màn hình
                   />
                 </Box>
                 {/* <Stack
@@ -137,7 +137,7 @@ export default BannerSection;
 
 // Dữ liệu slide với nội dung giữ nguyên cho tất cả các slide
 const slideData = [
-  { image: "/images/SLIDE-HOME1.jpg" },
-  { image: "/images/SLIDE-HOME2.jpg" },
-  { image: "/images/SLIDE-HOME3.jpg" },
+  { image: "/images/SLIDE-HOME1.webp" },
+  { image: "/images/SLIDE-HOME2.webp" },
+  { image: "/images/SLIDE-HOME3.webp" },
 ];
