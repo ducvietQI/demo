@@ -32,8 +32,8 @@ const NewsDetailPage = () => {
         <ImageGallery items={images} showIndex />
 
         <Typography variant="h4">
-          SBS HOUSE cảm thấy vô cùng biết ơn và hạnh phúc khi nhận được phản hồi
-          tích cực từ gia chủ ở Bình Phước. Bên cạnh dịch vụ thiết kế và thi
+          Quanghoanhome cảm thấy vô cùng biết ơn và hạnh phúc khi nhận được phản
+          hồi tích cực từ gia chủ ở Bình Phước. Bên cạnh dịch vụ thiết kế và thi
           công nhà trọn gói, chúng tôi vẫn luôn sẵn sàng thiết kế từ xa và hỗ
           trợ tư vấn thi công cho khách hàng trên toàn 63 tỉnh thành của Việt
           Nam. Mới đây, chúng tôi đã nhận được một bộ sưu tập hình ảnh thực tế
@@ -60,7 +60,7 @@ const NewsDetailPage = () => {
             textAlign="center"
           >
             Hình ảnh gia đình hạnh phúc, hài lòng khi tổ ấm được hoàn thành gửi
-            hình ảnh về SBS HOUSE
+            hình ảnh về Quanghoanhome
           </Box>
         </Stack>
 
@@ -122,17 +122,18 @@ const NewsDetailPage = () => {
             textAlign="center"
           >
             Dù không phải là người chụp ảnh chuyên nghiệp nhưng qua những bức
-            ảnh gia chủ gửi về cho SBS HOUSE cũng có thể cho mọi người cảm nhận
-            được không gian hiện đại, thoáng đãng bên trong mọi góc của ngôi
-            nhà.
+            ảnh gia chủ gửi về cho Quanghoanhome cũng có thể cho mọi người cảm
+            nhận được không gian hiện đại, thoáng đãng bên trong mọi góc của
+            ngôi nhà.
           </Box>
         </Stack>
 
         <Typography variant="h4">
-          Chúng tôi chân thành cảm ơn gia đình đã trao cho SBS HOUSE niềm tin to
-          lớn và cơ hội để đồng hành cùng họ trong hành trình đặc biệt này. Chúc
-          cho T’s House luôn ngập tràn tiếng cười, yêu thương và hạnh phúc.
-          Chúng tôi tự hào khi được là một phần của câu chuyện thành công này.
+          Chúng tôi chân thành cảm ơn gia đình đã trao cho Quanghoanhome niềm
+          tin to lớn và cơ hội để đồng hành cùng họ trong hành trình đặc biệt
+          này. Chúc cho T’s House luôn ngập tràn tiếng cười, yêu thương và hạnh
+          phúc. Chúng tôi tự hào khi được là một phần của câu chuyện thành công
+          này.
         </Typography>
 
         <Stack spacing={2} alignItems="center">

@@ -1,3 +1,4 @@
+import ArrowDownIcon from "./ArrowDownIcon";
 import ArrowRightIcon from "./ArrowRightIcon";
 import CloseXIcon from "./CloseXIcon";
 import CompareIcon from "./CompareIcon";
@@ -20,4 +21,5 @@ export {
   LikeIcon,
   EyeIcon,
   FilterIcon,
+  ArrowDownIcon,
 };

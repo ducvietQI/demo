@@ -1,87 +1,122 @@
-"use client";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import { ArrowDownIcon } from "../Icons";
 
-import { Autocomplete, Box, Stack, TextField } from "@mui/material";
-import { useState } from "react";
-
-const categories = [
-  "Bàn Sofa - Bàn Cafe - Bàn Trà",
-  "Bàn Ăn",
-  "Ghế Sofa",
-  "Bộ Bàn Ăn",
-  "Tủ Đầu Giường",
-  "Tủ Quần Áo",
-  "Tủ & Kệ",
-  "Ghế Ăn",
-  "Giường Ngủ",
-  "Tủ Kệ Tivi",
-  "Tủ Giày - Tủ Trang Trí",
-  "Bàn Làm Việc",
-  "Bàn Trang Điểm",
-  "Ghế Văn Phòng",
-  "Khác",
+const arr = [
+  {
+    title: "Phòng ngủ",
+    items: [
+      "Giường ngủ các loại",
+      "Tủ quần áo",
+      "Bàn trang điểm",
+      "Tủ đầu giường",
+      "Chăn, drap, gối, nệm",
+      "Đèn ngủ",
+    ],
+  },
+  {
+    title: "Phòng khách",
+    items: [
+      "Ghế sofa",
+      "Bàn trà",
+      "Kệ tivi",
+      "Tủ sách",
+      "Thảm trang trí",
+      "Đèn trang trí",
+    ],
+  },
+  {
+    title: "Phòng ăn",
+    items: [
+      "Bàn ăn",
+      "Ghế ăn",
+      "Tủ bếp",
+      "Tủ rượu",
+      "Đèn trần phòng ăn",
+      "Phụ kiện bàn ăn",
+    ],
+  },
 ];
 
 const CategoryFilter = () => {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-
   return (
-    <Stack spacing={1}>
-      <Autocomplete
-        multiple
-        size="small"
-        options={categories}
-        getOptionLabel={(option) => option}
-        value={selectedCategories}
-        onChange={(event, newValue) => setSelectedCategories(newValue)}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            variant="outlined"
-            label="Danh mục"
-            slotProps={{
-              inputLabel: {
-                sx: { fontSize: 16 },
-              },
-            }}
+    <Box>
+      {arr.map((category, index) => (
+        <Accordion
+          key={index}
+          disableGutters
+          square
+          elevation={0}
+          sx={{
+            border: "none",
+            boxShadow: "none",
+            "&::before": {
+              display: "none", // bỏ line mờ phía trên
+            },
+          }}
+        >
+          <AccordionSummary
+            expandIcon={
+              <ArrowDownIcon
+                sx={{
+                  fontSize: "16px",
+                }}
+              />
+            }
             sx={{
-              "& .MuiInputBase-root": {
-                fontSize: 16,
-              },
-              "& .MuiAutocomplete-tag": {
-                fontSize: 16,
+              border: "none",
+              minHeight: "auto",
+              "&.Mui-expanded": {
+                minHeight: "auto",
               },
             }}
-          />
-        )}
-        renderOption={(props, option) => {
-          const { key, ...rest } = props;
-          return (
-            <Box
-              component="li"
-              key={key}
-              {...rest}
-              sx={{ fontSize: 16, color: "text.black" }}
-            >
-              {option}
-            </Box>
-          );
-        }}
-        sx={{
-          "& .MuiAutocomplete-inputRoot": {
-            fontSize: 16,
-          },
-          "& .MuiAutocomplete-endAdornment": {
-            fontSize: 16,
-          },
-          "& .MuiAutocomplete-option": {
-            fontSize: 16,
-          },
-          "& .MuiChip-label": {
-            fontSize: 16,
-          },
-        }}
-      />
-    </Stack>
+          >
+            <Typography fontWeight={500} fontSize="16px" color="text.black">
+              {category.title}
+            </Typography>
+          </AccordionSummary>
+          {category.items && (
+            <AccordionDetails sx={{ p: 0, border: "none" }}>
+              <List>
+                {category.items.map((item, i) => (
+                  <ListItem
+                    key={i}
+                    sx={{
+                      py: 0.5,
+
+                      "&:hover .MuiTypography-root": {
+                        color: "primary.main",
+                      },
+                    }}
+                  >
+                    <ListItemText
+                      primary={item}
+                      sx={{
+                        cursor: "pointer",
+                      }}
+                      slotProps={{
+                        primary: {
+                          fontSize: "16px",
+                          color: "text.black",
+                        },
+                      }}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </AccordionDetails>
+          )}
+        </Accordion>
+      ))}
+    </Box>
   );
 };
 

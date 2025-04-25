@@ -44,14 +44,14 @@ const AboutSection = () => {
               </Box>
               <Stack bgcolor="white" spacing="15px" p="30px 30px 15px 30px">
                 <Typography variant="h6">
-                  Năm 2018, SBS HOUSE chính thức được thành lập sau hơn 3 năm
-                  hoạt động dưới tên gọi là một Team thiết kế M – Design. Sau
-                  thành công từ việc đưa cây xanh vào nhà qua một công trình nhà
-                  phố, SBS HOUSE nhen nhuốm hi vọng mang lại những giải pháp
-                  kiến trúc tối ưu, nhiều ánh sáng và thông thoáng nhất cho mọi
-                  ngôi nhà của người Việt. Từ đó đến nay, chúng tôi vẫn không
-                  ngừng theo đuổi mục tiêu này, nỗ lực mỗi ngày để tạo ra “tác
-                  phẩm” hơn là sản phẩm cho khách hàng.
+                  Năm 2018, Quanghoanhome chính thức được thành lập sau hơn 3
+                  năm hoạt động dưới tên gọi là một Team thiết kế M – Design.
+                  Sau thành công từ việc đưa cây xanh vào nhà qua một công trình
+                  nhà phố, Quanghoanhome nhen nhuốm hi vọng mang lại những giải
+                  pháp kiến trúc tối ưu, nhiều ánh sáng và thông thoáng nhất cho
+                  mọi ngôi nhà của người Việt. Từ đó đến nay, chúng tôi vẫn
+                  không ngừng theo đuổi mục tiêu này, nỗ lực mỗi ngày để tạo ra
+                  “tác phẩm” hơn là sản phẩm cho khách hàng.
                 </Typography>
                 <Button
                   focusRipple={false}
@@ -106,13 +106,13 @@ const AboutSection = () => {
               <Stack bgcolor="white" spacing="15px" p="30px 30px 15px 30px">
                 <Typography variant="h6">
                   Trung thực – Sáng tạo – Tận tâm – Kỷ luật – Yêu thương là
-                  những giá trị cốt lõi mà SBS HOUSE gầy dựng cho đội ngũ. Vì
-                  chúng tôi tin rằng, khi sở hữu những giá trị này thì chúng tôi
-                  sẽ thành công trong mọi sản phẩm, dịch vụ và tự tin mang đến
-                  điều tốt nhất cho khách hàng. Trung thực, tận tâm trong thương
-                  thảo, sáng tạo trong mọi sản phẩm, yêu thương và coi công
-                  trình của khách hàng như của chính mình. Và kỷ luật để kịp
-                  tiến độ dù trong bất cứ hoàn cảnh nào.
+                  những giá trị cốt lõi mà Quanghoanhome gầy dựng cho đội ngũ.
+                  Vì chúng tôi tin rằng, khi sở hữu những giá trị này thì chúng
+                  tôi sẽ thành công trong mọi sản phẩm, dịch vụ và tự tin mang
+                  đến điều tốt nhất cho khách hàng. Trung thực, tận tâm trong
+                  thương thảo, sáng tạo trong mọi sản phẩm, yêu thương và coi
+                  công trình của khách hàng như của chính mình. Và kỷ luật để
+                  kịp tiến độ dù trong bất cứ hoàn cảnh nào.
                 </Typography>
                 <Button
                   focusRipple={false}

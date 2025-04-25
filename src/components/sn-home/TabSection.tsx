@@ -24,7 +24,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ pt: "50px", pb: "100px", width: "100%" }}>
+        <Box sx={{ width: "100%" }}>
           <Container>
             <Grid2 container>
               {convertArr.map((step, idx) => (
@@ -63,6 +63,7 @@ function TabPanel(props: TabPanelProps) {
                         width={isTabletDown ? 79 : 128}
                         height={isTabletDown ? 80 : 129}
                         loading="lazy"
+                        sizes="(max-width: 600px) 79px, 128px"
                       />
                     </Box>
                     <Box
@@ -112,7 +113,7 @@ export default function TabSection() {
 
   return (
     <Stack alignItems="center" width="100%" mt={5}>
-      <AppBar sx={{ width: { xs: "100%", md: 600 } }} position="static">
+      <AppBar sx={{ width: { xs: "100%", md: 608 } }} position="static">
         <Tabs
           value={value}
           onChange={handleChange}
@@ -124,10 +125,10 @@ export default function TabSection() {
             label="Thiết kế"
             {...a11yProps(0)}
             sx={{
-              width: { xs: "50%", md: 300 },
-              color: "text.black",
+              width: "50%",
+              color: value === 0 ? "#fff" : "text.black",
               fontSize: { xs: "14px", md: "20px" },
-              bgcolor: value === 0 ? "#fff" : "transparent",
+              bgcolor: value === 0 ? "primary.main" : "white",
               "&:hover": {
                 color: "#fff",
                 bgcolor: "primary.main",
@@ -138,10 +139,10 @@ export default function TabSection() {
             label="Thi công trọn gói"
             {...a11yProps(1)}
             sx={{
-              width: { xs: "50%", md: 300 },
-              color: "text.black",
+              width: "50%",
+              color: value === 1 ? "#fff" : "text.black",
               fontSize: { xs: "14px", md: "20px" },
-              bgcolor: value === 1 ? "#fff" : "transparent",
+              bgcolor: value === 1 ? "primary.main" : "white",
               "&:hover": {
                 color: "#fff",
                 bgcolor: "primary.main",
@@ -202,7 +203,7 @@ const steps2 = [
   {
     title: "KÝ HỢP ĐỒNG",
     description:
-      "Hai bên gặp gỡ trao đổi thống nhất các vấn đề liên quan tiến độ, chất lượng, ngày khởi công và các điều khoản hợp đồng.",
+      "Hai bên gặp gỡ trao đổi thống nhất các vấn đề liên quan tiến độ, chất lượng, ngày khởi công và điều khoản hợp đồng.",
     icon: "/images/icon-5.png",
   },
   {

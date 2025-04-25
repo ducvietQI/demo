@@ -135,11 +135,11 @@ const DesignProjectSection = () => {
             Công trình thiết kế
           </Typography>
           <Typography pt={2} color="text.black" fontSize="16px">
-            Mỗi năm, SBS HOUSE thực hiện hàng trăm công trình thiết kế ở mọi
-            miền đất nước. Phong cách thiết kế chính của SBS HOUSE là hiện đại -
-            tối giản - tiện nghi - thông thoáng. Ngoài ra, những ý tưởng và sở
-            thích của gia chủ cũng được ưu tiên hàng đầu, để tạo nên một công
-            trình nhà ở độc bản, mang đậm dấu ấn cá nhân.
+            Mỗi năm, Quanghoanhome thực hiện hàng trăm công trình thiết kế ở mọi
+            miền đất nước. Phong cách thiết kế chính của Quanghoanhome là hiện
+            đại - tối giản - tiện nghi - thông thoáng. Ngoài ra, những ý tưởng
+            và sở thích của gia chủ cũng được ưu tiên hàng đầu, để tạo nên một
+            công trình nhà ở độc bản, mang đậm dấu ấn cá nhân.
           </Typography>
           <Button
             sx={{

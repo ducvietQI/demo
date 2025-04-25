@@ -151,8 +151,8 @@ const ProjectDetailPage = () => {
           nhiên. Dù được xây dựng trên lô đất phổ thông 5x20m, hướng đến mục
           đích cho thuê, công trình vẫn mang đến trải nghiệm sống sáng, thoáng
           và tiện nghi cho người ở. Điều này không dễ có được nếu chủ đầu tư
-          không chú trọng cho việc thiết kế. Cùng SBS HOUSE tìm hiểu những điểm
-          khác biệt có trong One & Only Apartment nhé!
+          không chú trọng cho việc thiết kế. Cùng Quanghoanhome tìm hiểu những
+          điểm khác biệt có trong One & Only Apartment nhé!
         </Typography>
 
         <Typography variant="h4" fontWeight={700}>
@@ -189,7 +189,7 @@ const ProjectDetailPage = () => {
           >
             One & Only Apartment mang đến cho người ở không gian sống hiện đại,
             sáng, thoáng và tiện nghi nhờ những giải pháp thiết kế tối ưu đến từ
-            đội ngũ SBS HOUSE.
+            đội ngũ Quanghoanhome.
           </Box>
         </Stack>
 
@@ -309,8 +309,8 @@ const ProjectDetailPage = () => {
             fontSize="16px"
             textAlign="center"
           >
-            Mặt bằng công năng chi tiết được đội ngũ SBS HOUSE bố trí cho 5 tầng
-            1 tum của One & Only Apartment
+            Mặt bằng công năng chi tiết được đội ngũ Quanghoanhome bố trí cho 5
+            tầng 1 tum của One & Only Apartment
           </Box>
         </Stack>
 

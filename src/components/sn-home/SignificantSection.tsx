@@ -41,7 +41,7 @@ const SignificantSection = () => {
                 lineHeight="43px"
               >
                 Điểm khác biệt
-                <br /> thi công của SBS
+                <br /> thi công của Quanghoanhome
               </Typography>
               <Typography
                 variant="body1"
@@ -56,8 +56,8 @@ const SignificantSection = () => {
                 fontSize="14px"
               >
                 Để có những công trình chất lượng, chúng tôi luôn cải tiến, đổi
-                mới từng ngày. Trong cùng một phân khúc nhà phố, SBS HOUSE tự
-                hào vì có những điểm khác biệt trong giải pháp, kỹ thuật thi
+                mới từng ngày. Trong cùng một phân khúc nhà phố, Quanghoanhome
+                tự hào vì có những điểm khác biệt trong giải pháp, kỹ thuật thi
                 công. Chính những điểm khác biệt nhỏ này tạo nên một khác biệt
                 rất lớn, từ đó cho ra đời những công trình chuẩn chỉnh, bền vững
                 với thời gian.
@@ -110,7 +110,7 @@ const SignificantSection = () => {
               lineHeight="43px"
             >
               Điểm khác biệt
-              <br /> thi công của SBS
+              <br /> thi công của Quanghoanhome
             </Typography>
             <Typography
               variant="body1"
@@ -125,8 +125,8 @@ const SignificantSection = () => {
               fontSize="14px"
             >
               Để có những công trình chất lượng, chúng tôi luôn cải tiến, đổi
-              mới từng ngày. Trong cùng một phân khúc nhà phố, SBS HOUSE tự hào
-              vì có những điểm khác biệt trong giải pháp, kỹ thuật thi công.
+              mới từng ngày. Trong cùng một phân khúc nhà phố, Quanghoanhome tự
+              hào vì có những điểm khác biệt trong giải pháp, kỹ thuật thi công.
               Chính những điểm khác biệt nhỏ này tạo nên một khác biệt rất lớn,
               từ đó cho ra đời những công trình chuẩn chỉnh, bền vững với thời
               gian.
@@ -170,10 +170,10 @@ const SignificantSection = () => {
             fontSize="14px"
           >
             Lễ động thổ, lễ ký hợp đồng luôn được chuẩn bị chu đáo và trang
-            trọng để quý khách hàng hiểu rằng SBS HOUSE trân trọng sự hợp tác
-            cùng quý khách. Chúng tôi không thể mang đến cho quý khách giá thành
-            rẻ, chúng tôi chỉ có thể mang đến sản phẩm tốt và dịch vụ chất lượng
-            hàng đầu.
+            trọng để quý khách hàng hiểu rằng Quanghoanhome trân trọng sự hợp
+            tác cùng quý khách. Chúng tôi không thể mang đến cho quý khách giá
+            thành rẻ, chúng tôi chỉ có thể mang đến sản phẩm tốt và dịch vụ chất
+            lượng hàng đầu.
           </Typography>
           <Button
             variant="contained"

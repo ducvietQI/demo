@@ -38,9 +38,9 @@ const ServicePage = () => {
             Dịch vụ
           </Box>
           <Box p={1.5} bgcolor="bg.grey" fontSize="14px" textAlign="center">
-            Để đáp ứng nhu cầu của khách hàng, SBS cung cấp những dịch vụ như:
-            thiết kế kiến trúc, thi công nhà phố, thiết kế và thi công trọn
-            gói,… tại Đà Nẵng, TP.HCM và nhiều tỉnh thành khác.
+            Để đáp ứng nhu cầu của khách hàng, Quanghoanhome cung cấp những dịch
+            vụ như: thiết kế kiến trúc, thi công nhà phố, thiết kế và thi công
+            trọn gói,… tại Đà Nẵng, TP.HCM và nhiều tỉnh thành khác.
           </Box>
         </>
       )}
@@ -68,9 +68,10 @@ const ServicePage = () => {
                 width="70%"
                 textAlign="center"
               >
-                Để đáp ứng nhu cầu của khách hàng, SBS cung cấp những dịch vụ
-                như: thiết kế kiến trúc, thi công nhà phố, thiết kế và thi công
-                trọn gói,… tại Đà Nẵng, TP.HCM và nhiều tỉnh thành khác.
+                Để đáp ứng nhu cầu của khách hàng, Quanghoanhome cung cấp những
+                dịch vụ như: thiết kế kiến trúc, thi công nhà phố, thiết kế và
+                thi công trọn gói,… tại Đà Nẵng, TP.HCM và nhiều tỉnh thành
+                khác.
               </Box>
             </>
           )}

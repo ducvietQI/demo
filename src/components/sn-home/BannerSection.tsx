@@ -59,7 +59,7 @@ const BannerSection = () => {
                     CHÚNG TÔI SINH RA VÌ HẠNH PHÚC CỦA CHÍNH BẠN
                   </Typography>
                   <Typography variant="h6" textAlign="center" p="15px">
-                    SBS HOUSE là công ty hoạt động toàn diện trong lĩnh vực
+                    Quanghoanhome là công ty hoạt động toàn diện trong lĩnh vực
                     thiết kế - thi công nhà phố theo phong cách hiện đại tại Đà
                     Nẵng - Quảng Nam. Với hơn 5 năm hoạt động, chúng tôi đã đồng
                     hành cùng hàng ngàn khách hàng để tạo nên những tổ ấm đẹp và
@@ -107,7 +107,7 @@ const BannerSection = () => {
                     sx={{ borderRight: "1px solid black", p: "15px" }}
                   >
                     <Typography variant="h6">
-                      SBS HOUSE là công ty hoạt động toàn diện trong lĩnh vực
+                      Quanghoanhome là công ty hoạt động toàn diện trong lĩnh vực
                       thiết kế - thi công nhà phố theo phong cách hiện đại tại
                       Đà Nẵng - Quảng Nam. Với hơn 5 năm hoạt động, chúng tôi đã
                       đồng hành cùng hàng ngàn khách hàng để tạo nên những tổ ấm
@@ -120,7 +120,7 @@ const BannerSection = () => {
                       vững chuyên môn, giàu kinh nghiệm; hứa hẹn sẽ mang đến
                       những công trình khiến bạn hài lòng nhất. Với phương châm
                       luôn đặt lợi ích của khách hàng lên hàng đầu, mọi sản phẩm
-                      mà SBS HOUSE tạo ra đều hướng đến lợi ích của bạn.
+                      mà Quanghoanhome tạo ra đều hướng đến lợi ích của bạn.
                     </Typography>
                   </Grid2>
                 </Grid2>

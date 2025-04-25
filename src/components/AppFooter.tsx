@@ -53,11 +53,11 @@ const AppFooter = () => {
                 mt="20px"
                 letterSpacing="-0.7px"
               >
-                CÔNG TY TNHH THIẾT KẾ VÀ XÂY DỰNG SBS
+                CÔNG TY TNHH THIẾT KẾ VÀ XÂY DỰNG Quanghoanhome
               </Typography>
               <Typography color="black" fontSize="14px">
-                SBS HOUSE đơn vị thiết kế thi công trọn gói miền Trung và miền
-                Nam
+                Quanghoanhome đơn vị thiết kế thi công trọn gói miền Trung và
+                miền Nam
               </Typography>
               <Typography
                 fontWeight={600}
@@ -162,19 +162,22 @@ const AppFooter = () => {
                 ĐỐI TÁC TIN CẬY
               </Typography>
 
-              {["SBS VILLA", "SBS DOOR", "BROCANVAS", "CMT GARDEN"].map(
-                (item) => (
-                  <Link
-                    key={item}
-                    href="#"
-                    color="black"
-                    fontSize="14px"
-                    underline="none"
-                  >
-                    {item}
-                  </Link>
-                )
-              )}
+              {[
+                "Quanghoanhome VILLA",
+                "Quanghoanhome DOOR",
+                "BROCANVAS",
+                "CMT GARDEN",
+              ].map((item) => (
+                <Link
+                  key={item}
+                  href="#"
+                  color="black"
+                  fontSize="14px"
+                  underline="none"
+                >
+                  {item}
+                </Link>
+              ))}
             </Stack>
           </Grid2>
         </Grid2>
@@ -188,7 +191,7 @@ const AppFooter = () => {
           alignItems="center"
         >
           <Typography fontSize="12px" color="text.black">
-            © Copyright 2014-2025. Bản quyền nội dung thuộc SBS HOUSE
+            © Copyright 2014-2025. Bản quyền nội dung thuộc Quanghoanhome
           </Typography>
           <Stack direction="row" spacing={1}>
             <IconButton sx={{ color: "white" }}>

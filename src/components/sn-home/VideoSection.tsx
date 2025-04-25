@@ -16,7 +16,7 @@ const VideoSection = () => {
         }}
       >
         <source
-          src="https://sbshouse.vn/wp-content/uploads/2022/08/sbs-house-video-web-fix-2.mp4"
+          src="https://Quanghoanhomehouse.vn/wp-content/uploads/2022/08/Quanghoanhome-house-video-web-fix-2.mp4"
           type="video/mp4"
         />
       </video>

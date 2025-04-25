@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { memo, useMemo, useState } from "react";
+import Image from "next/image";
 import stringFormat from "string-format";
 
 const ProductCard = ({
@@ -74,20 +75,21 @@ const ProductCard = ({
           sx={{
             height: { xs: 180, md: 265 },
             width: "100%",
+            position: "relative",
             overflow: "hidden",
           }}
         >
-          <CardMedia
-            className="product-image"
-            component="img"
-            image={imgSrc}
+          <Image
+            src={imgSrc}
             alt={imgAlt}
-            sx={{
-              height: "100%",
-              width: "100%",
+            fill
+            className="product-image"
+            style={{
               objectFit: "cover",
               transition: "transform 0.4s ease-in-out",
             }}
+            sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" // Tối ưu kích thước theo màn hình
+            loading="lazy" // Tải ảnh khi cần thiết
           />
         </Box>
         <CardContent sx={{ bgcolor: "#fff", p: 0, pt: 1 }}>
@@ -172,7 +174,7 @@ export default memo(ProductCard);
 export type ProductCardProps = {
   id: number;
   imgSrc: string;
-  imgAlt?: string;
+  imgAlt: string;
   title: string;
   description: string;
   price: number;

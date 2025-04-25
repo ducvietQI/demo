@@ -147,12 +147,12 @@ const ConstructionWorkSection = () => {
             Công trình thi công
           </Typography>
           <Typography pt={2} color="primary.black" fontSize="16px">
-            Tất cả công trình thi công do SBS HOUSE thực hiện đều đảm bảo những
-            giải pháp mới và tối ưu nhất nhằm mang đến một sản phẩm kiên cố, bền
-            vững. Mặc dù thi công nhà phố nhưng từ hạng mục lớn nhỏ đều được áp
-            dụng kỹ thuật thi công nhà cao tầng Coteccons. Hơn thế nữa, các công
-            trình được thiết kế - thi công trọn gói sẽ giống với bản vẽ thiết kế
-            ít nhất 95%.
+            Tất cả công trình thi công do Quanghoanhome thực hiện đều đảm bảo
+            những giải pháp mới và tối ưu nhất nhằm mang đến một sản phẩm kiên
+            cố, bền vững. Mặc dù thi công nhà phố nhưng từ hạng mục lớn nhỏ đều
+            được áp dụng kỹ thuật thi công nhà cao tầng Coteccons. Hơn thế nữa,
+            các công trình được thiết kế - thi công trọn gói sẽ giống với bản vẽ
+            thiết kế ít nhất 95%.
           </Typography>
           <Button
             sx={{

@@ -62,7 +62,7 @@ const ServiceDetailPage = () => {
               </ListItem>
 
               <ListItem disableGutters sx={listItemSx}>
-                2. Những mẫu thiết kế nội thất đẹp, tiện nghi của SBS HOUSE
+                2. Những mẫu thiết kế nội thất đẹp, tiện nghi của Quanghoanhome
                 <List disablePadding sx={{ pl: 3 }}>
                   <ListItem disableGutters sx={listItemSx}>
                     2.1. Mẫu thiết kế nội thất nhà phố
@@ -98,23 +98,23 @@ const ServiceDetailPage = () => {
           Mỗi ngôi nhà là một câu chuyện và nội thất chính là cách để kể câu
           chuyện ấy một cách tinh tế nhất. Nếu bạn đang tìm kiếm một đơn vị
           thiết kế nội thất quận 5 đẹp và có năng lực thi công trọn gói, liên hệ
-          ngay với SBS HOUSE. Với giải pháp cá nhân hóa theo từng nhu cầu và
-          phong cách sống, SBS HOUSE tạo nên không gian sống như ý cho gia chủ.
-          Tham khảo bài viết này để tìm hiểu rõ về dịch vụ và báo giá thiết kế
-          thi công nội thất quận 5 tại SBS HOUSE!
+          ngay với Quanghoanhome. Với giải pháp cá nhân hóa theo từng nhu cầu và
+          phong cách sống, Quanghoanhome tạo nên không gian sống như ý cho gia
+          chủ. Tham khảo bài viết này để tìm hiểu rõ về dịch vụ và báo giá thiết
+          kế thi công nội thất quận 5 tại Quanghoanhome!
         </Typography>
         <Typography variant="h4" fontWeight={700}>
           1. Công ty thiết kế nội thất quận 5 uy tín và chuyên nghiệp
         </Typography>
         <Typography variant="h4">
-          SBS HOUSE là đơn vị thiết kế – thi công nội thất chuyên nghiệp, có văn
-          phòng đặt tại Lầu 5, 137 Lê Quang Định, P. 14, Q. Bình Thạnh, Tp. HCM.
-          SBS HOUSE thiết kế nội thất quận 5 với đa dạng hình thức như: nhà phố,
-          biệt thự, căn hộ chung cư, tòa nhà văn phòng, showroom,… đáp ứng nhu
-          cầu ngày càng cao về thẩm mỹ và công năng tại khu vực này. Không dừng
-          lại ở thiết kế, SBS HOUSE còn đảm nhận thi công nội thất trọn gói tại
-          quận 5, giúp khách hàng hiện thực hóa ý tưởng một cách đồng bộ và kiểm
-          soát tốt tiến độ, chi phí.
+          Quanghoanhome là đơn vị thiết kế – thi công nội thất chuyên nghiệp, có
+          văn phòng đặt tại Lầu 5, 137 Lê Quang Định, P. 14, Q. Bình Thạnh, Tp.
+          HCM. Quanghoanhome thiết kế nội thất quận 5 với đa dạng hình thức như:
+          nhà phố, biệt thự, căn hộ chung cư, tòa nhà văn phòng, showroom,… đáp
+          ứng nhu cầu ngày càng cao về thẩm mỹ và công năng tại khu vực này.
+          Không dừng lại ở thiết kế, Quanghoanhome còn đảm nhận thi công nội
+          thất trọn gói tại quận 5, giúp khách hàng hiện thực hóa ý tưởng một
+          cách đồng bộ và kiểm soát tốt tiến độ, chi phí.
         </Typography>
         <Stack position="relative" height={{ xs: 350, md: 900 }}>
           <Image
@@ -132,19 +132,20 @@ const ServiceDetailPage = () => {
             fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
-            SBS HOUSE cung cấp dịch vụ thiết kế nội thất quận 5 và thi công trọn
-            gói nhà phố, biệt thự, căn hộ cao cấp,…
+            Quanghoanhome cung cấp dịch vụ thiết kế nội thất quận 5 và thi công
+            trọn gói nhà phố, biệt thự, căn hộ cao cấp,…
           </Box>
         </Stack>
         <Typography variant="h4">
-          Với gần 7 năm hoạt động, SBS HOUSE luôn ghi dấu với những công trình
-          được “cá nhân hóa”, đáp ứng nhu cầu của từng gia chủ. Dịch vụ{" "}
-          <strong>thiết kế nội thất quận 5</strong> của SBS HOUSE nổi bật với:
+          Với gần 7 năm hoạt động, Quanghoanhome luôn ghi dấu với những công
+          trình được “cá nhân hóa”, đáp ứng nhu cầu của từng gia chủ. Dịch vụ{" "}
+          <strong>thiết kế nội thất quận 5</strong> của Quanghoanhome nổi bật
+          với:
         </Typography>
         <ul className="custom-list">
           <li>
             Phong cách đa dạng: từ hiện đại, tối giản đến luxury, Indochine,…
-            đội ngũ kiến trúc sư SBS HOUSE có kinh nghiệm đều có những giải
+            đội ngũ kiến trúc sư Quanghoanhome có kinh nghiệm đều có những giải
             pháp, phương án phù hợp với từng gia chủ.
           </li>
           <li>
@@ -178,36 +179,37 @@ const ServiceDetailPage = () => {
             fontSize={{ xs: "14px", md: "16px" }}
             textAlign="center"
           >
-            Thiết kế thi công nội thất quận 5 của SBS HOUSE đa dạng phong cách
-            hiện đại, luxury, tân cổ điển, indochine
+            Thiết kế thi công nội thất quận 5 của Quanghoanhome đa dạng phong
+            cách hiện đại, luxury, tân cổ điển, indochine
           </Box>
         </Stack>
         <Typography variant="h4" fontWeight={700}>
-          2. Những mẫu thiết kế nội thất đẹp, tiện nghi của SBS HOUSE
+          2. Những mẫu thiết kế nội thất đẹp, tiện nghi của Quanghoanhome
         </Typography>
         <Typography variant="h4">
           Không gian sống lý tưởng không chỉ là nơi đầy đủ tiện nghi mà còn cần
-          truyền cảm hứng và phản ánh phong cách riêng của gia chủ. SBS HOUSE
-          luôn chú trọng vào sự hài hòa giữa thẩm mỹ – công năng – cảm xúc trong
-          từng thiết kế. Dưới đây là một số mẫu thiết kế nội thất do SBS thực
-          hiện, ghi dấu ấn bằng sự chỉn chu và tinh tế trong từng chi tiết.
+          truyền cảm hứng và phản ánh phong cách riêng của gia chủ.
+          Quanghoanhome luôn chú trọng vào sự hài hòa giữa thẩm mỹ – công năng –
+          cảm xúc trong từng thiết kế. Dưới đây là một số mẫu thiết kế nội thất
+          do Quanghoanhome thực hiện, ghi dấu ấn bằng sự chỉn chu và tinh tế
+          trong từng chi tiết.
         </Typography>
         <Typography variant="h5" fontWeight={700}>
           2.1. Mẫu thiết kế nội thất nhà phố
         </Typography>
         <Typography variant="h4">
-          Nội thất nhà phố là một trong những thế mạnh lớn của SBS HOUSE, đặc
-          biệt tại khu vực TP.HCM và <strong>thiết kế nội thất quận 5</strong>.
-          Đặc trưng của nhà phố lô ống là hẹp chiều ngang và thường dài, đòi hỏi
-          cách bố trí thông minh để không gian luôn thông thoáng, liền mạch và
-          tiện nghi.
+          Nội thất nhà phố là một trong những thế mạnh lớn của Quanghoanhome ,
+          đặc biệt tại khu vực TP.HCM và{" "}
+          <strong>thiết kế nội thất quận 5</strong>. Đặc trưng của nhà phố lô
+          ống là hẹp chiều ngang và thường dài, đòi hỏi cách bố trí thông minh
+          để không gian luôn thông thoáng, liền mạch và tiện nghi.
         </Typography>
         <Typography variant="h4">
-          Ở mẫu thiết kế này SBS HOUSE sử dụng tone màu trung tính hiện đại kết
-          hợp cùng vật liệu gỗ, đá, kính hiện đại, ánh sáng đèn và ánh sáng tự
-          nhiên để tạo nên không gian ấm cúng nhưng vẫn sang trọng. Từng không
-          gian trọng nhà từ chung đến riêng đều được đảm bảo tính thẩm mỹ, gọn
-          gàng và tối ưu lưu thông để nhà được sáng thoáng.
+          Ở mẫu thiết kế này Quanghoanhome sử dụng tone màu trung tính hiện đại
+          kết hợp cùng vật liệu gỗ, đá, kính hiện đại, ánh sáng đèn và ánh sáng
+          tự nhiên để tạo nên không gian ấm cúng nhưng vẫn sang trọng. Từng
+          không gian trọng nhà từ chung đến riêng đều được đảm bảo tính thẩm mỹ,
+          gọn gàng và tối ưu lưu thông để nhà được sáng thoáng.
         </Typography>
         <Stack position="relative" height={900}>
           <Image
@@ -296,7 +298,7 @@ const ServiceDetailPage = () => {
         </Typography>
         <Typography variant="h4">
           Không gian biệt thự đòi hỏi sự đầu tư tỉ mỉ cả về thẩm mỹ lẫn công
-          năng. Trong công trình này, SBS HOUSE đã thiết kế cá nhân hóa theo
+          năng. Trong công trình này, Quanghoanhome đã thiết kế cá nhân hóa theo
           phong cách sống, gu thẩm mỹ và nhu cầu sử dụng riêng của gia chủ.
           Không gian trong căn biệt thự chứa đựng sự đẳng cấp ở mọi chi tiết. Từ
           vật liệu, cách bố trí đến ánh sáng hay màu sắc đều được lựa chọn hài
@@ -342,9 +344,9 @@ const ServiceDetailPage = () => {
             textAlign="center"
           >
             Phòng ngủ master với trắng, xám nhạt tạo cảm giác sang trọng, thanh
-            lịch. Với ưu thế về diện tích của phòng master, các KTS của SBS
-            HOUSE đã bố trí đầy đủ tiện nghi: tab đầu giường, kệ tủ tivi, bục
-            ghế ngồi bên cửa sổ,… cho căn phòng
+            lịch. Với ưu thế về diện tích của phòng master, các KTS của
+            Quanghoanhome đã bố trí đầy đủ tiện nghi: tab đầu giường, kệ tủ
+            tivi, bục ghế ngồi bên cửa sổ,… cho căn phòng
           </Box>
         </Stack>
         <Stack position="relative" height={900}>
@@ -365,27 +367,29 @@ const ServiceDetailPage = () => {
           >
             Phòng thay đồ trong phòng master cũng là một không gian tạo điểm
             nhấn riêng cho căn nhà, cho phong cách riêng của gia chủ. Khu vực
-            này được đội ngũ SBS HOUSE thiết kế với tông màu xám chủ đạo. Các kệ
-            tủ bố trí thông minh và kết hợp hệ đèn led tăng thêm phần sang trọng
+            này được đội ngũ Quanghoanhome thiết kế với tông màu xám chủ đạo.
+            Các kệ tủ bố trí thông minh và kết hợp hệ đèn led tăng thêm phần
+            sang trọng
           </Box>
         </Stack>
         <Typography variant="h5" fontWeight={700}>
           2.3. Mẫu thiết kế nội thất căn hộ duplex
         </Typography>
         <Typography variant="h4">
-          Thiết kế nội thất quận 5 cho căn hộ duplex cũng là dịch vụ có tại SBS
-          HOUSE và hiện được nhiều chủ đầu tư quan tâm. Căn hộ duplex đặc trưng
-          bởi không gian thông 2 tầng, mang lại cảm giác rộng rãi và đẳng cấp.
-          Tận dụng ưu điểm trên kết hợp cùng sự sáng tạo trong thiết kế, căn hộ
-          này được SBS HOUSE thể hiện sự sang trọng trong từng chi tiết. Không
-          chỉ tối ưu diện tích sử dụng, căn hộ này còn tạo ra sự kết nối xuyên
-          suốt giữa các tầng, đảm bảo cả tính riêng tư và sự gắn kết.
+          Thiết kế nội thất quận 5 cho căn hộ duplex cũng là dịch vụ có tại
+          Quanghoanhome và hiện được nhiều chủ đầu tư quan tâm. Căn hộ duplex
+          đặc trưng bởi không gian thông 2 tầng, mang lại cảm giác rộng rãi và
+          đẳng cấp. Tận dụng ưu điểm trên kết hợp cùng sự sáng tạo trong thiết
+          kế, căn hộ này được Quanghoanhome thể hiện sự sang trọng trong từng
+          chi tiết. Không chỉ tối ưu diện tích sử dụng, căn hộ này còn tạo ra sự
+          kết nối xuyên suốt giữa các tầng, đảm bảo cả tính riêng tư và sự gắn
+          kết.
         </Typography>
         <Typography variant="h4">
-          Nội thất căn hộ duplex này SBS HOUSE hướng đến sự sang trọng, thanh
-          lịch, tiện nghi và tinh giản, nhưng vẫn đủ điểm nhấn để thể hiện cá
-          tính của gia chủ. Màu sắc trung tính, nội thất cao cấp và bố cục hợp
-          lý tạo nên một không gian sống vừa hiện đại, vừa sang trọng.
+          Nội thất căn hộ duplex này Quanghoanhome hướng đến sự sang trọng,
+          thanh lịch, tiện nghi và tinh giản, nhưng vẫn đủ điểm nhấn để thể hiện
+          cá tính của gia chủ. Màu sắc trung tính, nội thất cao cấp và bố cục
+          hợp lý tạo nên một không gian sống vừa hiện đại, vừa sang trọng.
         </Typography>
         <Stack position="relative" height={900}>
           <Image
@@ -437,11 +441,11 @@ const ServiceDetailPage = () => {
           3.1. Bảng giá thiết kế nội thất quận 5
         </Typography>
         <Typography variant="h4">
-          Với kinh nghiệm đồng hành cùng 2000+ công trình trên cả nước, SBS
-          HOUSE luôn làm việc rõ ràng và minh bạch trong chi phí. Dịch vụ{" "}
-          <strong>thiết kế nội thất quận 5</strong> và các tỉnh thành khác, SBS
-          HOUSE hiện cung cấp với mức giá 200.000/m2. Tổng chi phí sẽ được tính
-          theo tổng diện tích căn nhà.
+          Với kinh nghiệm đồng hành cùng 2000+ công trình trên cả nước,
+          Quanghoanhome luôn làm việc rõ ràng và minh bạch trong chi phí. Dịch
+          vụ <strong>thiết kế nội thất quận 5</strong> và các tỉnh thành khác,
+          Quanghoanhome hiện cung cấp với mức giá 200.000/m2. Tổng chi phí sẽ
+          được tính theo tổng diện tích căn nhà.
         </Typography>
         <Stack position="relative" height={900}>
           <Image
@@ -466,21 +470,22 @@ const ServiceDetailPage = () => {
           3.2. Báo giá thi công nội thất quận 5 trọn gói
         </Typography>
         <Typography variant="h4">
-          SBS HOUSE mang đến dịch vụ <strong>thiết kế nội thất quận 5</strong>{" "}
-          và thi công trọn gói với quy trình chuyên nghiệp, đảm bảo đúng tiến độ
-          và chất lượng. Trước khi thi công, SBS HOUSE sẽ tiến hành bóc tách chi
-          tiết khối lượng, vật liệu và hạng mục để khách hàng dễ dàng nắm bắt
-          chi phí. Sau khi ký hợp đồng đội ngũ thi công sẽ tiến hành thực hiện
-          các công việc theo kế hoạch.
+          Quanghoanhome mang đến dịch vụ{" "}
+          <strong>thiết kế nội thất quận 5</strong> và thi công trọn gói với quy
+          trình chuyên nghiệp, đảm bảo đúng tiến độ và chất lượng. Trước khi thi
+          công, Quanghoanhome sẽ tiến hành bóc tách chi tiết khối lượng, vật
+          liệu và hạng mục để khách hàng dễ dàng nắm bắt chi phí. Sau khi ký hợp
+          đồng đội ngũ thi công sẽ tiến hành thực hiện các công việc theo kế
+          hoạch.
         </Typography>
 
         <Typography variant="h4">
-          Hiện nay, SBS HOUSE thiết kế thi công nội thất quận 5 với 2 đơn giá là
-          3.000.000 VNĐ/m2 đối với nhà phố và 4.000.000 VNĐ/m2 cho biệt thự. Mỗi
-          công trình sẽ khác nhau về tổng chi phí dựa theo quy mô, yêu cầu. Để
-          thể lên kế hoạch ngân sách cho ngôi nhà của mình tốt ngay từ khi bắt
-          đầu, bạn có thể liên hệ SBS HOUSE để được hỗ trợ khái toán nhanh
-          chóng.
+          Hiện nay, Quanghoanhome thiết kế thi công nội thất quận 5 với 2 đơn
+          giá là 3.000.000 VNĐ/m2 đối với nhà phố và 4.000.000 VNĐ/m2 cho biệt
+          thự. Mỗi công trình sẽ khác nhau về tổng chi phí dựa theo quy mô, yêu
+          cầu. Để thể lên kế hoạch ngân sách cho ngôi nhà của mình tốt ngay từ
+          khi bắt đầu, bạn có thể liên hệ Quanghoanhome để được hỗ trợ khái toán
+          nhanh chóng.
         </Typography>
         <Stack position="relative" height={400}>
           <Image
@@ -498,8 +503,8 @@ const ServiceDetailPage = () => {
             textAlign="center"
             fontStyle="italic"
           >
-            Báo giá thiết kế nội thất tại quận 5 và thi công trọn gói do SBS
-            HOUSE cung cấp với công trình nhà phố
+            Báo giá thiết kế nội thất tại quận 5 và thi công trọn gói do
+            Quanghoanhome cung cấp với công trình nhà phố
           </Box>
         </Stack>
         <Stack position="relative" height={400}>
@@ -528,10 +533,11 @@ const ServiceDetailPage = () => {
         </Typography>
 
         <Typography variant="h4">
-          Tại SBS HOUSE, quy trình <strong>thiết kế nội thất quận 5</strong> và
-          thi công được thực hiện chuyên nghiệp và chặt chẽ. Tiến độ được đảm
-          bảo đúng với cam kết mà SBS HOUSE đã thỏa thuận và ký kết với gia chủ.
-          Đồng thời vẫn giữ vững chất lượng và tính thẩm mỹ cho từng không gian.
+          Tại Quanghoanhome, quy trình <strong>thiết kế nội thất quận 5</strong>{" "}
+          và thi công được thực hiện chuyên nghiệp và chặt chẽ. Tiến độ được đảm
+          bảo đúng với cam kết mà Quanghoanhome đã thỏa thuận và ký kết với gia
+          chủ. Đồng thời vẫn giữ vững chất lượng và tính thẩm mỹ cho từng không
+          gian.
         </Typography>
         <Typography variant="h4">
           Thời gian thiết kế được linh hoạt, phụ thuộc cho từng ngôi nhà theo
@@ -541,11 +547,11 @@ const ServiceDetailPage = () => {
         </Typography>
         <Typography variant="h4">
           Với đội ngũ thi công có tay nghề và quy trình làm việc nghiêm ngặt,
-          giám sát chặt chẽ hàng ngày, SBS HOUSE có thể hoàn thiện thi công đảm
-          bảo chất lượng trong khoảng thời gian hợp lý. Nhà phố, căn hộ thi công
-          hoàn thiện nội thất trong khoảng 15 ngày. Công trình biệt thự do khối
-          lượng công việc và yêu cầu thẩm mỹ cao hơn, thời gian thi công có thể
-          kéo dài khoảng 20 ngày.
+          giám sát chặt chẽ hàng ngày, Quanghoanhome có thể hoàn thiện thi công
+          đảm bảo chất lượng trong khoảng thời gian hợp lý. Nhà phố, căn hộ thi
+          công hoàn thiện nội thất trong khoảng 15 ngày. Công trình biệt thự do
+          khối lượng công việc và yêu cầu thẩm mỹ cao hơn, thời gian thi công có
+          thể kéo dài khoảng 20 ngày.
         </Typography>
 
         <Stack position="relative" height={900}>
@@ -573,20 +579,20 @@ const ServiceDetailPage = () => {
         <Typography variant="h4">
           Hy vọng bài viết đã mang đến cho bạn nhiều thông tin hữu ích. Nếu bạn
           đang tìm kiếm một đơn vị thiết kế nội thất quận 5 và thi công trọn gói
-          uy tín, chuyên nghiệp thì đừng bỏ qua SBS HOUSE. Không chỉ có những
-          thiết kế mang đậm dấu ấn cá nhân đến từ các kiến trúc sư có chuyên
-          môn, SBS HOUSE còn sở hữu đội ngũ thi công có kinh nghiệm, có tay
-          nghề. Bạn sẽ luôn có thể sở hữu một không gian sống thẩm mỹ, tiện nghi
-          như ý khi đồng hành cùng SBS HOUSE.
+          uy tín, chuyên nghiệp thì đừng bỏ qua Quanghoanhome. Không chỉ có
+          những thiết kế mang đậm dấu ấn cá nhân đến từ các kiến trúc sư có
+          chuyên môn, Quanghoanhome còn sở hữu đội ngũ thi công có kinh nghiệm,
+          có tay nghề. Bạn sẽ luôn có thể sở hữu một không gian sống thẩm mỹ,
+          tiện nghi như ý khi đồng hành cùng Quanghoanhome.
         </Typography>
 
         <Typography fontStyle="italic" variant="h4" fontWeight="bold">
-          Không chỉ thiết kế thi công nội thất, SBS HOUSE còn là đơn vị thiết kế
-          – xây nhà trọn gói tại Quận 5 uy tín được nhiều khách hàng tin tưởng.
-          Chọn SBS HOUSE xây nhà trọn gói, gia chủ có thể an tâm từ lúc lên ý
-          tưởng đến khi nhận bàn giao ngôi nhà hoàn chỉnh. Đừng ngần ngại, hãy
-          liên hệ ngay với SBS HOUSE để nhận tư vấn chi tiết ngay trong hôm nay
-          nhé!
+          Không chỉ thiết kế thi công nội thất, Quanghoanhome còn là đơn vị
+          thiết kế – xây nhà trọn gói tại Quận 5 uy tín được nhiều khách hàng
+          tin tưởng. Chọn Quanghoanhome xây nhà trọn gói, gia chủ có thể an tâm
+          từ lúc lên ý tưởng đến khi nhận bàn giao ngôi nhà hoàn chỉnh. Đừng
+          ngần ngại, hãy liên hệ ngay với Quanghoanhome để nhận tư vấn chi tiết
+          ngay trong hôm nay nhé!
         </Typography>
 
         <Box mt={5}>
@@ -603,29 +609,29 @@ const ServiceDetailPage = () => {
               {
                 title: "Nhà thầu thi công không giống với thiết kế?",
                 content:
-                  "Khi lựa chọn dịch vụ thiết kế kiến trúc của SBS HOUSE, chủ đầu tư hoàn toàn yên tâm về vấn đề đơn vị nhà thầu thi công không giống với bản vẽ. Bởi sau khi hoàn thành bản vẽ thiết kế, SBS HOUSE sẽ bàn giao hồ sơ bản vẽ chi tiết được chú thích từng vị trí, màu sắc, tên vật liệu,... Đặc biệt, SBS HOUSE luôn đồng hành cùng khách hàng trong suốt quá trình thi công đến khi hoàn thiện ngôi nhà.  1. Bàn giao hồ...",
+                  "Khi lựa chọn dịch vụ thiết kế kiến trúc của Quanghoanhome, chủ đầu tư hoàn toàn yên tâm về vấn đề đơn vị nhà thầu thi công không giống với bản vẽ. Bởi sau khi hoàn thành bản vẽ thiết kế, Quanghoanhome sẽ bàn giao hồ sơ bản vẽ chi tiết được chú thích từng vị trí, màu sắc, tên vật liệu,... Đặc biệt, Quanghoanhome luôn đồng hành cùng khách hàng trong suốt quá trình thi công đến khi hoàn thiện ngôi nhà.  1. Bàn giao hồ...",
               },
               {
                 title: "Hồ sơ xây dựng nhà hoàn chỉnh gồm những gì?",
                 content:
-                  "Hồ sơ hoàn chỉnh khi xây nhà gồm phần kiến trúc, kết cấu, hạng mục điện, nước, nội thất và sân vườn là những hồ sơ mà SBS HOUSE sẽ bàn giao cho chủ đầu tư để thi công và giám sát công trình.  1. Phần kiến trúc Nhằm đảm bảo chi tiết thiết kế kiến trúc, tính thẩm mỹ của công trình SBS sẽ gửi đến chủ đầu tư phần kiến trúc với các thông tin như sau: Phối cảnh 3D tổng thể Mặt bằng các tầng Mặt bằng...",
+                  "Hồ sơ hoàn chỉnh khi xây nhà gồm phần kiến trúc, kết cấu, hạng mục điện, nước, nội thất và sân vườn là những hồ sơ mà Quanghoanhome sẽ bàn giao cho chủ đầu tư để thi công và giám sát công trình.  1. Phần kiến trúc Nhằm đảm bảo chi tiết thiết kế kiến trúc, tính thẩm mỹ của công trình Quanghoanhome sẽ gửi đến chủ đầu tư phần kiến trúc với các thông tin như sau: Phối cảnh 3D tổng thể Mặt bằng các tầng Mặt bằng...",
               },
               {
-                title: "Thời gian tiến độ thiết kế kiến trúc của SBS HOUSE",
+                title: "Thời gian tiến độ thiết kế kiến trúc của Quanghoanhome",
                 content:
-                  "Với sự tin tưởng của khách hàng ở xa khi lựa chọn SBS HOUSE là nơi gửi gắm, xây dựng nên tổ ấm cho gia đình. Để sản phẩm thiết kế hiện thực hóa một cách hoàn hảo nhất, SBS HOUSE sẵn sàng hỗ trợ và tư vấn khách hàng trong quá trình xây dựng nên ngôi nhà. Dưới đây là 5 vấn đề SBS HOUSE hỗ trợ khách hàng trong quá trình thi công. Mời bạn cùng theo dõi nhé! 1. SBS HOUSE hỗ trợ tư vấn về giá...",
+                  "Với sự tin tưởng của khách hàng ở xa khi lựa chọn Quanghoanhome là nơi gửi gắm, xây dựng nên tổ ấm cho gia đình. Để sản phẩm thiết kế hiện thực hóa một cách hoàn hảo nhất, Quanghoanhome sẵn sàng hỗ trợ và tư vấn khách hàng trong quá trình xây dựng nên ngôi nhà. Dưới đây là 5 vấn đề Quanghoanhome hỗ trợ khách hàng trong quá trình thi công. Mời bạn cùng theo dõi nhé! 1. Quanghoanhome hỗ trợ tư vấn về giá...",
               },
               {
                 title:
-                  "SBS HOUSE hỗ trợ khách hàng ở xa trong quá trình thi công như thế nào?",
+                  "Quanghoanhome hỗ trợ khách hàng ở xa trong quá trình thi công như thế nào?",
                 content:
-                  "Với sự tin tưởng của khách hàng ở xa khi lựa chọn SBS HOUSE là nơi gửi gắm, xây dựng nên tổ ấm cho gia đình. Để sản phẩm thiết kế hiện thực hóa một cách hoàn hảo nhất, SBS HOUSE sẵn sàng hỗ trợ và tư vấn khách hàng trong quá trình xây dựng nên ngôi nhà. Dưới đây là 5 vấn đề SBS HOUSE hỗ trợ khách hàng trong quá trình thi công. Mời bạn cùng theo dõi nhé! 1. SBS HOUSE hỗ trợ tư vấn về giá...",
+                  "Với sự tin tưởng của khách hàng ở xa khi lựa chọn Quanghoanhome là nơi gửi gắm, xây dựng nên tổ ấm cho gia đình. Để sản phẩm thiết kế hiện thực hóa một cách hoàn hảo nhất, Quanghoanhome sẵn sàng hỗ trợ và tư vấn khách hàng trong quá trình xây dựng nên ngôi nhà. Dưới đây là 5 vấn đề Quanghoanhome hỗ trợ khách hàng trong quá trình thi công. Mời bạn cùng theo dõi nhé! 1. Quanghoanhome hỗ trợ tư vấn về giá...",
               },
               {
                 title:
                   "Hạng mục xây nhà phần thô hoàn thiện gồm những công việc gì?",
                 content:
-                  "Quá trình xây dựng nhà ở gồm các công đoạn quan trọng đó là phần thô, phần hoàn thiện và thi công nội thất. Trong đó, xây nhà phần thô + hoàn thiện là công đoạn tốn nhiều thời gian và chi phí; là gốc rễ đảm bảo ngôi nhà vững chắc, bền đẹp theo năm tháng. SBS HOUSE xin chia sẻ đến bạn các công việc trong xây nhà phần thô và xây nhà hoàn thiện. Mời bạn cùng theo dõi! 1. Những công việc trong xây nhà phần...",
+                  "Quá trình xây dựng nhà ở gồm các công đoạn quan trọng đó là phần thô, phần hoàn thiện và thi công nội thất. Trong đó, xây nhà phần thô + hoàn thiện là công đoạn tốn nhiều thời gian và chi phí; là gốc rễ đảm bảo ngôi nhà vững chắc, bền đẹp theo năm tháng. Quanghoanhome xin chia sẻ đến bạn các công việc trong xây nhà phần thô và xây nhà hoàn thiện. Mời bạn cùng theo dõi! 1. Những công việc trong xây nhà phần...",
               },
             ];
 

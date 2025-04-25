@@ -6,7 +6,7 @@ const stats = [
   { value: 6, suffix: "+", label: "Năm kinh nghiệm" },
   { value: 100, suffix: "+", label: "Cán bộ, nhân viên" },
   { value: 1300, suffix: "+", label: "Khách hàng" },
-  { value: 60, suffix: "+", label: "Tỉnh có mặt SBS" },
+  { value: 60, suffix: "+", label: "Tỉnh có mặt Quanghoanhome" },
 ];
 
 const CountSection = () => {

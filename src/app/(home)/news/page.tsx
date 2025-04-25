@@ -39,8 +39,9 @@ const NewsPage = () => {
           </Box>
           <Box p={1.5} bgcolor="bg.grey" fontSize="14px" textAlign="center">
             Đối với khách hàng, chúng tôi luôn tận tâm tạo ra những giá trị cho
-            Quý khách hàng thân yêu. SBS HOUSE gồm đội ngũ kiến trúc sư, kỹ sư,
-            chuyên gia trang trí nội thất có trên 5 năm kinh nghiệm hoạt động
+            Quý khách hàng thân yêu. Quanghoanhome gồm đội ngũ kiến trúc sư, kỹ
+            sư, chuyên gia trang trí nội thất có trên 5 năm kinh nghiệm hoạt
+            động
           </Box>
         </>
       )}
@@ -69,9 +70,9 @@ const NewsPage = () => {
                 textAlign="center"
               >
                 Đối với khách hàng, chúng tôi luôn tận tâm tạo ra những giá trị
-                cho Quý khách hàng thân yêu. SBS HOUSE gồm đội ngũ kiến trúc sư,
-                kỹ sư, chuyên gia trang trí nội thất có trên 5 năm kinh nghiệm
-                hoạt động
+                cho Quý khách hàng thân yêu. Quanghoanhome gồm đội ngũ kiến trúc
+                sư, kỹ sư, chuyên gia trang trí nội thất có trên 5 năm kinh
+                nghiệm hoạt động
               </Box>
             </>
           )}
@@ -107,7 +108,7 @@ const imagesGroup2 = [
     imgSrc: "/images/fb-1.webp",
     title: "Feedback yêu thương của gia chủ Bình Phước gửi về",
     description:
-      "SBS HOUSE cảm thấy vô cùng biết ơn và hạnh phúc khi nhận được phản hồi tích cực từ gia chủ ở Bình Phước.....",
+      "Quanghoanhome cảm thấy vô cùng biết ơn và hạnh phúc khi nhận được phản hồi tích cực từ gia chủ ở Bình Phước.....",
   },
   {
     id: 2,
@@ -115,7 +116,7 @@ const imagesGroup2 = [
     title:
       "Nơi kết nối yêu thương và hiện thực hóa giấc mơ tổ ấm của gia chủ Bình Thuận",
     description:
-      "Chúng tôi xin chân thành cảm ơn gia chủ tại Bình Thuận đã gửi về những phản hồi tích cực dành cho SBS HOUSE. Đây là niềm động viên to lớn,...",
+      "Chúng tôi xin chân thành cảm ơn gia chủ tại Bình Thuận đã gửi về những phản hồi tích cực dành cho Quanghoanhome. Đây là niềm động viên to lớn,...",
   },
   {
     id: 3,
