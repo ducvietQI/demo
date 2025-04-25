@@ -174,7 +174,7 @@ export default memo(ProductCard);
 export type ProductCardProps = {
   id: number;
   imgSrc: string;
-  imgAlt: string;
+  imgAlt?: string;
   title: string;
   description: string;
   price: number;

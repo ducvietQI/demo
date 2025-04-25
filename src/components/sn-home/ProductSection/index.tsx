@@ -100,6 +100,7 @@ export const products: ProductCardProps[] = [
   {
     id: 1,
     imgSrc: "/images/syltherine.webp",
+    imgAlt: "Giường Ngủ Gỗ MOHO VLINE 601 Nhiều Kích Thước",
     title: "Giường Ngủ Gỗ MOHO VLINE 601 Nhiều Kích Thước",
     description: "Stylish cafe chair",
     price: 6290000,
@@ -108,6 +109,7 @@ export const products: ProductCardProps[] = [
   {
     id: 2,
     imgSrc: "/images/leviosa.webp",
+    imgAlt: "Giường Ngủ Gỗ Tràm MOHO HOBRO 301",
     title: "Giường Ngủ Gỗ Tràm MOHO HOBRO 301",
     description: "Stylish cafe chair",
     price: 6290000,
@@ -115,6 +117,7 @@ export const products: ProductCardProps[] = [
   {
     id: 3,
     imgSrc: "/images/lolito.webp",
+    imgAlt: "Set Tủ Quần Áo Gỗ MOHO VIENNA 201 4 Cánh 4 Màu",
     title: "Set Tủ Quần Áo Gỗ MOHO VIENNA 201 4 Cánh 4 Màu",
     description: "Luxury big sofa",
     price: 6290000,
@@ -123,6 +126,7 @@ export const products: ProductCardProps[] = [
   {
     id: 4,
     imgSrc: "/images/respira.webp",
+    imgAlt: "Ghế Sofa MOHO LYNGBY Góc L",
     title: "Ghế Sofa MOHO LYNGBY Góc L",
     description: "Outdoor bar table and stool",
     price: 6290000,
@@ -132,6 +136,7 @@ export const products: ProductCardProps[] = [
   {
     id: 5,
     imgSrc: "/images/muggo.webp",
+    imgAlt: "Tủ Giày - Tủ Trang Trí Gỗ MOHO VLINE 601",
     title: "Tủ Giày - Tủ Trang Trí Gỗ MOHO VLINE 601",
     description: "Night lamp",
     price: 6290000,
@@ -139,6 +144,7 @@ export const products: ProductCardProps[] = [
   {
     id: 6,
     imgSrc: "/images/grifo.webp",
+    imgAlt: "Tủ Giày – Tủ Trang Trí Gỗ MOHO VIENNA 204",
     title: "Tủ Giày – Tủ Trang Trí Gỗ MOHO VIENNA 204",
     description: "Small mug",
     price: 6290000,
@@ -147,6 +153,7 @@ export const products: ProductCardProps[] = [
   {
     id: 7,
     imgSrc: "/images/pingky.webp",
+    imgAlt: "Tủ Kệ Tivi Gỗ MOHO UBEDA 201",
     title: "Tủ Kệ Tivi Gỗ MOHO UBEDA 201",
     description: "Cute bed set",
     price: 6290000,
@@ -155,6 +162,7 @@ export const products: ProductCardProps[] = [
   {
     id: 8,
     imgSrc: "/images/Potty.webp",
+    imgAlt: "Kệ TV MOHO HOBRO 301 ",
     title: "Kệ TV MOHO HOBRO 301 ",
     description: "Minimalist flower pot",
     price: 6290000,
