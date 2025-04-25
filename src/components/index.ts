@@ -5,7 +5,6 @@ import SideBarDrawer from "./SideBarDrawer";
 import AboutSection from "./sn-home/AboutSection";
 import BannerSection from "./sn-home/BannerSection";
 import ConstructionWorkSection from "./sn-home/ConstructionWorkSection";
-import CountSection from "./sn-home/CountSection";
 import DesignProjectSection from "./sn-home/DesignProjectSection";
 import NewsSection from "./sn-home/NewsSection";
 import ProductSection from "./sn-home/ProductSection";
@@ -20,7 +19,6 @@ export {
   BannerSection,
   Logo,
   VideoSection,
-  CountSection,
   AboutSection,
   TabSection,
   DesignProjectSection,

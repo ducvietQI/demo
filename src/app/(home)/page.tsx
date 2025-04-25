@@ -4,7 +4,6 @@ import {
   AboutSection,
   BannerSection,
   ConstructionWorkSection,
-  CountSection,
   DesignProjectSection,
   NewsSection,
   ProductSection,
@@ -19,7 +18,6 @@ const Home = () => {
     <Stack>
       {/* <VideoSection /> */}
       <BannerSection />
-      {/* <CountSection /> */}
       {/* <AboutSection /> */}
       <TabSection />
       <DesignProjectSection />
