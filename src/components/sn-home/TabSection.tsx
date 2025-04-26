@@ -112,7 +112,7 @@ export default function TabSection() {
   };
 
   return (
-    <Stack alignItems="center" width="100%" mt={5}>
+    <Stack alignItems="center" width="100%" my={5}>
       <AppBar sx={{ width: { xs: "100%", md: 608 } }} position="static">
         <Tabs
           value={value}

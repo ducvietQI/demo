@@ -172,11 +172,11 @@ const ProjectDetailPage = () => {
 
         <Stack position="relative" height={1050}>
           <Image
-            src="/images/3.webp"
-            layout="fill"
+            src="/images/5.webp"
             alt="service-3"
             loading="lazy"
-            objectFit="contain"
+            fill
+            style={{ objectFit: "contain" }}
           />
           <Box
             p="10px"
@@ -187,9 +187,56 @@ const ProjectDetailPage = () => {
             fontSize="16px"
             textAlign="center"
           >
-            One & Only Apartment mang đến cho người ở không gian sống hiện đại,
-            sáng, thoáng và tiện nghi nhờ những giải pháp thiết kế tối ưu đến từ
-            đội ngũ Quanghoanhome.
+            Ngoại thất công trình vững chãi với kiến trúc hình khối. Các bức
+            tường cong được thiết kế lặp lại theo quy luật. Kết hợp hệ lam chắn
+            nắng vừa tạo điểm nhấn, vừa phát huy tối đa khả năng chống nắng cho
+            ngôi nhà mát mẻ và thoáng đãng.
+          </Box>
+        </Stack>
+
+        <Stack position="relative" height={1050}>
+          <Image
+            src="/images/6.webp"
+            alt="service-3"
+            loading="lazy"
+            fill
+            style={{ objectFit: "contain" }}
+          />
+          <Box
+            p="10px"
+            width="100%"
+            bgcolor="primary.main"
+            position="absolute"
+            bottom={0}
+            fontSize="16px"
+            textAlign="center"
+          >
+            Ngoại thất công trình vững chãi với kiến trúc hình khối. Các bức
+            tường cong được thiết kế lặp lại theo quy luật. Kết hợp hệ lam chắn
+            nắng vừa tạo điểm nhấn, vừa phát huy tối đa khả năng chống nắng cho
+            ngôi nhà mát mẻ và thoáng đãng.
+          </Box>
+        </Stack>
+
+        <Stack position="relative" height={1122}>
+          <Image
+            src="/images/25.webp"
+            alt="service-25"
+            loading="lazy"
+            fill
+            style={{ objectFit: "contain" }}
+          />
+          <Box
+            p="10px"
+            width="100%"
+            bgcolor="primary.main"
+            position="absolute"
+            bottom={-10}
+            fontSize="16px"
+            textAlign="center"
+          >
+            Mặt bằng công năng chi tiết được đội ngũ Quanghoanhome bố trí cho 5
+            tầng 1 tum của One & Only Apartment
           </Box>
         </Stack>
 

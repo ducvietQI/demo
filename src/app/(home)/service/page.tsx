@@ -20,9 +20,9 @@ const ServicePage = () => {
           src="/images/service-banner.jpg"
           alt={"banner-service"}
           fill
-          className="object-cover"
           priority
           sizes="100vw"
+          style={{ objectFit: "cover" }}
         />
       </Box>
 

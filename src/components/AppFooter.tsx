@@ -15,7 +15,7 @@ import Image from "next/image";
 const AppFooter = () => {
   return (
     <Box
-      bgcolor="#f8f8f8"
+      bgcolor="#635f5f"
       color="white"
       py={{ xs: 1, md: 6 }}
       px={{ xs: 2, md: 10 }}
@@ -55,7 +55,7 @@ const AppFooter = () => {
               >
                 CÔNG TY TNHH THIẾT KẾ VÀ XÂY DỰNG Quanghoanhome
               </Typography>
-              <Typography color="black" fontSize="14px">
+              <Typography color="white" fontSize="14px">
                 Quanghoanhome đơn vị thiết kế thi công trọn gói miền Trung và
                 miền Nam
               </Typography>
@@ -78,7 +78,7 @@ const AppFooter = () => {
                 <Link
                   key={item}
                   href="#"
-                  color="black"
+                  color="white"
                   fontSize="14px"
                   underline="none"
                 >
@@ -106,7 +106,7 @@ const AppFooter = () => {
                   key={item}
                   href="#"
                   underline="none"
-                  color="black"
+                  color="white"
                   fontSize="14px"
                 >
                   {item}
@@ -140,7 +140,7 @@ const AppFooter = () => {
                 "Showroom 2: 184 Phạm Văn Đồng, Huế",
                 "Showroom 3: 51 Lê Duẩn, Quảng Trị",
               ].map((item) => (
-                <Typography color="black" key={item} fontSize="14px">
+                <Typography color="white" key={item} fontSize="14px">
                   ⭐ {item}
                 </Typography>
               ))}
@@ -171,7 +171,7 @@ const AppFooter = () => {
                 <Link
                   key={item}
                   href="#"
-                  color="black"
+                  color="white"
                   fontSize="14px"
                   underline="none"
                 >
@@ -190,7 +190,7 @@ const AppFooter = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Typography fontSize="12px" color="text.black">
+          <Typography fontSize="12px" color="text.white">
             © Copyright 2014-2025. Bản quyền nội dung thuộc Quanghoanhome
           </Typography>
           <Stack direction="row" spacing={1}>

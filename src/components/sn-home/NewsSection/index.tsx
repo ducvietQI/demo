@@ -8,9 +8,9 @@ const NewsSection = () => {
   const isTabletDown = useTabletDown();
 
   return (
-    <Stack bgcolor="#fff" pb={{ xs: "15px", md: "50px" }}>
+    <Stack my={3}>
       <Container>
-        <Stack spacing={2}>
+        <Stack bgcolor="#fff" spacing={2} p={2}>
           <Typography
             variant="h2"
             color="primary"

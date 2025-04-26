@@ -1,15 +1,12 @@
 "use client";
 
 import {
-  AboutSection,
   BannerSection,
   ConstructionWorkSection,
   DesignProjectSection,
   NewsSection,
   ProductSection,
-  SignificantSection,
   TabSection,
-  VideoSection,
 } from "@/components";
 import { Stack } from "@mui/material";
 

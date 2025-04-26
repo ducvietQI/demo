@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { Box, Button, Stack, Typography, Grid2 } from "@mui/material";
 import Image from "next/image";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ArrowRightIcon } from "../Icons";
 import { useTabletDown } from "@/hooks";
+import { useState } from "react";
 
 const DesignProjectSection = () => {
   const isTabletDown = useTabletDown();
@@ -50,8 +50,8 @@ const DesignProjectSection = () => {
               <Image
                 src={item.src}
                 alt={`Slide ${index + 1}`}
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 loading="lazy"
               />
             </Box>

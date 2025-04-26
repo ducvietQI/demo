@@ -32,9 +32,9 @@ const ProductSection = ({
   const converArray = array || products;
 
   return (
-    <Stack bgcolor="#fff" py={{ xs: "15px", md: "50px" }}>
+    <Stack mt={3}>
       <Container>
-        <Stack alignItems="left">
+        <Stack bgcolor="#fff" alignItems="left" p={2}>
           <Stack
             direction="row"
             borderBottom="1px solid #ffba00"
