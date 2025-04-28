@@ -19,7 +19,7 @@ COPY . .
 
 # Copy đúng file env theo biến môi trường
 COPY .env.production .env
-ENV NODE_OPTIONS="--max-old-space-size=2048"
+
 RUN yarn build
 
 # If using npm, comment out above and use below instead
