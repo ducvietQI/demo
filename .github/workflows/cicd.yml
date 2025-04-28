@@ -7,14 +7,14 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted # Chạy trên self-hosted runner của bạn
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Docker
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       - name: Build Docker images using Docker Compose
         run: |
@@ -23,3 +23,22 @@ jobs:
       - name: Deploy using Docker Compose
         run: |
           docker-compose -f docker-compose.yml up -d --build
+
+  restarthaproxy:
+    runs-on: self-hosted
+    steps:
+      - name: Restart HAProxy container
+        run: |
+          docker restart haproxy-container  # Thay tên container này bằng tên container thực tế của bạn
+    needs: build
+
+  clear:
+    runs-on: self-hosted
+    steps:
+      - name: Clean build cache
+        run: |
+          docker builder prune -a -f
+      - name: Clean all temporary images
+        run: |
+          docker image prune -f
+    needs: restarthaproxy
