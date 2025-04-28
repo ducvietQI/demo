@@ -6,36 +6,23 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: self-hosted
     steps:
       - name: Checkout Source
         uses: actions/checkout@v4
-      - name: Build docker image
-        run: docker build -t ducviett/demo .
-      - name: Login to docker hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Publish image to docker hub
-        run: docker push ducviett/demo:latest
 
-  clean:
-    needs: build
-    runs-on: self-hosted
-    steps:
-      - name: Clean build cache file
-        run: docker builder prune -a -f
-      - name: Clean all temp images
-        run: docker image prune -f
+      - name: Build docker image locally
+        run: docker-compose build
 
-  deploy:
-    needs: clean
-    runs-on: self-hosted
-    steps:
-      - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Pull image from docker hub
-        run: docker pull ducviett/demo:latest
-      - name: Delete old container if exists
-        run: docker ps -q --filter "name=nextjs-app-container" | grep -q . && docker rm -f nextjs-app-container || echo "No container to remove"
-      - name: Run docker container
-        run: docker run -d --restart unless-stopped -p 3000:3000 --name nextjs-app-container ducviett/demo:latest
+      - name: Stop old container (if running)
+        run: |
+          docker-compose down || echo "No container running"
+
+      - name: Start new container with Docker Compose
+        run: docker-compose up -d --force-recreate
+
+      - name: Clean up unused docker images
+        run: |
+          docker builder prune -a -f
+          docker image prune -f
