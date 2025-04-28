@@ -1,4 +1,5 @@
 version: "3"
+
 services:
   web:
     build: .
@@ -13,4 +14,7 @@ services:
       options:
         max-size: "100m"
         max-file: "1"
-    network_mode: "host" # 👉 Thêm dòng này để dùng mạng host
+    network_mode: "host"
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
