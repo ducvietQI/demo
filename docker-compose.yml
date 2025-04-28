@@ -6,18 +6,11 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - TZ=Asia/Ho_Chi_Minh # Đặt múi giờ cho container
-    restart: always # Đảm bảo container sẽ tự động khởi động lại nếu dừng
+      - TZ=Asia/Ho_Chi_Minh
+    restart: always
     logging:
-      driver: "json-file" # Lưu logs dưới dạng file JSON
+      driver: "json-file"
       options:
-        max-size: "100m" # Giới hạn kích thước log file là 100MB
-        max-file: "1" # Chỉ giữ lại 1 file log
-
-    # Không sử dụng mạng external (qipf-network)
-    networks:
-      - default # Sử dụng mạng mặc định của Docker
-
-networks:
-  default:
-    driver: bridge # Sử dụng driver mặc định là bridge cho mạng
+        max-size: "100m"
+        max-file: "1"
+    network_mode: "host" # 👉 Thêm dòng này để dùng mạng host
