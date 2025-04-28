@@ -18,7 +18,7 @@ ENV NEXT_PUBLIC_ENV $NEXT_ENVIRONMENT
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-COPY .env.${NEXT_ENVIRONMENT} .env.production
+COPY .env .env.production
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
