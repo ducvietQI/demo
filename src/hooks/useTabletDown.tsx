@@ -1,3 +1,4 @@
+"use client";
 import useResponsive from "./useResponsive";
 
 const useTabletDown = () => useResponsive("down", "md");

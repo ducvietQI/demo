@@ -2,10 +2,10 @@ import { BaiJamjuree } from "@/fonts";
 import AppProvider from "@/provider/AppProvider";
 import type { Metadata } from "next";
 import "@/styles/index.scss";
-import { CommonUtils } from "@/utils";
+import { generateBasicMetadata } from "@/utils/server.utils";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return CommonUtils.generateBasicMetadata();
+  return generateBasicMetadata();
 }
 
 export default async function RootLayout({

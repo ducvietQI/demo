@@ -1,5 +1,3 @@
-"use client";
-
 import {
   BannerSection,
   ConstructionWorkSection,
@@ -13,9 +11,7 @@ import { Stack } from "@mui/material";
 const Home = () => {
   return (
     <Stack>
-      {/* <VideoSection /> */}
       <BannerSection />
-      {/* <AboutSection /> */}
       <TabSection />
       <DesignProjectSection />
       <ConstructionWorkSection />
@@ -28,7 +24,6 @@ const Home = () => {
 };
 
 export default Home;
-
 const home_arr = [
   {
     id: 1,

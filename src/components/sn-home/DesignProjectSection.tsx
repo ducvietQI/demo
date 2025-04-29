@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Button, Stack, Typography, Grid2 } from "@mui/material";
 import Image from "next/image";
 import { Navigation } from "swiper/modules";
@@ -51,6 +53,7 @@ const DesignProjectSection = () => {
                 src={item.src}
                 alt={`Slide ${index + 1}`}
                 fill
+                sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" // Thêm sizes
                 style={{ objectFit: "cover" }}
                 loading="lazy"
               />

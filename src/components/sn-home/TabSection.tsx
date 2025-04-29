@@ -1,3 +1,5 @@
+"use client";
+
 import { useTabletDown } from "@/hooks";
 import { AppBar, Box, Container, Grid2, Stack, Tab, Tabs } from "@mui/material";
 import Image from "next/image";

@@ -1,3 +1,5 @@
+"use client";
+
 import { useTabletDown } from "@/hooks";
 import { Container, Stack, Typography } from "@mui/material";
 import { Navigation } from "swiper/modules";

@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Button, Grid2, Stack, Typography } from "@mui/material";
 import { ArrowRightIcon } from "../Icons";
 import Image from "next/image";
