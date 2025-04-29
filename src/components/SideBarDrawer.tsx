@@ -1,3 +1,5 @@
+"use client";
+
 import { RouteConstant } from "@/constant";
 import {
   Box,
