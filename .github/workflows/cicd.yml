@@ -16,9 +16,9 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Stop and remove existing containers
+      - name: Remove existing container demo-web-1 if exists
         run: |
-          docker-compose -f docker-compose.yml down
+          docker rm -f demo-web-1 || true
 
       - name: Build and deploy the latest version
         run: |
@@ -29,6 +29,7 @@ jobs:
         run: |
           docker builder prune -af
 
-      - name: Remove dangling images
+      - name: Remove dangling images and volumes
         run: |
           docker image prune -af
+          docker volume prune -f
