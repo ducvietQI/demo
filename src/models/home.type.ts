@@ -24,3 +24,13 @@ export enum BANNER_TYPE {
   PROJECT,
   PRODUCT,
 }
+
+export interface MenuItem {
+  id: string;
+  title: string;
+  link: string;
+  description: string;
+  order: number;
+  parentId: string | null;
+  children?: MenuItem[];
+}
