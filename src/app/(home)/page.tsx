@@ -1,3 +1,4 @@
+import apiRequester from "@/api/apiRequester";
 import {
   BannerSection,
   ConstructionWorkSection,
@@ -6,12 +7,21 @@ import {
   ProductSection,
   TabSection,
 } from "@/components";
+import { ApiConst, GlobalsConst } from "@/constant";
+import { BANNER_TYPE } from "@/models/home.type";
 import { Stack } from "@mui/material";
 
-const Home = () => {
+const Home = async () => {
+  const res = await apiRequester.get(ApiConst.BANNER_LIST, {
+    type: BANNER_TYPE.HOME,
+    size: GlobalsConst.DEFAULT_SIZE,
+  });
+
+  const banners = Array.isArray(res?.payload) ? res.payload : [];
+
   return (
     <Stack>
-      <BannerSection />
+      <BannerSection banners={banners} />
       <TabSection />
       <DesignProjectSection />
       <ConstructionWorkSection />

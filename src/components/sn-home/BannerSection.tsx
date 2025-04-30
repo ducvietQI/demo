@@ -1,36 +1,18 @@
 "use client";
 
-import apiRequester from "@/api/apiRequester";
-import { ApiConst } from "@/constant";
 import { useTabletDown } from "@/hooks";
 import { IBanner } from "@/models/home.type";
 import { Box, Stack } from "@mui/material";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const BannerSection = () => {
+interface BannerSectionProps {
+  banners: IBanner[];
+}
+
+const BannerSection = ({ banners }: BannerSectionProps) => {
   const isTabletDown = useTabletDown();
-
-  const [banners, setBanners] = useState<IBanner[]>([]);
-
-  useEffect(() => {
-    const fetchBanners = async () => {
-      try {
-        const res = await apiRequester.get<IBanner[]>(ApiConst.BANNER_LIST, {
-          type: 0,
-          size: 20,
-        });
-        const data = Array.isArray(res?.payload) ? res.payload : [];
-        setBanners(data);
-      } catch (error) {
-        console.error("Error fetching banners:", error);
-      }
-    };
-
-    fetchBanners();
-  }, []);
 
   return (
     <Stack height={{ xs: "fit-content", md: "60vh" }} position="relative">
@@ -50,7 +32,7 @@ const BannerSection = () => {
       >
         {banners.map((slide, index) => (
           <SwiperSlide
-            key={index}
+            key={slide.id}
             className="relative w-full h-full flex flex-col"
           >
             {isTabletDown ? (
@@ -58,7 +40,7 @@ const BannerSection = () => {
                 <Box position="relative" height={242} width="100%">
                   <Image
                     src={slide.image.url}
-                    alt={`slide-${index + 1}`}
+                    alt={slide.image.caption}
                     fill
                     className="object-cover"
                     priority={index === 0}
@@ -69,7 +51,7 @@ const BannerSection = () => {
             ) : (
               <Image
                 src={slide.image.url}
-                alt={`slide-${index + 1}`}
+                alt={slide.image.caption}
                 fill
                 className="object-cover"
                 priority={index === 0}

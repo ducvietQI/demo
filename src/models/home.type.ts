@@ -17,3 +17,10 @@ export interface IBanner {
   modificationTime: string | null;
   id: string;
 }
+
+export enum BANNER_TYPE {
+  HOME,
+  SERVICES,
+  PROJECT,
+  PRODUCT,
+}

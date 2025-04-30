@@ -28,7 +28,7 @@ const AppFooter = () => {
                 sx={{
                   position: "relative",
                   height: { xs: 45, md: 80 },
-                  width: { xs: 65, md: 140 },
+                  width: { xs: 65, md: 120 },
                 }}
               >
                 <Image

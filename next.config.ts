@@ -5,13 +5,21 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "Quanghoanhomehouse.vn",
+        hostname: "api.quanghoanghome.com",
         port: "",
         pathname: "/**",
       },
     ],
   },
   output: "standalone",
+  async rewrites() {
+    return [
+      {
+        source: `/public/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/public/:path*`,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

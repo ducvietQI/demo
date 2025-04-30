@@ -67,7 +67,7 @@ const AppHeader = () => {
             sx={{
               position: "relative",
               height: { xs: 35, md: 80 },
-              width: { xs: 55, md: 140 },
+              width: { xs: 55, md: 120 },
               cursor: "pointer",
             }}
             component={Link}

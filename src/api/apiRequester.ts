@@ -42,7 +42,9 @@ const request = async <T>(
     if (body instanceof FormData) {
       delete baseHeaders["Content-Type"];
     } else {
-      baseHeaders["Content-Type"] = "application/json";
+      if (method !== "GET") {
+        baseHeaders["Content-Type"] = "application/json";
+      }
     }
 
     let accessToken = null;
