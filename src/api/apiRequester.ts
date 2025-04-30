@@ -77,7 +77,8 @@ const request = async <T>(
     const res = await fetch(fullUrl, {
       method,
       signal: controller.signal,
-      cache: options?.cache ?? (method === "GET" ? "force-cache" : "no-store"),
+      // cache: options?.cache ?? (method === "GET" ? "force-cache" : "no-store"),
+      cache: options?.cache ?? "no-store",
       ...(typeof options?.revalidate === "number" ||
       options?.revalidate === false
         ? { next: { revalidate: options.revalidate } }

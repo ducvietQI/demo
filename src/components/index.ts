@@ -1,4 +1,5 @@
 import AppFooter from "./AppFooter";
+import AppFormControlTextField from "./FormControl/AppFormControlTextField";
 import { Gallery } from "./ImageGallary";
 import Logo from "./Logo";
 import SideBarDrawer from "./SideBarDrawer";
@@ -26,4 +27,5 @@ export {
   ProductSection,
   NewsSection,
   Gallery,
+  AppFormControlTextField,
 };

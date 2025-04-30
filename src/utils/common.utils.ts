@@ -1,3 +1,5 @@
+import { MenuItem } from "@/models/home.type";
+
 export const createUrlWithParams = (
   baseUrl: string,
   params: { [key: string]: string | number | boolean }
@@ -19,3 +21,27 @@ export const createUrlWithParams = (
 };
 
 export const isClient = () => typeof window !== "undefined";
+
+export const buildMenuTree = (menuItems: MenuItem[]): MenuItem[] => {
+  const map = new Map<string, MenuItem>();
+  const roots: MenuItem[] = [];
+
+  // Bước 1: Đưa toàn bộ menuItems vào Map để dễ truy cập
+  menuItems.forEach((item) => {
+    map.set(item.id, { ...item, children: [] });
+  });
+
+  // Bước 2: Duyệt từng phần tử và sắp xếp vào cha tương ứng
+  map.forEach((item) => {
+    if (item.parentId) {
+      const parent = map.get(item.parentId);
+      if (parent) {
+        parent.children!.push(item);
+      }
+    } else {
+      roots.push(item);
+    }
+  });
+
+  return roots;
+};
