@@ -13,19 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: remove old container
+      - name: Stop and remove old container
         run: |
-          docker-compose down
-          docker-compose stop
-          docker-compose rm
+          docker stop home-web || true
+          docker rm home-web || true
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: setup container
+      - name: Build and run new container
         run: |
           docker-compose -f docker-compose.yml up --build -d
 
-      - name: remove prune
+      - name: Cleanup old images
         run: |
           docker image prune -af --filter "until=4h"
