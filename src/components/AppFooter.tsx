@@ -1,18 +1,19 @@
 "use client";
 
+import { CompanyProfile } from "@/models/home.type";
 import {
   Box,
   Container,
   Divider,
   Grid2,
   IconButton,
-  Link,
   Stack,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
+import { memo } from "react";
 
-const AppFooter = () => {
+const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
   return (
     <Box
       bgcolor="#635f5f"
@@ -53,65 +54,11 @@ const AppFooter = () => {
                 mt="20px"
                 letterSpacing="-0.7px"
               >
-                CÔNG TY TNHH THIẾT KẾ VÀ XÂY DỰNG Quanghoanhome
+                {footerData.title}
               </Typography>
               <Typography color="white" fontSize="14px">
-                Quanghoanhome đơn vị thiết kế thi công trọn gói miền Trung và
-                miền Nam
+                {footerData.description}
               </Typography>
-              <Typography
-                fontWeight={600}
-                color="primary"
-                fontSize="16px"
-                letterSpacing="-0.7px"
-                mt={2}
-              >
-                DỊCH VỤ
-              </Typography>
-              {[
-                "Thiết kế và thi công nội thất",
-                "Thiết kế kiến trúc",
-                "Thi công phần thô",
-                "Thi công hoàn thiện",
-                "Thi công trọn gói",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  href="#"
-                  color="white"
-                  fontSize="14px"
-                  underline="none"
-                >
-                  {item}
-                </Link>
-              ))}
-
-              <Typography
-                fontWeight={600}
-                color="primary"
-                fontSize="16px"
-                letterSpacing="-0.7px"
-                mt={2}
-              >
-                MẪU NHÀ ĐẸP
-              </Typography>
-              {[
-                "Nhà phố 2 tầng",
-                "Nhà phố 3 tầng",
-                "Nhà phố 4 tầng",
-                "Biệt thự đẹp",
-                "Nhà cấp 4",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  href="#"
-                  underline="none"
-                  color="white"
-                  fontSize="14px"
-                >
-                  {item}
-                </Link>
-              ))}
             </Stack>
           </Grid2>
 
@@ -129,21 +76,15 @@ const AppFooter = () => {
               >
                 THÔNG TIN LIÊN HỆ
               </Typography>
+              {Array.isArray(footerData.hotline) &&
+                footerData.hotline.map((item, i) => (
+                  <Typography key={i} fontSize="14px" color="primary">
+                    📞 <strong>{item}</strong>
+                  </Typography>
+                ))}
               <Typography fontSize="14px" color="primary">
-                📞 <strong>0972 910 046</strong>
+                📧 <strong>{footerData.email}</strong>
               </Typography>
-              {[
-                "284-286 Lê Quang Chí, Đà Nẵng",
-                "Lầu 5, 137 Lê Quang Định, TP.HCM",
-                "Tầng 12A, Tòa nhà dầu khí Nghệ An",
-                "Showroom 1: 201 Nguyễn Hữu Thọ, Đà Nẵng",
-                "Showroom 2: 184 Phạm Văn Đồng, Huế",
-                "Showroom 3: 51 Lê Duẩn, Quảng Trị",
-              ].map((item) => (
-                <Typography color="white" key={item} fontSize="14px">
-                  ⭐ {item}
-                </Typography>
-              ))}
             </Stack>
           </Grid2>
 
@@ -159,25 +100,15 @@ const AppFooter = () => {
                 mt="20px"
                 letterSpacing="-0.7px"
               >
-                ĐỐI TÁC TIN CẬY
+                Địa chỉ
               </Typography>
-
-              {[
-                "Quanghoanhome VILLA",
-                "Quanghoanhome DOOR",
-                "BROCANVAS",
-                "CMT GARDEN",
-              ].map((item) => (
-                <Link
-                  key={item}
-                  href="#"
-                  color="white"
-                  fontSize="14px"
-                  underline="none"
-                >
-                  {item}
-                </Link>
-              ))}
+              {Array.isArray(footerData.addresses) &&
+                footerData.addresses.map((item, i) => (
+                  <Typography key={i} color="white" fontSize="14px">
+                    ⭐{" "}
+                    {item.detail ? `${item.detail}, ${item.city}` : item.city}
+                  </Typography>
+                ))}
             </Stack>
           </Grid2>
         </Grid2>
@@ -191,15 +122,53 @@ const AppFooter = () => {
           alignItems="center"
         >
           <Typography fontSize="12px" color="text.white">
-            © Copyright 2014-2025. Bản quyền nội dung thuộc Quanghoanhome
+            © Copyright 2024-2025. Bản quyền nội dung thuộc Quanghoanhome
           </Typography>
           <Stack direction="row" spacing={1}>
-            <IconButton sx={{ color: "white" }}>
-              {/* <Facebook /> */}
+            <IconButton
+              onClick={() =>
+                footerData.social.facebook
+                  ? window.open(footerData.social.facebook, "_blank")
+                  : null
+              }
+              sx={{ color: "white" }}
+            >
+              <Image
+                src="/images/fb.png"
+                height={30}
+                width={30}
+                alt="fb-icon"
+              />
             </IconButton>
-            <IconButton sx={{ color: "white" }}>{/* <YouTube /> */}</IconButton>
-            <IconButton sx={{ color: "white" }}>
-              {/* <Instagram /> */}
+            <IconButton
+              onClick={() =>
+                footerData.social.tiktok
+                  ? window.open(footerData.social.tiktok, "_blank")
+                  : null
+              }
+              sx={{ color: "white" }}
+            >
+              <Image
+                src="/images/ar.png"
+                height={30}
+                width={30}
+                alt="yt-icon"
+              />
+            </IconButton>
+            <IconButton
+              onClick={() =>
+                footerData.social.zalo
+                  ? window.open(footerData.social.zalo, "_blank")
+                  : null
+              }
+              sx={{ color: "white" }}
+            >
+              <Image
+                src="/images/zalo.png"
+                height={30}
+                width={30}
+                alt="zalo-icon"
+              />
             </IconButton>
           </Stack>
         </Stack>
@@ -208,4 +177,4 @@ const AppFooter = () => {
   );
 };
 
-export default AppFooter;
+export default memo(AppFooter);

@@ -71,101 +71,103 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
               spacing={4}
               sx={{ justifyContent: "center", position: "relative" }}
             >
-              {menuItems.map((item) => {
-                const isActive = pathname === item.link;
+              {menuItems &&
+                menuItems?.map((item) => {
+                  const isActive = pathname === item.link;
 
-                return (
-                  <Box
-                    key={item.id}
-                    sx={{
-                      position: "relative",
-                      ":hover > .submenu": {
-                        display: "block", // Hiển thị submenu khi hover
-                        opacity: 1,
-                        transform: "translateY(0) translateX(-50%)", // Hiển thị submenu mượt mà
-                      },
-                    }}
-                  >
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                      <Typography
-                        variant="h6"
-                        onClick={() =>
-                          router.push(
-                            item.link.startsWith("/")
-                              ? item.link
-                              : `/${item.link}`
-                          )
-                        }
-                        sx={{
-                          fontWeight: isActive ? 700 : 500,
-                          cursor: "pointer",
-                          textTransform: "uppercase",
-                          color: isActive ? "primary.main" : "text.black",
-                          borderBottom: isActive ? "2px solid" : "none",
-                          borderColor: isActive
-                            ? "primary.main"
-                            : "transparent",
-                          pb: 0.5,
-                          ":hover": {
-                            color: "primary.main",
-                          },
-                        }}
-                      >
-                        {item.title}
-                      </Typography>
-                    </Stack>
-
-                    {/* Submenu */}
-                    {item.children && item.children.length > 0 && (
-                      <Box
-                        className="submenu"
-                        sx={{
-                          display: "none",
-                          opacity: 0,
-                          transform: "translateY(-10px) translateX(-50%)",
-                          transition: "opacity 0.3s ease, transform 0.3s ease",
-                          position: "absolute",
-                          left: "50%",
-                          bgcolor: "transparent",
-                          zIndex: 10,
-                          pt: "34px",
-                          minWidth: 200,
-                        }}
-                      >
-                        <Stack
-                          spacing={1}
+                  return (
+                    <Box
+                      key={item.id}
+                      sx={{
+                        position: "relative",
+                        ":hover > .submenu": {
+                          display: "block", // Hiển thị submenu khi hover
+                          opacity: 1,
+                          transform: "translateY(0) translateX(-50%)", // Hiển thị submenu mượt mà
+                        },
+                      }}
+                    >
+                      <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography
+                          variant="h6"
+                          onClick={() =>
+                            router.push(
+                              item.link.startsWith("/")
+                                ? item.link
+                                : `/${item.link}`
+                            )
+                          }
                           sx={{
-                            bgcolor: "white",
-                            py: 2,
-                            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                            fontWeight: isActive ? 700 : 500,
+                            cursor: "pointer",
+                            textTransform: "uppercase",
+                            color: isActive ? "primary.main" : "text.black",
+                            borderBottom: isActive ? "2px solid" : "none",
+                            borderColor: isActive
+                              ? "primary.main"
+                              : "transparent",
+                            pb: 0.5,
+                            ":hover": {
+                              color: "primary.main",
+                            },
                           }}
                         >
-                          {item.children.map((child) => (
-                            <Typography
-                              key={child.id}
-                              onClick={() => router.push(child.link)}
-                              sx={{
-                                textTransform: "uppercase",
-                                fontSize: "14px",
-                                cursor: "pointer",
-                                borderBottom: "1px solid #e5e7eb",
-                                px: 2,
-                                pb: 1,
-                                color: "text.black",
-                                ":hover": {
-                                  color: "primary.main",
-                                },
-                              }}
-                            >
-                              {child.title}
-                            </Typography>
-                          ))}
-                        </Stack>
-                      </Box>
-                    )}
-                  </Box>
-                );
-              })}
+                          {item.title}
+                        </Typography>
+                      </Stack>
+
+                      {/* Submenu */}
+                      {item.children && item.children.length > 0 && (
+                        <Box
+                          className="submenu"
+                          sx={{
+                            display: "none",
+                            opacity: 0,
+                            transform: "translateY(-10px) translateX(-50%)",
+                            transition:
+                              "opacity 0.3s ease, transform 0.3s ease",
+                            position: "absolute",
+                            left: "50%",
+                            bgcolor: "transparent",
+                            zIndex: 10,
+                            pt: "34px",
+                            minWidth: 200,
+                          }}
+                        >
+                          <Stack
+                            spacing={1}
+                            sx={{
+                              bgcolor: "white",
+                              py: 2,
+                              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                            }}
+                          >
+                            {item.children.map((child) => (
+                              <Typography
+                                key={child.id}
+                                onClick={() => router.push(child.link)}
+                                sx={{
+                                  textTransform: "uppercase",
+                                  fontSize: "14px",
+                                  cursor: "pointer",
+                                  borderBottom: "1px solid #e5e7eb",
+                                  px: 2,
+                                  pb: 1,
+                                  color: "text.black",
+                                  ":hover": {
+                                    color: "primary.main",
+                                  },
+                                }}
+                              >
+                                {child.title}
+                              </Typography>
+                            ))}
+                          </Stack>
+                        </Box>
+                      )}
+                    </Box>
+                  );
+                })}
             </Stack>
           )}
 

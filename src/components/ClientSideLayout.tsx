@@ -4,13 +4,20 @@ import { Stack, IconButton } from "@mui/material";
 import AppFooter from "./AppFooter";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { CompanyProfile } from "@/models/home.type";
 
-const ClientSideLayout = ({ children }: { children: ReactNode }) => {
+const ClientSideLayout = ({
+  children,
+  footerData,
+}: {
+  children: ReactNode;
+  footerData: CompanyProfile;
+}) => {
   return (
     <Stack position="relative" pt={{ xs: "55px", md: "90px" }}>
       <div className="relative z-10">{children}</div>
 
-      <AppFooter />
+      <AppFooter footerData={footerData} />
       <IconButton
         sx={{
           position: "fixed",
@@ -19,7 +26,6 @@ const ClientSideLayout = ({ children }: { children: ReactNode }) => {
           zIndex: 2000,
           width: 70,
           height: 70,
-          // boxShadow: "0 0 15px rgba(255, 186, 0, 0.8)",
           "&:hover": {
             backgroundColor: "white",
             transform: "scale(1.1)",
@@ -33,7 +39,7 @@ const ClientSideLayout = ({ children }: { children: ReactNode }) => {
           src="/images/phone.png"
           fill
           alt="phone"
-          style={{ objectFit: "cover" }} // Thay thế objectFit
+          style={{ objectFit: "cover" }}
         />
       </IconButton>
       <IconButton
@@ -45,7 +51,6 @@ const ClientSideLayout = ({ children }: { children: ReactNode }) => {
           width: 70,
           height: 70,
           backgroundColor: "#3f8edf",
-          // boxShadow: "0 0 15px rgba(255, 186, 0, 0.8)",
           borderRadius: "50%",
           "&:hover": {
             backgroundColor: "#fff3cd",
@@ -60,7 +65,7 @@ const ClientSideLayout = ({ children }: { children: ReactNode }) => {
           src="/images/zalo.png"
           fill
           alt="zalo"
-          style={{ objectFit: "cover" }} // Thay thế objectFit
+          style={{ objectFit: "cover" }}
         />
       </IconButton>
     </Stack>

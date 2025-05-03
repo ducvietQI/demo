@@ -1,8 +1,8 @@
 import { BaiJamjuree } from "@/fonts";
 import AppProvider from "@/provider/AppProvider";
-import type { Metadata } from "next";
 import "@/styles/index.scss";
 import { generateBasicMetadata } from "@/utils/server.utils";
+import type { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return generateBasicMetadata();
