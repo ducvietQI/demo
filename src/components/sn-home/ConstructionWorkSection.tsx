@@ -52,8 +52,8 @@ const ConstructionWorkSection = () => {
               <Image
                 src={item.src}
                 alt={`Slide ${index + 1}`}
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 loading="lazy"
               />
             </Box>

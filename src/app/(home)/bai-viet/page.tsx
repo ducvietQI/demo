@@ -4,6 +4,7 @@ import NewsCard from "@/components/sn-home/NewsSection/NewsCard";
 import { Stack, Box, Grid2, Container } from "@mui/material";
 import Image from "next/image";
 import { useTabletDown } from "@/hooks";
+import { AppPagination } from "@/components";
 
 const NewsPage = () => {
   const isTabletDown = useTabletDown();
@@ -94,6 +95,10 @@ const NewsPage = () => {
               );
             })}
           </Grid2>
+        </Stack>
+
+        <Stack alignItems="center" mb={5}>
+          <AppPagination />
         </Stack>
       </Container>
     </Stack>

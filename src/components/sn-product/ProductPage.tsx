@@ -6,6 +6,7 @@ import ProductCard, {
   ProductCardProps,
 } from "../sn-home/ProductSection/ProductCard";
 import CategoryFilter from "./CategoryFilter";
+import AppPagination from "../AppPagination";
 
 const ProductPage = () => {
   return (
@@ -33,6 +34,12 @@ const ProductPage = () => {
                 <ProductCard {...product} />
               </Grid2>
             ))}
+
+            <Grid2 size={12} data-aos="fade-up">
+              <Stack alignItems="center" mb={5}>
+                <AppPagination />
+              </Stack>
+            </Grid2>
           </Grid2>
         </Grid2>
       </Container>

@@ -1,4 +1,5 @@
 import AppFooter from "./AppFooter";
+import AppPagination from "./AppPagination";
 import AppFormControlTextField from "./FormControl/AppFormControlTextField";
 import { Gallery } from "./ImageGallary";
 import Logo from "./Logo";
@@ -28,4 +29,5 @@ export {
   NewsSection,
   Gallery,
   AppFormControlTextField,
+  AppPagination,
 };

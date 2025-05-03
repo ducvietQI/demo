@@ -136,64 +136,8 @@ const ProductDetailPage = () => {
 
               <Divider />
 
-              {/* Quantity Control */}
-              <Stack direction="row" spacing={1} alignItems="center">
-                <IconButton
-                  sx={{
-                    width: 40,
-                    height: 40,
-                    fontSize: 30,
-                    borderRadius: 0, // hình vuông
-                    bgcolor: "transparent",
-                    "&:hover": {
-                      bgcolor: "#f8f8f8",
-                    },
-                    "&:active": {
-                      bgcolor: "#f8f8f8",
-                    },
-                    border: "1px solid #ddd", // tùy chọn nếu muốn viền
-                  }}
-                  onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                >
-                  -
-                </IconButton>
-                <Typography variant="h3">{quantity}</Typography>
-                <IconButton
-                  sx={{
-                    width: 40,
-                    height: 40,
-                    fontSize: 30,
-                    borderRadius: 0,
-                    bgcolor: "transparent",
-                    "&:hover": {
-                      bgcolor: "#f8f8f8",
-                    },
-                    "&:active": {
-                      bgcolor: "#f8f8f8",
-                    },
-                    border: "1px solid #ddd",
-                  }}
-                  onClick={() => setQuantity((prev) => prev + 1)}
-                >
-                  +
-                </IconButton>
-              </Stack>
-
               {/* Buttons */}
               <Stack spacing={2}>
-                <Button
-                  variant="contained"
-                  fullWidth
-                  sx={{
-                    bgcolor: "#2C567D",
-                    "&:hover": { bgcolor: "#244866" },
-                    color: "#fff",
-                    height: 40,
-                    fontSize: 16,
-                  }}
-                >
-                  THÊM VÀO GIỎ
-                </Button>
                 <Button
                   variant="contained"
                   fullWidth
@@ -205,7 +149,7 @@ const ProductDetailPage = () => {
                     fontSize: 16,
                   }}
                 >
-                  MUA NGAY
+                  Liên Hệ
                 </Button>
               </Stack>
 

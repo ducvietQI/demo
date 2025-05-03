@@ -29,7 +29,12 @@ const ClientSideLayout = ({ children }: { children: ReactNode }) => {
           window.location.href = "tel:0355983021";
         }}
       >
-        <Image src="/images/phone.png" layout="fill" alt="phone" />
+        <Image
+          src="/images/phone.png"
+          fill
+          alt="phone"
+          style={{ objectFit: "cover" }} // Thay thế objectFit
+        />
       </IconButton>
       <IconButton
         sx={{
@@ -53,9 +58,9 @@ const ClientSideLayout = ({ children }: { children: ReactNode }) => {
       >
         <Image
           src="/images/zalo.png"
-          layout="fill"
-          objectFit="cover"
+          fill
           alt="zalo"
+          style={{ objectFit: "cover" }} // Thay thế objectFit
         />
       </IconButton>
     </Stack>

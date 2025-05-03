@@ -37,7 +37,7 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
         <Toolbar
           sx={{
             display: "flex",
-            // justifyContent: "space-between",
+            justifyContent: { xs: "space-between", md: "flex-start" },
             height: { xs: 55, md: 90 },
             "&.MuiToolbar-root": {
               px: 0,
@@ -82,7 +82,7 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                       ":hover > .submenu": {
                         display: "block", // Hiển thị submenu khi hover
                         opacity: 1,
-                        transform: "translateY(0)",
+                        transform: "translateY(0) translateX(-50%)", // Hiển thị submenu mượt mà
                       },
                     }}
                   >
@@ -117,43 +117,51 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
 
                     {/* Submenu */}
                     {item.children && item.children.length > 0 && (
-                      <Stack
+                      <Box
                         className="submenu"
-                        spacing={1}
                         sx={{
                           display: "none",
                           opacity: 0,
-                          transition:
-                            "opacity 0.5s ease-in-out, transform 0.5s ease-in-out",
+                          transform: "translateY(-10px) translateX(-50%)",
+                          transition: "opacity 0.3s ease, transform 0.3s ease",
                           position: "absolute",
-                          top: "100%",
-                          left: "-50%",
-                          bgcolor: "white",
-                          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
-                          borderRadius: 1,
+                          left: "50%",
+                          bgcolor: "transparent",
                           zIndex: 10,
-                          p: 2,
+                          pt: "34px",
                           minWidth: 200,
                         }}
                       >
-                        {item.children.map((child) => (
-                          <Typography
-                            key={child.id}
-                            onClick={() => router.push(child.link)}
-                            sx={{
-                              textTransform: "uppercase",
-                              fontSize: "14px",
-                              cursor: "pointer",
-                              color: "text.black",
-                              ":hover": {
-                                color: "primary.main",
-                              },
-                            }}
-                          >
-                            {child.title}
-                          </Typography>
-                        ))}
-                      </Stack>
+                        <Stack
+                          spacing={1}
+                          sx={{
+                            bgcolor: "white",
+                            py: 2,
+                            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                          }}
+                        >
+                          {item.children.map((child) => (
+                            <Typography
+                              key={child.id}
+                              onClick={() => router.push(child.link)}
+                              sx={{
+                                textTransform: "uppercase",
+                                fontSize: "14px",
+                                cursor: "pointer",
+                                borderBottom: "1px solid #e5e7eb",
+                                px: 2,
+                                pb: 1,
+                                color: "text.black",
+                                ":hover": {
+                                  color: "primary.main",
+                                },
+                              }}
+                            >
+                              {child.title}
+                            </Typography>
+                          ))}
+                        </Stack>
+                      </Box>
                     )}
                   </Box>
                 );

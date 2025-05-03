@@ -1,8 +1,9 @@
 "use client";
 
 import { useTabletDown } from "@/hooks";
-import { Stack, Box, Grid2, Container } from "@mui/material";
+import { Stack, Box, Grid2, Container, Pagination } from "@mui/material";
 import { ServiceCard } from "../sn-service";
+import AppPagination from "../AppPagination";
 
 const ProjectPage = () => {
   const isTabletDown = useTabletDown();
@@ -79,6 +80,10 @@ const ProjectPage = () => {
             );
           })}
         </Grid2>
+
+        <Stack alignItems="center" mb={5}>
+          <AppPagination />
+        </Stack>
       </Container>
     </Stack>
   );

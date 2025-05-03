@@ -2,6 +2,7 @@
 import { useTabletDown } from "@/hooks";
 import { Box, Container, Grid2, Stack } from "@mui/material";
 import ServiceCard from "./ServiceCard";
+import AppPagination from "../AppPagination";
 
 const ServicePage = () => {
   const isTabletDown = useTabletDown();
@@ -76,6 +77,10 @@ const ServicePage = () => {
             );
           })}
         </Grid2>
+
+        <Stack alignItems="center" mb={5}>
+          <AppPagination />
+        </Stack>
       </Container>
     </Stack>
   );
