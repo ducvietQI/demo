@@ -19,7 +19,7 @@ const ClientSideLayout = ({ children }: { children: ReactNode }) => {
           zIndex: 2000,
           width: 70,
           height: 70,
-          boxShadow: "0 0 15px rgba(255, 186, 0, 0.8)",
+          // boxShadow: "0 0 15px rgba(255, 186, 0, 0.8)",
           "&:hover": {
             backgroundColor: "white",
             transform: "scale(1.1)",
@@ -44,8 +44,8 @@ const ClientSideLayout = ({ children }: { children: ReactNode }) => {
           zIndex: 2000,
           width: 70,
           height: 70,
-          backgroundColor: "#ffba00",
-          boxShadow: "0 0 15px rgba(255, 186, 0, 0.8)",
+          backgroundColor: "#3f8edf",
+          // boxShadow: "0 0 15px rgba(255, 186, 0, 0.8)",
           borderRadius: "50%",
           "&:hover": {
             backgroundColor: "#fff3cd",

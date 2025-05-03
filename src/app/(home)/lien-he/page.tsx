@@ -87,7 +87,7 @@ const CONTACTPage = () => {
                 }}
               />
             </FormField>
-            <Stack direction="row" justifyContent="center">
+            <Stack direction="row" justifyContent="flex-end">
               <Button
                 variant="contained"
                 sx={{
