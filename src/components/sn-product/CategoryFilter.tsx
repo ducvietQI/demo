@@ -55,6 +55,7 @@ const CategoryFilter = () => {
           disableGutters
           square
           elevation={0}
+          defaultExpanded
           sx={{
             border: "none",
             boxShadow: "none",

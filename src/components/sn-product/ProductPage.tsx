@@ -14,10 +14,6 @@ const ProductPage = () => {
       <Container>
         <Grid2 mt={4} container direction={"row"} spacing={2}>
           <Grid2 size={2.5} bgcolor="white" height="100%" pt={1.5}>
-            <Typography fontWeight={500} variant="h2" pl={1.5}>
-              <FilterIcon /> Bộ lọc
-            </Typography>
-
             <CategoryFilter />
           </Grid2>
 

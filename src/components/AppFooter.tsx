@@ -82,9 +82,11 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
                     📞 <strong>{item}</strong>
                   </Typography>
                 ))}
-              <Typography fontSize="14px" color="primary">
-                📧 <strong>{footerData.email}</strong>
-              </Typography>
+              {footerData.email && (
+                <Typography fontSize="14px" color="primary">
+                  📧 <strong>{footerData.email}</strong>
+                </Typography>
+              )}
             </Stack>
           </Grid2>
 

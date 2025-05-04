@@ -138,7 +138,7 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                             spacing={1}
                             sx={{
                               bgcolor: "white",
-                              py: 2,
+                              pt: 1,
                               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
                             }}
                           >

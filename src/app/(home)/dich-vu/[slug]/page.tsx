@@ -672,7 +672,7 @@ const CollapseFAQ = ({
   title: string;
   content: string;
 }) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   return (
     <>
