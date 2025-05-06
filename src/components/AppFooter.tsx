@@ -97,7 +97,7 @@ const AppFooter = ({
                 {footerData.description}
               </Typography>
 
-              {serviceData.length && (
+              {serviceData && serviceData.length && (
                 <Typography
                   fontWeight={600}
                   color="primary"
@@ -108,17 +108,18 @@ const AppFooter = ({
                   DỊCH VỤ
                 </Typography>
               )}
-              {serviceData?.map((item) => (
-                <Link
-                  key={item.id}
-                  href="#"
-                  color="#fff"
-                  fontSize="14px"
-                  underline="none"
-                >
-                  {item.title}
-                </Link>
-              ))}
+              {serviceData.length > 0 &&
+                serviceData.map((item) => (
+                  <Link
+                    key={item.id}
+                    href="#"
+                    color="#fff"
+                    fontSize="14px"
+                    underline="none"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
             </Stack>
           </Grid2>
 
@@ -191,22 +192,22 @@ const AppFooter = ({
 
             <Stack direction="row" justifyContent="flex-end" mt={2} spacing={1}>
               <SocialIconButton
-                href={footerData.social.instagram || ""}
+                href={footerData.social?.instagram || ""}
                 iconSrc="/images/ig.png"
                 alt="Instagram Icon"
               />
               <SocialIconButton
-                href={footerData.social.facebook || ""}
+                href={footerData.social?.facebook || ""}
                 iconSrc="/images/yt.png"
                 alt="Facebook Icon"
               />
               <SocialIconButton
-                href={footerData.social.tiktok || ""}
+                href={footerData.social?.tiktok || ""}
                 iconSrc="/images/ar.png"
                 alt="TikTok Icon"
               />
               <SocialIconButton
-                href={footerData.social.zalo || ""}
+                href={footerData.social?.zalo || ""}
                 iconSrc="/images/zalo.png"
                 alt="Zalo Icon"
               />
