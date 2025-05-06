@@ -23,6 +23,7 @@ export enum BANNER_TYPE {
   SERVICES,
   PROJECT,
   PRODUCT,
+  NEWS,
 }
 
 export interface MenuItem {
@@ -69,4 +70,27 @@ export interface CompanyProfile {
   modifiedBy: string | null;
   modificationTime: string | null;
   id: string;
+}
+
+export interface Image {
+  url: string;
+  caption: string;
+}
+
+export interface Workflow {
+  name: string;
+  description: string;
+  image: Image;
+  order: number;
+}
+
+export interface ServiceModel {
+  id: string;
+  code: string;
+  title: string;
+  slug: string;
+  description: string;
+  view: number;
+  workflows: Workflow[];
+  projects: any[];
 }

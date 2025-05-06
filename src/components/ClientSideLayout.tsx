@@ -4,20 +4,22 @@ import { Stack, IconButton } from "@mui/material";
 import AppFooter from "./AppFooter";
 import Image from "next/image";
 import { ReactNode } from "react";
-import { CompanyProfile } from "@/models/home.type";
+import { CompanyProfile, ServiceModel } from "@/models/home.type";
 
 const ClientSideLayout = ({
   children,
   footerData,
+  serviceData,
 }: {
   children: ReactNode;
   footerData: CompanyProfile;
+  serviceData: ServiceModel[];
 }) => {
   return (
     <Stack position="relative" pt={{ xs: "55px", md: "90px" }}>
       <div className="relative z-10">{children}</div>
 
-      <AppFooter footerData={footerData} />
+      <AppFooter footerData={footerData} serviceData={serviceData} />
       <IconButton
         sx={{
           position: "fixed",

@@ -1,19 +1,56 @@
 "use client";
 
-import { CompanyProfile } from "@/models/home.type";
+import { CompanyProfile, ServiceModel } from "@/models/home.type";
 import {
   Box,
   Container,
   Divider,
   Grid2,
   IconButton,
+  Link,
   Stack,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
 import { memo } from "react";
 
-const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
+const SocialIconButton = ({
+  href,
+  iconSrc,
+  alt,
+}: {
+  href: string;
+  iconSrc: string;
+  alt: string;
+}) => {
+  return (
+    <IconButton
+      onClick={() => (href ? window.open(href, "_blank") : null)}
+      sx={{
+        color: "white",
+        background: "none",
+        ":hover": {
+          background: "none",
+        },
+      }}
+    >
+      <Image
+        src={iconSrc}
+        height={iconSrc.includes("ig.png") ? 18 : 30}
+        width={iconSrc.includes("ig.png") ? 18 : 30}
+        alt={alt}
+      />
+    </IconButton>
+  );
+};
+
+const AppFooter = ({
+  footerData,
+  serviceData,
+}: {
+  footerData: CompanyProfile;
+  serviceData: ServiceModel[];
+}) => {
   return (
     <Box
       bgcolor="#635f5f"
@@ -59,6 +96,29 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
               <Typography color="white" fontSize="14px">
                 {footerData.description}
               </Typography>
+
+              {serviceData.length && (
+                <Typography
+                  fontWeight={600}
+                  color="primary"
+                  fontSize="16px"
+                  letterSpacing="-0.7px"
+                  mt={2}
+                >
+                  DỊCH VỤ
+                </Typography>
+              )}
+              {serviceData?.map((item) => (
+                <Link
+                  key={item.id}
+                  href="#"
+                  color="#fff"
+                  fontSize="14px"
+                  underline="none"
+                >
+                  {item.title}
+                </Link>
+              ))}
             </Stack>
           </Grid2>
 
@@ -79,19 +139,15 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
               {Array.isArray(footerData.hotline) &&
                 footerData.hotline.map((item, i) => (
                   <Typography key={i} fontSize="14px" color="primary">
-                    📞 <strong>{item}</strong>
+                    📞 {item}
                   </Typography>
                 ))}
               {footerData.email && (
                 <Typography fontSize="14px" color="primary">
-                  📧 <strong>{footerData.email}</strong>
+                  📧 {footerData.email}
                 </Typography>
               )}
-            </Stack>
-          </Grid2>
 
-          <Grid2 size={{ xs: 12, md: 3.3 }}>
-            <Stack spacing={2}>
               <Typography
                 fontWeight={600}
                 color="primary"
@@ -113,67 +169,56 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
                 ))}
             </Stack>
           </Grid2>
+
+          <Grid2 size={{ xs: 12, md: 3.3 }}>
+            <div
+              className="fb-page"
+              data-href={footerData.social?.facebook || ""}
+              data-tabs=""
+              data-height="150"
+              data-small-header="false"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="false"
+            >
+              <blockquote
+                cite={footerData.social?.facebook || ""}
+                className="fb-xfbml-parse-ignore"
+              >
+                <a href={footerData.social?.facebook || ""}></a>
+              </blockquote>
+            </div>
+
+            <Stack direction="row" justifyContent="flex-end" mt={2} spacing={1}>
+              <SocialIconButton
+                href={footerData.social.instagram || ""}
+                iconSrc="/images/ig.png"
+                alt="Instagram Icon"
+              />
+              <SocialIconButton
+                href={footerData.social.facebook || ""}
+                iconSrc="/images/yt.png"
+                alt="Facebook Icon"
+              />
+              <SocialIconButton
+                href={footerData.social.tiktok || ""}
+                iconSrc="/images/ar.png"
+                alt="TikTok Icon"
+              />
+              <SocialIconButton
+                href={footerData.social.zalo || ""}
+                iconSrc="/images/zalo.png"
+                alt="Zalo Icon"
+              />
+            </Stack>
+          </Grid2>
         </Grid2>
 
         <Divider sx={{ my: 2, bgcolor: "gray" }} />
 
-        {/* Phần cuối */}
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Typography fontSize="12px" color="text.white">
-            © Copyright 2024-2025. Bản quyền nội dung thuộc Quanghoanhome
-          </Typography>
-          <Stack direction="row" spacing={1}>
-            <IconButton
-              onClick={() =>
-                footerData.social.facebook
-                  ? window.open(footerData.social.facebook, "_blank")
-                  : null
-              }
-              sx={{ color: "white" }}
-            >
-              <Image
-                src="/images/fb.png"
-                height={30}
-                width={30}
-                alt="fb-icon"
-              />
-            </IconButton>
-            <IconButton
-              onClick={() =>
-                footerData.social.tiktok
-                  ? window.open(footerData.social.tiktok, "_blank")
-                  : null
-              }
-              sx={{ color: "white" }}
-            >
-              <Image
-                src="/images/ar.png"
-                height={30}
-                width={30}
-                alt="yt-icon"
-              />
-            </IconButton>
-            <IconButton
-              onClick={() =>
-                footerData.social.zalo
-                  ? window.open(footerData.social.zalo, "_blank")
-                  : null
-              }
-              sx={{ color: "white" }}
-            >
-              <Image
-                src="/images/zalo.png"
-                height={30}
-                width={30}
-                alt="zalo-icon"
-              />
-            </IconButton>
-          </Stack>
-        </Stack>
+        <Typography fontSize="12px" color="text.white">
+          © Copyright 2024-2025. Bản quyền nội dung thuộc Quanghoanhome
+        </Typography>
       </Container>
     </Box>
   );

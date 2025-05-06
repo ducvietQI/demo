@@ -2,12 +2,13 @@ import apiRequester from "@/api/apiRequester";
 import AppHeader from "@/components/AppHeader";
 import ClientSideLayout from "@/components/ClientSideLayout";
 import { ApiConst } from "@/constant";
-import { MenuItem, CompanyProfile } from "@/models/home.type";
+import { MenuItem, CompanyProfile, ServiceModel } from "@/models/home.type";
 import { CommonUtils } from "@/utils";
 
 async function fetchMenuAndFooter(): Promise<{
   menuList: MenuItem[];
   footerData: CompanyProfile;
+  serviceData: ServiceModel[];
 }> {
   try {
     const menuResponse = await apiRequester.get(ApiConst.MENU_LIST);
@@ -18,10 +19,16 @@ async function fetchMenuAndFooter(): Promise<{
     const footerResponse = await apiRequester.get(ApiConst.FOOTER_LIST);
     const footerData = footerResponse.payload as CompanyProfile;
 
-    return { menuList, footerData };
+    const serviceResponse = await apiRequester.get(
+      ApiConst.BUSINESSES_OVERVIEW_LIST,
+      { size: 10 }
+    );
+    const serviceData = serviceResponse.payload as ServiceModel[];
+
+    return { menuList, footerData, serviceData };
   } catch (error) {
     console.error("Error fetching menu or footer data:", error);
-    return { menuList: [], footerData: {} as CompanyProfile };
+    return { menuList: [], footerData: {} as CompanyProfile, serviceData: [] };
   }
 }
 
@@ -30,12 +37,12 @@ export default async function ClientLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { menuList, footerData } = await fetchMenuAndFooter();
+  const { menuList, footerData, serviceData } = await fetchMenuAndFooter();
 
   return (
     <>
-      <AppHeader menuItems={menuList || []} />
-      <ClientSideLayout footerData={footerData || {}}>
+      <AppHeader menuItems={menuList} />
+      <ClientSideLayout footerData={footerData} serviceData={serviceData}>
         {children}
       </ClientSideLayout>
     </>
