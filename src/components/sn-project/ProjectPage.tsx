@@ -32,6 +32,10 @@ const ProjectPage = ({ data }: { data: IPaginationList<IProject> }) => {
       })
     );
     dispatch(projectActions.changeProjectList(data.items));
+
+    return () => {
+      dispatch(projectActions.reset());
+    };
   }, []);
 
   const fetchMoreProjects = useCallback(async () => {

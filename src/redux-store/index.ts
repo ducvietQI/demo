@@ -4,16 +4,19 @@ import homeReducer from "./home.slice";
 import { EnvConstant } from "@/constant";
 import appReducer, { appSlice } from "./app.slice";
 import projectReducer, { projectSlice } from "./project.slice";
+import faqReducer, { faqSlice } from "./faq.slice";
 
 /* ------------- Assemble The Actions ------------- */
 export const appActions = appSlice.actions;
 export const projectActions = projectSlice.actions;
+export const faqActions = faqSlice.actions;
 
 /* ------------- Assemble The Reducers ------------- */
 const reducer = {
   homeReducer,
   appReducer,
   projectReducer,
+  faqReducer,
 };
 
 export const makeStore = () => {

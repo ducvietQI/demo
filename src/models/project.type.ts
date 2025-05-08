@@ -48,3 +48,20 @@ export interface IPaginationList<T> {
   currentPage: number;
   totalPages: number;
 }
+
+export interface IIFAQ {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  content: string;
+  order: number;
+  rating: Rating;
+  seoMetaData: SeoMetaData;
+  state: number;
+  businessFrequentlyQuestions: any[];
+  createdBy: string;
+  creationTime: string;
+  modifiedBy: string | null;
+  modificationTime: string;
+}

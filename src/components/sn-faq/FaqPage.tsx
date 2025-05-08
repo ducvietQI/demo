@@ -1,0 +1,135 @@
+"use client";
+
+import { useTabletDown } from "@/hooks";
+import { IPaginationList, IIFAQ } from "@/models/project.type";
+import { faqActions, useAppDispatch, useAppSelector } from "@/redux-store";
+import { Stack, Box, Container } from "@mui/material";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useEffect, useCallback } from "react";
+import apiRequester from "@/api/apiRequester";
+import { ApiConst, GlobalsConst } from "@/constant";
+import FAQComponent from "./FAQComponent";
+
+const FaqPage = ({ data }: { data: IPaginationList<IIFAQ> }) => {
+  const dispatch = useAppDispatch();
+  const isTabletDown = useTabletDown();
+
+  const { faqList, currentPage, totalPages, hasMore } = useAppSelector(
+    (state) => state.faqReducer
+  );
+
+  useEffect(() => {
+    dispatch(
+      faqActions.changePagination({
+        currentPage: data.currentPage,
+        totalPages: data.totalPages,
+      })
+    );
+    dispatch(faqActions.changeFAQList(data.items));
+    dispatch(faqActions.setHasMore(data.currentPage < data.totalPages));
+
+    return () => {
+      dispatch(faqActions.reset());
+    };
+  }, [data, dispatch]);
+
+  const fetchMoreFAQs = useCallback(async () => {
+    try {
+      const response = await apiRequester.get<IPaginationList<IIFAQ>>(
+        ApiConst.FAQ_LIST,
+        {
+          page: currentPage + 1,
+          size: GlobalsConst.DEFAULT_SIZE,
+        }
+      );
+
+      const newFAQs = response?.payload?.items || [];
+      dispatch(faqActions.changeFAQList(newFAQs));
+      dispatch(
+        faqActions.changePagination({
+          currentPage: currentPage + 1,
+          totalPages: response?.payload?.totalPages || totalPages,
+        })
+      );
+      dispatch(
+        faqActions.setHasMore(currentPage + 1 < response?.payload?.totalPages)
+      );
+    } catch (error) {
+      console.error("Error fetching more FAQs:", error);
+    }
+  }, [currentPage, totalPages, dispatch]);
+
+  return (
+    <Stack position="relative">
+      {isTabletDown && (
+        <>
+          <Box
+            p="10px"
+            bgcolor="primary.main"
+            fontSize="20px"
+            textAlign="center"
+            fontWeight={700}
+          >
+            Câu Hỏi Thường Gặp
+          </Box>
+          <Box p={1.5} bgcolor="bg.grey" fontSize="14px" textAlign="center">
+            Dưới đây là danh sách các câu hỏi thường gặp để giúp bạn hiểu rõ hơn
+            về dịch vụ của chúng tôi.
+          </Box>
+        </>
+      )}
+      <Container>
+        {!isTabletDown && (
+          <Stack alignItems="center" position="relative">
+            <Box
+              p="10px"
+              position="absolute"
+              bgcolor="primary.main"
+              fontSize="20px"
+              width="70%"
+              textAlign="center"
+              top={-51}
+              fontWeight={700}
+              zIndex={2}
+              boxSizing="border-box"
+            >
+              FAQ
+            </Box>
+            <Box
+              p={3}
+              bgcolor="#e5dfdf"
+              fontSize="14px"
+              width="70%"
+              fontWeight={500}
+              textAlign="center"
+              boxSizing="border-box"
+            >
+              Nơi giải đáp thắc mắc của khách hàng trước, trong và sau khi thi
+              công
+            </Box>
+          </Stack>
+        )}
+
+        <InfiniteScroll
+          dataLength={faqList.length}
+          next={fetchMoreFAQs}
+          hasMore={hasMore}
+          loader={<Box textAlign="center">Đang tải thêm...</Box>}
+          endMessage={
+            <Box textAlign="center" mt={2}>
+              Bạn đã xem hết các câu hỏi.
+            </Box>
+          }
+        >
+          <Stack spacing={2} mt={3}>
+            {faqList.map((faq, index) => (
+              <FAQComponent key={index} index={index} data={faq} />
+            ))}
+          </Stack>
+        </InfiniteScroll>
+      </Container>
+    </Stack>
+  );
+};
+
+export default FaqPage;
