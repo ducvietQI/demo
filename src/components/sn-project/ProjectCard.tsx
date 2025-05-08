@@ -2,7 +2,6 @@
 
 import { RouteConstant } from "@/constant";
 import { IProject } from "@/models/project.type";
-import { formatNameSpace } from "@/utils/format.utils";
 import {
   Box,
   Card,

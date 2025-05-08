@@ -120,7 +120,7 @@ export async function generateBasicMetadata(): Promise<Metadata> {
         url: host,
         images: [
           {
-            url: `${host}/images/logo.svg`,
+            url: `${host}/images/logo.png`,
             width: 300,
             height: 300,
             alt: "Logo-favicon",

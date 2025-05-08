@@ -12,5 +12,8 @@ export const PRODUCT_DETAIL = `${PRODUCT}/{pathName}`;
 export const NEWS = "/bai-viet";
 export const NEWS_DETAIL = `${NEWS}/{pathName}`;
 
+export const FAQ = "/faq";
+export const FAQ_DETAIL = `${FAQ}/{pathName}`;
+
 export const INTRODUCE = "/gioi-thieu";
 export const CONTACT = "/lien-he";

@@ -60,7 +60,7 @@ const FaqPage = ({ data }: { data: IPaginationList<IIFAQ> }) => {
   }, [currentPage, totalPages, dispatch]);
 
   return (
-    <Stack position="relative">
+    <Stack position="relative" pb={{ xs: 3, md: 5 }}>
       {isTabletDown && (
         <>
           <Box
@@ -114,12 +114,7 @@ const FaqPage = ({ data }: { data: IPaginationList<IIFAQ> }) => {
           dataLength={faqList.length}
           next={fetchMoreFAQs}
           hasMore={hasMore}
-          loader={<Box textAlign="center">Đang tải thêm...</Box>}
-          endMessage={
-            <Box textAlign="center" mt={2}>
-              Bạn đã xem hết các câu hỏi.
-            </Box>
-          }
+          loader={<></>}
         >
           <Stack spacing={2} mt={3}>
             {faqList.map((faq, index) => (

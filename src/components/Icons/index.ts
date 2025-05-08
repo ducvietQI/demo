@@ -1,3 +1,4 @@
+import ArrowCollapseIcon from "./ArrowCollapseIcon";
 import ArrowDownIcon from "./ArrowDownIcon";
 import ArrowRightIcon from "./ArrowRightIcon";
 import CloseXIcon from "./CloseXIcon";
@@ -22,4 +23,5 @@ export {
   EyeIcon,
   FilterIcon,
   ArrowDownIcon,
+  ArrowCollapseIcon,
 };
