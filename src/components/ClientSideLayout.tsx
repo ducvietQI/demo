@@ -3,8 +3,9 @@
 import { Stack, IconButton } from "@mui/material";
 import AppFooter from "./AppFooter";
 import Image from "next/image";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { CompanyProfile, ServiceModel } from "@/models/home.type";
+import { appActions, useAppDispatch } from "@/redux-store";
 
 const ClientSideLayout = ({
   children,
@@ -15,11 +16,17 @@ const ClientSideLayout = ({
   footerData: CompanyProfile;
   serviceData: ServiceModel[];
 }) => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(appActions.changeServiceData(serviceData));
+  }, [serviceData]);
+
   return (
     <Stack position="relative" pt={{ xs: "55px", md: "90px" }}>
       <div className="relative z-10">{children}</div>
 
-      <AppFooter footerData={footerData} serviceData={serviceData} />
+      <AppFooter footerData={footerData} />
       <IconButton
         sx={{
           position: "fixed",

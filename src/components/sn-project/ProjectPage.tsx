@@ -1,12 +1,66 @@
 "use client";
 
+import apiRequester from "@/api/apiRequester";
+import { ApiConst, GlobalsConst } from "@/constant";
 import { useTabletDown } from "@/hooks";
-import { Stack, Box, Grid2, Container, Pagination } from "@mui/material";
-import { ServiceCard } from "../sn-service";
-import AppPagination from "../AppPagination";
+import { IPaginationList, IProject } from "@/models/project.type";
+import { projectActions, useAppDispatch, useAppSelector } from "@/redux-store";
+import { Box, Container, Grid2, Stack } from "@mui/material";
+import { useCallback, useEffect } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { shallowEqual } from "react-redux";
+import ProjectCard from "./ProjectCard";
 
-const ProjectPage = () => {
+const ProjectPage = ({ data }: { data: IPaginationList<IProject> }) => {
+  const dispatch = useAppDispatch();
   const isTabletDown = useTabletDown();
+  const { projectList, currentPage, totalPages, hasMore } = useAppSelector(
+    (state) => ({
+      projectList: state.projectReducer.projectList,
+      currentPage: state.projectReducer.currentPage,
+      totalPages: state.projectReducer.totalPages,
+      hasMore: state.projectReducer.hasMore,
+    }),
+    shallowEqual
+  );
+
+  useEffect(() => {
+    dispatch(
+      projectActions.changePagination({
+        currentPage: data.currentPage,
+        totalPages: data.totalPages,
+      })
+    );
+    dispatch(projectActions.changeProjectList(data.items));
+  }, []);
+
+  const fetchMoreProjects = useCallback(async () => {
+    try {
+      const response = await apiRequester.get<IPaginationList<IProject>>(
+        ApiConst.PROJECT_LIST,
+        {
+          page: currentPage + 1,
+          size: GlobalsConst.DEFAULT_SIZE,
+        }
+      );
+
+      const newProjects = response?.payload?.items || [];
+      dispatch(projectActions.changeProjectList(newProjects));
+      dispatch(
+        projectActions.changePagination({
+          currentPage: currentPage + 1,
+          totalPages: response?.payload?.totalPages || totalPages,
+        })
+      );
+      dispatch(
+        projectActions.setHasMore(
+          currentPage + 1 < response?.payload?.totalPages
+        )
+      );
+    } catch (error) {
+      console.error("Error fetching more projects:", error);
+    }
+  }, [currentPage, totalPages, dispatch]);
 
   return (
     <Stack position="relative">
@@ -63,96 +117,33 @@ const ProjectPage = () => {
           </Stack>
         )}
 
-        <Grid2 my={5} container columnSpacing={2} rowSpacing={2}>
-          {imagesGroup2.map((item, index) => {
-            return (
-              <Grid2
-                size={{ xs: 12, md: 4 }}
-                key={index}
-                sx={{
-                  position: "relative",
-                  cursor: "pointer",
-                  height: { xs: 340, md: 400 },
-                }}
-              >
-                <ServiceCard {...item} />
-              </Grid2>
-            );
-          })}
-        </Grid2>
-
-        <Stack alignItems="center" mb={5}>
-          <AppPagination />
-        </Stack>
+        <InfiniteScroll
+          dataLength={projectList.length}
+          next={fetchMoreProjects}
+          hasMore={hasMore}
+          loader={<></>}
+        >
+          <Grid2 my={5} container columnSpacing={2} rowSpacing={2}>
+            {projectList.map((item, index) => {
+              return (
+                <Grid2
+                  size={{ xs: 12, md: 4 }}
+                  key={index}
+                  sx={{
+                    position: "relative",
+                    cursor: "pointer",
+                    height: { xs: 340, md: 400 },
+                  }}
+                >
+                  <ProjectCard data={item} />
+                </Grid2>
+              );
+            })}
+          </Grid2>
+        </InfiniteScroll>
       </Container>
     </Stack>
   );
 };
 
 export default ProjectPage;
-
-const imagesGroup2 = [
-  {
-    id: 1,
-    imgSrc: "/images/10.webp",
-    title: "Hình ảnh thực tế ngôi nhà 2 tầng 1 tum sáng thoáng tối đa",
-    description:
-      "Giữa nhịp sống hiện đại, một không gian vừa thoáng đãng, gần gũi thiên nhiên vừa mang phong cách tối giản đang trở thành lựa chọn lý tưởng của nhiều...",
-  },
-  {
-    id: 2,
-    imgSrc: "/images/11.webp",
-    title: "Nhà vườn giữa lòng thành phố",
-    description:
-      "Không gian xanh mát giúp cân bằng cuộc sống và mang lại nguồn năng lượng tích cực.",
-  },
-  {
-    id: 3,
-    imgSrc: "/images/12.webp",
-    title: "Nét đẹp tối giản, tinh tế",
-    description:
-      "Kiến trúc tối giản nhưng không kém phần sang trọng, tạo nên không gian sống đầy cảm hứng.",
-  },
-  {
-    id: 4,
-    imgSrc: "/images/13.webp",
-    title: "Biệt thự hiện đại với không gian mở",
-    description:
-      "Sự kết hợp hoàn hảo giữa ánh sáng tự nhiên và nội thất sang trọng tạo nên một không gian sống lý tưởng.",
-  },
-  {
-    id: 5,
-    imgSrc: "/images/16.webp",
-    title: "Thiết kế thông minh – Nâng tầm trải nghiệm sống",
-    description:
-      "Tận dụng tối đa ánh sáng và gió tự nhiên, giúp không gian luôn thông thoáng và thoải mái.",
-  },
-  {
-    id: 6,
-    imgSrc: "/images/17.webp",
-    title: "Không gian xanh trong từng góc nhà",
-    description:
-      "Cây xanh không chỉ giúp thanh lọc không khí mà còn mang lại cảm giác thư thái, dễ chịu.",
-  },
-  {
-    id: 7,
-    imgSrc: "/images/19.webp",
-    title: "Thiết kế nhà phố tối ưu không gian",
-    description:
-      "Mọi góc nhỏ trong căn nhà đều được bố trí hợp lý để mang lại sự tiện nghi và thoải mái.",
-  },
-  {
-    id: 8,
-    imgSrc: "/images/17.webp",
-    title: "Phong cách Nhật Bản trong thiết kế nhà ở",
-    description:
-      "Một không gian sống đơn giản, thanh lịch nhưng đầy đủ công năng và sự tiện nghi.",
-  },
-  {
-    id: 9,
-    imgSrc: "/images/18.webp",
-    title: "Hài hòa giữa hiện đại và truyền thống",
-    description:
-      "Thiết kế lấy cảm hứng từ kiến trúc truyền thống nhưng vẫn đáp ứng các tiêu chuẩn sống hiện đại.",
-  },
-];

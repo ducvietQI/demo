@@ -2,16 +2,25 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import homeReducer from "./home.slice";
 import { EnvConstant } from "@/constant";
+import appReducer, { appSlice } from "./app.slice";
+import projectReducer, { projectSlice } from "./project.slice";
+
+/* ------------- Assemble The Actions ------------- */
+export const appActions = appSlice.actions;
+export const projectActions = projectSlice.actions;
 
 /* ------------- Assemble The Reducers ------------- */
 const reducer = {
   homeReducer,
+  appReducer,
+  projectReducer,
 };
 
 export const makeStore = () => {
   return configureStore({
     reducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({ serializableCheck: false }),
     devTools: EnvConstant.IS_DEV,
   });
 };

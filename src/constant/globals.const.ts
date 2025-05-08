@@ -14,7 +14,8 @@ export const STT_NOT_FOUND = 404;
 export const STT_INTERNAL_SERVER = 500;
 export const STT_NOT_MODIFIED = 304;
 
-export const DEFAULT_SIZE = 20;
+export const DEFAULT_SIZE = 9;
+export const DEFAULT_PAGE = 1;
 
 export const COOKIE_STORAGE = {
   User: "user",

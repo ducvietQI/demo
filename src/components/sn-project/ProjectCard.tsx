@@ -1,6 +1,7 @@
 "use client";
 
 import { RouteConstant } from "@/constant";
+import { IProject } from "@/models/project.type";
 import { formatNameSpace } from "@/utils/format.utils";
 import {
   Box,
@@ -14,24 +15,19 @@ import { useRouter } from "next/navigation";
 import { memo } from "react";
 import stringFormat from "string-format";
 
-const ServiceCard = ({
-  imgSrc,
-  imgAlt = "img-alt",
-  title,
-  description,
-  id,
-}: ServiceCardProps) => {
+const ProjectCard = ({ data }: ProjectCardProps) => {
   const router = useRouter();
 
   const handleClick = () => {
-    const pathName = formatNameSpace(title, id);
-    router.push(stringFormat(RouteConstant.PROJECT_DETAIL, { pathName }));
+    router.push(
+      stringFormat(RouteConstant.PROJECT_DETAIL, { pathName: data.slug })
+    );
   };
 
   return (
     <Card
       sx={{
-        height: "100%", // Đảm bảo card chiếm full chiều cao SwiperSlide
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -63,8 +59,8 @@ const ServiceCard = ({
           <CardMedia
             className="product-image"
             component="img"
-            image={imgSrc}
-            alt={imgAlt}
+            image={data.avatar.url}
+            alt={data.avatar.caption}
             loading="lazy"
             sx={{
               height: "100%",
@@ -99,14 +95,15 @@ const ServiceCard = ({
                 lineHeight: 1.4,
               }}
             >
-              {title}
+              {data.title}
             </Typography>
             <Typography
               variant="h5"
+              className="text-ellipsis-4-row"
               color="text.black"
               sx={{ fontSize: "14px", lineHeight: 1.5 }}
             >
-              {description}
+              {data.description}
             </Typography>
           </Box>
 
@@ -129,12 +126,8 @@ const ServiceCard = ({
   );
 };
 
-export default memo(ServiceCard);
+export default memo(ProjectCard);
 
-export type ServiceCardProps = {
-  id: number;
-  imgSrc: string;
-  imgAlt?: string;
-  title: string;
-  description: string;
+export type ProjectCardProps = {
+  data: IProject;
 };

@@ -1,6 +1,7 @@
 "use client";
 
-import { CompanyProfile, ServiceModel } from "@/models/home.type";
+import { CompanyProfile } from "@/models/home.type";
+import { useAppSelector } from "@/redux-store";
 import {
   Box,
   Container,
@@ -44,13 +45,9 @@ const SocialIconButton = ({
   );
 };
 
-const AppFooter = ({
-  footerData,
-  serviceData,
-}: {
-  footerData: CompanyProfile;
-  serviceData: ServiceModel[];
-}) => {
+const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
+  const { serviceData } = useAppSelector((state) => state.appReducer);
+
   return (
     <Box
       bgcolor="#635f5f"
@@ -97,7 +94,7 @@ const AppFooter = ({
                 {footerData.description}
               </Typography>
 
-              {serviceData && serviceData.length && (
+              {serviceData && serviceData.length > 0 && (
                 <Typography
                   fontWeight={600}
                   color="primary"
