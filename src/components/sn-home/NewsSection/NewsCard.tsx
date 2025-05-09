@@ -1,7 +1,7 @@
 "use client";
 
 import { RouteConstant } from "@/constant";
-import { formatNameSpace } from "@/utils/format.utils";
+import { INews } from "@/models/project.type";
 import {
   Box,
   Card,
@@ -14,18 +14,13 @@ import { useRouter } from "next/navigation";
 import { memo } from "react";
 import stringFormat from "string-format";
 
-const NewsCard = ({
-  imgSrc,
-  imgAlt = "img-alt",
-  title,
-  description,
-  id,
-}: NewsCardProps) => {
+const NewsCard = ({ data }: NewsCardProps) => {
   const router = useRouter();
 
   const handleClick = () => {
-    const pathName = formatNameSpace(title, id);
-    router.push(stringFormat(RouteConstant.NEWS_DETAIL, { pathName }));
+    router.push(
+      stringFormat(RouteConstant.NEWS_DETAIL, { pathName: data.slug })
+    );
   };
 
   return (
@@ -55,7 +50,7 @@ const NewsCard = ({
       >
         <Box
           sx={{
-            height: 300,
+            height: 196,
             width: "100%",
             overflow: "hidden",
           }}
@@ -63,8 +58,8 @@ const NewsCard = ({
           <CardMedia
             className="product-image"
             component="img"
-            image={imgSrc}
-            alt={imgAlt}
+            image={`${data?.avatar.url}&w=300`}
+            alt={data?.avatar.caption}
             loading="lazy"
             sx={{
               height: "100%",
@@ -100,14 +95,15 @@ const NewsCard = ({
                 lineHeight: 1.4,
               }}
             >
-              {title}
+              {data?.title}
             </Typography>
             <Typography
               variant="h5"
               color="text.black"
+              className="text-ellipsis-4-row"
               sx={{ fontSize: "14px", lineHeight: 1.5 }}
             >
-              {description}
+              {data?.description}
             </Typography>
           </Box>
 
@@ -133,9 +129,5 @@ const NewsCard = ({
 export default memo(NewsCard);
 
 export type NewsCardProps = {
-  id: number;
-  imgSrc: string;
-  imgAlt?: string;
-  title: string;
-  description: string;
+  data: INews;
 };

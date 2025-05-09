@@ -14,7 +14,7 @@ async function fetchData(): Promise<{
     const bannersResponse = await apiRequester.get<IBanner[]>(
       ApiConst.BANNER_LIST,
       {
-        type: BANNER_TYPE.SERVICES,
+        type: BANNER_TYPE.PROJECT,
         size: GlobalsConst.DEFAULT_SIZE,
       }
     );

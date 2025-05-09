@@ -5,11 +5,13 @@ import { EnvConstant } from "@/constant";
 import appReducer, { appSlice } from "./app.slice";
 import projectReducer, { projectSlice } from "./project.slice";
 import faqReducer, { faqSlice } from "./faq.slice";
+import newsReducer, { newsSlice } from "./news.slice";
 
 /* ------------- Assemble The Actions ------------- */
 export const appActions = appSlice.actions;
 export const projectActions = projectSlice.actions;
 export const faqActions = faqSlice.actions;
+export const newsActions = newsSlice.actions;
 
 /* ------------- Assemble The Reducers ------------- */
 const reducer = {
@@ -17,6 +19,7 @@ const reducer = {
   appReducer,
   projectReducer,
   faqReducer,
+  newsReducer,
 };
 
 export const makeStore = () => {

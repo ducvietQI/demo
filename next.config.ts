@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: `/public/:path*`,
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/public/:path*`,
+        destination: `https://wsrv.nl/?url=${process.env.NEXT_PUBLIC_API_URL}/public/:path*`,
       },
     ];
   },

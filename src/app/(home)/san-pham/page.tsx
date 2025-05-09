@@ -7,7 +7,7 @@ import { Stack } from "@mui/material";
 
 const Product = async () => {
   const res = await apiRequester.get(ApiConst.BANNER_LIST, {
-    type: BANNER_TYPE.SERVICES,
+    type: BANNER_TYPE.PRODUCT,
     size: GlobalsConst.DEFAULT_SIZE,
   });
 

@@ -65,3 +65,23 @@ export interface IIFAQ {
   modifiedBy: string | null;
   modificationTime: string;
 }
+
+export interface INews {
+  id: string;
+  code: string;
+  title: string;
+  description: string;
+  content: string;
+  slug: string;
+  avatar: Avatar;
+  view: number;
+  blogGroupId: string;
+  blogGroup: null | any;
+  rating: Rating;
+  seoMetaData: SeoMetaData;
+  state: number;
+  createdBy: string;
+  creationTime: string;
+  modifiedBy: string | null;
+  modificationTime: string;
+}

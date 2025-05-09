@@ -26,6 +26,7 @@ export enum BANNER_TYPE {
   PROJECT,
   PRODUCT,
   NEWS,
+  FAQ,
 }
 
 export interface MenuItem {
