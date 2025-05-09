@@ -13,7 +13,7 @@ export type ApiResponse<T> = {
 };
 
 type CustomOptions = Omit<RequestInit, "method" | "signal"> & {
-  baseUrl?: string | undefined;
+  baseUrl?: string;
   timeout?: number;
   params?: IParams;
   controller?: AbortController;
@@ -25,13 +25,22 @@ type CustomOptions = Omit<RequestInit, "method" | "signal"> & {
 const request = async <T>(
   method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
   endpoint: string,
-  options?: CustomOptions | undefined
+  options?: CustomOptions
 ): Promise<ApiResponse<T>> => {
   try {
     const controller = options?.controller ?? new AbortController();
     const timeout = options?.timeout ?? GlobalsConst.TIMEOUT;
 
-    let body = options?.body;
+    const {
+      body: rawBody,
+      baseUrl,
+      cache,
+      revalidate,
+      headers: customHeaders,
+      ...restOptions
+    } = options ?? {};
+
+    let body = rawBody;
     if (body && !(body instanceof FormData)) {
       body = JSON.stringify(body);
     }
@@ -39,62 +48,60 @@ const request = async <T>(
     const baseHeaders: Record<string, string> = {
       ...GlobalsConst.HEADER_DEFAULT,
     };
+
     if (body instanceof FormData) {
       delete baseHeaders["Content-Type"];
     } else {
-      if (method !== "GET") {
-        baseHeaders["Content-Type"] = "application/json";
+      if (method === "GET") {
+        delete baseHeaders["Content-Type"];
       }
     }
 
-    let accessToken = null;
+    let accessToken: string | undefined;
     let session = null;
 
     if (options?.accessToken !== undefined) {
-      accessToken = options?.accessToken;
+      accessToken = options.accessToken;
     } else if (CommonUtils.isClient()) {
       accessToken = jsCookie.get(GlobalsConst.COOKIE_STORAGE.AccessToken);
     } else {
       session = await ServerUtils.getSessionAction();
-      if (session && session.accessToken) {
-        accessToken = session.accessToken;
-      }
+      accessToken = session?.accessToken;
     }
 
     if (accessToken) {
       baseHeaders.authorization = `Bearer ${accessToken}`;
     }
 
-    const baseUrl = options?.baseUrl ?? process.env.NEXT_PUBLIC_API_URL;
     let fullUrl = endpoint.startsWith("/")
-      ? `${baseUrl}${endpoint}`
-      : `${baseUrl}/${endpoint}`;
+      ? `${baseUrl ?? process.env.NEXT_PUBLIC_API_URL}${endpoint}`
+      : `${baseUrl ?? process.env.NEXT_PUBLIC_API_URL}/${endpoint}`;
+
     if (options?.params) {
       fullUrl = CommonUtils.createUrlWithParams(fullUrl, options.params);
     }
 
     const timeoutId = setTimeout(() => controller.abort(), timeout);
+
     const res = await fetch(fullUrl, {
       method,
       signal: controller.signal,
-      // cache: options?.cache ?? (method === "GET" ? "force-cache" : "no-store"),
-      cache: options?.cache ?? "no-store",
-      ...(typeof options?.revalidate === "number" ||
-      options?.revalidate === false
-        ? { next: { revalidate: options.revalidate } }
+      cache: cache ?? "no-store",
+      ...(typeof revalidate === "number" || revalidate === false
+        ? { next: { revalidate } }
         : {}),
       headers: {
         ...baseHeaders,
-        ...options?.headers,
+        ...customHeaders,
       },
       ...(body && method !== "GET" ? { body } : {}),
-      ...options,
+      ...restOptions,
     });
 
     clearTimeout(timeoutId);
 
-    let payload: T;
     const contentType = res.headers.get("content-type");
+    let payload: T;
     if (contentType?.includes("application/json")) {
       payload = await res.json();
     } else {
@@ -105,20 +112,21 @@ const request = async <T>(
 
     if (!res.ok) {
       if (res.status === GlobalsConst.STT_BAD_REQUEST) {
-        // TODO later: do something...
+        // TODO: handle 400
       } else if (res.status === GlobalsConst.STT_FORBIDDEN) {
-        // TODO later: do something...
+        // TODO: handle 403
       } else if (res.status === GlobalsConst.STT_UNAUTHORIZED) {
-        // TODO later: do something...
+        // TODO: handle 401
       }
     }
 
     return data;
   } catch (errors) {
-    if (isRedirectError(errors)) {
-      throw errors;
-    }
-    return { status: GlobalsConst.STT_INTERNAL_SERVER, payload: errors as T };
+    if (isRedirectError(errors)) throw errors;
+    return {
+      status: GlobalsConst.STT_INTERNAL_SERVER,
+      payload: errors as T,
+    };
   }
 };
 
@@ -161,7 +169,7 @@ const apiRequester = {
     params?: IParams,
     options?: Omit<CustomOptions, "body" | "params">
   ): Promise<ApiResponse<T>> {
-    return request<T>("DELETE", url, { params, body, ...options });
+    return request<T>("DELETE", url, { body, params, ...options });
   },
 };
 

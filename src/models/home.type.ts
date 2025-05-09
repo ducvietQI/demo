@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IBannerImage {
   url: string;
   caption: string;
@@ -48,6 +50,7 @@ export interface SocialLinks {
   instagram: string | null;
   zalo: string | null;
   tiktok: string | null;
+  youtube: string | null;
 }
 
 export interface SeoMetaData {
@@ -55,6 +58,19 @@ export interface SeoMetaData {
   description: string;
   keywords: string;
 }
+
+export enum SnackbarTypeEnum {
+  ErrorServer,
+  Warning,
+  Success,
+}
+
+export type ContentServerProps = {
+  id?: string;
+  title?: string;
+  children: ReactNode;
+  type: SnackbarTypeEnum;
+};
 
 export interface CompanyProfile {
   title: string;

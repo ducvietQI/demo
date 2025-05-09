@@ -5,3 +5,5 @@ export const BUSINESSES_OVERVIEW_LIST = "/api/public/businesses/overview";
 export const PROJECT_LIST = "/api/public/projects";
 export const FAQ_LIST = "/api/public/frequently-questions";
 export const FAQ_DETAIL = "/api/public/frequently-questions/{slug}";
+
+export const POST_CONTACT = "/api/public/contacts/submit";

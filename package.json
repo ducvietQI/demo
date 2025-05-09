@@ -19,6 +19,7 @@
     "fullpage.js": "3.1.2",
     "js-cookie": "^3.0.5",
     "next": "15.1.7",
+    "notistack": "^3.0.2",
     "react": "^19.0.0",
     "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",

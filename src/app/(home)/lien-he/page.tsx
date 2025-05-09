@@ -1,6 +1,8 @@
 "use client";
 
+import apiRequester from "@/api/apiRequester";
 import { AppFormControlTextField } from "@/components";
+import { ApiConst, GlobalsConst } from "@/constant";
 import {
   Box,
   Button,
@@ -10,6 +12,7 @@ import {
   Stack,
 } from "@mui/material";
 import Image from "next/image";
+import { enqueueSnackbar } from "notistack";
 import { ReactNode } from "react";
 import { useForm, useFormState } from "react-hook-form";
 
@@ -21,13 +24,20 @@ interface ContactFormData {
 }
 
 const CONTACTPage = () => {
-  const { reset, handleSubmit, control, setValue } = useForm<ContactFormData>({
+  const { reset, handleSubmit, control } = useForm<ContactFormData>({
     defaultValues: DEFAULT_INIT_VALUE,
   });
   const { errors } = useFormState({ control });
 
-  const handleSubmitFormData = (data: ContactFormData) => {
-    console.log(data);
+  const handleSubmitFormData = async (data: ContactFormData) => {
+    const res = await apiRequester.post(ApiConst.POST_CONTACT, data);
+    if (res.status === GlobalsConst.STT_NO_CONTENT) {
+      enqueueSnackbar({
+        message: "Gửi liên hệ thành công",
+        variant: GlobalsConst.SUCCEED_VARIANT,
+      });
+      reset(DEFAULT_INIT_VALUE);
+    }
   };
 
   return (
@@ -57,7 +67,13 @@ const CONTACTPage = () => {
               <AppFormControlTextField
                 name="phoneNumber"
                 control={control}
-                rules={{ required: "Số điện thoại không được để trống." }}
+                rules={{
+                  required: "Số điện thoại không được để trống.",
+                  pattern: {
+                    value: GlobalsConst.REGEX_PHONE_NUMBER,
+                    message: "Số điện thoại không hợp lệ!",
+                  },
+                }}
                 textfieldProps={{
                   error: !!errors.phoneNumber,
                   helperText: errors.phoneNumber?.message as string,
@@ -69,7 +85,13 @@ const CONTACTPage = () => {
               <AppFormControlTextField
                 name="email"
                 control={control}
-                rules={{ required: "email không được để trống." }}
+                rules={{
+                  required: "Email không được để trống.",
+                  pattern: {
+                    value: GlobalsConst.REGEX_EMAIL,
+                    message: "Email không hợp lệ!",
+                  },
+                }}
                 textfieldProps={{
                   error: !!errors.email,
                   helperText: errors.email?.message as string,

@@ -194,7 +194,7 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
                 alt="Instagram Icon"
               />
               <SocialIconButton
-                href={footerData.social?.facebook || ""}
+                href={footerData.social?.youtube || ""}
                 iconSrc="/images/yt.png"
                 alt="Facebook Icon"
               />

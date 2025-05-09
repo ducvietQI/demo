@@ -8,6 +8,12 @@ import { Provider } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { useServerInsertedHTML } from "next/navigation";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import { SnackbarProvider } from "notistack";
+import {
+  AppSnackbarError,
+  AppSnackbarSuccess,
+  AppSnackbarWarning,
+} from "@/components";
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [{ cache, flush }] = useState(() => {
@@ -71,7 +77,23 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
         <ThemeProvider theme={theme}>
           <CssBaseline />
 
-          <main>{children}</main>
+          <SnackbarProvider
+            maxSnack={4}
+            anchorOrigin={{
+              horizontal: "right",
+              vertical: "top",
+            }}
+            TransitionProps={{
+              direction: "left",
+            }}
+            Components={{
+              error: AppSnackbarError,
+              warning: AppSnackbarWarning,
+              success: AppSnackbarSuccess,
+            }}
+          >
+            <main>{children}</main>
+          </SnackbarProvider>
         </ThemeProvider>
       </CacheProvider>
     </Provider>
