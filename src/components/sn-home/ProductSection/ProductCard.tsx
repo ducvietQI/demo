@@ -16,38 +16,26 @@ import { useRouter } from "next/navigation";
 import { memo, useMemo, useState } from "react";
 import Image from "next/image";
 import stringFormat from "string-format";
+import { IProduct } from "@/models/product.type";
 
-const ProductCard = ({
-  imgSrc,
-  imgAlt = "img-alt",
-  title,
-  description,
-  price,
-  sale,
-  isNew,
-  id,
-}: ProductCardProps) => {
+const ProductCard = ({ data }: ProductCardProps) => {
   const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState<number | null>(5);
+  console.log(data);
 
   const productLabel = useMemo(() => {
-    if (sale) {
-      return { label: `${sale} %`, bgColor: "rgb(244, 25, 25)" };
-    } else if (isNew) {
+    if (data.isNew) {
       return { label: "New", bgColor: "#2EC1AC" };
-    } else {
-      return { label: null, bgColor: undefined };
     }
-  }, [sale, isNew]);
+  }, [data.isNew]);
 
-  const discountedPrice = useMemo(() => {
-    return sale ? price - (price * sale) / 100 : price;
-  }, [price, sale]);
+  // const discountedPrice = useMemo(() => {
+  //   return sale ? price - (price * sale) / 100 : price;
+  // }, [price, sale]);
 
   const handleClick = () => {
-    const pathName = formatNameSpace(title, id);
-    router.push(stringFormat(RouteConstant.PRODUCT_DETAIL, { pathName }));
+    router.push(
+      stringFormat(RouteConstant.PRODUCT_DETAIL, { pathName: data.slug })
+    );
   };
 
   return (
@@ -80,8 +68,8 @@ const ProductCard = ({
           }}
         >
           <Image
-            src={imgSrc}
-            alt={imgAlt}
+            src={data.avatar.url}
+            alt={data.avatar.caption}
             fill
             className="product-image"
             style={{
@@ -100,7 +88,7 @@ const ProductCard = ({
             component="div"
             color="text.black"
           >
-            {title}
+            {/* {data.} */}
           </Typography>
           {/* <Typography variant="h5" color="text.black">
             {description}
@@ -108,9 +96,9 @@ const ProductCard = ({
 
           <Stack direction="row" alignItems="center" spacing={2}>
             <Typography fontSize={14} fontWeight={600} color="#f94c43">
-              {formatNumber(discountedPrice)}₫
+              {/* {formatNumber(discountedPrice)}₫ */}
             </Typography>
-            {sale && (
+            {/* {sale && (
               <Typography
                 sx={{ textDecoration: "line-through" }}
                 color="text.disable"
@@ -118,7 +106,7 @@ const ProductCard = ({
               >
                 {formatNumber(price)}₫
               </Typography>
-            )}
+            )} */}
           </Stack>
 
           <Stack
@@ -136,17 +124,17 @@ const ProductCard = ({
               }}
               size="large"
               name="simple-controlled"
-              value={value}
+              value={data.rating.averageVote}
               readOnly
             />
             <Typography color="text.black" variant="h6">
-              Đã bán: 1
+              Đã bán: {data.totalBuy}
             </Typography>
           </Stack>
         </CardContent>
       </CardActionArea>
 
-      {productLabel.label && (
+      {productLabel?.label && (
         <Box
           sx={{
             width: 48,
@@ -172,12 +160,5 @@ const ProductCard = ({
 export default memo(ProductCard);
 
 export type ProductCardProps = {
-  id: number;
-  imgSrc: string;
-  imgAlt?: string;
-  title: string;
-  description: string;
-  price: number;
-  sale?: number;
-  isNew?: boolean;
+  data: IProduct;
 };

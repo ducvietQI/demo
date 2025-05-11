@@ -6,10 +6,12 @@ import appReducer, { appSlice } from "./app.slice";
 import projectReducer, { projectSlice } from "./project.slice";
 import faqReducer, { faqSlice } from "./faq.slice";
 import newsReducer, { newsSlice } from "./news.slice";
+import productReducer, { productSlice } from "./product.slice";
 
 /* ------------- Assemble The Actions ------------- */
 export const appActions = appSlice.actions;
 export const projectActions = projectSlice.actions;
+export const productActions = productSlice.actions;
 export const faqActions = faqSlice.actions;
 export const newsActions = newsSlice.actions;
 
@@ -20,6 +22,7 @@ const reducer = {
   projectReducer,
   faqReducer,
   newsReducer,
+  productReducer,
 };
 
 export const makeStore = () => {

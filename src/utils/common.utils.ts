@@ -1,4 +1,5 @@
 import { MenuItem } from "@/models/home.type";
+import { ICategories } from "@/models/project.type";
 
 export const createUrlWithParams = (
   baseUrl: string,
@@ -22,9 +23,9 @@ export const createUrlWithParams = (
 
 export const isClient = () => typeof window !== "undefined";
 
-export const buildMenuTree = (menuItems: MenuItem[]): MenuItem[] => {
+export const buildMenuTree = (menuItems: any[]): MenuItem[] => {
   const map = new Map<string, MenuItem>();
-  const roots: MenuItem[] = [];
+  const roots: any[] = [];
 
   // Bước 1: Đưa toàn bộ menuItems vào Map để dễ truy cập
   menuItems.forEach((item) => {

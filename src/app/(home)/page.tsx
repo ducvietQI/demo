@@ -55,9 +55,9 @@ const Home = async () => {
       <TabSection />
       <DesignProjectSection />
       <ConstructionWorkSection />
-      <ProductSection array={home_arr} title="Sản phẩm phòng khách" />
-      <ProductSection array={an_arr} title="Sản phẩm phòng ăn" />
-      <ProductSection title="Sản phẩm phòng ngủ" />
+      {/* <ProductSection array={home_arr} title="Sản phẩm phòng khách" /> */}
+      {/* <ProductSection array={an_arr} title="Sản phẩm phòng ăn" /> */}
+      {/* <ProductSection title="Sản phẩm phòng ngủ" /> */}
       <NewsSection data={newsResponse} />
     </Stack>
   );

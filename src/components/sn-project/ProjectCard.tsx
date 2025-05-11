@@ -58,7 +58,7 @@ const ProjectCard = ({ data }: ProjectCardProps) => {
           <CardMedia
             className="product-image"
             component="img"
-            image={`${data?.avatar.url}&w=300`}
+            image={`${data?.avatar.url}`}
             alt={data.avatar.caption}
             loading="lazy"
             sx={{

@@ -13,3 +13,7 @@ export const NEWS_LIST = "/api/public/blogs";
 export const NEWS_DETAIL = "/api/public/blogs/{slug}";
 
 export const POST_CONTACT = "/api/public/contacts/submit";
+
+export const PRODUCT_LIST = "/api/public/products";
+
+export const CATEGORIES_LIST = "/api/public/categories";

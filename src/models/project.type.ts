@@ -96,3 +96,9 @@ export interface INews {
   modifiedBy: string | null;
   modificationTime: string;
 }
+
+export interface ICategories {
+  id: string;
+  name: string;
+  slug: string;
+}

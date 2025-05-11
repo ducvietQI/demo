@@ -9,47 +9,12 @@ import {
   Typography,
 } from "@mui/material";
 import { ArrowDownIcon } from "../Icons";
+import { MenuItem } from "@/models/home.type";
 
-const arr = [
-  {
-    title: "Phòng ngủ",
-    items: [
-      "Giường ngủ các loại",
-      "Tủ quần áo",
-      "Bàn trang điểm",
-      "Tủ đầu giường",
-      "Chăn, drap, gối, nệm",
-      "Đèn ngủ",
-    ],
-  },
-  {
-    title: "Phòng khách",
-    items: [
-      "Ghế sofa",
-      "Bàn trà",
-      "Kệ tivi",
-      "Tủ sách",
-      "Thảm trang trí",
-      "Đèn trang trí",
-    ],
-  },
-  {
-    title: "Phòng ăn",
-    items: [
-      "Bàn ăn",
-      "Ghế ăn",
-      "Tủ bếp",
-      "Tủ rượu",
-      "Đèn trần phòng ăn",
-      "Phụ kiện bàn ăn",
-    ],
-  },
-];
-
-const CategoryFilter = () => {
+const CategoryFilter = ({ categoriesList }: { categoriesList: MenuItem[] }) => {
   return (
     <Box>
-      {arr.map((category, index) => (
+      {categoriesList.map((category, index) => (
         <Accordion
           key={index}
           disableGutters
@@ -60,7 +25,7 @@ const CategoryFilter = () => {
             border: "none",
             boxShadow: "none",
             "&::before": {
-              display: "none", // bỏ line mờ phía trên
+              display: "none",
             },
           }}
         >
@@ -84,10 +49,10 @@ const CategoryFilter = () => {
               {category.title}
             </Typography>
           </AccordionSummary>
-          {category.items && (
+          {category.children && (
             <AccordionDetails sx={{ p: 0, border: "none" }}>
               <List>
-                {category.items.map((item, i) => (
+                {category.children.map((item, i) => (
                   <ListItem
                     key={i}
                     sx={{
@@ -99,7 +64,7 @@ const CategoryFilter = () => {
                     }}
                   >
                     <ListItemText
-                      primary={item}
+                      primary={item.title}
                       sx={{
                         cursor: "pointer",
                       }}
