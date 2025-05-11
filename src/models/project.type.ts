@@ -19,6 +19,16 @@ interface SeoMetaData {
   keywords: string;
 }
 
+export interface IBusinessProjects {
+  acreage: string;
+  buildingArea: string;
+  client: string;
+  costs: string;
+  location: string;
+  numberFloor: string;
+  scope: string;
+}
+
 export interface IProject {
   id: string;
   code: string;
@@ -39,6 +49,7 @@ export interface IProject {
   creationTime: string;
   modifiedBy: string | null;
   modificationTime: string;
+  projectInformation: IBusinessProjects;
 }
 
 export interface IPaginationList<T> {

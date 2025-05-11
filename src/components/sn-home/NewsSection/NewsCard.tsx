@@ -50,7 +50,7 @@ const NewsCard = ({ data }: NewsCardProps) => {
       >
         <Box
           sx={{
-            height: 196,
+            height: 168,
             width: "100%",
             overflow: "hidden",
           }}

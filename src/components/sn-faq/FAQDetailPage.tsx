@@ -7,8 +7,6 @@ import Image from "next/image";
 import FAQBreadcrumb from "./FAQBreadcrumb";
 
 const FAQDetailPage = ({ data }: { data: IIFAQ }) => {
-  console.log(data);
-
   return (
     <Container>
       <Stack py={5} spacing={2}>

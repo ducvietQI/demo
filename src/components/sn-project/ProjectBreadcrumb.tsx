@@ -1,7 +1,8 @@
 import { RouteConstant } from "@/constant";
 import { Breadcrumbs, Link, Typography } from "@mui/material";
+import { memo } from "react";
 
-const ProjectBreadcrumb = () => {
+const ProjectBreadcrumb = ({ title }: { title: string }) => {
   return (
     <Breadcrumbs
       sx={{
@@ -26,10 +27,10 @@ const ProjectBreadcrumb = () => {
         Dự án
       </Link>
       <Typography color="text.black" fontSize={18}>
-        Dự án chi tiết
+        {title}
       </Typography>
     </Breadcrumbs>
   );
 };
 
-export default ProjectBreadcrumb;
+export default memo(ProjectBreadcrumb);
