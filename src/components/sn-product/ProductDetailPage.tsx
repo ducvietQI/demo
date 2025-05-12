@@ -148,6 +148,7 @@ const ProductDetailPage = ({
                     color: "#fff",
                     height: 40,
                     fontSize: 16,
+                    borderRadius: 0,
                   }}
                 >
                   Liên Hệ

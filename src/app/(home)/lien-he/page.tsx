@@ -115,6 +115,7 @@ const CONTACTPage = () => {
                 sx={{
                   color: "white",
                   fontSize: 14,
+                  borderRadius: 0,
                 }}
                 size="large"
                 type="submit"

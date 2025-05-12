@@ -11,7 +11,15 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { shallowEqual } from "react-redux";
 import ProjectCard from "./ProjectCard";
 
-const ProjectPage = ({ data }: { data: IPaginationList<IProject> }) => {
+const ProjectPage = ({
+  data,
+  projectGroupSlug,
+  responseProjectGroupDetail,
+}: {
+  data: IPaginationList<IProject>;
+  projectGroupSlug?: string;
+  responseProjectGroupDetail?: IProject;
+}) => {
   const dispatch = useAppDispatch();
   const isTabletDown = useTabletDown();
   const { projectList, currentPage, totalPages, hasMore } = useAppSelector(
@@ -43,11 +51,11 @@ const ProjectPage = ({ data }: { data: IPaginationList<IProject> }) => {
       const response = await apiRequester.get<IPaginationList<IProject>>(
         ApiConst.PROJECT_LIST,
         {
+          projectGroupSlug: projectGroupSlug || "",
           page: currentPage + 1,
           size: GlobalsConst.DEFAULT_SIZE,
         }
       );
-
       const newProjects = response?.payload?.items || [];
       dispatch(projectActions.changeProjectList(newProjects));
       dispatch(
@@ -64,7 +72,7 @@ const ProjectPage = ({ data }: { data: IPaginationList<IProject> }) => {
     } catch (error) {
       console.error("Error fetching more projects:", error);
     }
-  }, [currentPage, totalPages, dispatch]);
+  }, [currentPage, totalPages, projectGroupSlug]);
 
   return (
     <Stack position="relative">
@@ -77,13 +85,11 @@ const ProjectPage = ({ data }: { data: IPaginationList<IProject> }) => {
             textAlign="center"
             fontWeight={700}
           >
-            Mẫu Nhà Đẹp
+            {responseProjectGroupDetail?.title || "Mẫu Nhà Đẹp"}
           </Box>
           <Box p={1.5} bgcolor="bg.grey" fontSize="14px" textAlign="center">
-            Với hơn 6 năm hoạt động, chúng tôi đã thiết kế hàng trăm công trình
-            từ nhà phố đến khách sạn, nhà hàng, building,… Mỗi công trình đều
-            chứa đựng tâm huyết của đội ngũ kiến trúc sư cùng kỹ sư tại
-            Quanghoanhome.
+            {responseProjectGroupDetail?.description ||
+              "Với hơn 6 năm hoạt động, chúng tôi đã thiết kế hàng trăm công trình từ nhà phố đến khách sạn, nhà hàng, building,… Mỗi công trình đều chứa đựng tâm huyết của đội ngũ kiến trúc sư cùng kỹ sư tại Quanghoanhome."}
           </Box>
         </>
       )}
@@ -102,7 +108,7 @@ const ProjectPage = ({ data }: { data: IPaginationList<IProject> }) => {
               zIndex={2}
               boxSizing="border-box"
             >
-              Mẫu Nhà Đẹp
+              {responseProjectGroupDetail?.title || "Mẫu Nhà Đẹp"}
             </Box>
             <Box
               p={3}
@@ -113,10 +119,8 @@ const ProjectPage = ({ data }: { data: IPaginationList<IProject> }) => {
               textAlign="center"
               boxSizing="border-box"
             >
-              Với hơn 6 năm hoạt động, chúng tôi đã thiết kế hàng trăm công
-              trình từ nhà phố đến khách sạn, nhà hàng, building,… Mỗi công
-              trình đều chứa đựng tâm huyết của đội ngũ kiến trúc sư cùng kỹ sư
-              tại Quanghoanhome.
+              {responseProjectGroupDetail?.description ||
+                "Với hơn 6 năm hoạt động, chúng tôi đã thiết kế hàng trăm công trình từ nhà phố đến khách sạn, nhà hàng, building,… Mỗi công trình đều chứa đựng tâm huyết của đội ngũ kiến trúc sư cùng kỹ sư tại Quanghoanhome."}
             </Box>
           </Stack>
         )}

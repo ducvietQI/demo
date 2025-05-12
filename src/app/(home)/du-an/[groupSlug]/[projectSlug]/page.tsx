@@ -1,19 +1,19 @@
 import apiRequester from "@/api/apiRequester";
 import { ApiConst } from "@/constant";
+import { IProject } from "@/models/project.type";
 import { Metadata } from "next";
 import stringFormat from "string-format";
 import { headers } from "next/headers";
-import { INews } from "@/models/project.type";
-import NewDetailPage from "@/components/sn-news/NewsDetailPage";
+import ProjectDetailPage from "@/components/sn-project/ProjectDetailPage";
 
 type PageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ projectSlug: string }>;
 };
 
-async function fetchData(slug: string) {
+async function fetchData(projectSlug: string) {
   try {
-    const response = await apiRequester.get<INews>(
-      stringFormat(ApiConst.NEWS_DETAIL, { slug })
+    const response = await apiRequester.get<IProject>(
+      stringFormat(ApiConst.PROJECT_DETAIL, { slug: projectSlug })
     );
     return response?.payload || null;
   } catch (error) {
@@ -24,8 +24,8 @@ async function fetchData(slug: string) {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const data = await fetchData(slug);
+  const { projectSlug } = await params;
+  const data = await fetchData(projectSlug);
   const headersList = await headers();
 
   const host = headersList.get("host") || "default-domain.com";
@@ -43,7 +43,7 @@ export async function generateMetadata({
     openGraph: {
       title: data?.seoMetaData?.title || fallbackTitle,
       description: data?.seoMetaData?.description || fallbackDescription,
-      url: `https://${host}/faq/${slug}`,
+      url: `https://${host}/faq/${projectSlug}`,
       images: [
         {
           url: `${process.env.NEXT_PUBLIC_API_URL}${data?.avatar.url}`,
@@ -56,12 +56,12 @@ export async function generateMetadata({
   };
 }
 
-const NewsDetail = async ({ params }: PageProps) => {
-  const { slug } = await params;
-  const data = await fetchData(slug);
-  if (!data) return null;
+const ProjectDetail = async ({ params }: PageProps) => {
+  const { projectSlug } = await params;
+  const data = await fetchData(projectSlug);
 
-  return <NewDetailPage data={data} />;
+  if (!data) return null;
+  return <ProjectDetailPage data={data} />;
 };
 
-export default NewsDetail;
+export default ProjectDetail;

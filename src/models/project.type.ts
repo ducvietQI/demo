@@ -43,7 +43,11 @@ export interface IProject {
   view: number;
   rating: Rating;
   projectGroupId: string;
-  projectGroup: any | null;
+  projectGroup: {
+    id: string;
+    slug: string;
+    title: string;
+  };
   seoMetaData: SeoMetaData;
   businessProjects: any[];
   state: number;

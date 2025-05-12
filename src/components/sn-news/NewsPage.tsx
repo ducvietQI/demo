@@ -11,7 +11,15 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { shallowEqual } from "react-redux";
 import NewsCard from "../sn-home/NewsSection/NewsCard";
 
-const NewsPage = ({ data }: { data: IPaginationList<INews> }) => {
+const NewsPage = ({
+  data,
+  newsGroupSlug,
+  responseNewsGroupDetail,
+}: {
+  data: IPaginationList<INews>;
+  newsGroupSlug?: string;
+  responseNewsGroupDetail?: INews;
+}) => {
   const dispatch = useAppDispatch();
   const isTabletDown = useTabletDown();
   const { newsList, currentPage, totalPages, hasMore } = useAppSelector(
@@ -43,6 +51,7 @@ const NewsPage = ({ data }: { data: IPaginationList<INews> }) => {
       const response = await apiRequester.get<IPaginationList<INews>>(
         ApiConst.NEWS_LIST,
         {
+          blogGroupSlug: newsGroupSlug || "",
           page: currentPage + 1,
           size: GlobalsConst.DEFAULT_SIZE,
         }
@@ -62,7 +71,7 @@ const NewsPage = ({ data }: { data: IPaginationList<INews> }) => {
     } catch (error) {
       console.error("Error fetching more newss:", error);
     }
-  }, [currentPage, totalPages, dispatch]);
+  }, [currentPage, totalPages, newsGroupSlug]);
 
   return (
     <Stack position="relative">
@@ -75,13 +84,11 @@ const NewsPage = ({ data }: { data: IPaginationList<INews> }) => {
             textAlign="center"
             fontWeight={700}
           >
-            Phản hồi của khách hàng
+            {responseNewsGroupDetail?.title || "Phản hồi của khách hàng"}
           </Box>
           <Box p={1.5} bgcolor="bg.grey" fontSize="14px" textAlign="center">
-            Đối với khách hàng, chúng tôi luôn tận tâm tạo ra những giá trị cho
-            Quý khách hàng thân yêu. Quanghoanhome gồm đội ngũ kiến trúc sư, kỹ
-            sư, chuyên gia trang trí nội thất có trên 5 năm kinh nghiệm hoạt
-            động
+            {responseNewsGroupDetail?.description ||
+              " Đối với khách hàng, chúng tôi luôn tận tâm tạo ra những giá trị cho Quý khách hàng thân yêu. Quanghoanhome gồm đội ngũ kiến trúc sư, kỹ sư, chuyên gia trang trí nội thất có trên 5 năm kinh nghiệm hoạt động"}
           </Box>
         </>
       )}
@@ -101,7 +108,7 @@ const NewsPage = ({ data }: { data: IPaginationList<INews> }) => {
               zIndex={2}
               boxSizing="border-box"
             >
-              Phản hồi của khách hàng
+              {responseNewsGroupDetail?.title || "Phản hồi của khách hàng"}
             </Box>
             <Box
               p={3}
@@ -112,10 +119,8 @@ const NewsPage = ({ data }: { data: IPaginationList<INews> }) => {
               textAlign="center"
               boxSizing="border-box"
             >
-              Đối với khách hàng, chúng tôi luôn tận tâm tạo ra những giá trị
-              cho Quý khách hàng thân yêu. Quanghoanhome gồm đội ngũ kiến trúc
-              sư, kỹ sư, chuyên gia trang trí nội thất có trên 5 năm kinh nghiệm
-              hoạt động
+              {responseNewsGroupDetail?.description ||
+                " Đối với khách hàng, chúng tôi luôn tận tâm tạo ra những giá trị cho Quý khách hàng thân yêu. Quanghoanhome gồm đội ngũ kiến trúc sư, kỹ sư, chuyên gia trang trí nội thất có trên 5 năm kinh nghiệm hoạt động"}
             </Box>
           </Stack>
         )}

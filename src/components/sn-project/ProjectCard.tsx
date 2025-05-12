@@ -19,7 +19,10 @@ const ProjectCard = ({ data }: ProjectCardProps) => {
 
   const handleClick = () => {
     router.push(
-      stringFormat(RouteConstant.PROJECT_DETAIL, { pathName: data.slug })
+      stringFormat(RouteConstant.PROJECT_DETAIL, {
+        groupSlug: data.projectGroup.slug,
+        slug: data.slug,
+      })
     );
   };
 

@@ -4,13 +4,13 @@ export const SERVICE = "/dich-vu";
 export const SERVICE_DETAIL = `${SERVICE}/{pathName}`;
 
 export const PROJECT = "/du-an";
-export const PROJECT_DETAIL = `${PROJECT}/{pathName}`;
+export const PROJECT_DETAIL = `${PROJECT}/{groupSlug}/{slug}`;
 
 export const PRODUCT = "/san-pham";
 export const PRODUCT_DETAIL = `${PRODUCT}/{pathName}`;
 
 export const NEWS = "/bai-viet";
-export const NEWS_DETAIL = `${NEWS}/{pathName}`;
+export const NEWS_DETAIL = `${NEWS}/{groupSlug}/{slug}`;
 
 export const FAQ = "/faq";
 export const FAQ_DETAIL = `${FAQ}/{pathName}`;
