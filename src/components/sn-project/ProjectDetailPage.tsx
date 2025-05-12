@@ -19,7 +19,6 @@ import ImageGallery from "react-image-gallery";
 
 const ProjectDetailPage = ({ data }: { data: IProject }) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState<number | null>(data.rating.averageVote);
 
   const images = useMemo(() => {
     return data?.images.length
@@ -166,10 +165,8 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
             }}
             size="large"
             name="simple-controlled"
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
+            value={data.rating.averageVote}
+            readOnly
           />
           <Typography variant="h3">
             Đánh giá: {data.rating.averageVote}/5. Số lượt vote:

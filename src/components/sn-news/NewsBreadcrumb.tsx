@@ -1,7 +1,7 @@
 import { RouteConstant } from "@/constant";
 import { Breadcrumbs, Link, Typography } from "@mui/material";
 
-const NewsBreadcrumb = () => {
+const NewsBreadcrumb = ({ title }: { title: string }) => {
   return (
     <Breadcrumbs
       sx={{
@@ -26,7 +26,7 @@ const NewsBreadcrumb = () => {
         Bài viết
       </Link>
       <Typography color="text.black" fontSize={18}>
-        Bài viết chi tiết
+        {title}
       </Typography>
     </Breadcrumbs>
   );
