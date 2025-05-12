@@ -1,30 +1,31 @@
 "use client";
 
 import { RouteConstant } from "@/constant";
-import { Box, Container, Grid2, Stack, Typography } from "@mui/material";
-import AOS from "aos";
+import { IProduct } from "@/models/product.type";
+import {
+  Box,
+  Container,
+  ContainerProps,
+  Grid2,
+  Stack,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
-import { ProductCardProps } from "./ProductCard";
+import ProductCard from "./ProductCard";
 
 const ProductSection = ({
   array,
   title,
+  containerprops,
 }: {
-  array?: ProductCardProps[];
+  array?: IProduct[];
   title?: string;
+  containerprops?: ContainerProps;
 }) => {
-  const [visibleProducts, setVisibleProducts] = useState(8);
-
-  const handleShowMore = () => {
-    setVisibleProducts((prevVisible) => prevVisible + 4);
-    setTimeout(() => AOS.refresh(), 0);
-    window.scrollBy({ top: 100, behavior: "smooth" });
-  };
-
   return (
     <Stack mt={3}>
-      <Container>
+      <Container {...containerprops}>
         <Stack bgcolor="#fff" alignItems="left" p={2}>
           <Stack
             direction="row"
@@ -53,11 +54,12 @@ const ProductSection = ({
           </Stack>
 
           <Grid2 container mt={4} columnSpacing={2} rowSpacing={4}>
-            {/* {converArray.slice(0, visibleProducts).map((product, index) => (
-              <Grid2 size={{ xs: 6, md: 3 }} key={index} data-aos="fade-up">
-                <ProductCard {...product} />
-              </Grid2>
-            ))} */}
+            {array &&
+              array.map((product, index) => (
+                <Grid2 size={{ xs: 6, md: 3 }} key={index} data-aos="fade-up">
+                  <ProductCard data={product} />
+                </Grid2>
+              ))}
           </Grid2>
 
           {/* {visibleProducts < products.length && (

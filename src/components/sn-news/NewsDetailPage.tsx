@@ -3,13 +3,11 @@
 import { EyeIcon } from "@/components/Icons";
 import { NewsBreadcrumb } from "@/components/sn-news";
 import { INews } from "@/models/project.type";
-import { Box, Container, Rating, Stack, Typography } from "@mui/material";
+import { Container, Rating, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import AppHTMLRender from "../AppHTMLRender";
 
 const NewDetailPage = ({ data }: { data: INews }) => {
-  console.log(data);
-
   return (
     <Container>
       <Stack py={5} spacing={2}>

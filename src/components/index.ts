@@ -1,4 +1,5 @@
 import AppFooter from "./AppFooter";
+import AppHTMLRender from "./AppHTMLRender";
 import AppPagination from "./AppPagination";
 import AppSnackbarError from "./AppSnackbarError";
 import AppSnackbarSuccess from "./AppSnackbarSuccess";
@@ -36,4 +37,5 @@ export {
   AppSnackbarError,
   AppSnackbarWarning,
   AppSnackbarSuccess,
+  AppHTMLRender,
 };

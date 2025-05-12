@@ -15,5 +15,6 @@ export const NEWS_DETAIL = "/api/public/blogs/{slug}";
 export const POST_CONTACT = "/api/public/contacts/submit";
 
 export const PRODUCT_LIST = "/api/public/products";
+export const PRODUCT_DETAIL = "/api/public/products/{slug}";
 
 export const CATEGORIES_LIST = "/api/public/categories";

@@ -46,10 +46,10 @@ export async function generateMetadata({
       url: `https://${host}/faq/${slug}`,
       images: [
         {
-          url: `https://${host}/images/logo.png`,
-          width: 300,
-          height: 300,
-          alt: "Logo-favicon",
+          url: `${process.env.NEXT_PUBLIC_API_URL}${data?.avatar.url}`,
+          width: 1200,
+          height: 630,
+          alt: data?.seoMetaData?.title,
         },
       ],
     },

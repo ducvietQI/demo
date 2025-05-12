@@ -16,6 +16,7 @@ import {
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import ImageGallery from "react-image-gallery";
+import AppHTMLRender from "../AppHTMLRender";
 
 const ProjectDetailPage = ({ data }: { data: IProject }) => {
   const [open, setOpen] = useState(false);
@@ -23,12 +24,17 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
   const images = useMemo(() => {
     return data?.images.length
       ? data?.images.map((item) => ({
-          original: item.url,
-          // thumbnail: item.url,
+          original: item.url || "/images/22.webp",
+          // thumbnail: item.url || "/images/22.webp",
           description: item.caption,
         }))
       : [];
   }, [data]);
+
+  const { tree: headingTree } = useMemo(
+    () => parseHeadingTree(data.content),
+    [data.content]
+  );
 
   return (
     <Container>
@@ -45,7 +51,7 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
           <Typography variant="h5">{data.view}</Typography>
         </Stack>
 
-        <ImageGallery items={images} showIndex lazyLoad={false} />
+        <ImageGallery items={images} showIndex />
 
         <Box bgcolor="black" color="white" py={3} textAlign="center">
           <Typography variant="h6" color="orange">
@@ -131,30 +137,12 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
           </Typography>
 
           <Collapse in={open}>
-            <List disablePadding sx={{ pl: 2, pt: 1 }}>
-              <ListItem disableGutters sx={listItemSx}>
-                1. Kiến trúc mở, đưa ánh sáng và gió trời vào từng căn hộ
-                <List disablePadding sx={{ pl: 3 }}>
-                  <ListItem disableGutters sx={listItemSx}>
-                    1.1. Kiến trúc khối hiện đại cho căn hộ 5 tầng 1 tum
-                  </ListItem>
-                  <ListItem disableGutters sx={listItemSx}>
-                    1.2. Sự linh hoạt ứng dụng màu sắc, vật liệu cho công trình
-                  </ListItem>
-                </List>
-              </ListItem>
-
-              <ListItem disableGutters sx={listItemSx}>
-                2. Không gian căn hộ xanh và thư giãn giữa Đà Nẵng hiện đại
-              </ListItem>
-              <ListItem disableGutters sx={listItemSx}>
-                3. Thiết kế tối ưu cho mục đích đầu tư căn hộ cho thuê
-              </ListItem>
-            </List>
+            <HeadingTreeList data={headingTree} />
           </Collapse>
         </Box>
 
-        <Typography variant="h4">{data.content}</Typography>
+        {/* Render Content */}
+        <AppHTMLRender htmlRender={data?.content} />
 
         <Stack spacing={2} alignItems="center">
           <Rating
@@ -189,4 +177,95 @@ const listItemSx = {
     color: "text.black",
     textDecoration: "underline",
   },
+};
+
+export function parseHeadingTree(html: string) {
+  const decoded = decodeHTMLEntities(html);
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(decoded, "text/html");
+
+  const headings = Array.from(doc.body.children)
+    .filter((el) => ["H1", "H2", "H3"].includes(el.tagName))
+    .map((el, i) => {
+      const id = `heading-${i}`;
+      el.setAttribute("id", id); // gán id vào DOM để dùng scroll
+      return {
+        id,
+        tag: el.tagName.toLowerCase(),
+        text: el.textContent?.trim() || "",
+      };
+    });
+
+  const tree: any[] = [];
+  let currentH1: any = null;
+  let currentH2: any = null;
+
+  for (const heading of headings) {
+    if (heading.tag === "h1") {
+      currentH1 = { ...heading, children: [] };
+      tree.push(currentH1);
+      currentH2 = null;
+    } else if (heading.tag === "h2") {
+      const h2Node = { ...heading, children: [] };
+      if (currentH1) {
+        currentH1.children.push(h2Node);
+        currentH2 = h2Node;
+      }
+    } else if (heading.tag === "h3") {
+      const h3Node = { ...heading };
+      if (currentH2) {
+        currentH2.children.push(h3Node);
+      }
+    }
+  }
+
+  return {
+    tree,
+    htmlWithId: doc.body.innerHTML, // cập nhật html có id để render lại
+  };
+}
+
+// Helper để decode các thực thể HTML như &acirc; -> â
+function decodeHTMLEntities(str: string) {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = str;
+  return txt.value;
+}
+
+interface HeadingNode {
+  id: string;
+  tag: string;
+  text: string;
+  children?: HeadingNode[];
+}
+
+export const HeadingTreeList = ({ data }: { data: HeadingNode[] }) => {
+  const handleClick = (id: string) => {
+    const el = document.getElementById(id);
+    const container = document.getElementById(id);
+
+    if (container) {
+      container.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  return (
+    <List disablePadding sx={{ pl: 2, pt: 1 }}>
+      {data.map((item, index) => (
+        <ListItem
+          key={index}
+          disableGutters
+          sx={listItemSx}
+          onClick={() => handleClick(item.id)}
+        >
+          {item.text}
+          {item.children && item.children.length > 0 && (
+            <List disablePadding sx={{ pl: 3 }}>
+              <HeadingTreeList data={item.children} />
+            </List>
+          )}
+        </ListItem>
+      ))}
+    </List>
+  );
 };

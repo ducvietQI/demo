@@ -92,7 +92,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
               success: AppSnackbarSuccess,
             }}
           >
-            <main>{children}</main>
+            <main id="scroll-container">{children}</main>
           </SnackbarProvider>
         </ThemeProvider>
       </CacheProvider>
