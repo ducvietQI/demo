@@ -1,17 +1,26 @@
+import { MenuItem } from "@/models/home.type";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Box,
   List,
-  ListItem,
+  ListItemButton,
   ListItemText,
   Typography,
 } from "@mui/material";
+import { memo } from "react";
 import { ArrowDownIcon } from "../Icons";
-import { MenuItem } from "@/models/home.type";
 
-const CategoryFilter = ({ categoriesList }: { categoriesList: MenuItem[] }) => {
+const CategoryFilter = ({
+  categoryId,
+  categoriesList,
+  onSetCategoryId,
+}: {
+  categoryId: string;
+  categoriesList: MenuItem[];
+  onSetCategoryId: (id: string) => void;
+}) => {
   return (
     <Box>
       {categoriesList.map((category, index) => (
@@ -52,31 +61,43 @@ const CategoryFilter = ({ categoriesList }: { categoriesList: MenuItem[] }) => {
           {category.children && (
             <AccordionDetails sx={{ p: 0, border: "none" }}>
               <List>
-                {category.children.map((item, i) => (
-                  <ListItem
-                    key={i}
-                    sx={{
-                      py: 0.5,
-
-                      "&:hover .MuiTypography-root": {
-                        color: "primary.main",
-                      },
-                    }}
-                  >
-                    <ListItemText
-                      primary={item.title}
+                {category.children.map((item, i) => {
+                  return (
+                    <ListItemButton
+                      key={i}
                       sx={{
-                        cursor: "pointer",
-                      }}
-                      slotProps={{
-                        primary: {
-                          fontSize: "16px",
-                          color: "text.black",
+                        py: 0.5,
+
+                        "& .MuiTypography-root": {
+                          color:
+                            categoryId === item.id
+                              ? "primary.main"
+                              : "text.black",
+                        },
+
+                        "&:hover .MuiTypography-root": {
+                          color: "primary.main",
                         },
                       }}
-                    />
-                  </ListItem>
-                ))}
+                      onClick={() => {
+                        onSetCategoryId(item.id);
+                      }}
+                    >
+                      <ListItemText
+                        primary={item.title}
+                        sx={{
+                          cursor: "pointer",
+                        }}
+                        slotProps={{
+                          primary: {
+                            fontSize: "16px",
+                            color: "text.black",
+                          },
+                        }}
+                      />
+                    </ListItemButton>
+                  );
+                })}
               </List>
             </AccordionDetails>
           )}
@@ -86,4 +107,4 @@ const CategoryFilter = ({ categoriesList }: { categoriesList: MenuItem[] }) => {
   );
 };
 
-export default CategoryFilter;
+export default memo(CategoryFilter);

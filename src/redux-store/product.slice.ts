@@ -24,8 +24,15 @@ const reducers = {
     state.totalPages = action.payload.totalPages;
   },
 
-  changeproductList: (state: IInitState, action: PayloadAction<IProduct[]>) => {
+  changeMoreProductList: (
+    state: IInitState,
+    action: PayloadAction<IProduct[]>
+  ) => {
     state.productList = [...state.productList, ...action.payload];
+  },
+
+  changeProductList: (state: IInitState, action: PayloadAction<IProduct[]>) => {
+    state.productList = action.payload;
   },
 
   setHasMore: (state: IInitState, action: PayloadAction<boolean>) => {
