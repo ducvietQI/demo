@@ -1,11 +1,10 @@
 "use client";
 
-import { EyeIcon } from "@/components/Icons";
 import { NewsBreadcrumb } from "@/components/sn-news";
 import { INews } from "@/models/project.type";
 import { Container, Rating, Stack, Typography } from "@mui/material";
-import Image from "next/image";
 import AppHTMLRender from "../AppHTMLRender";
+import AppSocailMedia from "../AppSocailMedia";
 
 const NewDetailPage = ({ data }: { data: INews }) => {
   return (
@@ -17,13 +16,7 @@ const NewDetailPage = ({ data }: { data: INews }) => {
           {data.title}
         </Typography>
 
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Image src="/images/fb.png" height={30} width={30} alt="fb-icon" />
-          <Image src="/images/yt.png" height={30} width={30} alt="yt-icon" />
-          <Image src="/images/ar.png" height={30} width={30} alt="tt-icon" />
-          <EyeIcon sx={{ fontSize: 20 }} />
-          <Typography variant="h5">{data.view}</Typography>
-        </Stack>
+        <AppSocailMedia view={data.view} />
 
         {/* Render Content */}
         <AppHTMLRender htmlRender={data?.content} />

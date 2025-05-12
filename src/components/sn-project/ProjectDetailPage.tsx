@@ -17,6 +17,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import ImageGallery from "react-image-gallery";
 import AppHTMLRender from "../AppHTMLRender";
+import AppSocailMedia from "../AppSocailMedia";
 
 const ProjectDetailPage = ({ data }: { data: IProject }) => {
   const [open, setOpen] = useState(false);
@@ -43,13 +44,8 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
         <Typography variant="h2" fontWeight={700}>
           {data.title}
         </Typography>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Image src="/images/fb.png" height={30} width={30} alt="fb-icon" />
-          <Image src="/images/yt.png" height={30} width={30} alt="yt-icon" />
-          <Image src="/images/ar.png" height={30} width={30} alt="tt-icon" />
-          <EyeIcon sx={{ fontSize: 20 }} />
-          <Typography variant="h5">{data.view}</Typography>
-        </Stack>
+
+        <AppSocailMedia view={data.view} />
 
         <ImageGallery
           // showPlayButton={false}
@@ -121,7 +117,7 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
           sx={{
             backgroundColor: "#f5ba3e",
             padding: 2,
-            borderRadius: 1,
+            // borderRadius: 1,
           }}
         >
           <Typography variant="h5" fontWeight={700}>

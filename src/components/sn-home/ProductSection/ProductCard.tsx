@@ -20,7 +20,6 @@ import { IProduct } from "@/models/product.type";
 
 const ProductCard = ({ data }: ProductCardProps) => {
   const router = useRouter();
-  console.log(data);
 
   const productLabel = useMemo(() => {
     if (data.isNew) {

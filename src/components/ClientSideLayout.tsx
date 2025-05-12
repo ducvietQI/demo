@@ -20,7 +20,8 @@ const ClientSideLayout = ({
 
   useEffect(() => {
     dispatch(appActions.changeServiceData(serviceData));
-  }, [serviceData]);
+    dispatch(appActions.changeFooterData(footerData));
+  }, []);
 
   return (
     <Stack position="relative" pt={{ xs: "55px", md: "90px" }}>
@@ -41,7 +42,9 @@ const ClientSideLayout = ({
           },
         }}
         onClick={() => {
-          window.location.href = "tel:0355983021";
+          window.location.href = Array.isArray(footerData.hotline)
+            ? `tel:${footerData.hotline[0]}`
+            : "";
         }}
       >
         <Image
@@ -67,7 +70,8 @@ const ClientSideLayout = ({
           },
         }}
         onClick={() => {
-          window.open("https://zalo.me/0355983021", "_blank");
+          footerData.social?.zalo &&
+            window.open(`https://zalo.me/${footerData.social.zalo}`, "_blank");
         }}
       >
         <Image
