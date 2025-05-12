@@ -8,15 +8,45 @@ import {
   TabSection,
 } from "@/components";
 import { ApiConst, GlobalsConst } from "@/constant";
-import { BANNER_TYPE, IBanner } from "@/models/home.type";
-import { IPaginationList, INews } from "@/models/project.type";
+import { BANNER_TYPE, IBanner, ServiceModel } from "@/models/home.type";
+import { IProduct } from "@/models/product.type";
+import { IPaginationList, INews, ICategories } from "@/models/project.type";
 import { Stack } from "@mui/material";
 
 async function fetchData(): Promise<{
   bannersList: IBanner[];
   newsResponse: IPaginationList<INews>;
+  serviceData: ServiceModel[];
+  productList1: IProduct[];
+  productList2: IProduct[];
+  productList3: IProduct[];
+  categogiesTopList: ICategories[];
 }> {
   try {
+    const categogiesResponse = await apiRequester.get<ICategories[]>(
+      ApiConst.CATEGORIES_TOP_LIST
+    );
+
+    const categoryIds = categogiesResponse.payload.map((cat) => cat.id);
+
+    const [productRes1, productRes2, productRes3] = await Promise.all([
+      apiRequester.get<IPaginationList<IProduct>>(ApiConst.PRODUCT_LIST, {
+        categoryId: categoryIds[0],
+        page: GlobalsConst.DEFAULT_PAGE,
+        size: GlobalsConst.DEFAULT_SIZE,
+      }),
+      apiRequester.get<IPaginationList<IProduct>>(ApiConst.PRODUCT_LIST, {
+        categoryId: categoryIds[1],
+        page: GlobalsConst.DEFAULT_PAGE,
+        size: GlobalsConst.DEFAULT_SIZE,
+      }),
+      apiRequester.get<IPaginationList<IProduct>>(ApiConst.PRODUCT_LIST, {
+        categoryId: categoryIds[2],
+        page: GlobalsConst.DEFAULT_PAGE,
+        size: GlobalsConst.DEFAULT_SIZE,
+      }),
+    ]);
+
     const bannersResponse = await apiRequester.get<IBanner[]>(
       ApiConst.BANNER_LIST,
       {
@@ -37,163 +67,66 @@ async function fetchData(): Promise<{
       }
     );
 
-    return { bannersList, newsResponse: newsResponse?.payload };
+    const serviceResponse = await apiRequester.get(
+      ApiConst.BUSINESSES_OVERVIEW_LIST,
+      { size: GlobalsConst.DEFAULT_SIZE }
+    );
+    const serviceData = serviceResponse.payload as ServiceModel[];
+
+    return {
+      bannersList,
+      newsResponse: newsResponse?.payload,
+      serviceData,
+      productList1: productRes1.payload.items,
+      productList2: productRes2.payload.items,
+      productList3: productRes3.payload.items,
+      categogiesTopList: categogiesResponse.payload,
+    };
   } catch (error) {
     return {
       bannersList: [],
       newsResponse: {} as IPaginationList<INews>,
+      serviceData: [],
+      productList1: [],
+      productList2: [],
+      productList3: [],
+      categogiesTopList: [],
     };
   }
 }
 
 const Home = async () => {
-  const { bannersList, newsResponse } = await fetchData();
+  const {
+    bannersList,
+    newsResponse,
+    serviceData,
+    categogiesTopList,
+    productList1,
+    productList2,
+    productList3,
+  } = await fetchData();
 
   return (
     <Stack>
       <BannerSection banners={bannersList} />
-      <TabSection />
-      <DesignProjectSection />
+      <TabSection serviceData={serviceData} />
+      <DesignProjectSection serviceData={serviceData} />
       <ConstructionWorkSection />
-      {/* <ProductSection array={home_arr} title="Sản phẩm phòng khách" /> */}
-      {/* <ProductSection array={an_arr} title="Sản phẩm phòng ăn" /> */}
-      {/* <ProductSection title="Sản phẩm phòng ngủ" /> */}
+      <ProductSection
+        array={productList1}
+        title={categogiesTopList[0]?.name || "Sản phẩm"}
+      />
+      <ProductSection
+        array={productList2}
+        title={categogiesTopList[1]?.name || "Sản phẩm"}
+      />
+      <ProductSection
+        array={productList3}
+        title={categogiesTopList[2]?.name || "Sản phẩm"}
+      />
       <NewsSection data={newsResponse} />
     </Stack>
   );
 };
 
 export default Home;
-const home_arr = [
-  {
-    id: 1,
-    imgSrc: "/images/khach-1.webp",
-    title: "Tủ tivi MOHO KOSTER màu nâu",
-    description: "Stylish cafe chair",
-    price: 2990000,
-    sale: 14,
-  },
-  {
-    id: 2,
-    imgSrc: "/images/khach-2.webp",
-    title: "Bàn Sofa MOHO KOSTER Màu Nâu",
-    description: "Stylish cafe chair",
-    price: 1490000,
-    sale: 29,
-  },
-  {
-    id: 3,
-    imgSrc: "/images/khach-3.webp",
-    title: "Combo Phòng Khách MOHO VLINE Màu Tự Nhiên",
-    description: "Stylish cafe chair",
-    price: 13990000,
-    sale: 26,
-  },
-  {
-    id: 4,
-    imgSrc: "/images/khach-4.jpg",
-    title: "Tủ Tivi Dalumd (Màu Nâu Hạnh Nhân, 160)",
-    description: "Stylish cafe chair",
-    price: 4290000,
-    sale: 32,
-  },
-  {
-    id: 5,
-    imgSrc: "/images/Potty.webp",
-    title: "Kệ TV MOHO HOBRO 301",
-    description: "Minimalist flower pot",
-    price: 6290000,
-    isNew: true,
-  },
-  {
-    id: 6,
-    imgSrc: "/images/pingky.webp",
-    title: "Tủ Kệ Tivi Gỗ MOHO UBEDA 201",
-    description: "Cute bed set",
-    price: 6290000,
-    sale: 50,
-  },
-  {
-    id: 7,
-    imgSrc: "/images/grifo.webp",
-    title: "Tủ Giày – Tủ Trang Trí Gỗ MOHO VIENNA 204",
-    description: "Small mug",
-    price: 6290000,
-    isNew: true,
-  },
-  {
-    id: 8,
-    imgSrc: "/images/khach-5.jpg",
-    title: "Bàn Sofa – Bàn Cafe – Bàn Trà Gỗ MOHO OSLO 901",
-    description: "Stylish cafe chair",
-    price: 1990000,
-    sale: 9,
-  },
-];
-
-const an_arr = [
-  {
-    id: 1,
-    imgSrc: "/images/an-1.webp",
-    title: "Bàn Ăn Scania (Mặt Vân Đá, 140)",
-    description: "Stylish cafe chair",
-    price: 4490000,
-    sale: 21,
-  },
-  {
-    id: 2,
-    imgSrc: "/images/an-2.jpg",
-    title: "Bộ Bàn Ăn Tròn Oslo (Màu Tự Nhiên, 100)",
-    description: "Stylish cafe chair",
-    price: 8990000,
-    sale: 33,
-  },
-  {
-    id: 3,
-    imgSrc: "/images/an-3.webp",
-    title: "Combo Phòng Ăn MOHO HOBRO (4 hoặc 6 ghế)",
-    description: "Stylish cafe chair",
-    price: 10490000,
-    sale: 34,
-  },
-  {
-    id: 4,
-    imgSrc: "/images/an-4.webp",
-    title: "Combo Basic Phòng Ăn Narvik 201 Màu Tự Nhiên",
-    description: "Stylish cafe chair",
-    price: 5290000,
-    sale: 35,
-  },
-  {
-    id: 5,
-    imgSrc: "/images/an-5.webp",
-    title: "Bộ Bàn Ăn 4 Ghế Gỗ MOHO MILAN 901 (1m25)",
-    description: "Minimalist flower pot",
-    price: 7490000,
-    isNew: true,
-  },
-  {
-    id: 6,
-    imgSrc: "/images/an-6.jpg",
-    title: "Combo Basic Phòng Ăn Ubeda 201 Màu Tự Nhiên",
-    description: "Cute bed set",
-    price: 6290000,
-    sale: 19,
-  },
-  {
-    id: 7,
-    imgSrc: "/images/an-7.webp",
-    title: "Bộ Bàn Ăn Gỗ Cao Su Tự Nhiên MOHO VLINE 602 (75cm)",
-    description: "Small mug",
-    price: 9290000,
-    sale: 30,
-  },
-  {
-    id: 8,
-    imgSrc: "/images/an-8.jpg",
-    title: "Bàn Ăn Gỗ Cao Su Tự Nhiên MOHO VLINE 601 90cm",
-    description: "Stylish cafe chair",
-    price: 2100000,
-    sale: 9,
-  },
-];

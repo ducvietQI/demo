@@ -18,3 +18,4 @@ export const PRODUCT_LIST = "/api/public/products";
 export const PRODUCT_DETAIL = "/api/public/products/{slug}";
 
 export const CATEGORIES_LIST = "/api/public/categories";
+export const CATEGORIES_TOP_LIST = "/api/public/categories/top";

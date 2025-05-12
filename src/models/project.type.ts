@@ -1,3 +1,5 @@
+import { IProduct } from "./product.type";
+
 interface ImageItem {
   url: string;
   caption: string;
@@ -101,4 +103,5 @@ export interface ICategories {
   id: string;
   name: string;
   slug: string;
+  products: IProduct[];
 }

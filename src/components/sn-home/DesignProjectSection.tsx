@@ -7,8 +7,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { ArrowRightIcon } from "../Icons";
 import { useTabletDown } from "@/hooks";
 import { useState } from "react";
+import { ServiceModel } from "@/models/home.type";
 
-const DesignProjectSection = () => {
+const DesignProjectSection = ({
+  serviceData,
+}: {
+  serviceData: ServiceModel[];
+}) => {
   const isTabletDown = useTabletDown();
   const [hoveredSlides, setHoveredSlides] = useState<{
     [key: string]: boolean;

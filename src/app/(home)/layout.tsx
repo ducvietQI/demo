@@ -1,7 +1,7 @@
 import apiRequester from "@/api/apiRequester";
 import AppHeader from "@/components/AppHeader";
 import ClientSideLayout from "@/components/ClientSideLayout";
-import { ApiConst } from "@/constant";
+import { ApiConst, GlobalsConst } from "@/constant";
 import { MenuItem, CompanyProfile, ServiceModel } from "@/models/home.type";
 import { CommonUtils } from "@/utils";
 
@@ -21,7 +21,7 @@ async function fetchMenuAndFooter(): Promise<{
 
     const serviceResponse = await apiRequester.get(
       ApiConst.BUSINESSES_OVERVIEW_LIST,
-      { size: 10 }
+      { size: GlobalsConst.DEFAULT_SIZE }
     );
     const serviceData = serviceResponse.payload as ServiceModel[];
 
