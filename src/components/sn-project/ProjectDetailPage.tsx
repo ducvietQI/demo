@@ -26,7 +26,7 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
       ? data?.images.map((item) => ({
           original: item.url || "/images/22.webp",
           // thumbnail: item.url || "/images/22.webp",
-          description: item.caption,
+          // description: item.caption,
         }))
       : [];
   }, [data]);
@@ -51,7 +51,11 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
           <Typography variant="h5">{data.view}</Typography>
         </Stack>
 
-        <ImageGallery items={images} showIndex />
+        <ImageGallery
+          // showPlayButton={false}
+          items={images}
+          showIndex
+        />
 
         <Box bgcolor="black" color="white" py={3} textAlign="center">
           <Typography variant="h6" color="orange">

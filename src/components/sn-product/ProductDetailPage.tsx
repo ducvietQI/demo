@@ -13,13 +13,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { useMemo } from "react";
 import ImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
-
-const images = Array.from({ length: 8 }, (_, i) => ({
-  original: `/images/product-${i + 1}.webp`,
-  thumbnail: `/images/product-${i + 1}.webp`,
-}));
 
 const ProductDetailPage = ({
   data,
@@ -28,7 +23,14 @@ const ProductDetailPage = ({
   data: IProduct;
   relateProductList: IPaginationList<IProduct>;
 }) => {
-  console.log(data);
+  const images = useMemo(() => {
+    return data?.images.length
+      ? data?.images.map((item) => ({
+          original: item.url || "/images/product-1.webp",
+          thumbnail: item.url || "/images/22.webp",
+        }))
+      : [];
+  }, [data]);
 
   return (
     <Container>
