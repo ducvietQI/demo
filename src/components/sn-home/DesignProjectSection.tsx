@@ -6,14 +6,17 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ArrowRightIcon } from "../Icons";
 import { useTabletDown } from "@/hooks";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ServiceModel } from "@/models/home.type";
+import { GlobalsConst } from "@/constant";
+import { useRouter } from "next/navigation";
 
 const DesignProjectSection = ({
   serviceData,
 }: {
-  serviceData: ServiceModel[];
+  serviceData?: ServiceModel;
 }) => {
+  const router = useRouter();
   const isTabletDown = useTabletDown();
   const [hoveredSlides, setHoveredSlides] = useState<{
     [key: string]: boolean;
@@ -26,6 +29,22 @@ const DesignProjectSection = ({
   const handleMouseLeave = (group: string, index: number) => {
     setHoveredSlides((prev) => ({ ...prev, [`${group}-${index}`]: false }));
   };
+
+  const [imagesGroup1, imagesGroup2] = useMemo(() => {
+    const projects = serviceData?.projectGroup.projects || [];
+
+    const mappedImages = projects.map((item) => ({
+      src: item.image || GlobalsConst.NO_IMAGE,
+      title: item.title,
+      description: item.description,
+    }));
+
+    const midpoint = Math.ceil(mappedImages.length / 2);
+    const firstGroup = mappedImages.slice(0, midpoint);
+    const secondGroup = mappedImages.slice(midpoint);
+
+    return [firstGroup, secondGroup];
+  }, [serviceData]);
 
   const renderSwiper = (
     images: { src: string; title: string; description: string }[],
@@ -98,7 +117,11 @@ const DesignProjectSection = ({
                   <Typography fontSize="18px" fontWeight={600}>
                     {item.title}
                   </Typography>
-                  <Typography fontSize="14px" mt={1}>
+                  <Typography
+                    className="text-ellipsis-4-row"
+                    fontSize="14px"
+                    mt={1}
+                  >
                     {item.description}
                   </Typography>
                 </Stack>
@@ -140,14 +163,10 @@ const DesignProjectSection = ({
             color="primary.main"
             pt={2}
           >
-            Công trình thiết kế
+            {serviceData?.title}
           </Typography>
           <Typography pt={2} color="text.black" fontSize="16px">
-            Mỗi năm, Quanghoanhome thực hiện hàng trăm công trình thiết kế ở mọi
-            miền đất nước. Phong cách thiết kế chính của Quanghoanhome là hiện
-            đại - tối giản - tiện nghi - thông thoáng. Ngoài ra, những ý tưởng
-            và sở thích của gia chủ cũng được ưu tiên hàng đầu, để tạo nên một
-            công trình nhà ở độc bản, mang đậm dấu ấn cá nhân.
+            {serviceData?.description}
           </Typography>
           <Button
             sx={{
@@ -158,6 +177,7 @@ const DesignProjectSection = ({
               mt: 2.5,
               ":hover": { color: "text.black", bgcolor: "primary.main" },
             }}
+            onClick={() => router.push(serviceData?.slug || "")}
             variant="contained"
             endIcon={<ArrowRightIcon />}
           >
@@ -176,111 +196,3 @@ const DesignProjectSection = ({
 };
 
 export default DesignProjectSection;
-
-const imagesGroup1 = [
-  {
-    src: "/images/1.webp",
-    title: "V’s Villa 2 mặt tiền, 4 mùa trọn vẹn cùng thiên nhiên",
-    description:
-      "Trong nhịp sống hiện đại hối hả, con người càng trân quý hơn những phút giây bình yên...",
-  },
-  {
-    src: "/images/2.webp",
-    title: "Kiến trúc xanh giữa lòng đô thị",
-    description:
-      "Một không gian sống hài hòa với thiên nhiên, nơi con người tìm lại sự cân bằng và thư thái.",
-  },
-  {
-    src: "/images/3.webp",
-    title: "Thiết kế mở, đón trọn ánh sáng tự nhiên",
-    description:
-      "Mọi góc nhỏ trong căn nhà đều trở thành nơi thư giãn, tận hưởng ánh nắng ban mai.",
-  },
-  {
-    src: "/images/4.webp",
-    title: "Nét đẹp hoài cổ trong không gian hiện đại",
-    description:
-      "Sự kết hợp giữa phong cách cổ điển và tiện nghi đương đại mang đến trải nghiệm sống đẳng cấp.",
-  },
-  {
-    src: "/images/5.webp",
-    title: "Biệt thự Indochine – Giao thoa văn hóa Á – Âu",
-    description:
-      "Từng đường nét kiến trúc được chăm chút tỉ mỉ, gợi nhớ vẻ đẹp của thời kỳ Đông Dương.",
-  },
-  {
-    src: "/images/6.webp",
-    title: "Nhà phố 5x23m – Giải pháp tối ưu cho không gian hẹp",
-    description:
-      "Thiết kế thông minh giúp tận dụng tối đa diện tích, mang lại sự tiện nghi và thoải mái.",
-  },
-  {
-    src: "/images/7.webp",
-    title: "Không gian sống tối giản nhưng đầy đủ tiện ích",
-    description:
-      "Xu hướng tối giản không chỉ mang đến sự gọn gàng mà còn giúp tinh thần thư thái hơn.",
-  },
-  {
-    src: "/images/8.webp",
-    title: "Villa sang trọng giữa lòng thành phố",
-    description:
-      "Một nơi ở yên bình, tách biệt khỏi nhịp sống hối hả nhưng vẫn đầy đủ tiện nghi hiện đại.",
-  },
-  {
-    src: "/images/9.webp",
-    title: "Góc nhỏ thư giãn trong chính ngôi nhà của bạn",
-    description:
-      "Một không gian mở, nơi thiên nhiên len lỏi vào từng góc nhỏ, mang đến sự thư thái tuyệt đối.",
-  },
-];
-
-const imagesGroup2 = [
-  {
-    src: "/images/18.webp",
-    title: "Hơi thở Địa Trung Hải trong từng đường nét",
-    description:
-      "Một không gian sống mang đến sự tươi mát, phóng khoáng với gam màu biển cả.",
-  },
-  {
-    src: "/images/11.webp",
-    title: "Nhà vườn giữa lòng thành phố",
-    description:
-      "Không gian xanh mát giúp cân bằng cuộc sống và mang lại nguồn năng lượng tích cực.",
-  },
-  {
-    src: "/images/12.webp",
-    title: "Nét đẹp tối giản, tinh tế",
-    description:
-      "Kiến trúc tối giản nhưng không kém phần sang trọng, tạo nên không gian sống đầy cảm hứng.",
-  },
-  {
-    src: "/images/13.webp",
-    title: "Biệt thự hiện đại với không gian mở",
-    description:
-      "Sự kết hợp hoàn hảo giữa ánh sáng tự nhiên và nội thất sang trọng tạo nên một không gian sống lý tưởng.",
-  },
-  {
-    src: "/images/14.webp",
-    title: "Thiết kế thông minh – Nâng tầm trải nghiệm sống",
-    description:
-      "Tận dụng tối đa ánh sáng và gió tự nhiên, giúp không gian luôn thông thoáng và thoải mái.",
-  },
-  {
-    src: "/images/15.webp",
-    title: "Không gian xanh trong từng góc nhà",
-    description:
-      "Cây xanh không chỉ giúp thanh lọc không khí mà còn mang lại cảm giác thư thái, dễ chịu.",
-  },
-  {
-    src: "/images/16.webp",
-    title: "Thiết kế nhà phố tối ưu không gian",
-    description:
-      "Mọi góc nhỏ trong căn nhà đều được bố trí hợp lý để mang lại sự tiện nghi và thoải mái.",
-  },
-  {
-    src: "/images/17.webp",
-    title: "Phong cách Nhật Bản trong thiết kế nhà ở",
-    description:
-      "Một không gian sống đơn giản, thanh lịch nhưng đầy đủ công năng và sự tiện nghi.",
-  },
-];

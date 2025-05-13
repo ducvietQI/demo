@@ -1,13 +1,13 @@
 "use client";
 
 import { useTabletDown } from "@/hooks";
+import { INews } from "@/models/project.type";
 import { Container, Stack, Typography } from "@mui/material";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import NewsCard from "./NewsCard";
-import { INews, IPaginationList } from "@/models/project.type";
 
-const NewsSection = ({ data }: { data: IPaginationList<INews> }) => {
+const NewsSection = ({ data }: { data: INews[] }) => {
   const isTabletDown = useTabletDown();
 
   return (
@@ -32,7 +32,7 @@ const NewsSection = ({ data }: { data: IPaginationList<INews> }) => {
             style={{ width: "100%", height: "365px" }}
             className="news-section"
           >
-            {data?.items?.map((item, index) => {
+            {data.map((item, index) => {
               return (
                 <SwiperSlide
                   key={index}

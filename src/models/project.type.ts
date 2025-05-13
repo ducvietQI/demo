@@ -93,7 +93,15 @@ export interface INews {
   avatar: Avatar;
   view: number;
   blogGroupId: string;
-  blogGroup: null | any;
+  blogGroup: {
+    avatar: Avatar;
+    code: string;
+    description: string;
+    id: string;
+    seoMetaData: SeoMetaData;
+    slug: string;
+    title: string;
+  };
   rating: Rating;
   seoMetaData: SeoMetaData;
   state: number;

@@ -15,7 +15,7 @@ import { Stack } from "@mui/material";
 
 async function fetchData(): Promise<{
   bannersList: IBanner[];
-  newsResponse: IPaginationList<INews>;
+  newsResponse: INews[];
   serviceData: ServiceModel[];
   productList1: IProduct[];
   productList2: IProduct[];
@@ -59,12 +59,8 @@ async function fetchData(): Promise<{
       ? bannersResponse.payload
       : [];
 
-    const newsResponse = await apiRequester.get<IPaginationList<INews>>(
-      ApiConst.NEWS_LIST,
-      {
-        page: GlobalsConst.DEFAULT_PAGE,
-        size: GlobalsConst.DEFAULT_SIZE,
-      }
+    const newsResponse = await apiRequester.get<INews[]>(
+      ApiConst.NEWS_LIST_NEWSEST
     );
 
     const serviceResponse = await apiRequester.get(
@@ -85,7 +81,7 @@ async function fetchData(): Promise<{
   } catch (error) {
     return {
       bannersList: [],
-      newsResponse: {} as IPaginationList<INews>,
+      newsResponse: [],
       serviceData: [],
       productList1: [],
       productList2: [],
@@ -110,8 +106,8 @@ const Home = async () => {
     <Stack>
       <BannerSection banners={bannersList} />
       <TabSection serviceData={serviceData} />
-      <DesignProjectSection serviceData={serviceData} />
-      <ConstructionWorkSection />
+      <DesignProjectSection serviceData={serviceData[0]} />
+      <ConstructionWorkSection serviceData={serviceData[1]} />
       <ProductSection
         array={productList1}
         title={categogiesTopList[0]?.name || "Sản phẩm"}

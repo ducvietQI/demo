@@ -109,5 +109,31 @@ export interface ServiceModel {
   description: string;
   view: number;
   workflows: Workflow[];
-  projects: any[];
+  projectGroup: ProjectGroup;
+  frequentlyQuestions: FrequentlyQuestion[];
+}
+
+export interface ProjectGroup {
+  id: string;
+  code: string;
+  title: string;
+  slug: string;
+  description: string;
+  projects: Project[];
+}
+
+export interface Project {
+  id: string;
+  code: string;
+  title: string;
+  slug: string;
+  description: string;
+  image: string;
+}
+export interface FrequentlyQuestion {
+  id: string;
+  code: string | null;
+  title: string;
+  slug: string;
+  description: string;
 }

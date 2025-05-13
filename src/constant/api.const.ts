@@ -13,6 +13,7 @@ export const FAQ_DETAIL = "/api/public/frequently-questions/{slug}";
 export const NEWS_LIST = "/api/public/blogs";
 export const NEWS_DETAIL = "/api/public/blogs/{slug}";
 export const NEWS_GROUP_DETAIL = "/api/public/blog-groups/{slug}";
+export const NEWS_LIST_NEWSEST = "/api/public/blogs/newest";
 
 export const POST_CONTACT = "/api/public/contacts/submit";
 

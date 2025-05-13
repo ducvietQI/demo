@@ -1,5 +1,6 @@
 "use client";
 import { AppHTMLRender, ProductSection } from "@/components";
+import { GlobalsConst } from "@/constant";
 import { IProduct } from "@/models/product.type";
 import { IPaginationList } from "@/models/project.type";
 import { formatNumber } from "@/utils/format.utils";
@@ -26,8 +27,8 @@ const ProductDetailPage = ({
   const images = useMemo(() => {
     return data?.images.length
       ? data?.images.map((item) => ({
-          original: item.url || "/images/product-1.webp",
-          thumbnail: item.url || "/images/22.webp",
+          original: item.url || GlobalsConst.NO_IMAGE,
+          thumbnail: item.url || GlobalsConst.NO_IMAGE,
         }))
       : [];
   }, [data]);
