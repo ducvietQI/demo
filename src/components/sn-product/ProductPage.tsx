@@ -103,7 +103,13 @@ const ProductPage = ({
     <Stack position="relative">
       <Container>
         <Grid2 my={4} container direction={"row"} spacing={2}>
-          <Grid2 size={2.5} bgcolor="white" height="100%" pt={1.5}>
+          <Grid2
+            size={{ md: 2.5 }}
+            display={{ xs: "none", md: "block" }}
+            bgcolor="white"
+            height="100%"
+            pt={1.5}
+          >
             <CategoryFilter
               categorySlug={categorySlug}
               categoriesList={categoriesList}
@@ -112,7 +118,7 @@ const ProductPage = ({
           </Grid2>
 
           <Grid2
-            size={9.5}
+            size={{ xs: 12, md: 9.5 }}
             container
             columnSpacing={2}
             rowSpacing={4}

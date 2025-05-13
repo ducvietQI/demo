@@ -23,8 +23,6 @@ const ProductSection = ({
   title?: string;
   containerprops?: ContainerProps;
 }) => {
-  console.log(array);
-
   return (
     <Stack mt={3}>
       <Container {...containerprops}>
