@@ -6,7 +6,6 @@ import Image from "next/image";
 import { ReactNode, useEffect } from "react";
 import { CompanyProfile, IService } from "@/models/home.type";
 import { appActions, useAppDispatch } from "@/redux-store";
-import FBMsg from "./FBMsg";
 
 const ClientSideLayout = ({
   children,
@@ -82,7 +81,6 @@ const ClientSideLayout = ({
           style={{ objectFit: "cover" }}
         />
       </IconButton>
-      <FBMsg />
     </Stack>
   );
 };

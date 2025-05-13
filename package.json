@@ -23,7 +23,6 @@
     "react": "^19.0.0",
     "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
-    "react-facebook": "^9.0.12",
     "react-hook-form": "^7.56.1",
     "react-image-gallery": "^1.4.0",
     "react-infinite-scroll-component": "^6.1.0",

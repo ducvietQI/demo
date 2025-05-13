@@ -59,11 +59,6 @@
   dependencies:
     regenerator-runtime "^0.14.0"
 
-"@babel/runtime@^7.20.6":
-  version "7.27.1"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.27.1.tgz#9fce313d12c9a77507f264de74626e87fd0dc541"
-  integrity sha512-1x3D2xEk2fRo3PAhwQwu5UubzgiVWSXTBfWpVd2Mx2AzRqJuDJCsgaDVZ7HB5iGzDW1Hl1sWN2mFyKjmR9uAog==
-
 "@babel/template@^7.27.0":
   version "7.27.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.27.0.tgz#b253e5406cc1df1c57dcd18f11760c2dbf40c0b4"
@@ -3025,13 +3020,6 @@ react-dom@^19.0.0:
   integrity sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==
   dependencies:
     scheduler "^0.26.0"
-
-react-facebook@^9.0.12:
-  version "9.0.12"
-  resolved "https://registry.yarnpkg.com/react-facebook/-/react-facebook-9.0.12.tgz#a8ce7ce29c1980a8cdf45a3f34967b6f8b31728b"
-  integrity sha512-u7L9wWEG8/UR1kj3JRvHR5SR/cBvZkC4ZCnIt4ZmXMpg4LGVJkihcYIb2/L3FOHUsNt6p9k6jpA+7Cz3zD34iA==
-  dependencies:
-    "@babel/runtime" "^7.20.6"
 
 react-hook-form@^7.56.1:
   version "7.56.1"
