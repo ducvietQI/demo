@@ -33,6 +33,7 @@ async function fetchData(groupSlug: string): Promise<{
     const productResponse = await apiRequester.get<IPaginationList<IProduct>>(
       ApiConst.PRODUCT_LIST,
       {
+        categorySlug: groupSlug,
         page: GlobalsConst.DEFAULT_PAGE,
         size: GlobalsConst.DEFAULT_SIZE,
       }
@@ -69,7 +70,11 @@ const Product = async ({ params }: PageProps) => {
   return (
     <Stack>
       <BannerSection banners={bannersList} />
-      <ProductPage data={productResponse} categoriesList={categoriesList} />
+      <ProductPage
+        data={productResponse}
+        categoriesList={categoriesList}
+        groupSlug={groupSlug}
+      />
     </Stack>
   );
 };

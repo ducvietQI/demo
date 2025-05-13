@@ -15,12 +15,14 @@ import CategoryFilter from "./CategoryFilter";
 const ProductPage = ({
   data,
   categoriesList,
+  groupSlug,
 }: {
   data: IPaginationList<IProduct>;
   categoriesList: any[];
+  groupSlug?: string;
 }) => {
   const dispatch = useAppDispatch();
-  const [categoryId, setCategoryId] = useState("");
+  const [categorySlug, setCategorySlug] = useState(groupSlug || "");
   const { productList, currentPage, totalPages, hasMore } = useAppSelector(
     (state) => ({
       productList: state.productReducer.productList,
@@ -46,13 +48,13 @@ const ProductPage = ({
   }, []);
 
   useEffect(() => {
-    if (categoryId) {
+    if (categorySlug) {
       const fetchData = async () => {
         try {
           const productResponse = await apiRequester.get<
             IPaginationList<IProduct>
           >(ApiConst.PRODUCT_LIST, {
-            categoryId,
+            categorySlug,
             page: GlobalsConst.DEFAULT_PAGE,
             size: GlobalsConst.DEFAULT_SIZE,
           });
@@ -66,14 +68,14 @@ const ProductPage = ({
 
       fetchData();
     }
-  }, [categoryId]);
+  }, [categorySlug]);
 
   const fetchMoreProjects = useCallback(async () => {
     try {
       const response = await apiRequester.get<IPaginationList<IProduct>>(
         ApiConst.PRODUCT_LIST,
         {
-          categoryId: categoryId || "",
+          categorySlug: categorySlug || "",
           page: currentPage + 1,
           size: GlobalsConst.DEFAULT_SIZE,
         }
@@ -95,7 +97,7 @@ const ProductPage = ({
     } catch (error) {
       console.error("Error fetching more products:", error);
     }
-  }, [currentPage, totalPages, categoryId]);
+  }, [currentPage, totalPages, categorySlug]);
 
   return (
     <Stack position="relative">
@@ -103,9 +105,9 @@ const ProductPage = ({
         <Grid2 my={4} container direction={"row"} spacing={2}>
           <Grid2 size={2.5} bgcolor="white" height="100%" pt={1.5}>
             <CategoryFilter
-              categoryId={categoryId}
+              categorySlug={categorySlug}
               categoriesList={categoriesList}
-              onSetCategoryId={setCategoryId}
+              onSetCategorySlug={setCategorySlug}
             />
           </Grid2>
 

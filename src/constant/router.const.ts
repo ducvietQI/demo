@@ -7,7 +7,7 @@ export const PROJECT = "/du-an";
 export const PROJECT_DETAIL = `${PROJECT}/{groupSlug}/{slug}`;
 
 export const PRODUCT = "/san-pham";
-export const PRODUCT_DETAIL = `${PRODUCT}/{pathName}`;
+export const PRODUCT_DETAIL = `${PRODUCT}/{groupSlug}/{pathName}`;
 
 export const NEWS = "/bai-viet";
 export const NEWS_DETAIL = `${NEWS}/{groupSlug}/{slug}`;

@@ -13,13 +13,13 @@ import { memo } from "react";
 import { ArrowDownIcon } from "../Icons";
 
 const CategoryFilter = ({
-  categoryId,
+  categorySlug,
   categoriesList,
-  onSetCategoryId,
+  onSetCategorySlug,
 }: {
-  categoryId: string;
+  categorySlug: string;
   categoriesList: MenuItem[];
-  onSetCategoryId: (id: string) => void;
+  onSetCategorySlug: (slug: string) => void;
 }) => {
   return (
     <Box>
@@ -67,10 +67,14 @@ const CategoryFilter = ({
                       key={i}
                       sx={{
                         py: 0.5,
+                        backgroundColor:
+                          categorySlug === item.slug
+                            ? "rgba(0, 0, 0, 0.04)"
+                            : "unset",
 
                         "& .MuiTypography-root": {
                           color:
-                            categoryId === item.id
+                            categorySlug === item.slug
                               ? "primary.main"
                               : "text.black",
                         },
@@ -80,7 +84,7 @@ const CategoryFilter = ({
                         },
                       }}
                       onClick={() => {
-                        onSetCategoryId(item.id);
+                        onSetCategorySlug(item.slug);
                       }}
                     >
                       <ListItemText

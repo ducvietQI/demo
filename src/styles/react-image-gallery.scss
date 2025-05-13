@@ -150,3 +150,22 @@
 .infinite-scroll-component__outerdiv {
   width: 100% !important;
 }
+
+.image-gallery-index {
+  border-radius: 0 !important;
+}
+
+.image-gallery-fullscreen-button::before {
+  content: "";
+  background-image: url("/images/full-screen.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 38px;
+  height: 52px;
+}
+
+/* Ẩn icon cũ nếu cần */
+.image-gallery-fullscreen-button .image-gallery-svg {
+  display: none;
+}

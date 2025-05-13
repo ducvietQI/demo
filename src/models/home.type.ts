@@ -38,6 +38,7 @@ export interface MenuItem {
   description: string;
   order: number;
   parentId: string | null;
+  slug: string;
   children?: MenuItem[];
 }
 

@@ -33,7 +33,10 @@ const ProductCard = ({ data }: ProductCardProps) => {
 
   const handleClick = () => {
     router.push(
-      stringFormat(RouteConstant.PRODUCT_DETAIL, { pathName: data.slug })
+      stringFormat(RouteConstant.PRODUCT_DETAIL, {
+        groupSlug: "nhom-san-pham",
+        pathName: data.slug,
+      })
     );
   };
 
