@@ -2,7 +2,7 @@ import apiRequester from "@/api/apiRequester";
 import AppHeader from "@/components/AppHeader";
 import ClientSideLayout from "@/components/ClientSideLayout";
 import { ApiConst, GlobalsConst } from "@/constant";
-import { MenuItem, CompanyProfile, IService } from "@/models/home.type";
+import { CompanyProfile, IService, MenuItem } from "@/models/home.type";
 import { CommonUtils } from "@/utils";
 
 async function fetchMenuAndFooter(): Promise<{
