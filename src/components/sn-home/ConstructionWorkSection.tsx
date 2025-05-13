@@ -124,7 +124,7 @@ const ConstructionWorkSection = ({
                     {item.description}
                   </Typography>
                 </Stack>
-                <Button
+                {/* <Button
                   sx={{
                     mt: 2,
                     color: "white",
@@ -136,7 +136,7 @@ const ConstructionWorkSection = ({
                   endIcon={<ArrowRightIcon />}
                 >
                   Xem thêm
-                </Button>
+                </Button> */}
               </Stack>
             )}
           </SwiperSlide>

@@ -17,6 +17,14 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
   const [hoveredSlides, setHoveredSlides] = useState<{
     [key: string]: boolean;
   }>({});
+  // const groupSlug = useMemo(() => {
+  //   const slug = serviceData?.slug || "";
+  //   const cleanSlug = slug.startsWith("/dich-vu")
+  //     ? slug
+  //     : `/dich-vu/${slug.replace(/^\/+/, "")}`;
+
+  //   return cleanSlug;
+  // }, [serviceData?.slug]);
 
   const handleMouseEnter = (group: string, index: number) => {
     setHoveredSlides((prev) => ({ ...prev, [`${group}-${index}`]: true }));
@@ -33,6 +41,7 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
       src: item.avatar.url || GlobalsConst.NO_IMAGE,
       title: item.title,
       description: item.description,
+      slug: item.slug,
     }));
 
     const midpoint = Math.ceil(mappedImages.length / 2);
@@ -43,7 +52,7 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
   }, [serviceData]);
 
   const renderSwiper = (
-    images: { src: string; title: string; description: string }[],
+    images: { src: string; title: string; description: string; slug: string }[],
     group: string
   ) => (
     <Swiper
@@ -121,7 +130,7 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
                     {item.description}
                   </Typography>
                 </Stack>
-                <Button
+                {/* <Button
                   sx={{
                     mt: 2,
                     color: "white",
@@ -131,9 +140,10 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
                   }}
                   variant="text"
                   endIcon={<ArrowRightIcon />}
+                  onClick={() => router.push(`${groupSlug}/${item.slug}`)}
                 >
                   Xem thêm
-                </Button>
+                </Button> */}
               </Stack>
             )}
           </SwiperSlide>

@@ -61,26 +61,6 @@ const ProductSection = ({
                 </Grid2>
               ))}
           </Grid2>
-
-          {/* {visibleProducts < products.length && (
-            <Button
-              variant="contained"
-              data-aos="zoom-in"
-              sx={{
-                mt: 4,
-                width: 202,
-                height: 48,
-                bgcolor: "common.white",
-                borderRadius: "unset",
-                border: "1px solid",
-                borderColor: "primary.main",
-                color: "primary.main",
-              }}
-              onClick={handleShowMore}
-            >
-              Show more
-            </Button>
-          )} */}
         </Stack>
       </Container>
     </Stack>
