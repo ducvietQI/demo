@@ -189,7 +189,11 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                 onClick={() => setIsOpen(true)}
               />
 
-              <SideBarDrawer isOpen={isOpen} onClose={() => setIsOpen(false)} />
+              <SideBarDrawer
+                menuItems={menuItems}
+                isOpen={isOpen}
+                onClose={() => setIsOpen(false)}
+              />
             </Stack>
           )}
         </Toolbar>

@@ -3,6 +3,7 @@
 import { RouteConstant } from "@/constant";
 import {
   Box,
+  Collapse,
   Divider,
   Drawer,
   IconButton,
@@ -14,28 +15,98 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { memo } from "react";
-import { CloseXIcon } from "./Icons";
-
-const menuItems: Record<string, string> = {
-  "TRANG CHỦ": RouteConstant.HOME,
-  "DỊCH VỤ": RouteConstant.SERVICE,
-  "DỰ ÁN": RouteConstant.PROJECT,
-  "SẢN PHẨM": RouteConstant.PRODUCT,
-  "BÀI VIẾT": RouteConstant.NEWS,
-  "GIỚI THIỆU": RouteConstant.INTRODUCE,
-  "LIÊN HỆ": RouteConstant.CONTACT,
-};
+import { memo, useState } from "react";
+import { ArrowDownIcon, CloseXIcon } from "./Icons";
+import { MenuItem } from "@/models/home.type";
 
 const SideBarDrawer = ({
   isOpen,
   onClose,
+  menuItems,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  menuItems: MenuItem[];
 }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const [expandedIds, setExpandedIds] = useState<string[]>([]);
+
+  const toggleExpand = (id: string) => {
+    setExpandedIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
+  };
+
+  const renderMenuItems = (items: MenuItem[], level = 0) => {
+    return items.map((item) => {
+      const isActive = pathname === item.link;
+      const hasChildren = item.children && item.children.length > 0;
+      const isExpanded = expandedIds.includes(item.id);
+
+      return (
+        <Box key={item.id}>
+          <ListItem
+            disablePadding
+            onClick={() => {
+              if (hasChildren) {
+                toggleExpand(item.id);
+              } else {
+                onClose();
+                router.push(item.link);
+              }
+            }}
+          >
+            <ListItemButton
+              sx={{
+                pl: 2 + level * 2,
+                py: 1,
+                bgcolor: isActive ? "white" : "transparent",
+                "&:hover": {
+                  bgcolor: "rgba(255,255,255,0.1)",
+                },
+              }}
+            >
+              <ListItemText
+                primary={item.title}
+                primaryTypographyProps={{
+                  fontSize: 14,
+                  fontWeight: isActive ? "bold" : "normal",
+                  color: isActive ? "primary.main" : "white",
+                }}
+              />
+              {hasChildren &&
+                (isExpanded ? (
+                  <ArrowDownIcon
+                    sx={{
+                      color: "white",
+                      fontSize: "20px",
+                      transform: "rotate(-180deg)",
+                      transition: "transform 0.2s ease",
+                    }}
+                  />
+                ) : (
+                  <ArrowDownIcon
+                    sx={{
+                      color: "white",
+                      fontSize: "20px",
+                    }}
+                  />
+                ))}
+            </ListItemButton>
+          </ListItem>
+
+          {hasChildren && (
+            <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+              <List disablePadding>
+                {renderMenuItems(item.children!, level + 1)}
+              </List>
+            </Collapse>
+          )}
+        </Box>
+      );
+    });
+  };
 
   return (
     <Drawer
@@ -79,43 +150,7 @@ const SideBarDrawer = ({
 
       <Divider sx={{ bgcolor: "rgba(255,255,255,0.3)" }} />
 
-      {/* Danh sách menu */}
-      <List>
-        {Object.entries(menuItems).map(([label, path], index) => {
-          const isActive = pathname === path;
-
-          return (
-            <ListItem
-              key={index}
-              disablePadding
-              onClick={() => {
-                onClose();
-                router.push(path);
-              }}
-            >
-              <ListItemButton
-                sx={{
-                  px: 2,
-                  py: 1,
-                  bgcolor: isActive ? "white" : "transparent",
-                  "&:hover": {
-                    bgcolor: "rgba(255,255,255,0.1)",
-                  },
-                }}
-              >
-                <ListItemText
-                  primary={label}
-                  primaryTypographyProps={{
-                    fontSize: 14,
-                    fontWeight: isActive ? "bold" : "normal",
-                    color: isActive ? "primary.main" : "white",
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
-      </List>
+      <List>{renderMenuItems(menuItems)}</List>
     </Drawer>
   );
 };
