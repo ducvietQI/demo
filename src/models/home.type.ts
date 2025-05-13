@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Rating } from "./product.type";
+import { IAvatar } from "./project.type";
 
 export interface IBannerImage {
   url: string;
@@ -140,6 +141,7 @@ export interface Project {
   slug: string;
   description: string;
   image: string;
+  avatar: IAvatar;
 }
 export interface BusinessFrequentlyQuestion {
   id: string;

@@ -1,21 +1,45 @@
 "use client";
-import { AppHTMLRender, ProductSection } from "@/components";
-import { GlobalsConst } from "@/constant";
+import apiRequester from "@/api/apiRequester";
+import {
+  AppFormControlTextField,
+  AppHTMLRender,
+  ProductSection,
+} from "@/components";
+import { ApiConst, GlobalsConst } from "@/constant";
 import { IProduct } from "@/models/product.type";
 import { IPaginationList } from "@/models/project.type";
 import { formatNumber } from "@/utils/format.utils";
 import {
+  Box,
   Button,
   Chip,
   Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
   Divider,
   Grid2,
+  GridSize,
+  InputLabel,
   Rating,
   Stack,
   Typography,
 } from "@mui/material";
-import { useMemo } from "react";
+import { enqueueSnackbar } from "notistack";
+import { ReactNode, useMemo, useState } from "react";
+import { useForm, useFormState } from "react-hook-form";
 import ImageGallery from "react-image-gallery";
+
+interface ContactFormData {
+  fullName: string;
+  phoneNumber: string;
+}
+
+const DEFAULT_INIT_VALUE: ContactFormData = {
+  fullName: "",
+  phoneNumber: "",
+};
 
 const ProductDetailPage = ({
   data,
@@ -24,6 +48,12 @@ const ProductDetailPage = ({
   data: IProduct;
   relateProductList: IPaginationList<IProduct>;
 }) => {
+  const [openContact, setOpenContact] = useState(false);
+  const { reset, handleSubmit, control } = useForm<ContactFormData>({
+    defaultValues: DEFAULT_INIT_VALUE,
+  });
+  const { errors } = useFormState({ control });
+
   const images = useMemo(() => {
     return data?.images.length
       ? data?.images.map((item) => ({
@@ -33,9 +63,24 @@ const ProductDetailPage = ({
       : [];
   }, [data]);
 
+  const handleOpenContact = () => setOpenContact(true);
+  const handleCloseContact = () => setOpenContact(false);
+
+  const handleSubmitFormData = async (data: ContactFormData) => {
+    const res = await apiRequester.post(ApiConst.POST_CONTACT, data);
+    if (res.status === GlobalsConst.STT_NO_CONTENT) {
+      enqueueSnackbar({
+        message: "Gửi liên hệ thành công",
+        variant: GlobalsConst.SUCCEED_VARIANT,
+      });
+      reset(DEFAULT_INIT_VALUE);
+      setOpenContact(false);
+    }
+  };
+
   return (
     <Container>
-      <Stack py={5}>
+      <Stack component="form" py={5}>
         <Grid2 container spacing={4}>
           {/* Image Gallery */}
           <Grid2 className="custome-gallery" size={{ xs: 12, md: 6 }}>
@@ -97,41 +142,8 @@ const ProductDetailPage = ({
                 </Typography>
               </Stack>
 
-              {/* <Typography variant="h3" color="text.secondary">
-                Màu: Màu Tự Nhiên
-              </Typography>
-              <Stack direction="row" spacing={1}>
-                <Box
-                  sx={{
-                    width: 24,
-                    height: 24,
-                    borderRadius: "50%",
-                    bgcolor: "#D8C9AE",
-                    border: "1px solid #ccc",
-                    cursor: "pointer",
-                  }}
-                />
-                <Box
-                  sx={{
-                    width: 24,
-                    height: 24,
-                    borderRadius: "50%",
-                    bgcolor: "#3B2B1C",
-                    border: "1px solid #ccc",
-                    cursor: "pointer",
-                  }}
-                />
-              </Stack> */}
-
               <Divider />
 
-              {/* <Typography variant="h4">
-                <strong>Kích thước:</strong> Dài 160 × Rộng 60 × Cao 200 cm
-              </Typography>
-              <Typography variant="h4">
-                <strong>Chất liệu:</strong> Gỗ công nghiệp phủ Melamine CARB-P2
-                (*)
-              </Typography> */}
               <Typography variant="h4" color="text.secondary">
                 {data.description}
               </Typography>
@@ -151,6 +163,7 @@ const ProductDetailPage = ({
                     fontSize: 16,
                     borderRadius: 0,
                   }}
+                  onClick={handleOpenContact}
                 >
                   Liên Hệ
                 </Button>
@@ -183,6 +196,72 @@ const ProductDetailPage = ({
             },
           }}
         />
+        <Dialog
+          open={openContact}
+          onClose={handleCloseContact}
+          fullWidth
+          maxWidth="xs"
+          sx={{
+            "& .MuiDialogTitle-root, & .MuiDialogContent-root, & .MuiDialogActions-root, & .MuiInputBase-root, & .MuiButton-root":
+              {
+                fontSize: "16px",
+              },
+          }}
+        >
+          <DialogTitle
+            sx={{
+              fontSize: 20,
+              fontWeight: 600,
+              color: "text.black",
+            }}
+          >
+            Liên hệ tư vấn
+          </DialogTitle>
+          <DialogContent>
+            <Stack spacing={2} mt={1}>
+              <FormField label="Họ và tên">
+                <AppFormControlTextField
+                  name="fullName"
+                  control={control}
+                  rules={{ required: "Họ và tên không được để trống." }}
+                  textfieldProps={{
+                    error: !!errors.fullName,
+                    helperText: errors.fullName?.message as string,
+                  }}
+                />
+              </FormField>
+              <FormField label="Số điện thoại">
+                <AppFormControlTextField
+                  name="phoneNumber"
+                  control={control}
+                  rules={{
+                    required: "Số điện thoại không được để trống.",
+                    pattern: {
+                      value: GlobalsConst.REGEX_PHONE_NUMBER,
+                      message: "Số điện thoại không hợp lệ!",
+                    },
+                  }}
+                  textfieldProps={{
+                    error: !!errors.phoneNumber,
+                    helperText: errors.phoneNumber?.message as string,
+                  }}
+                />
+              </FormField>
+            </Stack>
+          </DialogContent>
+          <DialogActions>
+            <Button sx={{ borderRadius: 0 }} variant="outlined">
+              Hủy
+            </Button>
+            <Button
+              sx={{ borderRadius: 0 }}
+              variant="contained"
+              onClick={handleSubmit(handleSubmitFormData)}
+            >
+              Gửi
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Stack>
     </Container>
   );
@@ -194,3 +273,35 @@ function getDiscountPercent(price: number, salePrice: number): number {
   if (price <= 0 || salePrice <= 0 || salePrice >= price) return 0;
   return Math.round(((price - salePrice) / price) * 100);
 }
+
+interface FormFieldProps {
+  label: string;
+  required?: boolean;
+  children: ReactNode;
+  labelSize?: GridSize;
+  childrenSize?: GridSize;
+  flexLabel?: string;
+}
+
+const FormField = ({ label, required = false, children }: FormFieldProps) => (
+  <Stack
+    direction="row"
+    alignItems="center"
+    sx={{
+      width: "100%",
+    }}
+  >
+    <InputLabel
+      sx={{
+        fontSize: "16px",
+        flex: "0 0 150px",
+        textAlign: "left",
+        fontWeight: 500,
+      }}
+      required={required}
+    >
+      {label}
+    </InputLabel>
+    <Box flex={1}>{children}</Box>
+  </Stack>
+);

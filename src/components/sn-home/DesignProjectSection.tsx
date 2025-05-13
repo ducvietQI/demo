@@ -30,7 +30,7 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
     const projects = serviceData?.projectGroup.projects || [];
 
     const mappedImages = projects.map((item) => ({
-      src: item.image || GlobalsConst.NO_IMAGE,
+      src: item.avatar.url || GlobalsConst.NO_IMAGE,
       title: item.title,
       description: item.description,
     }));

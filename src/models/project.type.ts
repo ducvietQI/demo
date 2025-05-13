@@ -5,7 +5,7 @@ interface ImageItem {
   caption: string;
 }
 
-interface Avatar {
+export interface IAvatar {
   url: string;
   caption: string;
 }
@@ -38,7 +38,7 @@ export interface IProject {
   slug: string;
   content: string;
   description: string;
-  avatar: Avatar;
+  avatar: IAvatar;
   images: ImageItem[];
   view: number;
   rating: Rating;
@@ -90,11 +90,11 @@ export interface INews {
   description: string;
   content: string;
   slug: string;
-  avatar: Avatar;
+  avatar: IAvatar;
   view: number;
   blogGroupId: string;
   blogGroup: {
-    avatar: Avatar;
+    avatar: IAvatar;
     code: string;
     description: string;
     id: string;

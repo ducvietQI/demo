@@ -82,21 +82,7 @@ const CONTACTPage = () => {
             </FormField>
 
             <FormField label="Email">
-              <AppFormControlTextField
-                name="email"
-                control={control}
-                rules={{
-                  required: "Email không được để trống.",
-                  pattern: {
-                    value: GlobalsConst.REGEX_EMAIL,
-                    message: "Email không hợp lệ!",
-                  },
-                }}
-                textfieldProps={{
-                  error: !!errors.email,
-                  helperText: errors.email?.message as string,
-                }}
-              />
+              <AppFormControlTextField name="email" control={control} />
             </FormField>
 
             <FormField label="Lời nhắn">

@@ -8,16 +8,16 @@ import ProductDetailPage from "@/components/sn-product/ProductDetailPage";
 import { IPaginationList } from "@/models/project.type";
 
 type PageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ productSlug: string }>;
 };
 
-async function fetchData(slug: string): Promise<{
+async function fetchData(productSlug: string): Promise<{
   detailProduct: IProduct;
   relateProductList: IPaginationList<IProduct>;
 }> {
   try {
     const response = await apiRequester.get<IProduct>(
-      stringFormat(ApiConst.PRODUCT_DETAIL, { slug })
+      stringFormat(ApiConst.PRODUCT_DETAIL, { slug: productSlug })
     );
     const categoryId = response?.payload.categoryId;
 
@@ -45,8 +45,8 @@ async function fetchData(slug: string): Promise<{
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const { detailProduct } = await fetchData(slug);
+  const { productSlug } = await params;
+  const { detailProduct } = await fetchData(productSlug);
   const headersList = await headers();
 
   const host = headersList.get("host") || "default-domain.com";
@@ -66,7 +66,7 @@ export async function generateMetadata({
       title: detailProduct?.seoMetaData?.title || fallbackTitle,
       description:
         detailProduct?.seoMetaData?.description || fallbackDescription,
-      url: `https://${host}/faq/${slug}`,
+      url: `https://${host}/faq/${productSlug}`,
       images: [
         {
           url: `${process.env.NEXT_PUBLIC_API_URL}${detailProduct?.avatar.url}`,
@@ -80,8 +80,8 @@ export async function generateMetadata({
 }
 
 const ProductDetail = async ({ params }: PageProps) => {
-  const { slug } = await params;
-  const { detailProduct, relateProductList } = await fetchData(slug);
+  const { productSlug } = await params;
+  const { detailProduct, relateProductList } = await fetchData(productSlug);
 
   return (
     <ProductDetailPage
