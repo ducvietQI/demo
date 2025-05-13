@@ -1,7 +1,7 @@
 "use client";
 
 import { useTabletDown } from "@/hooks";
-import { ServiceModel } from "@/models/home.type";
+import { IService } from "@/models/home.type";
 import { AppBar, Box, Container, Grid2, Stack, Tab, Tabs } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
@@ -10,7 +10,7 @@ interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: string;
-  data: ServiceModel;
+  data: IService;
 }
 
 function TabPanel(props: TabPanelProps) {
@@ -102,7 +102,7 @@ function a11yProps(index: number) {
 export default function TabSection({
   serviceData,
 }: {
-  serviceData: ServiceModel[];
+  serviceData: IService[];
 }) {
   const [value, setValue] = useState(serviceData[0]?.code || "");
 

@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Rating } from "./product.type";
 
 export interface IBannerImage {
   url: string;
@@ -101,16 +102,26 @@ export interface Workflow {
   order: number;
 }
 
-export interface ServiceModel {
+export interface IService {
   id: string;
   code: string;
   title: string;
   slug: string;
   description: string;
   view: number;
+  businessFrequentlyQuestions: BusinessFrequentlyQuestion[];
+  link: string;
+  content: string;
+  rating: Rating;
+  seoMetaData: SeoMetaData;
   workflows: Workflow[];
+  projectGroupId: string;
   projectGroup: ProjectGroup;
-  frequentlyQuestions: FrequentlyQuestion[];
+  businessState: number;
+  createdBy: string;
+  creationTime: string;
+  modifiedBy: string | null;
+  modificationTime: string;
 }
 
 export interface ProjectGroup {
@@ -130,7 +141,7 @@ export interface Project {
   description: string;
   image: string;
 }
-export interface FrequentlyQuestion {
+export interface BusinessFrequentlyQuestion {
   id: string;
   code: string | null;
   title: string;

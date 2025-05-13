@@ -7,15 +7,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { ArrowRightIcon } from "../Icons";
 import { useTabletDown } from "@/hooks";
 import { useMemo, useState } from "react";
-import { ServiceModel } from "@/models/home.type";
+import { IService } from "@/models/home.type";
 import { GlobalsConst } from "@/constant";
 import { useRouter } from "next/navigation";
 
-const DesignProjectSection = ({
-  serviceData,
-}: {
-  serviceData?: ServiceModel;
-}) => {
+const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
   const router = useRouter();
   const isTabletDown = useTabletDown();
   const [hoveredSlides, setHoveredSlides] = useState<{
@@ -177,7 +173,13 @@ const DesignProjectSection = ({
               mt: 2.5,
               ":hover": { color: "text.black", bgcolor: "primary.main" },
             }}
-            onClick={() => router.push(serviceData?.slug || "")}
+            onClick={() => {
+              const slug = serviceData?.slug || "";
+              const cleanSlug = slug.startsWith("/dich-vu")
+                ? slug
+                : `/dich-vu/${slug.replace(/^\/+/, "")}`;
+              router.push(cleanSlug);
+            }}
             variant="contained"
             endIcon={<ArrowRightIcon />}
           >

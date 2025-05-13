@@ -8,7 +8,7 @@ import {
   TabSection,
 } from "@/components";
 import { ApiConst, GlobalsConst } from "@/constant";
-import { BANNER_TYPE, IBanner, ServiceModel } from "@/models/home.type";
+import { BANNER_TYPE, IBanner, IService } from "@/models/home.type";
 import { IProduct } from "@/models/product.type";
 import { IPaginationList, INews, ICategories } from "@/models/project.type";
 import { Stack } from "@mui/material";
@@ -16,7 +16,7 @@ import { Stack } from "@mui/material";
 async function fetchData(): Promise<{
   bannersList: IBanner[];
   newsResponse: INews[];
-  serviceData: ServiceModel[];
+  serviceData: IService[];
   productList1: IProduct[];
   productList2: IProduct[];
   productList3: IProduct[];
@@ -67,7 +67,7 @@ async function fetchData(): Promise<{
       ApiConst.BUSINESSES_OVERVIEW_LIST,
       { size: GlobalsConst.DEFAULT_SIZE }
     );
-    const serviceData = serviceResponse.payload as ServiceModel[];
+    const serviceData = serviceResponse.payload as IService[];
 
     return {
       bannersList,

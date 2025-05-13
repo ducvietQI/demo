@@ -4,7 +4,7 @@ import { Stack, IconButton } from "@mui/material";
 import AppFooter from "./AppFooter";
 import Image from "next/image";
 import { ReactNode, useEffect } from "react";
-import { CompanyProfile, ServiceModel } from "@/models/home.type";
+import { CompanyProfile, IService } from "@/models/home.type";
 import { appActions, useAppDispatch } from "@/redux-store";
 
 const ClientSideLayout = ({
@@ -14,7 +14,7 @@ const ClientSideLayout = ({
 }: {
   children: ReactNode;
   footerData: CompanyProfile;
-  serviceData: ServiceModel[];
+  serviceData: IService[];
 }) => {
   const dispatch = useAppDispatch();
 

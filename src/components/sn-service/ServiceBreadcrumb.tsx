@@ -1,7 +1,7 @@
 import { RouteConstant } from "@/constant";
 import { Breadcrumbs, Link, Typography } from "@mui/material";
 
-const ServiceBreadcrumb = () => {
+const ServiceBreadcrumb = ({ title }: { title?: string }) => {
   return (
     <Breadcrumbs
       sx={{
@@ -17,16 +17,8 @@ const ServiceBreadcrumb = () => {
       >
         Trang chủ
       </Link>
-      <Link
-        sx={{ "&:hover": { color: "primary.main" } }}
-        underline="none"
-        color="inherit"
-        href={RouteConstant.SERVICE}
-      >
-        Dịch vụ
-      </Link>
       <Typography color="text.black" fontSize={18}>
-        Dịch vụ chi tiết
+        {title || ""}
       </Typography>
     </Breadcrumbs>
   );

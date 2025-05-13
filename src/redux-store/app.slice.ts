@@ -1,8 +1,8 @@
-import { CompanyProfile, ServiceModel } from "@/models/home.type";
+import { CompanyProfile, IService } from "@/models/home.type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface IAppState {
-  serviceData: ServiceModel[];
+  serviceData: IService[];
   footerData: CompanyProfile;
 }
 
@@ -17,7 +17,7 @@ export const appSlice = createSlice({
   reducers: {
     changeServiceData: (
       state: IAppState,
-      action: PayloadAction<ServiceModel[]>
+      action: PayloadAction<IService[]>
     ) => {
       state.serviceData = action.payload;
     },

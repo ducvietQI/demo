@@ -1,8 +1,9 @@
 import apiRequester from "@/api/apiRequester";
+import ServiceDetailPage from "@/components/sn-service/ServiceDetailPage";
 import { ApiConst } from "@/constant";
-import { Metadata } from "next";
+import { IService } from "@/models/home.type";
 import { headers } from "next/headers";
-
+import { Metadata } from "next";
 import stringFormat from "string-format";
 
 type PageProps = {
@@ -11,8 +12,8 @@ type PageProps = {
 
 async function fetchData(slug: string) {
   try {
-    const response = await apiRequester.get<any>(
-      stringFormat(ApiConst.NEWS_DETAIL, { slug })
+    const response = await apiRequester.get<IService>(
+      stringFormat(ApiConst.SERVICE_DETAIL, { slug })
     );
     return response?.payload || null;
   } catch (error) {
@@ -39,24 +40,15 @@ export async function generateMetadata({
     description: data?.seoMetaData?.description || fallbackDescription,
     keywords:
       data?.seoMetaData?.keywords || "thiết kế nhà, nội thất, kiến trúc",
-    openGraph: {
-      title: data?.seoMetaData?.title || fallbackTitle,
-      description: data?.seoMetaData?.description || fallbackDescription,
-      url: `https://${host}/faq/${slug}`,
-      images: [
-        {
-          url: `${process.env.NEXT_PUBLIC_API_URL}${data?.avatar.url}`,
-          width: 1200,
-          height: 630,
-          alt: data?.seoMetaData?.title,
-        },
-      ],
-    },
   };
 }
 
-const DetailService = () => {
-  return <></>;
+const DetailService = async ({ params }: PageProps) => {
+  const { slug } = await params;
+  const data = await fetchData(slug);
+  if (!data) return null;
+
+  return <ServiceDetailPage data={data} />;
 };
 
 export default DetailService;

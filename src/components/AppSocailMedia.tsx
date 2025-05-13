@@ -44,7 +44,7 @@ const AppSocailMedia = ({ view }: { view?: number }) => {
         alt="tt-icon"
       />
 
-      {view && (
+      {typeof view === "number" && (
         <>
           <EyeIcon sx={{ fontSize: 20 }} />
           <Typography variant="h5">{view}</Typography>

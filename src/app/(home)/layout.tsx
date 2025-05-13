@@ -2,13 +2,13 @@ import apiRequester from "@/api/apiRequester";
 import AppHeader from "@/components/AppHeader";
 import ClientSideLayout from "@/components/ClientSideLayout";
 import { ApiConst, GlobalsConst } from "@/constant";
-import { MenuItem, CompanyProfile, ServiceModel } from "@/models/home.type";
+import { MenuItem, CompanyProfile, IService } from "@/models/home.type";
 import { CommonUtils } from "@/utils";
 
 async function fetchMenuAndFooter(): Promise<{
   menuList: MenuItem[];
   footerData: CompanyProfile;
-  serviceData: ServiceModel[];
+  serviceData: IService[];
 }> {
   try {
     const menuResponse = await apiRequester.get(ApiConst.MENU_LIST);
@@ -23,7 +23,7 @@ async function fetchMenuAndFooter(): Promise<{
       ApiConst.BUSINESSES_OVERVIEW_LIST,
       { size: GlobalsConst.DEFAULT_SIZE }
     );
-    const serviceData = serviceResponse.payload as ServiceModel[];
+    const serviceData = serviceResponse.payload as IService[];
 
     return { menuList, footerData, serviceData };
   } catch (error) {

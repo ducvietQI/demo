@@ -7,14 +7,14 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ArrowRightIcon } from "../Icons";
 import { useTabletDown } from "@/hooks";
-import { ServiceModel } from "@/models/home.type";
+import { IService } from "@/models/home.type";
 import { GlobalsConst } from "@/constant";
 import { useRouter } from "next/navigation";
 
 const ConstructionWorkSection = ({
   serviceData,
 }: {
-  serviceData?: ServiceModel;
+  serviceData?: IService;
 }) => {
   const router = useRouter();
   const isTabletDown = useTabletDown();
@@ -189,7 +189,7 @@ const ConstructionWorkSection = ({
               mt: 2.5,
               ":hover": { color: "text.black", bgcolor: "primary.main" },
             }}
-            onClick={() => router.push(serviceData?.slug || "")}
+            onClick={() => router.push(`/dich-vu/${serviceData?.slug}`)}
             variant="contained"
             endIcon={<ArrowRightIcon />}
           >

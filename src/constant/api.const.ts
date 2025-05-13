@@ -22,3 +22,5 @@ export const PRODUCT_DETAIL = "/api/public/products/{slug}";
 
 export const CATEGORIES_LIST = "/api/public/categories";
 export const CATEGORIES_TOP_LIST = "/api/public/categories/top";
+
+export const SERVICE_DETAIL = "/api/public/businesses/{slug}";
