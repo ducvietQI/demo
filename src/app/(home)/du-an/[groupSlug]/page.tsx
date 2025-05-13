@@ -39,7 +39,7 @@ async function fetchData(groupSlug: string): Promise<{
     );
 
     const responseProjectGroupDetail = await apiRequester.get<IProject>(
-      stringFormat(ApiConst.PROJECT_GROUP_DETAIL, { groupSlug })
+      stringFormat(ApiConst.PROJECT_GROUP_DETAIL, { slug: groupSlug })
     );
 
     return {
