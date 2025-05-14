@@ -85,6 +85,7 @@ const ServiceCard = ({
             flexDirection: "column",
             justifyContent: "space-between",
             p: "12px 15px",
+            width: "100%",
           }}
         >
           <Box>
