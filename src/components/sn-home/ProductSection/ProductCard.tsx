@@ -85,30 +85,28 @@ const ProductCard = ({ data }: ProductCardProps) => {
         <CardContent sx={{ bgcolor: "#fff", p: 0, pt: 1 }}>
           <Typography
             gutterBottom
-            fontSize={14}
+            fontSize={18}
             fontWeight={500}
             component="div"
             color="text.black"
           >
-            {/* {data.} */}
+            {data.name}
           </Typography>
           {/* <Typography variant="h5" color="text.black">
-            {description}
+            {data.description}
           </Typography> */}
 
           <Stack direction="row" alignItems="center" spacing={2}>
             <Typography fontSize={14} fontWeight={600} color="#f94c43">
-              {/* {formatNumber(discountedPrice)}₫ */}
+              {formatNumber(data.salePrice)}₫
             </Typography>
-            {/* {sale && (
-              <Typography
-                sx={{ textDecoration: "line-through" }}
-                color="text.disable"
-                fontSize={13}
-              >
-                {formatNumber(price)}₫
-              </Typography>
-            )} */}
+            <Typography
+              sx={{ textDecoration: "line-through" }}
+              color="text.disable"
+              fontSize={13}
+            >
+              {formatNumber(data.price)}₫
+            </Typography>
           </Stack>
 
           <Stack

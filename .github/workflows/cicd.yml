@@ -25,6 +25,12 @@ jobs:
         run: |
           docker-compose -f docker-compose.yml up --build -d
 
-      - name: Cleanup old images
-        run: |
-          docker image prune -af --filter "until=4h"
+  clean:
+    runs-on: self-hosted
+    needs: build-and-deploy
+    steps:
+      - name: Clean Docker build cache
+        run: docker builder prune -a -f
+
+      - name: Clean all temporary Docker images
+        run: docker image prune -f
