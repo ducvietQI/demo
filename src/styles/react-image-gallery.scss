@@ -130,8 +130,12 @@
 }
 
 .custome-gallery {
+  .image-gallery {
+    height: 480px;
+  }
+
   .image-gallery-content {
-    height: 600px !important;
+    height: 100%;
   }
 
   .image-gallery-slide-wrapper,
