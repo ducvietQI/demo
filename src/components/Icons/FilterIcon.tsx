@@ -13,7 +13,7 @@ const FilterIcon = ({ sx, ...otherProps }: SvgIconProps) => {
         strokeWidth="2"
         strokeLinejoin="round"
         strokeMiterlimit="10"
-        stroke="#909097"
+        stroke="currentColor"
         d="M12 9v8l-4-4V9L2 3h16z"
       />
     </SvgIcon>

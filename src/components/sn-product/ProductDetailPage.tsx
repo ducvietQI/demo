@@ -6,6 +6,7 @@ import {
   ProductSection,
 } from "@/components";
 import { ApiConst, GlobalsConst } from "@/constant";
+import { useTabletDown } from "@/hooks";
 import { IProduct } from "@/models/product.type";
 import { IPaginationList } from "@/models/project.type";
 import { formatNumber } from "@/utils/format.utils";

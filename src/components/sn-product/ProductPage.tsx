@@ -5,12 +5,14 @@ import { ApiConst, GlobalsConst } from "@/constant";
 import { IProduct } from "@/models/product.type";
 import { IPaginationList } from "@/models/project.type";
 import { productActions, useAppDispatch, useAppSelector } from "@/redux-store";
-import { Container, Grid2, Stack } from "@mui/material";
+import { Container, Drawer, Grid2, Stack, Typography } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { shallowEqual } from "react-redux";
 import ProductCard from "../sn-home/ProductSection/ProductCard";
 import CategoryFilter from "./CategoryFilter";
+import { useTabletDown } from "@/hooks";
+import { FilterIcon } from "../Icons";
 
 const ProductPage = ({
   data,
@@ -22,6 +24,8 @@ const ProductPage = ({
   groupSlug?: string;
 }) => {
   const dispatch = useAppDispatch();
+  const isTabletDown = useTabletDown();
+  const [isOpen, setIsOpen] = useState(false);
   const [categorySlug, setCategorySlug] = useState(groupSlug || "");
   const { productList, currentPage, totalPages, hasMore } = useAppSelector(
     (state) => ({
@@ -116,6 +120,26 @@ const ProductPage = ({
               onSetCategorySlug={setCategorySlug}
             />
           </Grid2>
+          {isTabletDown && (
+            <Stack
+              direction="row"
+              alignItems="center"
+              spacing={2}
+              component="div"
+              onClick={() => setIsOpen(true)}
+              bgcolor="primary.main"
+              color="white"
+              p={1}
+            >
+              <FilterIcon
+                sx={{
+                  color: "white",
+                  fontSize: 20,
+                }}
+              />
+              <Typography fontSize="18px">Bộ lọc</Typography>
+            </Stack>
+          )}
 
           <Grid2
             size={{ xs: 12, md: 9.5 }}
@@ -141,9 +165,25 @@ const ProductPage = ({
                 })}
               </Grid2>
             </InfiniteScroll>
+
+            {productList.length === 0 && (
+              <Stack width="100%" alignItems="center">
+                <Typography fontSize={18}>Không có sản phẩm</Typography>
+              </Stack>
+            )}
           </Grid2>
         </Grid2>
       </Container>
+      <Drawer anchor="left" open={isOpen} onClose={() => setIsOpen(false)}>
+        <Stack width={280} p={2}>
+          <CategoryFilter
+            categorySlug={categorySlug}
+            categoriesList={categoriesList}
+            onSetCategorySlug={setCategorySlug}
+            onClose={() => setIsOpen(false)}
+          />
+        </Stack>
+      </Drawer>
     </Stack>
   );
 };

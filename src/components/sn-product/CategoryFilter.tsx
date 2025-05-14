@@ -16,10 +16,12 @@ const CategoryFilter = ({
   categorySlug,
   categoriesList,
   onSetCategorySlug,
+  onClose,
 }: {
   categorySlug: string;
   categoriesList: MenuItem[];
   onSetCategorySlug: (slug: string) => void;
+  onClose?: () => void;
 }) => {
   return (
     <Box>
@@ -85,6 +87,7 @@ const CategoryFilter = ({
                       }}
                       onClick={() => {
                         onSetCategorySlug(item.slug);
+                        onClose?.();
                       }}
                     >
                       <ListItemText
