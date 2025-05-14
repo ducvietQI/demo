@@ -39,7 +39,7 @@ async function fetchData(groupSlug: string): Promise<{
     );
 
     const responseNewsGroupDetail = await apiRequester.get<INews>(
-      stringFormat(ApiConst.NEWS_GROUP_DETAIL, { groupSlug })
+      stringFormat(ApiConst.NEWS_GROUP_DETAIL, { slug: groupSlug })
     );
 
     return {

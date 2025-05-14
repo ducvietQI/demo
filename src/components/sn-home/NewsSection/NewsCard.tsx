@@ -20,8 +20,8 @@ const NewsCard = ({ data }: NewsCardProps) => {
   const handleClick = () => {
     router.push(
       stringFormat(RouteConstant.NEWS_DETAIL, {
-        groupSlug: data.blogGroup.slug || data.blogGroupId,
-        slug: data.slug,
+        groupSlug: data.blogGroup?.slug || data.blogGroupId,
+        slug: data?.slug,
       })
     );
   };
