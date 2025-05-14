@@ -90,13 +90,15 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                       <Stack direction="row" alignItems="center" spacing={1}>
                         <Typography
                           variant="h6"
-                          onClick={() =>
-                            router.push(
-                              item.link.startsWith("/")
-                                ? item.link
-                                : `/${item.link}`
-                            )
-                          }
+                          onClick={() => {
+                            if (item.link !== "#") {
+                              router.push(
+                                item.link.startsWith("/")
+                                  ? item.link
+                                  : `/${item.link}`
+                              );
+                            }
+                          }}
                           sx={{
                             fontWeight: isActive ? 700 : 500,
                             cursor: "pointer",
