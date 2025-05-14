@@ -251,7 +251,11 @@ const ProductDetailPage = ({
             </Stack>
           </DialogContent>
           <DialogActions>
-            <Button sx={{ borderRadius: 0 }} variant="outlined">
+            <Button
+              onClick={handleCloseContact}
+              sx={{ borderRadius: 0 }}
+              variant="outlined"
+            >
               Hủy
             </Button>
             <Button
