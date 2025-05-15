@@ -34,8 +34,8 @@ const ClientSideLayout = ({
           right: { xs: 10, md: 40 },
           bottom: { xs: 10, md: 40 },
           zIndex: 2000,
-          width: 70,
-          height: 70,
+          width: { xs: 40, md: 70 },
+          height: { xs: 40, md: 70 },
           "&:hover": {
             backgroundColor: "white",
             transform: "scale(1.1)",
@@ -58,10 +58,10 @@ const ClientSideLayout = ({
         sx={{
           position: "fixed",
           right: { xs: 10, md: 40 },
-          bottom: { xs: 95, md: 130 },
+          bottom: { xs: 60, md: 130 },
           zIndex: 2000,
-          width: 70,
-          height: 70,
+          width: { xs: 40, md: 70 },
+          height: { xs: 40, md: 70 },
           backgroundColor: "#3f8edf",
           borderRadius: "50%",
           "&:hover": {

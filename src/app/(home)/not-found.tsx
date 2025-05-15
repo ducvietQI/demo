@@ -2,17 +2,12 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="main d-flex flex-col py-8">
+    <div className="flex flex-col items-center justify-center px-4 py-8 mx-auto w-full max-w-[380px] sm:max-w-none">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 470 290"
-        style={{
-          height: "50vh",
-          width: "auto",
-          display: "block",
-          margin: "0 auto",
-        }}
+        className="w-full md:w-[600px] h-auto mb-6"
       >
         <defs>
           <path
@@ -127,8 +122,13 @@ export default function NotFound() {
         </g>
       </svg>
 
-      <h1 className="mt-6 text-6xl font-semibold">Không tìm thấy trang</h1>
-      <Link href="/" className="mt-2 text-white bg-[#ffba00] text-4xl p-3">
+      <h1 className="mt-6 text-2xl md:text-6xl font-semibold">
+        Không tìm thấy trang
+      </h1>
+      <Link
+        href="/"
+        className="mt-4 text-white bg-[#ffba00] text-lg md:text-4xl p-3"
+      >
         Về trang chủ
       </Link>
     </div>

@@ -187,7 +187,12 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
               </blockquote>
             </div>
 
-            <Stack direction="row" justifyContent="flex-end" mt={2} spacing={1}>
+            <Stack
+              direction="row"
+              justifyContent={{ xs: "center", md: "flex-end" }}
+              mt={2}
+              spacing={{ xs: 0, md: 1 }}
+            >
               <SocialIconButton
                 href={footerData.social?.instagram || ""}
                 iconSrc="/images/ig.png"
