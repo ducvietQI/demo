@@ -149,6 +149,11 @@ const ProductPage = ({
             bgcolor="white"
             p={2}
           >
+            {productList.length === 0 && (
+              <Stack width="100%" alignItems="center">
+                <Typography fontSize={18}>Không có sản phẩm</Typography>
+              </Stack>
+            )}
             <InfiniteScroll
               dataLength={productList.length}
               next={fetchMoreProjects}
@@ -165,12 +170,6 @@ const ProductPage = ({
                 })}
               </Grid2>
             </InfiniteScroll>
-
-            {productList.length === 0 && (
-              <Stack width="100%" alignItems="center">
-                <Typography fontSize={18}>Không có sản phẩm</Typography>
-              </Stack>
-            )}
           </Grid2>
         </Grid2>
       </Container>

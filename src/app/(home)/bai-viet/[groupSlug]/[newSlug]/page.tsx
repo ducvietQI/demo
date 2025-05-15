@@ -1,10 +1,11 @@
 import apiRequester from "@/api/apiRequester";
-import { ApiConst } from "@/constant";
+import { ApiConst, GlobalsConst } from "@/constant";
 import { Metadata } from "next";
 import stringFormat from "string-format";
 import { headers } from "next/headers";
 import { INews } from "@/models/project.type";
 import NewDetailPage from "@/components/sn-news/NewsDetailPage";
+import { notFound } from "next/navigation";
 
 type PageProps = {
   params: Promise<{ newSlug: string }>;
@@ -15,7 +16,8 @@ async function fetchData(newSlug: string) {
     const response = await apiRequester.get<INews>(
       stringFormat(ApiConst.NEWS_DETAIL, { slug: newSlug })
     );
-    return response?.payload || null;
+
+    return response.status === GlobalsConst.STT_OK ? response?.payload : null;
   } catch (error) {
     return null;
   }
@@ -59,7 +61,9 @@ export async function generateMetadata({
 const NewsDetail = async ({ params }: PageProps) => {
   const { newSlug } = await params;
   const data = await fetchData(newSlug);
-  if (!data) return null;
+  if (!data) {
+    notFound();
+  }
 
   return <NewDetailPage data={data} />;
 };

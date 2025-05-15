@@ -1,10 +1,11 @@
 import apiRequester from "@/api/apiRequester";
 import FAQDetailPage from "@/components/sn-faq/FAQDetailPage";
-import { ApiConst } from "@/constant";
+import { ApiConst, GlobalsConst } from "@/constant";
 import { IIFAQ } from "@/models/project.type";
 import { Metadata } from "next";
 import stringFormat from "string-format";
 import { headers } from "next/headers";
+import { notFound } from "next/navigation";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -15,7 +16,7 @@ async function fetchData(slug: string) {
     const response = await apiRequester.get<IIFAQ>(
       stringFormat(ApiConst.FAQ_DETAIL, { slug })
     );
-    return response?.payload || null;
+    return response.status === GlobalsConst.STT_OK ? response?.payload : null;
   } catch (error) {
     console.error(`Error fetching FAQ detail for slug: ${slug}`, error);
     return null;
@@ -60,7 +61,9 @@ export async function generateMetadata({
 const FAQDetail = async ({ params }: PageProps) => {
   const { slug } = await params;
   const data = await fetchData(slug);
-  if (!data) return null;
+  if (!data) {
+    notFound();
+  }
 
   return <FAQDetailPage data={data} />;
 };

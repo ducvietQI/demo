@@ -46,7 +46,7 @@ const ProductDetailPage = ({
   data,
   relateProductList,
 }: {
-  data: IProduct;
+  data?: IProduct;
   relateProductList: IPaginationList<IProduct>;
 }) => {
   const [openContact, setOpenContact] = useState(false);
@@ -56,7 +56,7 @@ const ProductDetailPage = ({
   const { errors } = useFormState({ control });
 
   const images = useMemo(() => {
-    return data?.images.length
+    return data?.images?.length
       ? data?.images.map((item) => ({
           original: item.url || GlobalsConst.NO_IMAGE,
           thumbnail: item.url || GlobalsConst.NO_IMAGE,
@@ -99,9 +99,9 @@ const ProductDetailPage = ({
             <Stack spacing={1}>
               <Stack direction="row" alignItems="center" spacing={1}>
                 <Typography variant="h2" fontWeight={700}>
-                  {data.name}
+                  {data?.name}
                 </Typography>
-                {data.isNew && (
+                {data?.isNew && (
                   <Chip label="NEW" color="warning" size="small" />
                 )}
               </Stack>
@@ -115,12 +115,12 @@ const ProductDetailPage = ({
                   }}
                   size="large"
                   name="simple-controlled"
-                  value={data.rating.averageVote}
+                  value={data?.rating?.averageVote || 0}
                   readOnly
                 />
 
                 <Typography variant="h4" color="text.black">
-                  Đã bán: {data.totalBuy}
+                  Đã bán: {data?.totalBuy}
                 </Typography>
               </Stack>
               <Stack direction="row" alignItems="center" spacing={1}>
@@ -128,25 +128,28 @@ const ProductDetailPage = ({
                   sx={{
                     fontSize: 14,
                   }}
-                  label={`-${getDiscountPercent(data.price, data.salePrice)}%`}
+                  label={`-${getDiscountPercent(
+                    data?.price || 0,
+                    data?.salePrice || 0
+                  )}%`}
                   color="warning"
                   size="small"
                 />
                 <Typography color="error" fontWeight={700} fontSize={24}>
-                  {formatNumber(data.salePrice)}₫
+                  {formatNumber(data?.salePrice || 0)}₫
                 </Typography>
                 <Typography
                   sx={{ textDecoration: "line-through" }}
                   color="text.secondary"
                 >
-                  {formatNumber(data.price)}₫
+                  {formatNumber(data?.price || 0)}₫
                 </Typography>
               </Stack>
 
               <Divider />
 
               <Typography variant="h4" color="text.secondary">
-                {data.description}
+                {data?.description}
               </Typography>
 
               <Divider />
@@ -185,7 +188,7 @@ const ProductDetailPage = ({
         </Grid2>
 
         <Stack mt={4} p={2} border="1px solid #ccc" spacing={2}>
-          <AppHTMLRender htmlRender={data?.content} />
+          <AppHTMLRender htmlRender={data?.content || ""} />
         </Stack>
 
         <ProductSection

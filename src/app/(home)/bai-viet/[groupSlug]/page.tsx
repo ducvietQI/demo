@@ -5,6 +5,7 @@ import { ApiConst, GlobalsConst } from "@/constant";
 import { BANNER_TYPE, IBanner } from "@/models/home.type";
 import { INews, IPaginationList } from "@/models/project.type";
 import { Stack } from "@mui/material";
+import { notFound } from "next/navigation";
 import stringFormat from "string-format";
 
 type PageProps = {
@@ -14,7 +15,7 @@ type PageProps = {
 async function fetchData(groupSlug: string): Promise<{
   bannersList: IBanner[];
   newsResponse: IPaginationList<INews>;
-  responseNewsGroupDetail: INews;
+  responseNewsGroupDetail: INews | null;
 }> {
   try {
     const bannersResponse = await apiRequester.get<IBanner[]>(
@@ -45,7 +46,10 @@ async function fetchData(groupSlug: string): Promise<{
     return {
       bannersList,
       newsResponse: newsResponse?.payload,
-      responseNewsGroupDetail: responseNewsGroupDetail?.payload,
+      responseNewsGroupDetail:
+        responseNewsGroupDetail.status === GlobalsConst.STT_OK
+          ? responseNewsGroupDetail?.payload
+          : null,
     };
   } catch (error) {
     return {
@@ -60,6 +64,10 @@ const News = async ({ params }: PageProps) => {
   const { groupSlug } = await params;
   const { bannersList, newsResponse, responseNewsGroupDetail } =
     await fetchData(groupSlug);
+
+  if (!responseNewsGroupDetail) {
+    notFound();
+  }
 
   return (
     <Stack>

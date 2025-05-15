@@ -28,9 +28,13 @@ jobs:
   clean:
     runs-on: self-hosted
     needs: build-and-deploy
+
     steps:
       - name: Clean Docker build cache
         run: docker builder prune -a -f
 
       - name: Clean all temporary Docker images
         run: docker image prune -f
+
+      - name: Clean unused Docker volumes
+        run: docker volume prune -f

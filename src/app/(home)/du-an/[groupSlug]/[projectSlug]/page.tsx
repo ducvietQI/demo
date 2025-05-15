@@ -1,10 +1,11 @@
 import apiRequester from "@/api/apiRequester";
-import { ApiConst } from "@/constant";
+import { ApiConst, GlobalsConst } from "@/constant";
 import { IProject } from "@/models/project.type";
 import { Metadata } from "next";
 import stringFormat from "string-format";
 import { headers } from "next/headers";
 import ProjectDetailPage from "@/components/sn-project/ProjectDetailPage";
+import { notFound } from "next/navigation";
 
 type PageProps = {
   params: Promise<{ projectSlug: string }>;
@@ -15,7 +16,7 @@ async function fetchData(projectSlug: string) {
     const response = await apiRequester.get<IProject>(
       stringFormat(ApiConst.PROJECT_DETAIL, { slug: projectSlug })
     );
-    return response?.payload || null;
+    return response.status === GlobalsConst.STT_OK ? response?.payload : null;
   } catch (error) {
     return null;
   }
@@ -59,8 +60,9 @@ export async function generateMetadata({
 const ProjectDetail = async ({ params }: PageProps) => {
   const { projectSlug } = await params;
   const data = await fetchData(projectSlug);
-
-  if (!data) return null;
+  if (!data) {
+    notFound();
+  }
   return <ProjectDetailPage data={data} />;
 };
 

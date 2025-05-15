@@ -6,32 +6,35 @@ import { headers } from "next/headers";
 import { Metadata } from "next";
 import ProductDetailPage from "@/components/sn-product/ProductDetailPage";
 import { IPaginationList } from "@/models/project.type";
+import { notFound } from "next/navigation";
 
 type PageProps = {
   params: Promise<{ productSlug: string }>;
 };
 
 async function fetchData(productSlug: string): Promise<{
-  detailProduct: IProduct;
+  detailProduct: IProduct | null;
   relateProductList: IPaginationList<IProduct>;
 }> {
   try {
     const response = await apiRequester.get<IProduct>(
       stringFormat(ApiConst.PRODUCT_DETAIL, { slug: productSlug })
     );
-    const categoryId = response?.payload.categoryId;
+    const categorySlug = response?.payload.slug;
 
     const relateProductList = await apiRequester.get<IPaginationList<IProduct>>(
       ApiConst.PRODUCT_LIST,
       {
+        categorySlug,
         page: GlobalsConst.DEFAULT_PAGE,
         size: GlobalsConst.DEFAULT_SIZE,
-        categoryId,
       }
     );
+    console.log(response);
 
     return {
-      detailProduct: response?.payload,
+      detailProduct:
+        response.status === GlobalsConst.STT_OK ? response?.payload : null,
       relateProductList: relateProductList?.payload,
     };
   } catch (error) {
@@ -69,7 +72,7 @@ export async function generateMetadata({
       url: `https://${host}/faq/${productSlug}`,
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_API_URL}${detailProduct?.avatar.url}`,
+          url: `${process.env.NEXT_PUBLIC_API_URL}${detailProduct?.avatar?.url}`,
           width: 1200,
           height: 630,
           alt: detailProduct?.seoMetaData?.title,
@@ -82,6 +85,9 @@ export async function generateMetadata({
 const ProductDetail = async ({ params }: PageProps) => {
   const { productSlug } = await params;
   const { detailProduct, relateProductList } = await fetchData(productSlug);
+  if (!detailProduct) {
+    notFound();
+  }
 
   return (
     <ProductDetailPage
