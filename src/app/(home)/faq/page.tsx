@@ -27,7 +27,7 @@ async function fetchData(): Promise<{
       ApiConst.FAQ_LIST,
       {
         page: GlobalsConst.DEFAULT_PAGE,
-        size: GlobalsConst.DEFAULT_SIZE,
+        size: GlobalsConst.DEFAULT_SIZE + 1,
       }
     );
 

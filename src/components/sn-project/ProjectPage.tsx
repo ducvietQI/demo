@@ -5,9 +5,8 @@ import { ApiConst, GlobalsConst } from "@/constant";
 import { useTabletDown } from "@/hooks";
 import { IPaginationList, IProject } from "@/models/project.type";
 import { projectActions, useAppDispatch, useAppSelector } from "@/redux-store";
-import { Box, Container, Grid2, Stack } from "@mui/material";
-import { useCallback, useEffect } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
+import { Box, Button, Container, Grid2, Stack } from "@mui/material";
+import { useCallback, useEffect, useState } from "react";
 import { shallowEqual } from "react-redux";
 import ProjectCard from "./ProjectCard";
 
@@ -22,6 +21,7 @@ const ProjectPage = ({
 }) => {
   const dispatch = useAppDispatch();
   const isTabletDown = useTabletDown();
+  const [loading, setLoading] = useState(false);
   const { projectList, currentPage, totalPages, hasMore } = useAppSelector(
     (state) => ({
       projectList: state.projectReducer.projectList,
@@ -47,6 +47,8 @@ const ProjectPage = ({
   }, []);
 
   const fetchMoreProjects = useCallback(async () => {
+    if (!hasMore || loading) return;
+    setLoading(true);
     try {
       const response = await apiRequester.get<IPaginationList<IProject>>(
         ApiConst.PROJECT_LIST,
@@ -58,21 +60,24 @@ const ProjectPage = ({
       );
       const newProjects = response?.payload?.items || [];
       dispatch(projectActions.changeProjectList(newProjects));
+      const newCurrentPage = currentPage + 1;
       dispatch(
         projectActions.changePagination({
-          currentPage: currentPage + 1,
+          currentPage: newCurrentPage,
           totalPages: response?.payload?.totalPages || totalPages,
         })
       );
       dispatch(
         projectActions.setHasMore(
-          currentPage + 1 < response?.payload?.totalPages
+          newCurrentPage < (response?.payload?.totalPages || 0)
         )
       );
     } catch (error) {
       console.error("Error fetching more projects:", error);
+    } finally {
+      setLoading(false);
     }
-  }, [currentPage, totalPages, projectGroupSlug]);
+  }, [currentPage, totalPages, projectGroupSlug, hasMore, loading]);
 
   return (
     <Stack position="relative">
@@ -93,6 +98,7 @@ const ProjectPage = ({
           </Box>
         </>
       )}
+
       <Container>
         {!isTabletDown && (
           <Stack alignItems="center" position="relative">
@@ -125,30 +131,38 @@ const ProjectPage = ({
           </Stack>
         )}
 
-        <InfiniteScroll
-          dataLength={projectList.length}
-          next={fetchMoreProjects}
-          hasMore={hasMore}
-          loader={<></>}
-        >
-          <Grid2 my={5} container columnSpacing={2} rowSpacing={2}>
-            {projectList.map((item, index) => {
-              return (
-                <Grid2
-                  size={{ xs: 12, md: 4 }}
-                  key={index}
-                  sx={{
-                    position: "relative",
-                    cursor: "pointer",
-                    height: { xs: 340, md: 400 },
-                  }}
-                >
-                  <ProjectCard data={item} />
-                </Grid2>
-              );
-            })}
-          </Grid2>
-        </InfiniteScroll>
+        <Grid2 my={5} container columnSpacing={2} rowSpacing={2}>
+          {projectList.map((item, index) => (
+            <Grid2
+              size={{ xs: 12, md: 4 }}
+              key={index}
+              sx={{
+                position: "relative",
+                cursor: "pointer",
+                height: { xs: 340, md: 400 },
+              }}
+            >
+              <ProjectCard data={item} />
+            </Grid2>
+          ))}
+        </Grid2>
+
+        {hasMore && (
+          <Stack alignItems="center" mb={5}>
+            <Button
+              variant="contained"
+              onClick={fetchMoreProjects}
+              disabled={loading}
+              sx={{
+                fontSize: 14,
+                minWidth: 200,
+                fontWeight: 600,
+              }}
+            >
+              {loading ? "Đang tải..." : "Xem thêm"}
+            </Button>
+          </Stack>
+        )}
       </Container>
     </Stack>
   );

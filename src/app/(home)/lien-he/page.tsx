@@ -50,7 +50,7 @@ const CONTACTPage = () => {
           component="form"
           onSubmit={handleSubmit(handleSubmitFormData)}
         >
-          <Stack width="50%" spacing={2}>
+          <Stack width={{ xs: "100%", md: "50%" }} spacing={2}>
             <FormField label="Họ và tên">
               <AppFormControlTextField
                 name="fullName"
@@ -111,7 +111,14 @@ const CONTACTPage = () => {
             </Stack>
           </Stack>
 
-          <Stack position="relative" width="50%" height="500px">
+          <Stack
+            sx={{
+              display: { xs: "none", md: "block" },
+            }}
+            position="relative"
+            width="50%"
+            height="500px"
+          >
             <Image
               src="/images/chi-ha-footer.png"
               layout="fill"
@@ -153,7 +160,7 @@ const FormField = ({ label, required = false, children }: FormFieldProps) => (
   <Stack
     direction="row"
     alignItems="center"
-    spacing={2}
+    spacing={{ xs: 0, md: 2 }}
     sx={{
       width: "100%",
     }}
@@ -161,7 +168,7 @@ const FormField = ({ label, required = false, children }: FormFieldProps) => (
     <InputLabel
       sx={{
         fontSize: "16px",
-        flex: "0 0 150px",
+        flex: { xs: "0 0 120px", md: "0 0 150px" },
         textAlign: "left",
         fontWeight: 500,
       }}

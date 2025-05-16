@@ -27,21 +27,21 @@ async function fetchData(): Promise<{
       ApiConst.CATEGORIES_TOP_LIST
     );
 
-    const categoryIds = categogiesResponse.payload.map((cat) => cat.id);
+    const categorySlug = categogiesResponse.payload.map((cat) => cat.slug);
 
     const [productRes1, productRes2, productRes3] = await Promise.all([
       apiRequester.get<IPaginationList<IProduct>>(ApiConst.PRODUCT_LIST, {
-        categoryId: categoryIds[0],
+        categorySlug: categorySlug[0],
         page: GlobalsConst.DEFAULT_PAGE,
         size: GlobalsConst.DEFAULT_SIZE,
       }),
       apiRequester.get<IPaginationList<IProduct>>(ApiConst.PRODUCT_LIST, {
-        categoryId: categoryIds[1],
+        categorySlug: categorySlug[1],
         page: GlobalsConst.DEFAULT_PAGE,
         size: GlobalsConst.DEFAULT_SIZE,
       }),
       apiRequester.get<IPaginationList<IProduct>>(ApiConst.PRODUCT_LIST, {
-        categoryId: categoryIds[2],
+        categorySlug: categorySlug[2],
         page: GlobalsConst.DEFAULT_PAGE,
         size: GlobalsConst.DEFAULT_SIZE,
       }),

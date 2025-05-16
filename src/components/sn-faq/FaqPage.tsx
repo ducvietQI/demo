@@ -3,9 +3,8 @@
 import { useTabletDown } from "@/hooks";
 import { IPaginationList, IIFAQ } from "@/models/project.type";
 import { faqActions, useAppDispatch, useAppSelector } from "@/redux-store";
-import { Stack, Box, Container } from "@mui/material";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { useEffect, useCallback } from "react";
+import { Stack, Box, Container, Button } from "@mui/material";
+import { useEffect, useCallback, useState } from "react";
 import apiRequester from "@/api/apiRequester";
 import { ApiConst, GlobalsConst } from "@/constant";
 import FAQComponent from "./FAQComponent";
@@ -13,7 +12,7 @@ import FAQComponent from "./FAQComponent";
 const FaqPage = ({ data }: { data: IPaginationList<IIFAQ> }) => {
   const dispatch = useAppDispatch();
   const isTabletDown = useTabletDown();
-
+  const [loading, setLoading] = useState(false);
   const { faqList, currentPage, totalPages, hasMore } = useAppSelector(
     (state) => state.faqReducer
   );
@@ -35,11 +34,12 @@ const FaqPage = ({ data }: { data: IPaginationList<IIFAQ> }) => {
 
   const fetchMoreFAQs = useCallback(async () => {
     try {
+      setLoading(true);
       const response = await apiRequester.get<IPaginationList<IIFAQ>>(
         ApiConst.FAQ_LIST,
         {
           page: currentPage + 1,
-          size: GlobalsConst.DEFAULT_SIZE,
+          size: GlobalsConst.DEFAULT_SIZE + 1,
         }
       );
 
@@ -56,12 +56,14 @@ const FaqPage = ({ data }: { data: IPaginationList<IIFAQ> }) => {
       );
     } catch (error) {
       console.error("Error fetching more FAQs:", error);
+    } finally {
+      setLoading(false);
     }
   }, [currentPage, totalPages, dispatch]);
 
   return (
     <Stack position="relative" pb={{ xs: 3, md: 5 }}>
-      {isTabletDown && (
+      {isTabletDown ? (
         <>
           <Box
             p="10px"
@@ -77,51 +79,60 @@ const FaqPage = ({ data }: { data: IPaginationList<IIFAQ> }) => {
             về dịch vụ của chúng tôi.
           </Box>
         </>
+      ) : (
+        <Stack alignItems="center" position="relative">
+          <Box
+            p="10px"
+            position="absolute"
+            bgcolor="primary.main"
+            fontSize="20px"
+            width="70%"
+            textAlign="center"
+            top={-51}
+            fontWeight={700}
+            zIndex={2}
+            boxSizing="border-box"
+          >
+            FAQ
+          </Box>
+          <Box
+            p={3}
+            bgcolor="#e5dfdf"
+            fontSize="14px"
+            width="70%"
+            fontWeight={500}
+            textAlign="center"
+            boxSizing="border-box"
+          >
+            Nơi giải đáp thắc mắc của khách hàng trước, trong và sau khi thi
+            công
+          </Box>
+        </Stack>
       )}
+
       <Container>
-        {!isTabletDown && (
-          <Stack alignItems="center" position="relative">
-            <Box
-              p="10px"
-              position="absolute"
-              bgcolor="primary.main"
-              fontSize="20px"
-              width="70%"
-              textAlign="center"
-              top={-51}
-              fontWeight={700}
-              zIndex={2}
-              boxSizing="border-box"
+        <Stack spacing={2} mt={3}>
+          {faqList.map((faq, index) => (
+            <FAQComponent key={index} index={index} data={faq} />
+          ))}
+        </Stack>
+
+        {hasMore && (
+          <Stack mt={4} alignItems="center">
+            <Button
+              variant="contained"
+              onClick={fetchMoreFAQs}
+              disabled={loading}
+              sx={{
+                fontSize: 14,
+                minWidth: 200,
+                fontWeight: 600,
+              }}
             >
-              FAQ
-            </Box>
-            <Box
-              p={3}
-              bgcolor="#e5dfdf"
-              fontSize="14px"
-              width="70%"
-              fontWeight={500}
-              textAlign="center"
-              boxSizing="border-box"
-            >
-              Nơi giải đáp thắc mắc của khách hàng trước, trong và sau khi thi
-              công
-            </Box>
+              {loading ? "Đang tải..." : "Xem thêm"}
+            </Button>
           </Stack>
         )}
-
-        <InfiniteScroll
-          dataLength={faqList.length}
-          next={fetchMoreFAQs}
-          hasMore={hasMore}
-          loader={<></>}
-        >
-          <Stack spacing={2} mt={3}>
-            {faqList.map((faq, index) => (
-              <FAQComponent key={index} index={index} data={faq} />
-            ))}
-          </Stack>
-        </InfiniteScroll>
       </Container>
     </Stack>
   );

@@ -35,12 +35,15 @@ function TabPanel(props: TabPanelProps) {
                   size={{ xs: 12, md: 3 }}
                   textAlign="center"
                   position="relative"
+                  display="flex"
+                  justifyContent="center"
+                  pt={2}
                 >
                   <Stack
                     alignItems="center"
                     justifyContent="center"
                     sx={{
-                      width: "100%",
+                      width: { xs: "80%", md: "100%" },
                       aspectRatio: "1",
                       display: "flex",
                       flexDirection: "column",
