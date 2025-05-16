@@ -17,7 +17,6 @@ const BannerSection = ({ banners }: BannerSectionProps) => {
   return (
     <Stack height={{ xs: "fit-content", md: "60vh" }} position="relative">
       <Swiper
-        loop={true}
         effect="fade"
         modules={[Navigation, Autoplay, EffectFade]}
         speed={1000}

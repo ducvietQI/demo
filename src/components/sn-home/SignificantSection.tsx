@@ -80,7 +80,7 @@ const SignificantSection = () => {
             </Grid2>
           )}
 
-          <Swiper slidesPerView={1} loop>
+          <Swiper slidesPerView={1}>
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
                 <Box
@@ -197,7 +197,6 @@ const SignificantSection = () => {
             pagination={true}
             spaceBetween={10}
             slidesPerView={1}
-            loop
           >
             {slides2.map((slide, index) => (
               <SwiperSlide key={index}>

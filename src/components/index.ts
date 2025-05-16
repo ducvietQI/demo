@@ -16,7 +16,6 @@ import NewsSection from "./sn-home/NewsSection";
 import ProductSection from "./sn-home/ProductSection";
 import SignificantSection from "./sn-home/SignificantSection";
 import TabSection from "./sn-home/TabSection";
-import VideoSection from "./sn-home/VideoSection";
 
 export {
   SideBarDrawer,
@@ -24,7 +23,6 @@ export {
   SignificantSection,
   BannerSection,
   Logo,
-  VideoSection,
   AboutSection,
   TabSection,
   DesignProjectSection,

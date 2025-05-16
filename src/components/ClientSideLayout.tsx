@@ -51,6 +51,7 @@ const ClientSideLayout = ({
           src="/images/phone.png"
           fill
           alt="phone"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           style={{ objectFit: "cover" }}
         />
       </IconButton>
@@ -78,6 +79,7 @@ const ClientSideLayout = ({
           src="/images/zalo.png"
           fill
           alt="zalo"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           style={{ objectFit: "cover" }}
         />
       </IconButton>
