@@ -15,7 +15,10 @@ const BannerSection = ({ banners }: BannerSectionProps) => {
   const isTabletDown = useTabletDown();
 
   return (
-    <Stack height={{ xs: "fit-content", md: "60vh" }} position="relative">
+    <Stack
+      height={{ xs: "fit-content", md: "20vh", lg: "60vh" }}
+      position="relative"
+    >
       <Swiper
         effect="fade"
         modules={[Navigation, Autoplay, EffectFade]}

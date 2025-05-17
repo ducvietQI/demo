@@ -154,7 +154,7 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
 
   return (
     <Stack direction="row" bgcolor="#fff" pb={{ xs: "15px", md: 10 }}>
-      <Grid2 container spacing={3} px={{ xs: "15px", md: 0 }}>
+      <Grid2 container spacing={3} px={{ xs: "15px", lg: 0 }}>
         <Grid2
           size={{ xs: 12, md: 4 }}
           sx={{

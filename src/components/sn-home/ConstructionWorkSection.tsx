@@ -153,7 +153,7 @@ const ConstructionWorkSection = ({
       pt={{ xs: "15px", md: "unset" }}
       width="100%"
     >
-      <Grid2 width="100%" container spacing={3} px={{ xs: "15px", md: 0 }}>
+      <Grid2 width="100%" container spacing={3} px={{ xs: "15px", lg: 0 }}>
         {!isTabletDown && (
           <Grid2 size={8}>
             {renderSwiper(imagesGroup1, "group1")}
