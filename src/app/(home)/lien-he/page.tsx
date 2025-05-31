@@ -6,6 +6,7 @@ import { ApiConst, GlobalsConst } from "@/constant";
 import {
   Box,
   Button,
+  CircularProgress,
   Container,
   GridSize,
   InputLabel,
@@ -13,7 +14,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { enqueueSnackbar } from "notistack";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { useForm, useFormState } from "react-hook-form";
 
 interface ContactFormData {
@@ -24,19 +25,30 @@ interface ContactFormData {
 }
 
 const CONTACTPage = () => {
+  const [loading, setLoading] = useState(false);
   const { reset, handleSubmit, control } = useForm<ContactFormData>({
     defaultValues: DEFAULT_INIT_VALUE,
   });
   const { errors } = useFormState({ control });
 
   const handleSubmitFormData = async (data: ContactFormData) => {
-    const res = await apiRequester.post(ApiConst.POST_CONTACT, data);
-    if (res.status === GlobalsConst.STT_NO_CONTENT) {
+    setLoading(true);
+    try {
+      const res = await apiRequester.post(ApiConst.POST_CONTACT, data);
+      if (res.status === GlobalsConst.STT_NO_CONTENT) {
+        enqueueSnackbar({
+          message: "Gửi liên hệ thành công",
+          variant: GlobalsConst.SUCCEED_VARIANT,
+        });
+        reset(DEFAULT_INIT_VALUE);
+      }
+    } catch (error) {
       enqueueSnackbar({
-        message: "Gửi liên hệ thành công",
-        variant: GlobalsConst.SUCCEED_VARIANT,
+        message: "Đã xảy ra lỗi khi gửi liên hệ.",
+        variant: "error",
       });
-      reset(DEFAULT_INIT_VALUE);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -104,7 +116,9 @@ const CONTACTPage = () => {
                   borderRadius: 0,
                 }}
                 size="large"
+                disabled={loading}
                 type="submit"
+                startIcon={loading ? <CircularProgress size={20} /> : <></>}
               >
                 Gửi liên hệ
               </Button>

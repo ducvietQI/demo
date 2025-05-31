@@ -75,7 +75,7 @@ const CollapseFAQ = ({ data, index }: { data: IIFAQ; index: number }) => {
       </Stack>
       <Collapse in={expanded}>
         <Typography p={2} fontSize={15} color="text.secondary">
-          {data.content}
+          {data.description}
         </Typography>
         <Typography
           alignSelf="flex-end"

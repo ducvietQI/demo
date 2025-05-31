@@ -23,11 +23,9 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
   const [open, setOpen] = useState(false);
 
   const images = useMemo(() => {
-    return data?.images.length
+    return data?.images?.length
       ? data?.images.map((item) => ({
           original: item.url || "/images/22.webp",
-          // thumbnail: item.url || "/images/22.webp",
-          // description: item.caption,
         }))
       : [];
   }, [data]);
@@ -117,7 +115,6 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
           sx={{
             backgroundColor: "#f5ba3e",
             padding: 2,
-            // borderRadius: 1,
           }}
         >
           <Typography variant="h5" fontWeight={700}>
