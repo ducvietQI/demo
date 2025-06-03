@@ -101,13 +101,16 @@ const Home = async () => {
     productList2,
     productList3,
   } = await fetchData();
+  console.log(serviceData);
 
   return (
     <Stack>
       <BannerSection banners={bannersList} />
-      <TabSection serviceData={serviceData} />
-      <DesignProjectSection serviceData={serviceData[0]} />
-      <ConstructionWorkSection serviceData={serviceData[1]} />
+      {serviceData.length && <TabSection serviceData={serviceData} />}
+      {serviceData[0] && <DesignProjectSection serviceData={serviceData[0]} />}
+      {serviceData[1] && (
+        <ConstructionWorkSection serviceData={serviceData[1]} />
+      )}
       <ProductSection
         array={productList1}
         title={categogiesTopList[0]?.name || "Sản phẩm"}
