@@ -3,6 +3,7 @@
 import apiRequester from "@/api/apiRequester";
 import { AppFormControlTextField } from "@/components";
 import { ApiConst, GlobalsConst } from "@/constant";
+import { useAppSelector } from "@/redux-store";
 import {
   Box,
   Button,
@@ -14,7 +15,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { enqueueSnackbar } from "notistack";
-import { ReactNode, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import { useForm, useFormState } from "react-hook-form";
 
 interface ContactFormData {
@@ -30,6 +31,7 @@ const CONTACTPage = () => {
     defaultValues: DEFAULT_INIT_VALUE,
   });
   const { errors } = useFormState({ control });
+  const { footerData } = useAppSelector((state) => state.appReducer);
 
   const handleSubmitFormData = async (data: ContactFormData) => {
     setLoading(true);
@@ -51,6 +53,16 @@ const CONTACTPage = () => {
       setLoading(false);
     }
   };
+
+  const [latitude, longitude] = useMemo(() => {
+    if (footerData.addresses.length) {
+      return [
+        footerData.addresses[0].latitude,
+        footerData.addresses[0].longitude,
+      ];
+    }
+    return ["", ""];
+  }, [footerData]);
 
   return (
     <Stack>
@@ -143,7 +155,7 @@ const CONTACTPage = () => {
         </Stack>
       </Container>
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28472.34439966473!2d105.97442567735794!3d20.204505698652554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31367174d8c8a2cf%3A0xd84004da4fb1a04!2sNinh%20an!5e1!3m2!1sen!2s!4v1746691809642!5m2!1sen!2s"
+        src={`https://www.google.com/maps?q=${longitude},${latitude}&z=14&output=embed`}
         width="100%"
         height="600"
         loading="lazy"
