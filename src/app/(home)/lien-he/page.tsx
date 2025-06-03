@@ -55,10 +55,10 @@ const CONTACTPage = () => {
   };
 
   const [latitude, longitude] = useMemo(() => {
-    if (footerData.addresses.length) {
+    if (footerData?.addresses?.length) {
       return [
-        footerData.addresses[0].latitude,
-        footerData.addresses[0].longitude,
+        footerData?.addresses[0]?.latitude,
+        footerData?.addresses[0]?.longitude,
       ];
     }
     return ["", ""];
