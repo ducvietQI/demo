@@ -74,7 +74,7 @@ const ConstructionWorkSection = ({
           >
             <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
               <Image
-                src={item.src}
+                src={item?.src || "/images/no-image.webp"}
                 alt={`Slide ${index + 1}`}
                 fill
                 style={{ objectFit: "cover" }}

@@ -70,7 +70,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
           }}
         >
           <Image
-            src={data.avatar.url}
+            src={data?.avatar?.url || "/images/no-image.webp"}
             alt={data.avatar.caption}
             fill
             className="product-image"

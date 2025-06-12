@@ -79,7 +79,7 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
           >
             <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
               <Image
-                src={item.src}
+                src={item?.src || "/images/no-image.webp"}
                 alt={`Slide ${index + 1}`}
                 fill
                 sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" // Thêm sizes

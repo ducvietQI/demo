@@ -41,7 +41,7 @@ const BannerSection = ({ banners }: BannerSectionProps) => {
               <Stack>
                 <Box position="relative" height={242} width="100%">
                   <Image
-                    src={slide.image.url}
+                    src={slide?.image?.url || "/images/no-image.webp"}
                     alt={slide.image.caption}
                     fill
                     className="object-cover"
@@ -52,7 +52,7 @@ const BannerSection = ({ banners }: BannerSectionProps) => {
               </Stack>
             ) : (
               <Image
-                src={slide.image.url}
+                src={slide?.image?.url || "/images/no-image.webp"}
                 alt={slide.image.caption}
                 fill
                 className="object-cover"

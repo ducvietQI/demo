@@ -57,7 +57,7 @@ function TabPanel(props: TabPanelProps) {
                     }}
                   >
                     <Image
-                      src={step.image.url}
+                      src={step?.image?.url || "/images/no-image.webp"}
                       alt={step.image.caption}
                       width={isTabletDown ? 79 : 128}
                       height={isTabletDown ? 80 : 129}
