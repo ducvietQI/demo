@@ -57,11 +57,19 @@ const ProductDetailPage = ({
 
   const images = useMemo(() => {
     return data?.images?.length
-      ? data?.images.map((item) => ({
-          original: item.url || GlobalsConst.NO_IMAGE,
-          thumbnail: item.url || GlobalsConst.NO_IMAGE,
-        }))
-      : [];
+      ? [
+          { original: data.avatar.url, thumbnail: data.avatar.url },
+          ...data?.images.map((item) => ({
+            original: item.url || GlobalsConst.NO_IMAGE,
+            thumbnail: item.url || GlobalsConst.NO_IMAGE,
+          })),
+        ]
+      : [
+          {
+            original: data?.avatar.url || GlobalsConst.NO_IMAGE,
+            thumbnail: data?.avatar.url || GlobalsConst.NO_IMAGE,
+          },
+        ];
   }, [data]);
 
   const handleOpenContact = () => setOpenContact(true);
@@ -78,6 +86,8 @@ const ProductDetailPage = ({
       setOpenContact(false);
     }
   };
+
+  console.log(images);
 
   return (
     <Container>

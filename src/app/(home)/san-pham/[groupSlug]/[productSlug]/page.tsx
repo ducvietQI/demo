@@ -30,7 +30,6 @@ async function fetchData(productSlug: string): Promise<{
         size: GlobalsConst.DEFAULT_SIZE,
       }
     );
-    console.log(response);
 
     return {
       detailProduct:
