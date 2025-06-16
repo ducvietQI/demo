@@ -56,7 +56,7 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
     group: string
   ) => (
     <Swiper
-      slidesPerView={isTabletDown ? 1 : 3}
+      slidesPerView={isTabletDown ? 1 : Math.min(images.length, 3)}
       spaceBetween={30}
       modules={[Navigation]}
       navigation

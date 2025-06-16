@@ -101,7 +101,6 @@ const Home = async () => {
     productList2,
     productList3,
   } = await fetchData();
-  console.log(serviceData);
 
   return (
     <Stack>

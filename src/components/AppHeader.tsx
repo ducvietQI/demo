@@ -14,9 +14,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { ToggleMenu } from "./Icons";
+import { ArrowSubmenu, ToggleMenu } from "./Icons";
 import SideBarDrawer from "./SideBarDrawer";
 import { MenuItem } from "@/models/home.type";
+import { SERVICE } from "@/constant/router.const";
 
 const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
   const router = useRouter();
@@ -81,9 +82,9 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                       sx={{
                         position: "relative",
                         ":hover > .submenu": {
-                          display: "block", // Hiển thị submenu khi hover
+                          display: "block",
                           opacity: 1,
-                          transform: "translateY(0) translateX(-50%)", // Hiển thị submenu mượt mà
+                          transform: "translateY(0) translateX(-50%)",
                         },
                       }}
                     >
@@ -91,6 +92,8 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                         <Typography
                           variant="h6"
                           onClick={() => {
+                            if (item.link.includes("dich-vu")) return;
+
                             if (item.link !== "#") {
                               router.push(
                                 item.link.startsWith("/")
@@ -105,6 +108,7 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                             textTransform: "uppercase",
                             color: isActive ? "primary.main" : "text.black",
                             borderBottom: isActive ? "2px solid" : "none",
+                            userSelect: "none",
                             borderColor: isActive
                               ? "primary.main"
                               : "transparent",
@@ -144,26 +148,125 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
                             }}
                           >
-                            {item.children.map((child) => (
-                              <Typography
-                                key={child.id}
-                                onClick={() => router.push(child.link)}
-                                sx={{
-                                  textTransform: "uppercase",
-                                  fontSize: "14px",
-                                  cursor: "pointer",
-                                  borderBottom: "1px solid #e5e7eb",
-                                  px: 2,
-                                  pb: 1,
-                                  color: "text.black",
-                                  ":hover": {
-                                    color: "primary.main",
-                                  },
-                                }}
-                              >
-                                {child.title}
-                              </Typography>
-                            ))}
+                            {item.children.map((child) => {
+                              return (
+                                <Stack
+                                  key={child.id}
+                                  position="relative"
+                                  sx={{
+                                    ":hover .submenu-child": {
+                                      display: "block",
+                                      opacity: 1,
+                                    },
+                                  }}
+                                >
+                                  <Stack
+                                    direction="row"
+                                    justifyContent="space-between"
+                                  >
+                                    <Typography
+                                      onClick={() =>
+                                        router.push(
+                                          `${
+                                            item.link.startsWith("/")
+                                              ? item.link
+                                              : `/${item.link}`
+                                          }${
+                                            child.link.startsWith("/")
+                                              ? child.link
+                                              : `/${child.link}`
+                                          }`
+                                        )
+                                      }
+                                      sx={{
+                                        textTransform: "uppercase",
+                                        fontSize: "14px",
+                                        cursor: "pointer",
+                                        borderBottom: "1px solid #e5e7eb",
+                                        width: "100%",
+                                        px: 2,
+                                        pb: 1,
+                                        color: "text.black",
+                                        ":hover": {
+                                          color: "primary.main",
+                                        },
+                                      }}
+                                    >
+                                      {child.title}
+                                    </Typography>
+                                    {Array.isArray(child.children) &&
+                                    child.children.length > 0 ? (
+                                      <ArrowSubmenu
+                                        sx={{
+                                          fontSize: 16,
+                                        }}
+                                      />
+                                    ) : (
+                                      ""
+                                    )}
+                                  </Stack>
+
+                                  {child.children &&
+                                    child.children.length > 0 && (
+                                      <Box
+                                        className="submenu-child"
+                                        sx={{
+                                          display: "none",
+                                          opacity: 0,
+                                          transition:
+                                            "opacity 0.3s ease, transform 0.3s ease",
+                                          position: "absolute",
+                                          left: "100%",
+                                          top: "-8px",
+                                          bgcolor: "white",
+                                          zIndex: 10,
+                                          minWidth: 200,
+                                        }}
+                                      >
+                                        {child.children.map((subchildren) => (
+                                          <Typography
+                                            key={subchildren.id}
+                                            onClick={() => {
+                                              router.push(
+                                                `${
+                                                  item.link.startsWith("/")
+                                                    ? item.link
+                                                    : `/${item.link}`
+                                                }${
+                                                  child.link.startsWith("/")
+                                                    ? child.link
+                                                    : `/${child.link}`
+                                                }${
+                                                  subchildren.link.startsWith(
+                                                    "/"
+                                                  )
+                                                    ? subchildren.link
+                                                    : `/${subchildren.link}`
+                                                }`
+                                              );
+                                            }}
+                                            sx={{
+                                              textTransform: "uppercase",
+                                              fontSize: "14px",
+                                              cursor: "pointer",
+                                              borderBottom: "1px solid #e5e7eb",
+                                              px: 2,
+                                              py: 1,
+                                              whiteSpace: "nowrap",
+                                              color: "text.black",
+                                              ":hover": {
+                                                color: "primary.main",
+                                              },
+                                            }}
+                                          >
+                                            {subchildren.title}
+                                          </Typography>
+                                        ))}
+                                      </Box>
+                                    )}
+                                </Stack>
+                              );
+                            })}
                           </Stack>
                         </Box>
                       )}

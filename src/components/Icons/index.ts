@@ -1,6 +1,7 @@
 import ArrowCollapseIcon from "./ArrowCollapseIcon";
 import ArrowDownIcon from "./ArrowDownIcon";
 import ArrowRightIcon from "./ArrowRightIcon";
+import ArrowSubmenu from "./ArrowSubmenu";
 import CloseIcon from "./CloseIcon";
 import CloseXIcon from "./CloseXIcon";
 import CompareIcon from "./CompareIcon";
@@ -32,4 +33,5 @@ export {
   WarningNotifyIcon,
   SuccessIcon,
   ErrorSnackBarIcon,
+  ArrowSubmenu,
 };
