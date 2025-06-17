@@ -209,7 +209,7 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
                 alt="TikTok Icon"
               />
               <SocialIconButton
-                href={`https://zalo.me/${footerData.social.zalo}` || ""}
+                href={`https://zalo.me/${footerData.social?.zalo}` || ""}
                 iconSrc="/images/zalo.png"
                 alt="Zalo Icon"
               />

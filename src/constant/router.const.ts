@@ -12,7 +12,7 @@ export const PRODUCT_DETAIL = `${PRODUCT}/{groupSlug}/{pathName}`;
 export const NEWS = "/bai-viet";
 export const NEWS_DETAIL = `${NEWS}/{groupSlug}/{slug}`;
 
-export const FAQ = "/faq";
+export const FAQ = "/cau-hoi-thuong-gap";
 export const FAQ_DETAIL = `${FAQ}/{pathName}`;
 
 export const INTRODUCE = "/gioi-thieu";
