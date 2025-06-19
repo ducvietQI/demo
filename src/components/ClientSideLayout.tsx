@@ -25,7 +25,7 @@ const ClientSideLayout = ({
 
   return (
     <Stack position="relative" pt={{ xs: "55px", md: "90px" }}>
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10 min-h-screen">{children}</div>
 
       <AppFooter footerData={footerData} />
       <IconButton

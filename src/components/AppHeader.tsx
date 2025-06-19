@@ -17,7 +17,6 @@ import { useState } from "react";
 import { ArrowSubmenu, ToggleMenu } from "./Icons";
 import SideBarDrawer from "./SideBarDrawer";
 import { MenuItem } from "@/models/home.type";
-import { SERVICE } from "@/constant/router.const";
 
 const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
   const router = useRouter();

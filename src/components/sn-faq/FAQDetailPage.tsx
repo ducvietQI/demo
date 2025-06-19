@@ -4,6 +4,7 @@ import { IIFAQ } from "@/models/project.type";
 import { Container, Rating, Stack, Typography } from "@mui/material";
 import AppSocailMedia from "../AppSocailMedia";
 import FAQBreadcrumb from "./FAQBreadcrumb";
+import AppHTMLRender from "../AppHTMLRender";
 
 const FAQDetailPage = ({ data }: { data: IIFAQ }) => {
   return (
@@ -17,7 +18,7 @@ const FAQDetailPage = ({ data }: { data: IIFAQ }) => {
 
         <AppSocailMedia />
 
-        <Typography variant="h4">{data.content}</Typography>
+        <AppHTMLRender htmlRender={data?.content || ""} />
         <Stack spacing={2} alignItems="center">
           <Rating
             sx={{
