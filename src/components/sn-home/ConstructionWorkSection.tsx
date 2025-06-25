@@ -34,9 +34,10 @@ const ConstructionWorkSection = ({
     const projects = serviceData?.projectGroup.projects || [];
 
     const mappedImages = projects.map((item) => ({
-      src: item.image || GlobalsConst.NO_IMAGE,
+      src: item.avatar.url || GlobalsConst.NO_IMAGE,
       title: item.title,
       description: item.description,
+      slug: item.slug,
     }));
 
     const midpoint = Math.ceil(mappedImages.length / 2);
@@ -77,6 +78,7 @@ const ConstructionWorkSection = ({
                 src={item?.src || "/images/no-image.webp"}
                 alt={`Slide ${index + 1}`}
                 fill
+                sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" // Thêm sizes
                 style={{ objectFit: "cover" }}
                 loading="lazy"
               />
