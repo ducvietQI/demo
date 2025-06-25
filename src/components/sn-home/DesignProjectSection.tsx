@@ -74,7 +74,7 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
             style={{
               position: "relative",
               overflow: "hidden",
-              cursor: "pointer",
+              cursor: "default",
             }}
           >
             <Box sx={{ position: "relative", width: "100%", height: "100%" }}>

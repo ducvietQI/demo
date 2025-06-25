@@ -165,6 +165,17 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                                   >
                                     <Typography
                                       onClick={() => {
+                                        if (item.link.includes("dich-vu")) {
+                                          router.push(
+                                            `${
+                                              child.link.startsWith("/")
+                                                ? `/dich-vu${child.link}`
+                                                : `/dich-vu/${child.link}`
+                                            }`
+                                          );
+                                          return;
+                                        }
+
                                         router.push(
                                           `${
                                             child.link.startsWith("/")
@@ -222,6 +233,22 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                                           <Typography
                                             key={subchildren.id}
                                             onClick={() => {
+                                              if (
+                                                item.link.includes("dich-vu")
+                                              ) {
+                                                router.push(
+                                                  `${
+                                                    subchildren.link.startsWith(
+                                                      "/"
+                                                    )
+                                                      ? `/dich-vu${subchildren.link}`
+                                                      : `/dich-vu/${child.link}`
+                                                  }`
+                                                );
+
+                                                return;
+                                              }
+
                                               router.push(
                                                 `${
                                                   subchildren.link.startsWith(
