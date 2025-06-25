@@ -164,19 +164,15 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                                     justifyContent="space-between"
                                   >
                                     <Typography
-                                      onClick={() =>
+                                      onClick={() => {
                                         router.push(
                                           `${
-                                            item.link.startsWith("/")
-                                              ? item.link
-                                              : `/${item.link}`
-                                          }${
                                             child.link.startsWith("/")
                                               ? child.link
                                               : `/${child.link}`
                                           }`
-                                        )
-                                      }
+                                        );
+                                      }}
                                       sx={{
                                         textTransform: "uppercase",
                                         fontSize: "14px",
@@ -228,14 +224,6 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                                             onClick={() => {
                                               router.push(
                                                 `${
-                                                  item.link.startsWith("/")
-                                                    ? item.link
-                                                    : `/${item.link}`
-                                                }${
-                                                  child.link.startsWith("/")
-                                                    ? child.link
-                                                    : `/${child.link}`
-                                                }${
                                                   subchildren.link.startsWith(
                                                     "/"
                                                   )
