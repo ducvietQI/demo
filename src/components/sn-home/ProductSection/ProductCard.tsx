@@ -32,12 +32,14 @@ const ProductCard = ({ data }: ProductCardProps) => {
   // }, [price, sale]);
 
   const handleClick = () => {
-    router.push(
-      stringFormat(RouteConstant.PRODUCT_DETAIL, {
-        groupSlug: "nhom-san-pham",
-        pathName: data.slug,
-      })
-    );
+    console.log(data);
+
+    // router.push(
+    //   stringFormat(RouteConstant.PRODUCT_DETAIL, {
+    //     groupSlug: "nhom-san-pham",
+    //     pathName: data.slug,
+    //   })
+    // );
   };
 
   return (
@@ -89,6 +91,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
             fontWeight={500}
             component="div"
             color="text.black"
+            className="text-ellipsis-2-row "
           >
             {data.name}
           </Typography>

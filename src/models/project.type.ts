@@ -113,7 +113,7 @@ export interface INews {
 
 export interface ICategories {
   id: string;
-  name: string;
+  title: string;
   slug: string;
   products: IProduct[];
 }

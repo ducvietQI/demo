@@ -113,19 +113,19 @@ const Home = async () => {
       {Boolean(productList1.length) && (
         <ProductSection
           array={productList1}
-          title={categogiesTopList[0]?.name || "Sản phẩm"}
+          title={categogiesTopList[0]?.title || "Sản phẩm"}
         />
       )}
       {Boolean(productList2.length) && (
         <ProductSection
           array={productList2}
-          title={categogiesTopList[1]?.name || "Sản phẩm"}
+          title={categogiesTopList[1]?.title || "Sản phẩm"}
         />
       )}
       {Boolean(productList3.length) && (
         <ProductSection
           array={productList3}
-          title={categogiesTopList[2]?.name || "Sản phẩm"}
+          title={categogiesTopList[2]?.title || "Sản phẩm"}
         />
       )}
 

@@ -87,8 +87,6 @@ const ProductDetailPage = ({
     }
   };
 
-  console.log(images);
-
   return (
     <Container>
       <Stack component="form" py={5}>
@@ -106,7 +104,7 @@ const ProductDetailPage = ({
 
           {/* Product Info */}
           <Grid2 size={{ xs: 12, md: 6 }}>
-            <Stack spacing={1}>
+            <Stack spacing={1} sx={{ height: "100%" }}>
               <Stack direction="row" alignItems="center" spacing={1}>
                 <Typography variant="h2" fontWeight={700}>
                   {data?.name}
@@ -158,9 +156,9 @@ const ProductDetailPage = ({
 
               <Divider />
 
-              <Typography variant="h4" color="text.secondary">
-                {data?.description}
-              </Typography>
+              <Box flex={1} display="flex" flexDirection="column">
+                <AppHTMLRender htmlRender={data?.description || ""} />
+              </Box>
 
               <Divider />
 
@@ -183,7 +181,7 @@ const ProductDetailPage = ({
                 </Button>
               </Stack>
 
-              <Typography variant="h4" color="text.secondary">
+              {/* <Typography variant="h4" color="text.secondary">
                 ✔ Miễn phí giao hàng & lắp đặt tại tất cả quận huyện thuộc khu
                 vực hỗ trợ
               </Typography>
@@ -192,7 +190,7 @@ const ProductDetailPage = ({
               </Typography>
               <Typography variant="h4" color="text.secondary">
                 (*) Không áp dụng cho danh mục Đồ Trang Trí
-              </Typography>
+              </Typography> */}
             </Stack>
           </Grid2>
         </Grid2>

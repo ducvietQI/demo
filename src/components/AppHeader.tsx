@@ -17,12 +17,14 @@ import { useState } from "react";
 import { ArrowSubmenu, ToggleMenu } from "./Icons";
 import SideBarDrawer from "./SideBarDrawer";
 import { MenuItem } from "@/models/home.type";
+import { useAppSelector } from "@/redux-store";
 
 const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
   const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const isTabletDown = useTabletDown();
+  const { footerData } = useAppSelector((state) => state.appReducer);
 
   return (
     <AppBar
@@ -296,8 +298,13 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
               <Typography
                 variant="h6"
                 sx={{ fontWeight: 500, cursor: "pointer" }}
+                // onClick={() => {
+                //   window.location.href = Array.isArray(footerData.hotline)
+                //     ? `tel:${footerData.hotline[0]}`
+                //     : "";
+                // }}
               >
-                0999 888 999
+                {footerData?.hotline[0] || ""}
               </Typography>
               <ToggleMenu
                 sx={{
