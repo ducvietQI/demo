@@ -73,6 +73,7 @@ const CONTACTPage = () => {
           py={6}
           component="form"
           onSubmit={handleSubmit(handleSubmitFormData)}
+          justifyContent="center"
         >
           <Stack width={{ xs: "100%", md: "50%" }} spacing={2}>
             <FormField label="Họ và tên">
@@ -137,7 +138,7 @@ const CONTACTPage = () => {
             </Stack>
           </Stack>
 
-          <Stack
+          {/* <Stack
             sx={{
               display: { xs: "none", md: "block" },
             }}
@@ -151,7 +152,7 @@ const CONTACTPage = () => {
               objectFit="contain"
               alt="chi-ha"
             />
-          </Stack>
+          </Stack> */}
         </Stack>
       </Container>
       <iframe
