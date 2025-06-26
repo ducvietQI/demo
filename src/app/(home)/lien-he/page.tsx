@@ -10,12 +10,15 @@ import {
   CircularProgress,
   Container,
   GridSize,
+  IconButton,
   InputLabel,
   Stack,
+  Typography,
+  useTheme,
 } from "@mui/material";
 import Image from "next/image";
 import { enqueueSnackbar } from "notistack";
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { useForm, useFormState } from "react-hook-form";
 
 interface ContactFormData {
@@ -32,6 +35,18 @@ const CONTACTPage = () => {
   });
   const { errors } = useFormState({ control });
   const { footerData } = useAppSelector((state) => state.appReducer);
+  const theme = useTheme();
+
+  // Ref để lấy chiều cao form bên trái
+  const formRef = useRef<HTMLDivElement>(null);
+  const [formHeight, setFormHeight] = useState<number | undefined>(undefined);
+
+  // Cập nhật chiều cao khi render
+  useEffect(() => {
+    if (formRef.current) {
+      setFormHeight(formRef.current.offsetHeight);
+    }
+  }, [formRef.current, loading, errors]);
 
   const handleSubmitFormData = async (data: ContactFormData) => {
     setLoading(true);
@@ -75,7 +90,13 @@ const CONTACTPage = () => {
           onSubmit={handleSubmit(handleSubmitFormData)}
           justifyContent="center"
         >
-          <Stack width={{ xs: "100%", md: "50%" }} spacing={2}>
+          {/* Form bên trái */}
+          <Stack
+            width={{ xs: "100%", md: "50%" }}
+            spacing={2}
+            ref={formRef}
+            sx={{ fontSize: 16 }}
+          >
             <FormField label="Họ và tên">
               <AppFormControlTextField
                 name="fullName"
@@ -84,6 +105,7 @@ const CONTACTPage = () => {
                 textfieldProps={{
                   error: !!errors.fullName,
                   helperText: errors.fullName?.message as string,
+                  sx: { fontSize: 16 },
                 }}
               />
             </FormField>
@@ -102,12 +124,28 @@ const CONTACTPage = () => {
                 textfieldProps={{
                   error: !!errors.phoneNumber,
                   helperText: errors.phoneNumber?.message as string,
+                  sx: { fontSize: 16 },
                 }}
               />
             </FormField>
 
             <FormField label="Email">
-              <AppFormControlTextField name="email" control={control} />
+              <AppFormControlTextField
+                name="email"
+                control={control}
+                rules={{
+                  required: "Email không được để trống.",
+                  pattern: {
+                    value: GlobalsConst.REGEX_EMAIL,
+                    message: "Email không hợp lệ!",
+                  },
+                }}
+                textfieldProps={{
+                  error: !!errors.email,
+                  helperText: errors.email?.message as string,
+                  sx: { fontSize: 16 },
+                }}
+              />
             </FormField>
 
             <FormField label="Lời nhắn">
@@ -117,6 +155,7 @@ const CONTACTPage = () => {
                 textfieldProps={{
                   multiline: true,
                   rows: 4,
+                  sx: { fontSize: 16 },
                 }}
               />
             </FormField>
@@ -125,7 +164,7 @@ const CONTACTPage = () => {
                 variant="contained"
                 sx={{
                   color: "white",
-                  fontSize: 14,
+                  fontSize: 16,
                   borderRadius: 0,
                 }}
                 size="large"
@@ -138,21 +177,92 @@ const CONTACTPage = () => {
             </Stack>
           </Stack>
 
-          {/* <Stack
+          {/* Thông tin liên hệ bên phải */}
+          <Stack
+            width={{ xs: "0", md: "40%" }}
+            minWidth={300}
+            bgcolor={theme.palette.primary.main}
+            color="#fff"
+            p={4}
+            display={{ xs: "none", md: "flex" }}
+            // justifyContent="center"
+            alignItems="flex-start"
             sx={{
-              display: { xs: "none", md: "block" },
+              fontSize: 16,
+              height: formHeight ? `${formHeight}px` : "auto",
+              transition: "height 0.2s",
             }}
-            position="relative"
-            width="50%"
-            height="500px"
           >
-            <Image
-              src="/images/chi-ha-footer.png"
-              layout="fill"
-              objectFit="contain"
-              alt="chi-ha"
-            />
-          </Stack> */}
+            <Box width="100%">
+              <Box fontWeight={700} fontSize={30} mb={2}>
+                Thông tin liên hệ
+              </Box>
+              {/* <Stack spacing={1} fontSize={16}>
+                <Box display="flex" alignItems="center" gap={1}>
+                  <span role="img" aria-label="address">
+                    📍
+                  </span>
+                  533 PVB, P.15, Q.TB, TPHCM
+                </Box>
+                <Box display="flex" alignItems="center" gap={1}>
+                  <span role="img" aria-label="phone">
+                    📞
+                  </span>
+                  +84 908 562750
+                </Box>
+                <Box display="flex" alignItems="center" gap={1}>
+                  <span role="img" aria-label="email">
+                    ✉️
+                  </span>
+                  contact.vietblogger@gmail.com
+                </Box>
+                <Box display="flex" alignItems="center" gap={1}>
+                  <span role="img" aria-label="facebook">
+                    🌐
+                  </span>
+                  fb.com/kequaduongvodanh
+                </Box>
+              </Stack> */}
+              {Array.isArray(footerData.hotline) &&
+                footerData.hotline.map((item, i) => (
+                  <Typography color="white" key={i} fontSize="18px">
+                    📞 {item}
+                  </Typography>
+                ))}
+              {footerData.email && (
+                <Typography mt={2} fontSize="18px" color="white">
+                  📧 {footerData.email}
+                </Typography>
+              )}
+              {/* <Stack
+                direction="row"
+                justifyContent={{ xs: "center", md: "flex-end" }}
+                mt={2}
+                spacing={{ xs: 0, md: 1 }}
+              >
+                <SocialIconButton
+                  href={footerData.social?.instagram || ""}
+                  iconSrc="/images/ig.png"
+                  alt="Instagram Icon"
+                />
+                <SocialIconButton
+                  href={footerData.social?.youtube || ""}
+                  iconSrc="/images/yt.png"
+                  alt="Facebook Icon"
+                />
+                <SocialIconButton
+                  href={footerData.social?.tiktok || ""}
+                  iconSrc="/images/ar.png"
+                  alt="TikTok Icon"
+                />
+                <SocialIconButton
+                  href={`https://zalo.me/${footerData.social?.zalo}` || ""}
+                  iconSrc="/images/zalo.png"
+                  alt="Zalo Icon"
+                />
+              </Stack> */}
+            </Box>
+          </Stack>
         </Stack>
       </Container>
       <iframe
@@ -206,3 +316,33 @@ const FormField = ({ label, required = false, children }: FormFieldProps) => (
     <Box flex={1}>{children}</Box>
   </Stack>
 );
+
+const SocialIconButton = ({
+  href,
+  iconSrc,
+  alt,
+}: {
+  href: string;
+  iconSrc: string;
+  alt: string;
+}) => {
+  return (
+    <IconButton
+      onClick={() => (href ? window.open(href, "_blank") : null)}
+      sx={{
+        color: "white",
+        background: "white",
+        ":hover": {
+          background: "none",
+        },
+      }}
+    >
+      <Image
+        src={iconSrc}
+        height={iconSrc.includes("ig.png") ? 18 : 30}
+        width={iconSrc.includes("ig.png") ? 18 : 30}
+        alt={alt}
+      />
+    </IconButton>
+  );
+};

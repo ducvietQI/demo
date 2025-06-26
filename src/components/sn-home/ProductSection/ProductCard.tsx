@@ -32,14 +32,12 @@ const ProductCard = ({ data }: ProductCardProps) => {
   // }, [price, sale]);
 
   const handleClick = () => {
-    console.log(data);
-
-    // router.push(
-    //   stringFormat(RouteConstant.PRODUCT_DETAIL, {
-    //     groupSlug: "nhom-san-pham",
-    //     pathName: data.slug,
-    //   })
-    // );
+    router.push(
+      stringFormat(RouteConstant.PRODUCT_DETAIL, {
+        groupSlug: "nhom-san-pham",
+        pathName: data.slug,
+      })
+    );
   };
 
   return (
