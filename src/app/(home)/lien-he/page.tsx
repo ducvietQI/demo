@@ -197,6 +197,21 @@ const CONTACTPage = () => {
               <Box fontWeight={700} fontSize={30} mb={2}>
                 Thông tin liên hệ
               </Box>
+
+              <Typography
+                fontWeight={600}
+                color="white"
+                borderTop="1px solid"
+                borderColor="primary.main"
+                fontSize="18px"
+                mb={1}
+                letterSpacing="-0.7px"
+              >
+                {footerData.title}
+              </Typography>
+              <Typography color="white" fontSize="16px" mb={2}>
+                {footerData.description}
+              </Typography>
               {/* <Stack spacing={1} fontSize={16}>
                 <Box display="flex" alignItems="center" gap={1}>
                   <span role="img" aria-label="address">
