@@ -1,6 +1,6 @@
 "use client";
 
-import { EyeIcon } from "@/components/Icons";
+import apiRequester from "@/api/apiRequester";
 import { ProjectBreadcrumb } from "@/components/sn-project";
 import { IProject } from "@/models/project.type";
 import {
@@ -14,13 +14,18 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import ImageGallery from "react-image-gallery";
 import AppHTMLRender from "../AppHTMLRender";
 import AppSocailMedia from "../AppSocailMedia";
+import { enqueueSnackbar } from "notistack";
+import stringFormat from "string-format";
+import { ApiConst } from "@/constant";
 
 const ProjectDetailPage = ({ data }: { data: IProject }) => {
   const [open, setOpen] = useState(false);
+  const [userVoted, setUserVoted] = useState(false);
+  const [userVoteValue, setUserVoteValue] = useState<number | null>(null);
 
   const images = useMemo(() => {
     return data?.images?.length
@@ -34,6 +39,46 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
     () => parseHeadingTree(data.content),
     [data.content]
   );
+
+  useEffect(() => {
+    if (data.id) {
+      apiRequester.post(
+        stringFormat(ApiConst.PROJECT_INCREASE_VIEW, { id: data.id })
+      );
+    }
+  }, [data.id]);
+
+  // Hàm post vote cho project
+  async function postProjectRate(projectId: string, vote: number) {
+    return apiRequester.post(
+      stringFormat("/api/public/projects/{id}/rate", { id: projectId }),
+      { vote }
+    );
+  }
+
+  // Hàm xử lý rating chỉ cho vote 1 lần
+  const handleRating = async (_event: any, newValue: number | null) => {
+    if (!userVoted && typeof newValue === "number") {
+      setUserVoteValue(newValue);
+      setUserVoted(true);
+      try {
+        const res = await postProjectRate(data.id, newValue);
+        if (res?.status === 204) {
+          enqueueSnackbar({
+            message: "Đánh giá thành công!",
+            variant: "success",
+          });
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
+  // Helper làm tròn lên 1 số thập phân
+  function ceil1Decimal(num: number) {
+    return Math.ceil(num * 10) / 10;
+  }
 
   return (
     <Container>
@@ -150,11 +195,16 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
             }}
             size="large"
             name="simple-controlled"
-            value={data.rating.averageVote}
-            readOnly
+            value={
+              userVoteValue !== null
+                ? userVoteValue
+                : ceil1Decimal(data.rating.averageVote)
+            }
+            readOnly={userVoted}
+            onChange={handleRating}
           />
           <Typography variant="h3">
-            Đánh giá: {data.rating.averageVote}/5. Số lượt vote:
+            Đánh giá: {ceil1Decimal(data.rating.averageVote)}/5. Số lượt vote:
             {data.rating.totalVote}
           </Typography>
         </Stack>

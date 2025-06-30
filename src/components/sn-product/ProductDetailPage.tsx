@@ -28,9 +28,11 @@ import {
   Typography,
 } from "@mui/material";
 import { enqueueSnackbar } from "notistack";
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useMemo, useState, useEffect } from "react";
 import { useForm, useFormState } from "react-hook-form";
 import ImageGallery from "react-image-gallery";
+import stringFormat from "string-format";
+import { PRODUCT_RATE } from "@/constant/api.const";
 
 interface ContactFormData {
   fullName: string;
@@ -54,6 +56,8 @@ const ProductDetailPage = ({
     defaultValues: DEFAULT_INIT_VALUE,
   });
   const { errors } = useFormState({ control });
+  const [userVoted, setUserVoted] = useState(false);
+  const [userVoteValue, setUserVoteValue] = useState<number | null>(null);
 
   const images = useMemo(() => {
     return data?.images?.length
@@ -87,6 +91,40 @@ const ProductDetailPage = ({
     }
   };
 
+  // Hàm post vote cho product
+  async function postProductRate(productId: string, vote: number) {
+    return apiRequester.post(stringFormat(PRODUCT_RATE, { id: productId }), {
+      vote,
+    });
+  }
+
+  // Hàm xử lý rating chỉ cho vote 1 lần
+  const handleRating = async (_event: any, newValue: number | null) => {
+    if (!userVoted && typeof newValue === "number" && data?.id) {
+      setUserVoteValue(newValue);
+      setUserVoted(true);
+      try {
+        const res = await postProductRate(data.id, newValue);
+        if (res?.status === 204) {
+          enqueueSnackbar({
+            message: "Đánh giá thành công!",
+            variant: "success",
+          });
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (data?.id) {
+      apiRequester.post(
+        stringFormat(ApiConst.PROJECT_INCREASE_VIEW, { id: data.id })
+      );
+    }
+  }, [data?.id]);
+
   return (
     <Container>
       <Stack component="form" py={5}>
@@ -113,22 +151,28 @@ const ProductDetailPage = ({
                   <Chip label="NEW" color="warning" size="small" />
                 )}
               </Stack>
+              {/* Rate section */}
               <Stack direction="row" alignItems="center" spacing={1}>
                 <Rating
                   sx={{
                     "& .MuiSvgIcon-root": {
-                      fontSize: 16,
+                      fontSize: 24,
                       color: "#f94c43",
                     },
                   }}
                   size="large"
-                  name="simple-controlled"
-                  value={data?.rating?.averageVote || 0}
-                  readOnly
+                  name="product-rating"
+                  value={
+                    userVoteValue !== null
+                      ? userVoteValue
+                      : data?.rating?.averageVote || 0
+                  }
+                  readOnly={userVoted}
+                  onChange={handleRating}
                 />
-
                 <Typography variant="h4" color="text.black">
-                  Đã bán: {data?.totalBuy}
+                  {ceil1Decimal(data?.rating?.averageVote || 0)}/5 -{" "}
+                  {data?.rating?.totalVote || 0} lượt đánh giá
                 </Typography>
               </Stack>
               <Stack direction="row" alignItems="center" spacing={1}>
@@ -321,3 +365,8 @@ const FormField = ({ label, required = false, children }: FormFieldProps) => (
     <Box flex={1}>{children}</Box>
   </Stack>
 );
+
+// Helper làm tròn lên 1 số thập phân
+function ceil1Decimal(num: number) {
+  return Math.ceil(num * 10) / 10;
+}
