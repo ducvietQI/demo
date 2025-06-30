@@ -3,11 +3,23 @@
 import { ServiceBreadcrumb } from "@/components/sn-service";
 import { IService } from "@/models/home.type";
 import { Box, Collapse, Container, Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppSocailMedia from "../AppSocailMedia";
 import AppHTMLRender from "../AppHTMLRender";
+import apiRequester from "@/api/apiRequester";
+import stringFormat from "string-format";
+import { SERVICE_INCREASE_VIEW } from "@/constant/api.const";
 
 const ServiceDetailPage = ({ data }: { data: IService | null }) => {
+  useEffect(() => {
+    if (data?.id) {
+      apiRequester.post(
+        stringFormat(SERVICE_INCREASE_VIEW, { id: data.id }),
+        {}
+      );
+    }
+  }, [data?.id]);
+
   return (
     <Container>
       <Stack py={5} spacing={2}>

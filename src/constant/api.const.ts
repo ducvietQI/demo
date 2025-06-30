@@ -27,3 +27,5 @@ export const CATEGORIES_LIST = "/api/public/categories";
 export const CATEGORIES_TOP_LIST = "/api/public/categories/top";
 
 export const SERVICE_DETAIL = "/api/public/businesses/{slug}";
+export const SERVICE_INCREASE_VIEW =
+  "/api/public/businesses/{id}/increase-view";

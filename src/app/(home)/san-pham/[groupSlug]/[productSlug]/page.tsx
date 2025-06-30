@@ -20,7 +20,7 @@ async function fetchData(productSlug: string): Promise<{
     const response = await apiRequester.get<IProduct>(
       stringFormat(ApiConst.PRODUCT_DETAIL, { slug: productSlug })
     );
-    const categorySlug = response?.payload.slug;
+    const categorySlug = response?.payload.category.slug;
 
     const relateProductList = await apiRequester.get<IPaginationList<IProduct>>(
       ApiConst.PRODUCT_LIST,

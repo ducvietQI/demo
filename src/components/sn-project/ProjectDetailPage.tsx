@@ -26,6 +26,10 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
   const [open, setOpen] = useState(false);
   const [userVoted, setUserVoted] = useState(false);
   const [userVoteValue, setUserVoteValue] = useState<number | null>(null);
+  const [averageVote, setAverageVote] = useState(
+    data?.rating?.averageVote || 0
+  );
+  const [totalVote, setTotalVote] = useState(data?.rating?.totalVote || 0);
 
   const images = useMemo(() => {
     return data?.images?.length
@@ -50,7 +54,7 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
 
   // Hàm post vote cho project
   async function postProjectRate(projectId: string, vote: number) {
-    return apiRequester.post(
+    return apiRequester.post<any>(
       stringFormat("/api/public/projects/{id}/rate", { id: projectId }),
       { vote }
     );
@@ -63,7 +67,9 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
       setUserVoted(true);
       try {
         const res = await postProjectRate(data.id, newValue);
-        if (res?.status === 204) {
+        if (res?.status === 200) {
+          setAverageVote(res.payload.averageVote);
+          setTotalVote(res.payload.totalVote);
           enqueueSnackbar({
             message: "Đánh giá thành công!",
             variant: "success",
@@ -196,16 +202,14 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
             size="large"
             name="simple-controlled"
             value={
-              userVoteValue !== null
-                ? userVoteValue
-                : ceil1Decimal(data.rating.averageVote)
+              userVoteValue !== null ? userVoteValue : ceil1Decimal(averageVote)
             }
             readOnly={userVoted}
             onChange={handleRating}
           />
           <Typography variant="h3">
-            Đánh giá: {ceil1Decimal(data.rating.averageVote)}/5. Số lượt vote:
-            {data.rating.totalVote}
+            Đánh giá: {ceil1Decimal(averageVote)}/5. Số lượt vote:
+            {totalVote}
           </Typography>
         </Stack>
       </Stack>

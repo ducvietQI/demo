@@ -52,6 +52,11 @@ const ProductDetailPage = ({
   relateProductList: IPaginationList<IProduct>;
 }) => {
   const [openContact, setOpenContact] = useState(false);
+  const [averageVote, setAverageVote] = useState(
+    data?.rating?.averageVote || 0
+  );
+  const [totalVote, setTotalVote] = useState(data?.rating?.totalVote || 0);
+
   const { reset, handleSubmit, control } = useForm<ContactFormData>({
     defaultValues: DEFAULT_INIT_VALUE,
   });
@@ -93,9 +98,12 @@ const ProductDetailPage = ({
 
   // Hàm post vote cho product
   async function postProductRate(productId: string, vote: number) {
-    return apiRequester.post(stringFormat(PRODUCT_RATE, { id: productId }), {
-      vote,
-    });
+    return apiRequester.post<any>(
+      stringFormat(PRODUCT_RATE, { id: productId }),
+      {
+        vote,
+      }
+    );
   }
 
   // Hàm xử lý rating chỉ cho vote 1 lần
@@ -105,7 +113,10 @@ const ProductDetailPage = ({
       setUserVoted(true);
       try {
         const res = await postProductRate(data.id, newValue);
-        if (res?.status === 204) {
+        if (res?.status === 200) {
+          setAverageVote(res.payload.averageVote);
+          setTotalVote(res.payload.totalVote);
+
           enqueueSnackbar({
             message: "Đánh giá thành công!",
             variant: "success",
@@ -116,14 +127,6 @@ const ProductDetailPage = ({
       }
     }
   };
-
-  useEffect(() => {
-    if (data?.id) {
-      apiRequester.post(
-        stringFormat(ApiConst.PROJECT_INCREASE_VIEW, { id: data.id })
-      );
-    }
-  }, [data?.id]);
 
   return (
     <Container>
@@ -171,8 +174,7 @@ const ProductDetailPage = ({
                   onChange={handleRating}
                 />
                 <Typography variant="h4" color="text.black">
-                  {ceil1Decimal(data?.rating?.averageVote || 0)}/5 -{" "}
-                  {data?.rating?.totalVote || 0} lượt đánh giá
+                  {ceil1Decimal(averageVote)}/5 - {totalVote || 0} lượt đánh giá
                 </Typography>
               </Stack>
               <Stack direction="row" alignItems="center" spacing={1}>

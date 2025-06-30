@@ -29,7 +29,9 @@ export interface IProduct {
   rating: Rating;
   totalBuy: number;
   categoryId: string;
-  category: any | null;
+  category: {
+    slug: string;
+  };
   seoMetaData: SeoMetaData;
   state: number;
   createdBy: string;
