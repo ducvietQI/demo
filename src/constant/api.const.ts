@@ -10,6 +10,7 @@ export const PROJECT_INCREASE_VIEW = "/api/public/projects/{id}/increase-view";
 
 export const FAQ_LIST = "/api/public/frequently-questions";
 export const FAQ_DETAIL = "/api/public/frequently-questions/{slug}";
+export const FAQ_RATE = "/api/public/frequently-questions/{id}/rate";
 
 export const NEWS_LIST = "/api/public/blogs";
 export const NEWS_DETAIL = "/api/public/blogs/{slug}";
