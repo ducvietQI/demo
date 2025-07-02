@@ -10,6 +10,7 @@ import { useTabletDown } from "@/hooks";
 import { IService } from "@/models/home.type";
 import { GlobalsConst } from "@/constant";
 import { useRouter } from "next/navigation";
+import { PROJECT } from "@/constant/router.const";
 
 const ConstructionWorkSection = ({
   serviceData,
@@ -191,7 +192,9 @@ const ConstructionWorkSection = ({
               mt: 2.5,
               ":hover": { color: "text.black", bgcolor: "primary.main" },
             }}
-            onClick={() => router.push(`/dich-vu/${serviceData?.slug}`)}
+            onClick={() => {
+              router.push(PROJECT);
+            }}
             variant="contained"
             endIcon={<ArrowRightIcon />}
           >

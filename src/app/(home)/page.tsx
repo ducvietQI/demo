@@ -110,19 +110,19 @@ const Home = async () => {
       {serviceData[1] && (
         <ConstructionWorkSection serviceData={serviceData[1]} />
       )}
-      {Boolean(productList1.length) && (
+      {Boolean(productList1.length) && categogiesTopList[0] && (
         <ProductSection
           array={productList1}
           title={categogiesTopList[0]?.title || "Sản phẩm"}
         />
       )}
-      {Boolean(productList2.length) && (
+      {Boolean(productList2.length) && categogiesTopList[1] && (
         <ProductSection
           array={productList2}
           title={categogiesTopList[1]?.title || "Sản phẩm"}
         />
       )}
-      {Boolean(productList3.length) && (
+      {Boolean(productList3.length) && categogiesTopList[2] && (
         <ProductSection
           array={productList3}
           title={categogiesTopList[2]?.title || "Sản phẩm"}

@@ -10,6 +10,7 @@ import { useMemo, useState } from "react";
 import { IService } from "@/models/home.type";
 import { GlobalsConst } from "@/constant";
 import { useRouter } from "next/navigation";
+import { PROJECT } from "@/constant/router.const";
 
 const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
   const router = useRouter();
@@ -189,11 +190,7 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
               ":hover": { color: "text.black", bgcolor: "primary.main" },
             }}
             onClick={() => {
-              const slug = serviceData?.slug || "";
-              const cleanSlug = slug.startsWith("/dich-vu")
-                ? slug
-                : `/dich-vu/${slug.replace(/^\/+/, "")}`;
-              router.push(cleanSlug);
+              router.push(PROJECT);
             }}
             variant="contained"
             endIcon={<ArrowRightIcon />}
