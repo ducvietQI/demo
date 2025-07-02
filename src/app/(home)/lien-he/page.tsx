@@ -134,7 +134,6 @@ const CONTACTPage = () => {
                 name="email"
                 control={control}
                 rules={{
-                  required: "Email không được để trống.",
                   pattern: {
                     value: GlobalsConst.REGEX_EMAIL,
                     message: "Email không hợp lệ!",

@@ -21,6 +21,7 @@ import AppSocailMedia from "../AppSocailMedia";
 import { enqueueSnackbar } from "notistack";
 import stringFormat from "string-format";
 import { ApiConst } from "@/constant";
+import { PROJECT_INCREASE_VIEW } from "@/constant/api.const";
 
 const ProjectDetailPage = ({ data }: { data: IProject }) => {
   const [open, setOpen] = useState(false);
@@ -81,10 +82,14 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
     }
   };
 
-  // Helper làm tròn lên 1 số thập phân
-  function ceil1Decimal(num: number) {
-    return Math.ceil(num * 10) / 10;
-  }
+  useEffect(() => {
+    if (data.id) {
+      apiRequester.post(
+        stringFormat(PROJECT_INCREASE_VIEW, { id: data.id }),
+        {}
+      );
+    }
+  }, [data.id]);
 
   return (
     <Container>
@@ -320,3 +325,7 @@ export const HeadingTreeList = ({ data }: { data: HeadingNode[] }) => {
     </List>
   );
 };
+
+function ceil1Decimal(num: number) {
+  return Math.ceil(num * 10) / 10;
+}

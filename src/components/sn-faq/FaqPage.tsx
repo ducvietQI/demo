@@ -98,7 +98,7 @@ const FaqPage = ({ data }: { data: IPaginationList<IIFAQ> }) => {
           <Box
             p={3}
             bgcolor="#e5dfdf"
-            fontSize="14px"
+            fontSize="18px"
             width="70%"
             fontWeight={500}
             textAlign="center"

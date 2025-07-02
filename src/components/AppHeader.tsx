@@ -50,7 +50,7 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
           <Box
             sx={{
               position: "relative",
-              height: { xs: 35, md: 80 },
+              height: { xs: 35, md: 100 },
               width: { xs: 55, md: 120 },
               cursor: "pointer",
             }}

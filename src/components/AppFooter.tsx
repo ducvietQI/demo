@@ -62,8 +62,8 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
               <Box
                 sx={{
                   position: "relative",
-                  height: { xs: 45, md: 80 },
-                  width: { xs: 65, md: 120 },
+                  height: { xs: 45, md: 100 },
+                  width: { xs: 65, md: 100 },
                 }}
               >
                 <Image
