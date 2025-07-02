@@ -36,7 +36,7 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
   };
 
   const [imagesGroup1, imagesGroup2] = useMemo(() => {
-    const projects = serviceData?.projectGroup?.projects || [];
+    const projects = serviceData?.projects || [];
 
     const mappedImages = projects.map((item) => ({
       src: item.avatar.url || GlobalsConst.NO_IMAGE,

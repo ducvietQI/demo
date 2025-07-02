@@ -118,7 +118,7 @@ export interface IService {
   seoMetaData: SeoMetaData;
   workflows: Workflow[];
   projectGroupId: string;
-  projectGroup: ProjectGroup;
+  projects: Project[];
   businessState: number;
   createdBy: string;
   creationTime: string;
