@@ -90,6 +90,7 @@ export interface CompanyProfile {
   modifiedBy: string | null;
   modificationTime: string | null;
   id: string;
+  avatar: IAvatar;
 }
 
 export interface Image {

@@ -62,8 +62,14 @@ export async function generateBasicMetadata(): Promise<Metadata> {
         : []
       : [];
 
-    // Sử dụng giá trị mặc định cho host
+    // Lấy host động nếu cần, ở đây dùng mặc định
     const host = "https://default-host.com";
+    // Lấy url ảnh SEO từ avatar
+    const imageUrl = footerData.avatar?.url
+      ? footerData.avatar.url.startsWith("http")
+        ? footerData.avatar.url
+        : `${host}${footerData.avatar.url}`
+      : `${host}/images/logo.svg`;
 
     return {
       title: {
@@ -78,7 +84,7 @@ export async function generateBasicMetadata(): Promise<Metadata> {
         url: host,
         images: [
           {
-            url: `${host}/images/logo.svg`,
+            url: imageUrl,
             width: 300,
             height: 300,
             alt: "Logo-favicon",
