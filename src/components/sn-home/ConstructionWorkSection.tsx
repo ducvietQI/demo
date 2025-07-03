@@ -10,7 +10,8 @@ import { useTabletDown } from "@/hooks";
 import { IService } from "@/models/home.type";
 import { GlobalsConst } from "@/constant";
 import { useRouter } from "next/navigation";
-import { PROJECT } from "@/constant/router.const";
+import { PROJECT, PROJECT_DETAIL } from "@/constant/router.const";
+import stringFormat from "string-format";
 
 const ConstructionWorkSection = ({
   serviceData,
@@ -49,7 +50,7 @@ const ConstructionWorkSection = ({
   }, [serviceData]);
 
   const renderSwiper = (
-    images: { src: string; title: string; description: string }[],
+    images: { src: string; title: string; description: string; slug: string }[],
     group: string
   ) => (
     <Swiper
@@ -114,6 +115,14 @@ const ConstructionWorkSection = ({
                   transition: "opacity 0.3s ease-in-out",
                   justifyContent: "space-between",
                 }}
+                onClick={() =>
+                  router.push(
+                    stringFormat(PROJECT_DETAIL, {
+                      groupSlug: item.slug,
+                      slug: item.slug,
+                    })
+                  )
+                }
               >
                 <Stack spacing={2}>
                   <Typography fontSize="18px" fontWeight={600}>
@@ -127,7 +136,7 @@ const ConstructionWorkSection = ({
                     {item.description}
                   </Typography>
                 </Stack>
-                {/* <Button
+                <Button
                   sx={{
                     mt: 2,
                     color: "white",
@@ -139,7 +148,7 @@ const ConstructionWorkSection = ({
                   endIcon={<ArrowRightIcon />}
                 >
                   Xem thêm
-                </Button> */}
+                </Button>
               </Stack>
             )}
           </SwiperSlide>
