@@ -10,7 +10,8 @@ import { useMemo, useState } from "react";
 import { IService } from "@/models/home.type";
 import { GlobalsConst } from "@/constant";
 import { useRouter } from "next/navigation";
-import { PROJECT } from "@/constant/router.const";
+import { PROJECT, PROJECT_DETAIL } from "@/constant/router.const";
+import stringFormat from "string-format";
 
 const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
   const router = useRouter();
@@ -18,14 +19,6 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
   const [hoveredSlides, setHoveredSlides] = useState<{
     [key: string]: boolean;
   }>({});
-  // const groupSlug = useMemo(() => {
-  //   const slug = serviceData?.slug || "";
-  //   const cleanSlug = slug.startsWith("/dich-vu")
-  //     ? slug
-  //     : `/dich-vu/${slug.replace(/^\/+/, "")}`;
-
-  //   return cleanSlug;
-  // }, [serviceData?.slug]);
 
   const handleMouseEnter = (group: string, index: number) => {
     setHoveredSlides((prev) => ({ ...prev, [`${group}-${index}`]: true }));
@@ -55,103 +48,128 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
   const renderSwiper = (
     images: { src: string; title: string; description: string; slug: string }[],
     group: string
-  ) => (
-    <Swiper
-      slidesPerView={isTabletDown ? 1 : Math.min(images.length, 3)}
-      spaceBetween={30}
-      modules={[Navigation]}
-      navigation
-      pagination={{ clickable: true }}
-      style={{ width: "100%", height: "280px" }}
-    >
-      {images.map((item, index) => {
-        const isHovered = hoveredSlides[`${group}-${index}`];
+  ) => {
+    const slides = [...images];
+    while (slides.length < 3) {
+      slides.push({
+        src: "",
+        title: "",
+        description: "",
+        slug: `empty-${slides.length}`,
+      });
+    }
+    return (
+      <Swiper
+        slidesPerView={isTabletDown ? 1 : 3}
+        spaceBetween={30}
+        modules={[Navigation]}
+        navigation
+        pagination={{ clickable: true }}
+        style={{ width: "100%", height: "280px" }}
+      >
+        {slides.map((item, index) => {
+          const isEmpty = !item.src;
+          const isHovered = hoveredSlides[`${group}-${index}`];
 
-        return (
-          <SwiperSlide
-            key={index}
-            onMouseEnter={() => handleMouseEnter(group, index)}
-            onMouseLeave={() => handleMouseLeave(group, index)}
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              cursor: "default",
-            }}
-          >
-            <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
-              <Image
-                src={item?.src || "/images/no-image.webp"}
-                alt={`Slide ${index + 1}`}
-                fill
-                sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" // Thêm sizes
-                style={{ objectFit: "cover" }}
-                loading="lazy"
-              />
-            </Box>
-
-            {/* Background vàng xuất hiện từ giữa */}
-            <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                left: 0,
-                width: "100%",
-                height: 0,
-                bgcolor: "rgba(255, 193, 7, 0.85)", // Vàng
-                transition: "height .2s ease-in-out, top .2s ease-in-out",
-                ...(isHovered && { height: "100%", top: 0 }),
+          return (
+            <SwiperSlide
+              key={index}
+              onMouseEnter={() => !isEmpty && handleMouseEnter(group, index)}
+              onMouseLeave={() => !isEmpty && handleMouseLeave(group, index)}
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                cursor: "default",
+                height: "100%",
+                display: "flex",
+                flex: 1,
+                background: isEmpty ? "transparent" : undefined,
               }}
-            />
+            >
+              <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
+                {item?.src && (
+                  <Image
+                    src={item?.src}
+                    alt={`Slide ${index + 1}`}
+                    fill
+                    sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" // Thêm sizes
+                    style={{ objectFit: "cover" }}
+                    loading="lazy"
+                  />
+                )}
+              </Box>
 
-            {/* Nội dung chỉ xuất hiện khi hover */}
-            {isHovered && (
-              <Stack
+              {/* Background vàng xuất hiện từ giữa */}
+              <Box
                 sx={{
                   position: "absolute",
                   top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  color: "white",
-                  p: "15px",
+                  left: 0,
                   width: "100%",
-                  height: "100%",
-                  transition: "opacity 0.3s ease-in-out",
-                  justifyContent: "space-between",
+                  height: 0,
+                  bgcolor: "rgba(255, 193, 7, 0.85)", // Vàng
+                  transition: "height .2s ease-in-out, top .2s ease-in-out",
+                  ...(isHovered && { height: "100%", top: 0 }),
                 }}
-              >
-                <Stack spacing={2}>
-                  <Typography fontSize="18px" fontWeight={600}>
-                    {item.title}
-                  </Typography>
-                  <Typography
-                    className="text-ellipsis-4-row"
-                    fontSize="14px"
-                    mt={1}
-                  >
-                    {item.description}
-                  </Typography>
-                </Stack>
-                {/* <Button
+              />
+
+              {/* Nội dung chỉ xuất hiện khi hover */}
+              {isHovered && (
+                <Stack
                   sx={{
-                    mt: 2,
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
                     color: "white",
-                    minWidth: "fit-content",
-                    width: "fit-content",
-                    fontSize: 14,
+                    p: "15px",
+                    width: "100%",
+                    height: "100%",
+                    transition: "opacity 0.3s ease-in-out",
+                    justifyContent: "space-between",
                   }}
-                  variant="text"
-                  endIcon={<ArrowRightIcon />}
-                  onClick={() => router.push(`${groupSlug}/${item.slug}`)}
+                  onClick={() =>
+                    router.push(
+                      stringFormat(PROJECT_DETAIL, {
+                        groupSlug: item.slug,
+                        slug: item.slug,
+                      })
+                    )
+                  }
                 >
-                  Xem thêm
-                </Button> */}
-              </Stack>
-            )}
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
-  );
+                  <Stack spacing={2}>
+                    <Typography fontSize="18px" fontWeight={600}>
+                      {item.title}
+                    </Typography>
+                    <Typography
+                      className="text-ellipsis-4-row"
+                      fontSize="14px"
+                      mt={1}
+                    >
+                      {item.description}
+                    </Typography>
+                  </Stack>
+                  <Button
+                    sx={{
+                      mt: 2,
+                      color: "white",
+                      minWidth: "fit-content",
+                      width: "fit-content",
+                      fontSize: 14,
+                    }}
+                    variant="text"
+                    endIcon={<ArrowRightIcon />}
+                  >
+                    Xem thêm
+                  </Button>
+                </Stack>
+              )}
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    );
+  };
 
   return (
     <Stack
