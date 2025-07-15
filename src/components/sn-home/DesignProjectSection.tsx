@@ -16,6 +16,7 @@ import stringFormat from "string-format";
 const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
   const router = useRouter();
   const isTabletDown = useTabletDown();
+
   const [hoveredSlides, setHoveredSlides] = useState<{
     [key: string]: boolean;
   }>({});
@@ -50,13 +51,15 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
     group: string
   ) => {
     const slides = [...images];
-    while (slides.length < 3) {
-      slides.push({
-        src: "",
-        title: "",
-        description: "",
-        slug: `empty-${slides.length}`,
-      });
+    if (!isTabletDown) {
+      while (slides.length < 3) {
+        slides.push({
+          src: "",
+          title: "",
+          description: "",
+          slug: `empty-${slides.length}`,
+        });
+      }
     }
     return (
       <Swiper

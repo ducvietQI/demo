@@ -108,7 +108,7 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
         />
 
         <Box bgcolor="black" color="white" py={3} textAlign="center">
-          <Typography variant="h6" color="orange">
+          <Typography variant="h3" color="orange">
             Thông tin công trình
           </Typography>
           <Typography variant="h5" fontWeight={500}>

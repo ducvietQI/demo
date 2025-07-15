@@ -37,7 +37,6 @@ function TabPanel(props: TabPanelProps) {
                   position="relative"
                   display="flex"
                   justifyContent="center"
-                  pt={2}
                 >
                   <Stack
                     alignItems="center"
@@ -47,7 +46,7 @@ function TabPanel(props: TabPanelProps) {
                       aspectRatio: "1",
                       display: "flex",
                       flexDirection: "column",
-                      justifyContent: "center",
+                      justifyContent: "flex-start",
                       alignItems: "center",
                       textAlign: "center",
                       boxShadow: "0 0 0 1px #E5E5E5",
@@ -58,11 +57,16 @@ function TabPanel(props: TabPanelProps) {
                   >
                     <Image
                       src={step?.image?.url || "/images/no-image.webp"}
-                      alt={step.image.caption}
-                      width={isTabletDown ? 79 : 128}
-                      height={isTabletDown ? 80 : 129}
+                      alt={step?.image?.caption || "SEO Image"}
+                      width={250}
+                      height={250}
                       loading="lazy"
-                      sizes="(max-width: 600px) 79px, 128px"
+                      style={{
+                        objectFit: "cover",
+                        width: "250px",
+                        height: "250px",
+                      }}
+                      sizes="250px"
                     />
                     <Box
                       sx={{
@@ -118,6 +122,7 @@ export default function TabSection({
       <AppBar
         sx={{
           width: { xs: "calc(100% - 30px)", md: serviceData.length * 304 },
+          mb: 2,
         }}
         position="static"
       >
