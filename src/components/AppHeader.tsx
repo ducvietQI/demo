@@ -18,6 +18,7 @@ import { ArrowSubmenu, ToggleMenu } from "./Icons";
 import SideBarDrawer from "./SideBarDrawer";
 import { MenuItem } from "@/models/home.type";
 import { useAppSelector } from "@/redux-store";
+import PhoneIcon from "./Icons/PhoneIcon";
 
 const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
   const router = useRouter();
@@ -67,228 +68,255 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
           </Box>
 
           {!isTabletDown && (
-            <Stack
-              pl={8.5}
-              direction="row"
-              spacing={4}
-              sx={{ justifyContent: "center", position: "relative" }}
-            >
-              {menuItems &&
-                menuItems?.map((item) => {
-                  const isActive = pathname === item.link;
+            <Stack direction="row" width="100%" justifyContent="space-between">
+              <Stack
+                pl={8.5}
+                direction="row"
+                spacing={4}
+                sx={{ justifyContent: "center", position: "relative" }}
+              >
+                {menuItems &&
+                  menuItems?.map((item) => {
+                    const isActive = pathname === item.link;
 
-                  return (
-                    <Box
-                      key={item.id}
-                      sx={{
-                        position: "relative",
-                        ":hover > .submenu": {
-                          display: "block",
-                          opacity: 1,
-                          transform: "translateY(0) translateX(-50%)",
-                        },
-                      }}
-                    >
-                      <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography
-                          variant="h6"
-                          onClick={() => {
-                            if (item.link.includes("dich-vu")) return;
+                    return (
+                      <Box
+                        key={item.id}
+                        sx={{
+                          position: "relative",
+                          ":hover > .submenu": {
+                            display: "block",
+                            opacity: 1,
+                            transform: "translateY(0) translateX(-50%)",
+                          },
+                        }}
+                      >
+                        <Stack direction="row" alignItems="center" spacing={1}>
+                          <Typography
+                            // variant="h6"
+                            onClick={() => {
+                              if (item.link.includes("dich-vu")) return;
 
-                            if (item.link !== "#") {
-                              router.push(
-                                item.link.startsWith("/")
-                                  ? item.link
-                                  : `/${item.link}`
-                              );
-                            }
-                          }}
-                          sx={{
-                            fontWeight: isActive ? 700 : 500,
-                            cursor: "pointer",
-                            textTransform: "uppercase",
-                            color: isActive ? "primary.main" : "text.black",
-                            borderBottom: isActive ? "2px solid" : "none",
-                            userSelect: "none",
-                            borderColor: isActive
-                              ? "primary.main"
-                              : "transparent",
-                            pb: 0.5,
-                            ":hover": {
-                              color: "primary.main",
-                            },
-                          }}
-                        >
-                          {item.title}
-                        </Typography>
-                      </Stack>
-
-                      {/* Submenu */}
-                      {item.children && item.children.length > 0 && (
-                        <Box
-                          className="submenu"
-                          sx={{
-                            display: "none",
-                            opacity: 0,
-                            transform: "translateY(-10px) translateX(-50%)",
-                            transition:
-                              "opacity 0.3s ease, transform 0.3s ease",
-                            position: "absolute",
-                            left: "50%",
-                            bgcolor: "transparent",
-                            zIndex: 10,
-                            pt: "34px",
-                            minWidth: 200,
-                          }}
-                        >
-                          <Stack
-                            spacing={1}
+                              if (item.link !== "#") {
+                                router.push(
+                                  item.link.startsWith("/")
+                                    ? item.link
+                                    : `/${item.link}`
+                                );
+                              }
+                            }}
                             sx={{
-                              bgcolor: "white",
-                              pt: 1,
-                              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                              fontSize: 16,
+                              fontWeight: isActive ? 700 : 500,
+                              cursor: "pointer",
+                              textTransform: "uppercase",
+                              color: isActive ? "primary.main" : "text.black",
+                              borderBottom: isActive ? "2px solid" : "none",
+                              userSelect: "none",
+                              borderColor: isActive
+                                ? "primary.main"
+                                : "transparent",
+                              pb: 0.5,
+                              ":hover": {
+                                color: "primary.main",
+                              },
                             }}
                           >
-                            {item.children.map((child) => {
-                              return (
-                                <Stack
-                                  key={child.id}
-                                  position="relative"
-                                  sx={{
-                                    ":hover .submenu-child": {
-                                      display: "block",
-                                      opacity: 1,
-                                    },
-                                  }}
-                                >
+                            {item.title}
+                          </Typography>
+                        </Stack>
+
+                        {/* Submenu */}
+                        {item.children && item.children.length > 0 && (
+                          <Box
+                            className="submenu"
+                            sx={{
+                              display: "none",
+                              opacity: 0,
+                              transform: "translateY(-10px) translateX(-50%)",
+                              transition:
+                                "opacity 0.3s ease, transform 0.3s ease",
+                              position: "absolute",
+                              left: "50%",
+                              bgcolor: "transparent",
+                              zIndex: 10,
+                              pt: "34px",
+                              minWidth: 200,
+                            }}
+                          >
+                            <Stack
+                              spacing={1}
+                              sx={{
+                                bgcolor: "white",
+                                pt: 1,
+                                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                              }}
+                            >
+                              {item.children.map((child) => {
+                                return (
                                   <Stack
-                                    direction="row"
-                                    justifyContent="space-between"
+                                    key={child.id}
+                                    position="relative"
+                                    sx={{
+                                      ":hover .submenu-child": {
+                                        display: "block",
+                                        opacity: 1,
+                                      },
+                                    }}
                                   >
-                                    <Typography
-                                      onClick={() => {
-                                        if (item.link.includes("dich-vu")) {
+                                    <Stack
+                                      direction="row"
+                                      justifyContent="space-between"
+                                    >
+                                      <Typography
+                                        onClick={() => {
+                                          if (item.link.includes("dich-vu")) {
+                                            router.push(
+                                              `${
+                                                child.link.startsWith("/")
+                                                  ? `${child.link}`
+                                                  : `/${child.link}`
+                                              }`
+                                            );
+                                            return;
+                                          }
+
                                           router.push(
                                             `${
                                               child.link.startsWith("/")
-                                                ? `/dich-vu${child.link}`
-                                                : `/dich-vu/${child.link}`
+                                                ? child.link
+                                                : `/${child.link}`
                                             }`
                                           );
-                                          return;
-                                        }
-
-                                        router.push(
-                                          `${
-                                            child.link.startsWith("/")
-                                              ? child.link
-                                              : `/${child.link}`
-                                          }`
-                                        );
-                                      }}
-                                      sx={{
-                                        textTransform: "uppercase",
-                                        fontSize: "14px",
-                                        cursor: "pointer",
-                                        borderBottom: "1px solid #e5e7eb",
-                                        width: "100%",
-                                        px: 2,
-                                        pb: 1,
-                                        color: "text.black",
-                                        ":hover": {
-                                          color: "primary.main",
-                                        },
-                                      }}
-                                    >
-                                      {child.title}
-                                    </Typography>
-                                    {Array.isArray(child.children) &&
-                                    child.children.length > 0 ? (
-                                      <ArrowSubmenu
-                                        sx={{
-                                          fontSize: 16,
                                         }}
-                                      />
-                                    ) : (
-                                      ""
-                                    )}
-                                  </Stack>
-
-                                  {child.children &&
-                                    child.children.length > 0 && (
-                                      <Box
-                                        className="submenu-child"
                                         sx={{
-                                          display: "none",
-                                          opacity: 0,
-                                          transition:
-                                            "opacity 0.3s ease, transform 0.3s ease",
-                                          position: "absolute",
-                                          left: "100%",
-                                          top: "-8px",
-                                          bgcolor: "white",
-                                          zIndex: 10,
-                                          minWidth: 200,
+                                          textTransform: "uppercase",
+                                          fontSize: "14px",
+                                          cursor: "pointer",
+                                          borderBottom: "1px solid #e5e7eb",
+                                          width: "100%",
+                                          px: 2,
+                                          pb: 1,
+                                          color: "text.black",
+                                          ":hover": {
+                                            color: "primary.main",
+                                          },
                                         }}
                                       >
-                                        {child.children.map((subchildren) => (
-                                          <Typography
-                                            key={subchildren.id}
-                                            onClick={() => {
-                                              if (
-                                                item.link.includes("dich-vu")
-                                              ) {
+                                        {child.title}
+                                      </Typography>
+                                      {Array.isArray(child.children) &&
+                                      child.children.length > 0 ? (
+                                        <ArrowSubmenu
+                                          sx={{
+                                            fontSize: 16,
+                                          }}
+                                        />
+                                      ) : (
+                                        ""
+                                      )}
+                                    </Stack>
+
+                                    {child.children &&
+                                      child.children.length > 0 && (
+                                        <Box
+                                          className="submenu-child"
+                                          sx={{
+                                            display: "none",
+                                            opacity: 0,
+                                            transition:
+                                              "opacity 0.3s ease, transform 0.3s ease",
+                                            position: "absolute",
+                                            left: "100%",
+                                            top: "-8px",
+                                            bgcolor: "white",
+                                            zIndex: 10,
+                                            minWidth: 200,
+                                          }}
+                                        >
+                                          {child.children.map((subchildren) => (
+                                            <Typography
+                                              key={subchildren.id}
+                                              onClick={() => {
+                                                if (
+                                                  item.link.includes("dich-vu")
+                                                ) {
+                                                  router.push(
+                                                    `${
+                                                      subchildren.link.startsWith(
+                                                        "/"
+                                                      )
+                                                        ? `${subchildren.link}`
+                                                        : `${child.link}`
+                                                    }`
+                                                  );
+
+                                                  return;
+                                                }
+
                                                 router.push(
                                                   `${
                                                     subchildren.link.startsWith(
                                                       "/"
                                                     )
-                                                      ? `/dich-vu${subchildren.link}`
-                                                      : `/dich-vu/${child.link}`
+                                                      ? subchildren.link
+                                                      : `/${subchildren.link}`
                                                   }`
                                                 );
-
-                                                return;
-                                              }
-
-                                              router.push(
-                                                `${
-                                                  subchildren.link.startsWith(
-                                                    "/"
-                                                  )
-                                                    ? subchildren.link
-                                                    : `/${subchildren.link}`
-                                                }`
-                                              );
-                                            }}
-                                            sx={{
-                                              textTransform: "uppercase",
-                                              fontSize: "14px",
-                                              cursor: "pointer",
-                                              borderBottom: "1px solid #e5e7eb",
-                                              px: 2,
-                                              py: 1,
-                                              whiteSpace: "nowrap",
-                                              color: "text.black",
-                                              ":hover": {
-                                                color: "primary.main",
-                                              },
-                                            }}
-                                          >
-                                            {subchildren.title}
-                                          </Typography>
-                                        ))}
-                                      </Box>
-                                    )}
-                                </Stack>
-                              );
-                            })}
-                          </Stack>
-                        </Box>
-                      )}
-                    </Box>
-                  );
-                })}
+                                              }}
+                                              sx={{
+                                                textTransform: "uppercase",
+                                                fontSize: "14px",
+                                                cursor: "pointer",
+                                                borderBottom:
+                                                  "1px solid #e5e7eb",
+                                                px: 2,
+                                                py: 1,
+                                                whiteSpace: "nowrap",
+                                                color: "text.black",
+                                                ":hover": {
+                                                  color: "primary.main",
+                                                },
+                                              }}
+                                            >
+                                              {subchildren.title}
+                                            </Typography>
+                                          ))}
+                                        </Box>
+                                      )}
+                                  </Stack>
+                                );
+                              })}
+                            </Stack>
+                          </Box>
+                        )}
+                      </Box>
+                    );
+                  })}
+              </Stack>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  color: "primary.main",
+                  fontSize: 16,
+                }}
+                onClick={() => {
+                  if (
+                    Array.isArray(footerData.hotline) &&
+                    footerData.hotline[0]
+                  ) {
+                    window.location.href = `tel:${footerData.hotline[0].trim()}`;
+                  }
+                }}
+              >
+                <PhoneIcon sx={{ fontSize: 24 }} />
+                {"   "}
+                {Array.isArray(footerData.hotline) && footerData.hotline[0]
+                  ? footerData.hotline[0]
+                  : ""}
+              </Typography>
             </Stack>
           )}
 
@@ -298,11 +326,11 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
               <Typography
                 variant="h6"
                 sx={{ fontWeight: 500, cursor: "pointer" }}
-                // onClick={() => {
-                //   window.location.href = Array.isArray(footerData.hotline)
-                //     ? `tel:${footerData.hotline[0]}`
-                //     : "";
-                // }}
+                onClick={() => {
+                  window.location.href = Array.isArray(footerData.hotline)
+                    ? `tel:${footerData.hotline[0]}`
+                    : "";
+                }}
               >
                 {footerData?.hotline[0] || ""}
               </Typography>

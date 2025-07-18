@@ -5,6 +5,7 @@ import AppSnackbarError from "./AppSnackbarError";
 import AppSnackbarSuccess from "./AppSnackbarSuccess";
 import AppSnackbarWarning from "./AppSnackbarWarning";
 import AppFormControlTextField from "./FormControl/AppFormControlTextField";
+import PhoneIcon from "./Icons/PhoneIcon";
 import { Gallery } from "./ImageGallary";
 import Logo from "./Logo";
 import SideBarDrawer from "./SideBarDrawer";
@@ -18,6 +19,7 @@ import SignificantSection from "./sn-home/SignificantSection";
 import TabSection from "./sn-home/TabSection";
 
 export {
+  PhoneIcon,
   SideBarDrawer,
   AppFooter,
   SignificantSection,
