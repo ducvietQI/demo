@@ -43,23 +43,28 @@ function TabPanel(props: TabPanelProps) {
                     justifyContent="center"
                     sx={{
                       width: { xs: "80%", md: "100%" },
-                      aspectRatio: "1",
+                      aspectRatio: "1", 
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "flex-start",
                       alignItems: "center",
                       textAlign: "center",
-                      boxShadow: "0 0 0 1px #E5E5E5",
                       backgroundColor: "#fff",
                       p: 2,
-                      pt: 5,
+                      pt: 4,
+                      zIndex: 1,
+                      transition: "box-shadow 0.3s ease-in-out",
+                      "&:hover": {
+                        boxShadow: "4px 4px 20px rgba(0, 0, 0, 0.1)",
+                        zIndex: 2,
+                      }
                     }}
                   >
                     <Image
                       src={step?.image?.url || "/images/no-image.webp"}
                       alt={step?.image?.caption || "SEO Image"}
-                      width={250}
-                      height={250}
+                      width={200}
+                      height={200}
                       loading="lazy"
                       style={{
                         objectFit: "cover",
@@ -80,7 +85,7 @@ function TabPanel(props: TabPanelProps) {
                     </Box>
                     <Box
                       sx={{
-                        color: "text.black",
+                        color: "#666666",
                         mt: 1,
                         fontSize: "14px",
                         fontWeight: 500,
