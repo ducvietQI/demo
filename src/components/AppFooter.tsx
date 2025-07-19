@@ -56,8 +56,8 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
       px={{ xs: 2, md: 10 }}
     >
       <Container>
-        <Grid2 container spacing={4}>
-          <Grid2 size={{ xs: 12, md: 2 }}>
+        <Grid2 container spacing={10}>
+          {/* <Grid2 size={{ xs: 12, md: 2 }}>
             <Stack alignItems={{ xs: "center", md: "flex-start" }}>
               <Box
                 sx={{
@@ -74,9 +74,9 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
                 />
               </Box>
             </Stack>
-          </Grid2>
+          </Grid2> */}
 
-          <Grid2 size={{ xs: 12, md: 3.3 }}>
+          <Grid2 size={{ xs: 12, md: 4 }}>
             <Stack spacing={2}>
               <Typography
                 fontWeight={600}
@@ -120,7 +120,7 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
             </Stack>
           </Grid2>
 
-          <Grid2 size={{ xs: 12, md: 3.3 }}>
+          <Grid2 size={{ xs: 12, md: 4 }}>
             <Stack spacing={2}>
               <Typography
                 fontWeight={600}
@@ -168,7 +168,7 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
             </Stack>
           </Grid2>
 
-          <Grid2 size={{ xs: 12, md: 3.3 }}>
+          <Grid2 size={{ xs: 12, md: 4 }}>
             <div
               className="fb-page"
               data-href={footerData.social?.facebook || ""}
