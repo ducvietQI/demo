@@ -84,13 +84,13 @@ const NewsPage = ({
           <Box
             p="10px"
             bgcolor="primary.main"
-            fontSize="20px"
+            fontSize="24px"
             textAlign="center"
             fontWeight={700}
           >
             {responseNewsGroupDetail?.title || "Phản hồi của khách hàng"}
           </Box>
-          <Box p={1.5} bgcolor="bg.grey" fontSize="14px" textAlign="center">
+          <Box p={1.5} bgcolor="bg.grey" fontSize="16px" textAlign="center">
             {responseNewsGroupDetail?.description ||
               " Đối với khách hàng, chúng tôi luôn tận tâm tạo ra những giá trị cho Quý khách hàng thân yêu. Quanghoanhome gồm đội ngũ kiến trúc sư, kỹ sư, chuyên gia trang trí nội thất có trên 5 năm kinh nghiệm hoạt động"}
           </Box>

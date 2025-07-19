@@ -68,13 +68,13 @@ const FaqPage = ({ data }: { data: IPaginationList<IIFAQ> }) => {
           <Box
             p="10px"
             bgcolor="primary.main"
-            fontSize="20px"
+            fontSize="24px"
             textAlign="center"
             fontWeight={700}
           >
             Câu Hỏi Thường Gặp
           </Box>
-          <Box p={1.5} bgcolor="bg.grey" fontSize="14px" textAlign="center">
+          <Box p={1.5} bgcolor="bg.grey" fontSize="16px" textAlign="center">
             Dưới đây là danh sách các câu hỏi thường gặp để giúp bạn hiểu rõ hơn
             về dịch vụ của chúng tôi.
           </Box>
@@ -85,7 +85,7 @@ const FaqPage = ({ data }: { data: IPaginationList<IIFAQ> }) => {
             p="10px"
             position="absolute"
             bgcolor="primary.main"
-            fontSize="20px"
+            fontSize="24px"
             width="70%"
             textAlign="center"
             top={-51}

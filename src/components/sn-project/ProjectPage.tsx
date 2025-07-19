@@ -106,7 +106,7 @@ const ProjectPage = ({
               p="10px"
               position="absolute"
               bgcolor="primary.main"
-              fontSize="20px"
+              fontSize="24px"
               width="70%"
               textAlign="center"
               top={-51}
@@ -119,7 +119,7 @@ const ProjectPage = ({
             <Box
               p={3}
               bgcolor="#e5dfdf"
-              fontSize="14px"
+              fontSize="16px"
               width="70%"
               fontWeight={500}
               textAlign="center"

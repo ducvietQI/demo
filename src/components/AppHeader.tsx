@@ -51,7 +51,7 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
           <Box
             sx={{
               position: "relative",
-              height: { xs: 35, md: 100 },
+              height: { xs: 55, md: 100 },
               width: { xs: 55, md: 120 },
               cursor: "pointer",
             }}
@@ -294,46 +294,64 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                     );
                   })}
               </Stack>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  color: "primary.main",
-                  fontSize: 16,
-                }}
-                onClick={() => {
-                  if (
-                    Array.isArray(footerData.hotline) &&
-                    footerData.hotline[0]
-                  ) {
-                    window.location.href = `tel:${footerData.hotline[0].trim()}`;
-                  }
-                }}
-              >
-                <PhoneIcon sx={{ fontSize: 24 }} />
-                {"   "}
-                {Array.isArray(footerData.hotline) && footerData.hotline[0]
-                  ? footerData.hotline[0]
-                  : ""}
-              </Typography>
+              <Stack direction="row" spacing={2} alignItems="center">
+                {Array.isArray(footerData.hotline) &&
+                  footerData.hotline.map(
+                    (hotline, idx) =>
+                      hotline && (
+                        <Typography
+                          key={idx}
+                          variant="h6"
+                          sx={{
+                            fontWeight: 600,
+                            cursor: "pointer",
+                            color: "primary.main",
+                            fontSize: 16,
+                            ml: idx > 0 ? 2 : 0,
+                            display: "flex",
+                            alignItems: "center",
+                          }}
+                          onClick={() =>
+                            (window.location.href = `tel:${hotline.trim()}`)
+                          }
+                        >
+                          <PhoneIcon sx={{ fontSize: 24, mr: 1 }} />
+                          {hotline}
+                        </Typography>
+                      )
+                  )}
+              </Stack>
             </Stack>
           )}
 
           {/* Contact + Icons */}
           {isTabletDown && (
             <Stack direction="row" spacing={2} alignItems="center">
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: 500, cursor: "pointer" }}
-                onClick={() => {
-                  window.location.href = Array.isArray(footerData.hotline)
-                    ? `tel:${footerData.hotline[0]}`
-                    : "";
-                }}
-              >
-                {footerData?.hotline[0] || ""}
-              </Typography>
+              {Array.isArray(footerData.hotline) &&
+                footerData.hotline.map(
+                  (hotline, idx) =>
+                    hotline && (
+                      <Typography
+                        key={idx}
+                        variant="h6"
+                        sx={{
+                          fontWeight: 600,
+                          cursor: "pointer",
+                          color: "primary.main",
+                          fontSize: 16,
+                          ml: idx > 0 ? 2 : 0,
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                        onClick={() =>
+                          (window.location.href = `tel:${hotline.trim()}`)
+                        }
+                      >
+                        <PhoneIcon sx={{ fontSize: 24, mr: 1 }} />
+                        {hotline}
+                      </Typography>
+                    )
+                )}
               <ToggleMenu
                 sx={{
                   fontSize: 16,

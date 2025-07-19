@@ -33,6 +33,7 @@ import { useForm, useFormState } from "react-hook-form";
 import ImageGallery from "react-image-gallery";
 import stringFormat from "string-format";
 import { PRODUCT_RATE } from "@/constant/api.const";
+import ProductBreadcrumb from "./ProductBreadcrumb";
 
 interface ContactFormData {
   fullName: string;
@@ -131,7 +132,9 @@ const ProductDetailPage = ({
   return (
     <Container>
       <Stack component="form" py={5}>
-        <Grid2 container spacing={4}>
+        <ProductBreadcrumb title={data?.name || ""} />
+
+        <Grid2 container mt={2} spacing={4}>
           {/* Image Gallery */}
           <Grid2 className="custome-gallery" size={{ xs: 12, md: 6 }}>
             <ImageGallery

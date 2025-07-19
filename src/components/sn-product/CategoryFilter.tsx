@@ -10,7 +10,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { memo } from "react";
+import { memo, use, useState } from "react";
 import { ArrowDownIcon, SearchIcon } from "../Icons";
 
 const CategoryFilter = ({
@@ -28,6 +28,8 @@ const CategoryFilter = ({
   keyword: string;
   setKeyword: (value: string) => void;
 }) => {
+  const [isActive, setIsActive] = useState("");
+
   return (
     <Box>
       <Box sx={{ mx: 1 }}>
@@ -63,7 +65,7 @@ const CategoryFilter = ({
           disableGutters
           square
           elevation={0}
-          defaultExpanded
+          expanded={true}
           sx={{
             border: "none",
             boxShadow: "none",
@@ -73,34 +75,46 @@ const CategoryFilter = ({
           }}
         >
           <AccordionSummary
-            expandIcon={
-              <ArrowDownIcon
-                sx={{
-                  fontSize: "16px",
-                }}
-              />
-            }
             sx={{
               border: "none",
               minHeight: "auto",
               "&.Mui-expanded": {
                 minHeight: "auto",
               },
+              px: 0,
+              "& .MuiAccordionSummary-content": {
+                marginBottom: "4px !important",
+              },
+            }}
+            onClick={() => {
+              setIsActive(category.slug);
+              onSetCategorySlug(category.slug);
             }}
           >
-            <Typography fontWeight={500} fontSize="16px" color="text.black">
-              {category.title}
-            </Typography>
+            <Box
+              sx={{
+                borderLeft:
+                  categorySlug === category.slug ? "2px solid" : "unset",
+                borderColor:
+                  categorySlug === category.slug ? "primary.main" : "unset",
+                display: "inline-block",
+                pl: 1.5,
+              }}
+            >
+              <Typography fontWeight={700} fontSize="16px" color="text.black">
+                {category.title}
+              </Typography>
+            </Box>
           </AccordionSummary>
           {category.children && (
             <AccordionDetails sx={{ p: 0, border: "none" }}>
-              <List>
+              <List sx={{ py: 0 }}>
                 {category.children.map((item, i) => {
                   return (
                     <ListItemButton
                       key={i}
                       sx={{
-                        py: 0.5,
+                        py: 0,
                         backgroundColor:
                           categorySlug === item.slug
                             ? "rgba(0, 0, 0, 0.04)"
@@ -116,6 +130,10 @@ const CategoryFilter = ({
                         "&:hover .MuiTypography-root": {
                           color: "primary.main",
                         },
+
+                        "&:hover": {
+                          backgroundColor: "unset",
+                        },
                       }}
                       onClick={() => {
                         onSetCategorySlug(item.slug);
@@ -129,7 +147,7 @@ const CategoryFilter = ({
                         }}
                         slotProps={{
                           primary: {
-                            fontSize: "16px",
+                            fontSize: "14px",
                             color: "text.black",
                           },
                         }}

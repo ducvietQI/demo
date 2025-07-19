@@ -114,14 +114,6 @@ const ProductPage = ({
 
   return (
     <Stack position="relative">
-      <TextField
-        fullWidth
-        placeholder="Tìm kiếm sản phẩm..."
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
-        sx={{ mb: 2 }}
-        size="small"
-      />
       <Container>
         <Grid2 my={4} container direction={"row"} spacing={2}>
           <Grid2
