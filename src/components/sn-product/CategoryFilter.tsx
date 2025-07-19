@@ -115,10 +115,10 @@ const CategoryFilter = ({
                       key={i}
                       sx={{
                         py: 0,
-                        backgroundColor:
-                          categorySlug === item.slug
-                            ? "rgba(0, 0, 0, 0.04)"
-                            : "unset",
+                        // backgroundColor:
+                        //   categorySlug === item.slug
+                        //     ? "rgba(0, 0, 0, 0.04)"
+                        //     : "unset",
 
                         "& .MuiTypography-root": {
                           color:
