@@ -65,7 +65,7 @@ const ConstructionWorkSection = ({
     return (
       <Swiper
         slidesPerView={isTabletDown ? 1 : 3}
-        spaceBetween={30}
+        spaceBetween={24}
         modules={[Navigation]}
         navigation
         pagination={{ clickable: true }}
