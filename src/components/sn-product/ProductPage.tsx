@@ -5,13 +5,20 @@ import { ApiConst, GlobalsConst } from "@/constant";
 import { IProduct } from "@/models/product.type";
 import { IPaginationList } from "@/models/project.type";
 import { productActions, useAppDispatch, useAppSelector } from "@/redux-store";
-import { Container, Drawer, Grid2, Stack, Typography } from "@mui/material";
+import {
+  Container,
+  Drawer,
+  Grid2,
+  Stack,
+  Typography,
+  TextField,
+} from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { shallowEqual } from "react-redux";
 import ProductCard from "../sn-home/ProductSection/ProductCard";
 import CategoryFilter from "./CategoryFilter";
-import { useTabletDown } from "@/hooks";
+import { useTabletDown, useDebounce } from "@/hooks";
 import { FilterIcon } from "../Icons";
 
 const ProductPage = ({
@@ -27,6 +34,8 @@ const ProductPage = ({
   const isTabletDown = useTabletDown();
   const [isOpen, setIsOpen] = useState(false);
   const [categorySlug, setCategorySlug] = useState(groupSlug || "");
+  const [keyword, setKeyword] = useState("");
+  const debouncedKeyword = useDebounce(keyword, 500);
   const { productList, currentPage, totalPages, hasMore } = useAppSelector(
     (state) => ({
       productList: state.productReducer.productList,
@@ -52,7 +61,7 @@ const ProductPage = ({
   }, []);
 
   useEffect(() => {
-    if (categorySlug) {
+    if (categorySlug !== undefined) {
       const fetchData = async () => {
         try {
           const productResponse = await apiRequester.get<
@@ -61,18 +70,18 @@ const ProductPage = ({
             categorySlug,
             page: GlobalsConst.DEFAULT_PAGE,
             size: GlobalsConst.DEFAULT_SIZE,
+            keyword: debouncedKeyword, // truyền keyword vào params
           });
           dispatch(
             productActions.changeProductList(productResponse.payload.items)
           );
         } catch (error) {
-          console.error("Lỗi khi fetch product:", error);
+          // handle error
         }
       };
-
       fetchData();
     }
-  }, [categorySlug]);
+  }, [categorySlug, debouncedKeyword]); // thêm debouncedKeyword vào deps
 
   const fetchMoreProjects = useCallback(async () => {
     try {
@@ -105,6 +114,14 @@ const ProductPage = ({
 
   return (
     <Stack position="relative">
+      <TextField
+        fullWidth
+        placeholder="Tìm kiếm sản phẩm..."
+        value={keyword}
+        onChange={(e) => setKeyword(e.target.value)}
+        sx={{ mb: 2 }}
+        size="small"
+      />
       <Container>
         <Grid2 my={4} container direction={"row"} spacing={2}>
           <Grid2
@@ -118,6 +135,8 @@ const ProductPage = ({
               categorySlug={categorySlug}
               categoriesList={categoriesList}
               onSetCategorySlug={setCategorySlug}
+              keyword={keyword}
+              setKeyword={setKeyword}
             />
           </Grid2>
           {isTabletDown && (
@@ -180,6 +199,8 @@ const ProductPage = ({
             categoriesList={categoriesList}
             onSetCategorySlug={setCategorySlug}
             onClose={() => setIsOpen(false)}
+            keyword={keyword}
+            setKeyword={setKeyword}
           />
         </Stack>
       </Drawer>

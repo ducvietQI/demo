@@ -7,24 +7,56 @@ import {
   List,
   ListItemButton,
   ListItemText,
+  TextField,
   Typography,
 } from "@mui/material";
 import { memo } from "react";
-import { ArrowDownIcon } from "../Icons";
+import { ArrowDownIcon, SearchIcon } from "../Icons";
 
 const CategoryFilter = ({
   categorySlug,
   categoriesList,
   onSetCategorySlug,
   onClose,
+  keyword,
+  setKeyword,
 }: {
   categorySlug: string;
   categoriesList: MenuItem[];
   onSetCategorySlug: (slug: string) => void;
   onClose?: () => void;
+  keyword: string;
+  setKeyword: (value: string) => void;
 }) => {
   return (
     <Box>
+      <Box sx={{ mx: 1 }}>
+        <TextField
+          fullWidth
+          placeholder="Tìm kiếm sản phẩm..."
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          sx={{
+            mb: 2,
+            "& .MuiInputBase-input": {
+              color: "#333", // màu text value
+              fontSize: 16,
+            },
+            "& .MuiInputBase-input::placeholder": {
+              color: "#333",
+              fontSize: 16,
+              opacity: 1,
+            },
+            fontSize: 16,
+          }}
+          size="small"
+          variant="standard"
+          InputProps={{
+            endAdornment: <SearchIcon sx={{ color: "#333" }} />,
+            style: { fontSize: 20 },
+          }}
+        />
+      </Box>
       {categoriesList.map((category, index) => (
         <Accordion
           key={index}

@@ -5,6 +5,7 @@ import useLargeTabletDown from "./useLargeTabletDown";
 import useMobile from "./useMobile";
 import useTablet from "./useTablet";
 import useTabletDown from "./useTabletDown";
+import { useDebounce } from "./useDebounce";
 
 export {
   useResponsive,
@@ -14,4 +15,5 @@ export {
   useMobile,
   useTablet,
   useTabletDown,
+  useDebounce,
 };
