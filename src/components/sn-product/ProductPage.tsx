@@ -61,27 +61,31 @@ const ProductPage = ({
   }, []);
 
   useEffect(() => {
-    if (categorySlug !== undefined) {
-      const fetchData = async () => {
-        try {
-          const productResponse = await apiRequester.get<
-            IPaginationList<IProduct>
-          >(ApiConst.PRODUCT_LIST, {
-            categorySlug,
-            page: GlobalsConst.DEFAULT_PAGE,
-            size: GlobalsConst.DEFAULT_SIZE,
-            keyword: debouncedKeyword, // truyền keyword vào params
-          });
-          dispatch(
-            productActions.changeProductList(productResponse.payload.items)
-          );
-        } catch (error) {
-          // handle error
+    const fetchData = async () => {
+      try {
+        const params: any = {
+          page: GlobalsConst.DEFAULT_PAGE,
+          size: GlobalsConst.DEFAULT_SIZE,
+          keyword: debouncedKeyword,
+        };
+        // Nếu có keyword thì bỏ categorySlug
+        if (!debouncedKeyword) {
+          params.categorySlug = categorySlug;
+        } else {
+          params.categorySlug = null; // hoặc có thể xóa params.categorySlug
         }
-      };
-      fetchData();
-    }
-  }, [categorySlug, debouncedKeyword]); // thêm debouncedKeyword vào deps
+        const productResponse = await apiRequester.get<
+          IPaginationList<IProduct>
+        >(ApiConst.PRODUCT_LIST, params);
+        dispatch(
+          productActions.changeProductList(productResponse.payload.items)
+        );
+      } catch (error) {
+        // handle error
+      }
+    };
+    fetchData();
+  }, [categorySlug, debouncedKeyword]);
 
   const fetchMoreProjects = useCallback(async () => {
     try {

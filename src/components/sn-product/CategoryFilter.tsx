@@ -28,8 +28,6 @@ const CategoryFilter = ({
   keyword: string;
   setKeyword: (value: string) => void;
 }) => {
-  const [isActive, setIsActive] = useState("");
-
   return (
     <Box>
       <Box sx={{ mx: 1 }}>
@@ -87,7 +85,6 @@ const CategoryFilter = ({
               },
             }}
             onClick={() => {
-              setIsActive(category.slug);
               onSetCategorySlug(category.slug);
             }}
           >
