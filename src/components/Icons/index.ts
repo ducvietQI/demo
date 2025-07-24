@@ -2,6 +2,7 @@ import ArrowCollapseIcon from "./ArrowCollapseIcon";
 import ArrowDownIcon from "./ArrowDownIcon";
 import ArrowRightIcon from "./ArrowRightIcon";
 import ArrowSubmenu from "./ArrowSubmenu";
+import ArrowToTopIcon from "./ArrowToTopIcon";
 import CloseIcon from "./CloseIcon";
 import CloseXIcon from "./CloseXIcon";
 import CompareIcon from "./CompareIcon";
@@ -17,6 +18,7 @@ import ToggleMenu from "./ToggleMenu";
 import WarningNotifyIcon from "./WarningNotifyIcon";
 
 export {
+  ArrowToTopIcon,
   SearchIcon,
   ShareIcon,
   ArrowRightIcon,

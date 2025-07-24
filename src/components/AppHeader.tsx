@@ -294,7 +294,7 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                     );
                   })}
               </Stack>
-              <Stack direction="row" spacing={2} alignItems="center">
+              <Stack direction="row" spacing={1} alignItems="center">
                 {Array.isArray(footerData.hotline) &&
                   footerData.hotline.map(
                     (hotline, idx) =>
@@ -307,7 +307,6 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                             cursor: "pointer",
                             color: "primary.main",
                             fontSize: 16,
-                            ml: idx > 0 ? 2 : 0,
                             display: "flex",
                             alignItems: "center",
                           }}
@@ -315,8 +314,10 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                             (window.location.href = `tel:${hotline.trim()}`)
                           }
                         >
-                          <PhoneIcon sx={{ fontSize: 24, mr: 1 }} />
-                          {hotline}
+                          {idx === 0 && (
+                            <PhoneIcon sx={{ fontSize: 24, mr: 1 }} />
+                          )}
+                          {idx === 1 ? `- ${hotline}` : hotline}
                         </Typography>
                       )
                   )}
@@ -339,7 +340,6 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                           cursor: "pointer",
                           color: "primary.main",
                           fontSize: 16,
-                          ml: idx > 0 ? 2 : 0,
                           display: "flex",
                           alignItems: "center",
                         }}
@@ -347,8 +347,10 @@ const AppHeader = ({ menuItems }: { menuItems: MenuItem[] }) => {
                           (window.location.href = `tel:${hotline.trim()}`)
                         }
                       >
-                        <PhoneIcon sx={{ fontSize: 24, mr: 1 }} />
-                        {hotline}
+                        {idx === 0 && (
+                          <PhoneIcon sx={{ fontSize: 24, mr: 1 }} />
+                        )}
+                        {idx === 1 ? `- ${hotline}` : hotline}
                       </Typography>
                     )
                 )}

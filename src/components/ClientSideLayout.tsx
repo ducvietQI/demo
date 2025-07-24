@@ -1,11 +1,12 @@
 "use client";
 
-import { Stack, IconButton } from "@mui/material";
+import { Stack, IconButton, Fade } from "@mui/material";
 import AppFooter from "./AppFooter";
 import Image from "next/image";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { CompanyProfile, IService } from "@/models/home.type";
 import { appActions, useAppDispatch } from "@/redux-store";
+import { ArrowDownIcon, ArrowToTopIcon } from "./Icons";
 
 const ClientSideLayout = ({
   children,
@@ -17,11 +18,26 @@ const ClientSideLayout = ({
   serviceData: IService[];
 }) => {
   const dispatch = useAppDispatch();
+  const [showGoToTop, setShowGoToTop] = useState(false);
 
   useEffect(() => {
     dispatch(appActions.changeServiceData(serviceData));
     dispatch(appActions.changeFooterData(footerData));
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowGoToTop(window.scrollY > window.innerHeight);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleGoToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  console.log(footerData.social.zalo);
 
   return (
     <Stack position="relative" pt={{ xs: "55px", md: "90px" }}>
@@ -29,6 +45,7 @@ const ClientSideLayout = ({
 
       <AppFooter footerData={footerData} />
       <IconButton
+        className="fcta-dt-nen-nut"
         sx={{
           position: "fixed",
           right: { xs: 10, md: 40 },
@@ -56,6 +73,7 @@ const ClientSideLayout = ({
         />
       </IconButton>
       <IconButton
+        className="fcta-zalo-nen-nut"
         sx={{
           position: "fixed",
           right: { xs: 10, md: 40 },
@@ -72,7 +90,10 @@ const ClientSideLayout = ({
         }}
         onClick={() => {
           footerData.social?.zalo &&
-            window.open(`https://zalo.me/${footerData.social.zalo}`, "_blank");
+            window.open(
+              `https://zalo.me/${footerData.social.zalo.trim()}`,
+              "_blank"
+            );
         }}
       >
         <Image
@@ -83,6 +104,26 @@ const ClientSideLayout = ({
           style={{ objectFit: "cover" }}
         />
       </IconButton>
+
+      <Fade in={showGoToTop}>
+        <IconButton
+          onClick={handleGoToTop}
+          sx={{
+            position: "fixed",
+            right: { xs: 16, md: 50 },
+            bottom: { xs: 16, md: 220 },
+            opacity: 0.8,
+            zIndex: 2000,
+            bgcolor: "primary.main",
+            color: "white",
+            "&:hover": { bgcolor: "primary.dark" },
+          }}
+          size="large"
+          aria-label="Go to top"
+        >
+          <ArrowDownIcon sx={{ fontSize: 24, transform: "rotate(180deg)" }} />
+        </IconButton>
+      </Fade>
     </Stack>
   );
 };

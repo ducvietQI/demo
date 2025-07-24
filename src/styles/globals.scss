@@ -281,3 +281,73 @@ body {
   font-size: 16px;
   line-height: 1.5;
 }
+
+.fcta-zalo-nen-nut::after,
+.fcta-zalo-nen-nut::before {
+  content: "";
+  position: absolute;
+  border: 1px solid #0068ff;
+  background: #0068ff80;
+  z-index: -1;
+  left: -20px;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  animation: zoom 1.9s linear infinite;
+}
+
+.fcta-zalo-nen-nut::after,
+.fcta-zalo-nen-nut::before {
+  content: "";
+  position: absolute;
+  border: 1px solid #1271ff;
+  background: #0c6dff80;
+  z-index: -1;
+  left: -20px;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  animation: zoom 1.9s linear infinite;
+}
+
+@keyframes zoom {
+  from {
+    opacity: 0;
+    transform: scale3d(0.2, 0.2, 0.2);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.fcta-dt-nen-nut::after,
+.fcta-dt-nen-nut::before {
+  content: "";
+  position: absolute;
+  border: 1px solid #0068ff;
+  background: #0068ff80;
+  z-index: -1;
+  left: -20px;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  animation: zoom 1.9s linear infinite;
+}
+
+.fcta-dt-nen-nut::after,
+.fcta-dt-nen-nut::before {
+  content: "";
+  position: absolute;
+  border: 1px solid #ffe030;
+  background: #ffd31180;
+  z-index: -1;
+  left: -20px;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  animation: zoom 1.9s linear infinite;
+}
