@@ -112,8 +112,8 @@ const ClientSideLayout = ({
           onClick={handleGoToTop}
           sx={{
             position: "fixed",
-            right: { xs: 16, md: 25 },
-            bottom: { xs: 16, md: 200 },
+            right: { xs: 10, md: 25 },
+            bottom: { xs: 120, md: 200 },
             opacity: 0.8,
             zIndex: 2000,
             bgcolor: "primary.main",
@@ -123,7 +123,9 @@ const ClientSideLayout = ({
           size="large"
           aria-label="Go to top"
         >
-          <ArrowDownIcon sx={{ fontSize: 24, transform: "rotate(180deg)" }} />
+          <ArrowDownIcon
+            sx={{ fontSize: { xs: 16, md: 24 }, transform: "rotate(180deg)" }}
+          />
         </IconButton>
       </Fade>
     </Stack>
