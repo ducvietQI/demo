@@ -14,7 +14,7 @@ const ClientSideLayout = ({
   serviceData,
 }: {
   children: ReactNode;
-  footerData: CompanyProfile;
+  footerData?: CompanyProfile;
   serviceData: IService[];
 }) => {
   const dispatch = useAppDispatch();
@@ -22,8 +22,12 @@ const ClientSideLayout = ({
 
   useEffect(() => {
     dispatch(appActions.changeServiceData(serviceData));
-    dispatch(appActions.changeFooterData(footerData));
   }, []);
+
+  useEffect(() => {
+    if (!footerData) return;
+    dispatch(appActions.changeFooterData(footerData));
+  }, [footerData]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,13 +41,11 @@ const ClientSideLayout = ({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  console.log(footerData.social.zalo);
-
   return (
     <Stack position="relative" pt={{ xs: "55px", md: "90px" }}>
       <div className="relative z-10 min-h-screen">{children}</div>
 
-      <AppFooter footerData={footerData} />
+      {footerData && <AppFooter footerData={footerData} />}
       <IconButton
         className="fcta-dt-nen-nut"
         sx={{
@@ -59,7 +61,7 @@ const ClientSideLayout = ({
           },
         }}
         onClick={() => {
-          window.location.href = Array.isArray(footerData.hotline)
+          window.location.href = Array.isArray(footerData?.hotline)
             ? `tel:${footerData.hotline[0]}`
             : "";
         }}
@@ -89,7 +91,7 @@ const ClientSideLayout = ({
           },
         }}
         onClick={() => {
-          footerData.social?.zalo &&
+          footerData?.social?.zalo &&
             window.open(
               `https://zalo.me/${footerData.social.zalo.trim()}`,
               "_blank"
