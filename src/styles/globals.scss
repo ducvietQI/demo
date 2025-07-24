@@ -282,72 +282,68 @@ body {
   line-height: 1.5;
 }
 
-.fcta-zalo-nen-nut::after,
-.fcta-zalo-nen-nut::before {
-  content: "";
-  position: absolute;
-  border: 1px solid #0068ff;
-  background: #0068ff80;
-  z-index: -1;
-  left: -20px;
-  right: -20px;
-  top: -20px;
-  bottom: -20px;
-  border-radius: 50%;
-  animation: zoom 1.9s linear infinite;
-}
-
-.fcta-zalo-nen-nut::after,
-.fcta-zalo-nen-nut::before {
-  content: "";
-  position: absolute;
-  border: 1px solid #1271ff;
-  background: #0c6dff80;
-  z-index: -1;
-  left: -20px;
-  right: -20px;
-  top: -20px;
-  bottom: -20px;
-  border-radius: 50%;
-  animation: zoom 1.9s linear infinite;
-}
-
 @keyframes zoom {
-  from {
-    opacity: 0;
-    transform: scale3d(0.2, 0.2, 0.2);
-  }
-  50% {
+  0% {
+    transform: scale(0);
     opacity: 1;
   }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
 }
 
-.fcta-dt-nen-nut::after,
-.fcta-dt-nen-nut::before {
+/* Zalo */
+.fcta-zalo-nen-nut::before,
+.fcta-zalo-nen-nut::after {
   content: "";
   position: absolute;
+  z-index: -1;
+  left: -20px;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  animation: zoom 2s linear infinite;
+}
+
+.fcta-zalo-nen-nut::before {
   border: 1px solid #0068ff;
   background: #0068ff80;
-  z-index: -1;
-  left: -20px;
-  right: -20px;
-  top: -20px;
-  bottom: -20px;
-  border-radius: 50%;
-  animation: zoom 1.9s linear infinite;
+  animation-delay: 0s;
 }
 
-.fcta-dt-nen-nut::after,
-.fcta-dt-nen-nut::before {
+.fcta-zalo-nen-nut::after {
+  border: 1px solid #1271ff;
+  background: #0c6dff80;
+  animation-delay: 0.5s;
+}
+
+/* Điện thoại */
+.fcta-dt-nen-nut::before,
+.fcta-dt-nen-nut::after {
   content: "";
   position: absolute;
-  border: 1px solid #ffe030;
-  background: #ffd31180;
   z-index: -1;
   left: -20px;
   right: -20px;
   top: -20px;
   bottom: -20px;
   border-radius: 50%;
-  animation: zoom 1.9s linear infinite;
+  animation: zoom 2s linear infinite;
+}
+
+.fcta-dt-nen-nut::before {
+  border: 1px solid #ffe030;
+  background: #ffd31180;
+  animation-delay: 0s;
+}
+
+.fcta-dt-nen-nut::after {
+  border: 1px solid #ffe030;
+  background: #ffd31180;
+  animation-delay: 0.5s;
 }

@@ -50,11 +50,11 @@ const ClientSideLayout = ({
         className="fcta-dt-nen-nut"
         sx={{
           position: "fixed",
-          right: { xs: 10, md: 40 },
-          bottom: { xs: 10, md: 40 },
+          right: { xs: 10, md: 20 },
+          bottom: { xs: 10, md: 20 },
           zIndex: 2000,
-          width: { xs: 40, md: 70 },
-          height: { xs: 40, md: 70 },
+          width: { xs: 40, md: 60 },
+          height: { xs: 40, md: 60 },
           "&:hover": {
             backgroundColor: "white",
             transform: "scale(1.1)",
@@ -78,11 +78,11 @@ const ClientSideLayout = ({
         className="fcta-zalo-nen-nut"
         sx={{
           position: "fixed",
-          right: { xs: 10, md: 40 },
-          bottom: { xs: 60, md: 130 },
+          right: { xs: 10, md: 20 },
+          bottom: { xs: 60, md: 110 },
           zIndex: 2000,
-          width: { xs: 40, md: 70 },
-          height: { xs: 40, md: 70 },
+          width: { xs: 40, md: 60 },
+          height: { xs: 40, md: 60 },
           backgroundColor: "#3f8edf",
           borderRadius: "50%",
           "&:hover": {
@@ -112,8 +112,8 @@ const ClientSideLayout = ({
           onClick={handleGoToTop}
           sx={{
             position: "fixed",
-            right: { xs: 16, md: 50 },
-            bottom: { xs: 16, md: 220 },
+            right: { xs: 16, md: 25 },
+            bottom: { xs: 16, md: 200 },
             opacity: 0.8,
             zIndex: 2000,
             bgcolor: "primary.main",
