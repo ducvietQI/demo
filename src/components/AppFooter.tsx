@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { memo } from "react";
+import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
 
 const SocialIconButton = ({
   href,
@@ -136,13 +137,36 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
               </Typography>
               {Array.isArray(footerData.hotline) &&
                 footerData.hotline.map((item, i) => (
-                  <Typography key={i} fontSize="14px" color="primary">
-                    📞 {item}
+                  <Typography
+                    key={i}
+                    fontSize="14px"
+                    color="primary"
+                    sx={{ display: "flex", alignItems: "center" }}
+                  >
+                    <FiPhone
+                      style={{
+                        fontSize: 16,
+                        marginRight: 4,
+                        verticalAlign: "middle",
+                      }}
+                    />
+                    {item}
                   </Typography>
                 ))}
               {footerData.email && (
-                <Typography fontSize="14px" color="primary">
-                  📧 {footerData.email}
+                <Typography
+                  fontSize="14px"
+                  color="primary"
+                  sx={{ display: "flex", alignItems: "center" }}
+                >
+                  <FiMail
+                    style={{
+                      fontSize: 16,
+                      marginRight: 4,
+                      verticalAlign: "middle",
+                    }}
+                  />
+                  {footerData.email}
                 </Typography>
               )}
 
@@ -160,8 +184,19 @@ const AppFooter = ({ footerData }: { footerData: CompanyProfile }) => {
               </Typography>
               {Array.isArray(footerData.addresses) &&
                 footerData.addresses.map((item, i) => (
-                  <Typography key={i} color="white" fontSize="14px">
-                    ⭐{" "}
+                  <Typography
+                    key={i}
+                    color="white"
+                    fontSize="14px"
+                    sx={{ display: "flex", alignItems: "center" }}
+                  >
+                    <FiMapPin
+                      style={{
+                        fontSize: 16,
+                        marginRight: 4,
+                        verticalAlign: "middle",
+                      }}
+                    />
                     {item.detail ? `${item.detail}, ${item.city}` : item.city}
                   </Typography>
                 ))}

@@ -20,6 +20,7 @@ import Image from "next/image";
 import { enqueueSnackbar } from "notistack";
 import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { useForm, useFormState } from "react-hook-form";
+import { FiPhone, FiMail, FiGlobe } from "react-icons/fi";
 
 interface ContactFormData {
   fullName: string;
@@ -220,32 +221,56 @@ const CONTACTPage = () => {
                 </Box>
                 <Box display="flex" alignItems="center" gap={1}>
                   <span role="img" aria-label="phone">
-                    📞
+                    <FiPhone style={{ fontSize: 16 }} />
                   </span>
                   +84 908 562750
                 </Box>
                 <Box display="flex" alignItems="center" gap={1}>
                   <span role="img" aria-label="email">
-                    ✉️
+                    <FiMail style={{ fontSize: 16 }} />
                   </span>
                   contact.vietblogger@gmail.com
                 </Box>
                 <Box display="flex" alignItems="center" gap={1}>
                   <span role="img" aria-label="facebook">
-                    🌐
+                    <FiGlobe style={{ fontSize: 16 }} />
                   </span>
                   fb.com/kequaduongvodanh
                 </Box>
               </Stack> */}
               {Array.isArray(footerData.hotline) &&
                 footerData.hotline.map((item, i) => (
-                  <Typography color="white" key={i} fontSize="18px">
-                    📞 {item}
+                  <Typography
+                    color="white"
+                    key={i}
+                    fontSize="18px"
+                    sx={{ display: "flex", alignItems: "center" }}
+                  >
+                    <FiPhone
+                      style={{
+                        fontSize: 18,
+                        marginRight: 8,
+                        verticalAlign: "middle",
+                      }}
+                    />
+                    {item}
                   </Typography>
                 ))}
               {footerData.email && (
-                <Typography mt={2} fontSize="18px" color="white">
-                  📧 {footerData.email}
+                <Typography
+                  mt={2}
+                  fontSize="18px"
+                  color="white"
+                  sx={{ display: "flex", alignItems: "center" }}
+                >
+                  <FiMail
+                    style={{
+                      fontSize: 18,
+                      marginRight: 8,
+                      verticalAlign: "middle",
+                    }}
+                  />
+                  {footerData.email}
                 </Typography>
               )}
               {/* <Stack
