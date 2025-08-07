@@ -116,7 +116,12 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
           </Typography>
         </Box>
 
-        <Stack direction="row" justifyContent="space-between" bgcolor="#F5B940">
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          justifyContent="space-between"
+          bgcolor="#F5B940"
+          spacing={{ xs: 2, md: 0 }}
+        >
           {[
             {
               icon: "/images/icon-7.png",
@@ -149,17 +154,48 @@ const ProjectDetailPage = ({ data }: { data: IProject }) => {
               direction="row"
               alignItems="center"
               spacing={1}
-              py={2}
-              px={2}
+              py={{ xs: 1.5, md: 2 }}
+              px={{ xs: 3, md: 2 }}
               flex={1}
-              borderLeft={index !== 0 ? "1px solid white" : "none"}
+              borderLeft={{
+                xs: "none",
+                md: index !== 0 ? "1px solid white" : "none",
+              }}
+              borderBottom={{
+                xs: index !== 4 ? "1px solid rgba(255,255,255,0.3)" : "none",
+                md: "none",
+              }}
+              sx={{
+                minHeight: { xs: "80px", md: "auto" },
+                justifyContent: { xs: "flex-start", md: "center" },
+              }}
             >
-              <Image src={item.icon} alt="icon" width={50} height={50} />
-              <Box>
-                <Typography fontSize={16} fontWeight="bold">
+              <Image
+                src={item.icon}
+                alt="icon"
+                width={50}
+                height={50}
+                style={{ flexShrink: 0 }}
+              />
+              <Box sx={{ minWidth: 0, flex: 1 }}>
+                <Typography
+                  fontSize={{ xs: 14, md: 16 }}
+                  fontWeight="bold"
+                  sx={{
+                    color: "white",
+                    mb: { xs: 0.5, md: 0 },
+                  }}
+                >
                   {item.title}
                 </Typography>
-                <Typography fontSize={16} variant="body2">
+                <Typography
+                  fontSize={{ xs: 14, md: 16 }}
+                  variant="body2"
+                  sx={{
+                    color: "white",
+                    wordBreak: "break-word",
+                  }}
+                >
                   {item.desc}
                 </Typography>
               </Box>

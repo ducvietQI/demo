@@ -63,11 +63,22 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
     }
     return (
       <Swiper
-        slidesPerView={isTabletDown ? 1 : 3}
+        key={isTabletDown ? "mobile" : "desktop"}
+        slidesPerView={1}
         spaceBetween={24}
         modules={[Navigation]}
         navigation
         pagination={{ clickable: true }}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 16,
+          },
+          900: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+          },
+        }}
         style={{ width: "100%", height: "280px" }}
       >
         {slides.map((item, index) => {
@@ -85,7 +96,9 @@ const DesignProjectSection = ({ serviceData }: { serviceData?: IService }) => {
                 cursor: "default",
                 height: "100%",
                 display: "flex",
-                flex: 1,
+                width: "100% !important",
+                maxWidth: "100vw",
+                boxSizing: "border-box",
                 background: isEmpty ? "transparent" : undefined,
               }}
             >

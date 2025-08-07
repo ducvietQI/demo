@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import stringFormat from "string-format";
 import { RouteConstant } from "@/constant";
-import { ArrowCollapseIcon } from "../Icons";
+import { ArrowCollapseIcon, ArrowRightIcon } from "../Icons";
 
 const CollapseFAQ = ({ data, index }: { data: IIFAQ; index: number }) => {
   const router = useRouter();
@@ -84,7 +84,7 @@ const CollapseFAQ = ({ data, index }: { data: IIFAQ; index: number }) => {
           fontSize={14}
           sx={{ color: "text.black", fontWeight: 500, cursor: "pointer" }}
         >
-          XEM THÊM ↗
+          XEM THÊM <ArrowRightIcon />
         </Typography>
       </Collapse>
     </Stack>
